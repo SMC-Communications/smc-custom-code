@@ -1,6 +1,9 @@
-//import OwlCarousel from owl-carousel
+require('tiny-slider')
 
 console.log("Hello World")
 
-let $owl = document.querySelector(".owl-carousel")
-console.log("test")
+var slider = tns ({
+    container: '.owl-carousel',
+    items: 3,
+    slideBy: 'item',
+})

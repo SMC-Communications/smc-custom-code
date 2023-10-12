@@ -16,6 +16,6 @@
     "serve": "^14.2.1"
   },
   "dependencies": {
-    "owl-carousel": "^1.0.0"
+    "tiny-slider": "^2.9.4"
   }
 }
