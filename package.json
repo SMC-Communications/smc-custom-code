@@ -1,0 +1,21 @@
+{
+  "name": "smc-custom-code",
+  "version": "1.0.0",
+  "description": "SMC Custom Weblfow Code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "serve",
+    "build": "./node_modules/.bin/esbuild index.js --bundle --outfile=dist/index.js --watch",
+    "build-file": "node builder.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.19.4",
+    "serve": "^14.2.1"
+  },
+  "dependencies": {
+    "owl-carousel": "^1.0.0"
+  }
+}
