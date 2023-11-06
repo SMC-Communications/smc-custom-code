@@ -51,7 +51,9 @@ const slider = tns({
     slideBy: 1,
     speed: 500,
     preventActionWhenRunning: true,
-    onInit: sliderInit
+    onInit: sliderInit,
+    controls: false,
+    nav: false
 })
 slider.events.on("indexChanged", updateSlides)
 

@@ -1,3 +1,26 @@
+/* index.css */
+.site-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.site-wrapper {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.site-wrapper {
+  max-height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y proximity;
+}
+[data-scroll-snap-align=start] {
+  scroll-snap-align: start;
+}
+[data-scroll-snap-align=end] {
+  scroll-snap-align: end;
+}
+[data-scroll-snap-stop=always] {
+  scroll-snap-stop: always;
+}
+
 /* header.css */
 .header-logo-svg svg {
   color: var(--nav-color);
@@ -156,6 +179,13 @@
 }
 
 /* slider.css */
+.tns-outer,
+.tns-ovh,
+.tns-inner,
+.tiny-slider,
+.tns-item {
+  height: 100%;
+}
 .tiny-slider_slide video {
   width: 100%;
   height: 100%;
