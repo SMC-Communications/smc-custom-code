@@ -1,0 +1,21 @@
+.tiny-slider_slide video{
+    width:100%;
+    height:100%;
+    display:block;
+}
+.tns-item{
+    transform: scale(0.8);
+    transition: transform 0.5s ease-in-out;
+}
+.tns-item[aria-hidden="true"]{
+    transition: transform 0s;
+}
+.active-slide1{
+    transform:scale(1);
+}
+.tiny-slider_slide-overlay{
+    transition: opacity 0.5s ease-in-out;
+}
+.active-slide1 .tiny-slider_slide-overlay{
+    opacity:0;
+}

@@ -1,0 +1,15 @@
+.header-logo-svg svg{
+    color:var(--nav-color);
+}
+.header_container{
+    transition:0.2s;
+}
+[data-theme="dark-teal"]{
+    --nav-color:var(--light-teal);
+}
+[data-theme="light-teal"]{
+    --nav-color:var(--dark-teal);
+}
+[data-theme="cream"]{
+    --nav-color:var(--dark-teal);
+}
