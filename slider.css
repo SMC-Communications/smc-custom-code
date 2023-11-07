@@ -1,11 +1,22 @@
-.tns-outer, .tns-ovh, .tns-inner, .tiny-slider, .tns-item{
+.tns-outer, .tns-ovh, .tns-inner, .tiny-slider, .tns-item, .tiny-slider_slide-embed {
     height:100%;
+}
+.tiny-slider_slide-embed{
+    height:100%;
+    aspect-ratio: 1 / 2;
+    margin:auto;
+    box-sizing:border-box;
+    position:relative;
+    border-radius:1.5rem;
+    overflow: hidden;
 }
 .tiny-slider_slide video{
-    width:100%;
     height:100%;
+    width:100%;
     display:block;
+    object-fit: fill;
 }
+
 .tns-item{
     transform: scale(0.8);
     transition: transform 0.5s ease-in-out;
