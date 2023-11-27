@@ -1,5 +1,3 @@
-import './header.css'
-
 const header = document.querySelector('[data-header]')
 const sections = [...document.querySelectorAll('[data-section]')]
 const scrollRoot = document.querySelector('[data-scroller]')

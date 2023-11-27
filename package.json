@@ -13,9 +13,12 @@
   "license": "ISC",
   "devDependencies": {
     "esbuild": "^0.19.4",
+    "gulp": "^4.0.2",
+    "gulp-less": "^5.0.0",
     "serve": "^14.2.1"
   },
   "dependencies": {
-    "tiny-slider": "^2.9.4"
+    "tiny-slider": "^2.9.4",
+    "typed.js": "^2.1.0"
   }
 }

@@ -1,6 +1,6 @@
 import './node_modules/tiny-slider/dist/tiny-slider.css'
 import {tns} from './node_modules/tiny-slider/src/tiny-slider.js'
-import './slider.css'
+
 
 let activeSlides = []
 
@@ -45,34 +45,50 @@ function sliderInit(){
     console.log("Init called")
     updateSlides();
 }
-const slider = tns({
-    container: '#tiny-slider',
-    items: 3,
-    slideBy: 1,
-    speed: 500,
-    preventActionWhenRunning: true,
-    onInit: sliderInit,
-    controls: false,
-    nav: false
-})
-slider.events.on("indexChanged", updateSlides)
-
+let slider
+if (document.querySelector("#tiny-slider")){
+    
+    try {
+        slider = tns({
+            container: '#tiny-slider',
+            items: 3,
+            slideBy: 1,
+            speed: 500,
+            preventActionWhenRunning: true,
+            onInit: sliderInit,
+            controls: false,
+            nav: false
+        })    
+    } catch (error) {
+        console.error(error)
+    }
+    try {
+        slider.events.on("indexChanged", updateSlides)
+    } catch (error) {
+        console.error(error)
+    }
+}
 /* INTERSECTION OBSERVER */
 const scrollRoot = document.querySelector("[data-scroller]")
 const videoSection = document.querySelector("[data-video-section]")
-const options = {
-    root: scrollRoot,
-    threshold: 0
+if (videoSection){
+    const options = {
+        root: scrollRoot,
+        threshold: 0
+    }
+    const onVideoIntersect = (entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                playMainSlide();
+            } else {
+                pauseMainSlide();
+            }
+        })
+    }
+    try {
+        const videoObserver = new IntersectionObserver(onVideoIntersect, options)
+        videoObserver.observe(videoSection)
+    } catch (error) {
+        console.error(error)
+    }
 }
-const onVideoIntersect = (entries, observer) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            playMainSlide();
-        } else {
-            pauseMainSlide();
-        }
-    })
-}
-
-const videoObserver = new IntersectionObserver(onVideoIntersect, options)
-videoObserver.observe(videoSection)

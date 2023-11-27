@@ -1,0 +1,39 @@
+.tns-outer,
+.tns-ovh,
+.tns-inner,
+.tiny-slider,
+.tns-item,
+.tiny-slider_slide-embed {
+  height: 100%;
+}
+.tiny-slider_slide-embed {
+  height: 100%;
+  aspect-ratio: 1 / 2;
+  margin: auto;
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+.tiny-slider_slide video {
+  height: 100%;
+  width: 100%;
+  display: block;
+  object-fit: fill;
+}
+.tns-item {
+  transform: scale(0.8);
+  transition: transform 0.5s ease-in-out;
+}
+.tns-item[aria-hidden="true"] {
+  transition: transform 0s;
+}
+.active-slide1 {
+  transform: scale(1);
+}
+.tiny-slider_slide-overlay {
+  transition: opacity 0.5s ease-in-out;
+}
+.active-slide1 .tiny-slider_slide-overlay {
+  opacity: 0;
+}

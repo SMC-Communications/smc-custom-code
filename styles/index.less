@@ -1,0 +1,28 @@
+/* Hide scrollbar for Chrome, Safari and Opera */
+.site-wrapper::-webkit-scrollbar {
+	display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .site-wrapper {
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+  }
+/* Scroll snap */
+.site-wrapper{
+	max-height:100vh;
+    overflow-y: scroll;
+	scroll-snap-type:y proximity;
+}
+[data-scroll-snap-align="start"]{
+	scroll-snap-align:start;
+}
+[data-scroll-snap-align="end"]{
+	scroll-snap-align:end;
+}
+[data-scroll-snap-stop="always"]{
+    scroll-snap-stop: always;
+}
+.a-class{
+    color:#fff;
+}

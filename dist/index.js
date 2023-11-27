@@ -63,9 +63,9 @@ var caf = win2.cancelAnimationFrame || win2.mozCancelAnimationFrame || function(
 
 // node_modules/tiny-slider/src/helpers/extend.js
 function extend() {
-  var obj, name, copy, target = arguments[0] || {}, i = 1, length = arguments.length;
-  for (; i < length; i++) {
-    if ((obj = arguments[i]) !== null) {
+  var obj, name, copy, target = arguments[0] || {}, i3 = 1, length = arguments.length;
+  for (; i3 < length; i3++) {
+    if ((obj = arguments[i3]) !== null) {
       for (name in obj) {
         copy = obj[name];
         if (target === copy) {
@@ -89,7 +89,7 @@ function setLocalStorage(storage, key, value, access) {
   if (access) {
     try {
       storage.setItem(key, value);
-    } catch (e) {
+    } catch (e2) {
     }
   }
   return value;
@@ -142,15 +142,15 @@ function calc() {
   body.appendChild(div);
   try {
     var str = "(10px * 10)", vals = ["calc" + str, "-moz-calc" + str, "-webkit-calc" + str], val;
-    for (var i = 0; i < 3; i++) {
-      val = vals[i];
+    for (var i3 = 0; i3 < 3; i3++) {
+      val = vals[i3];
       div.style.width = val;
       if (div.offsetWidth === 100) {
         result = val.replace(str, "");
         break;
       }
     }
-  } catch (e) {
+  } catch (e2) {
   }
   body.fake ? resetFakeBody(body, docOverflow) : div.remove();
   return result;
@@ -158,16 +158,16 @@ function calc() {
 
 // node_modules/tiny-slider/src/helpers/percentageLayout.js
 function percentageLayout() {
-  var doc = document, body = getBody(), docOverflow = setFakeBody(body), wrapper = doc.createElement("div"), outer = doc.createElement("div"), str = "", count = 70, perPage = 3, supported = false;
+  var doc = document, body = getBody(), docOverflow = setFakeBody(body), wrapper = doc.createElement("div"), outer = doc.createElement("div"), str = "", count2 = 70, perPage = 3, supported = false;
   wrapper.className = "tns-t-subp2";
   outer.className = "tns-t-ct";
-  for (var i = 0; i < count; i++) {
+  for (var i3 = 0; i3 < count2; i3++) {
     str += "<div></div>";
   }
   outer.innerHTML = str;
   wrapper.appendChild(outer);
   body.appendChild(wrapper);
-  supported = Math.abs(wrapper.getBoundingClientRect().left - outer.children[count - perPage].getBoundingClientRect().left) < 2;
+  supported = Math.abs(wrapper.getBoundingClientRect().left - outer.children[count2 - perPage].getBoundingClientRect().left) < 2;
   body.fake ? resetFakeBody(body, docOverflow) : wrapper.remove();
   return supported;
 }
@@ -239,8 +239,8 @@ function getTouchDirection(angle, range) {
 
 // node_modules/tiny-slider/src/helpers/forEach.js
 function forEach(arr, callback, scope) {
-  for (var i = 0, l = arr.length; i < l; i++) {
-    callback.call(scope, arr[i], i);
+  for (var i3 = 0, l = arr.length; i3 < l; i3++) {
+    callback.call(scope, arr[i3], i3);
   }
 }
 
@@ -297,9 +297,9 @@ function setAttrs(els, attrs) {
   if (Object.prototype.toString.call(attrs) !== "[object Object]") {
     return;
   }
-  for (var i = els.length; i--; ) {
+  for (var i3 = els.length; i3--; ) {
     for (var key in attrs) {
-      els[i].setAttribute(key, attrs[key]);
+      els[i3].setAttribute(key, attrs[key]);
     }
   }
 }
@@ -309,9 +309,9 @@ function removeAttrs(els, attrs) {
   els = isNodeList(els) || els instanceof Array ? els : [els];
   attrs = attrs instanceof Array ? attrs : [attrs];
   var attrLength = attrs.length;
-  for (var i = els.length; i--; ) {
+  for (var i3 = els.length; i3--; ) {
     for (var j = attrLength; j--; ) {
-      els[i].removeAttribute(attrs[j]);
+      els[i3].removeAttribute(attrs[j]);
     }
   }
 }
@@ -319,8 +319,8 @@ function removeAttrs(els, attrs) {
 // node_modules/tiny-slider/src/helpers/arrayFromNodeList.js
 function arrayFromNodeList(nl) {
   var arr = [];
-  for (var i = 0, l = nl.length; i < l; i++) {
-    arr.push(nl[i]);
+  for (var i3 = 0, l = nl.length; i3 < l; i3++) {
+    arr.push(nl[i3]);
   }
   return arr;
 }
@@ -356,8 +356,8 @@ function whichProperty(props) {
     props = arr;
   }
   var el = document.createElement("fakeelement"), len = props.length;
-  for (var i = 0; i < props.length; i++) {
-    var prop = props[i];
+  for (var i3 = 0; i3 < props.length; i3++) {
+    var prop = props[i3];
     if (el.style[prop] !== void 0) {
       return prop;
     }
@@ -404,7 +404,7 @@ try {
     }
   });
   window.addEventListener("test", null, opts);
-} catch (e) {
+} catch (e2) {
 }
 var opts;
 var passiveOption = supportsPassive ? { passive: true } : false;
@@ -435,9 +435,9 @@ function Events() {
     },
     off: function(eventName, fn) {
       if (this.topics[eventName]) {
-        for (var i = 0; i < this.topics[eventName].length; i++) {
-          if (this.topics[eventName][i] === fn) {
-            this.topics[eventName].splice(i, 1);
+        for (var i3 = 0; i3 < this.topics[eventName].length; i3++) {
+          if (this.topics[eventName][i3] === fn) {
+            this.topics[eventName].splice(i3, 1);
             break;
           }
         }
@@ -489,8 +489,8 @@ if (!("remove" in Element.prototype)) {
     }
   };
 }
-var tns = function(options3) {
-  options3 = extend({
+var tns = function(options2) {
+  options2 = extend({
     container: ".slider",
     mode: "carousel",
     axis: "horizontal",
@@ -543,13 +543,13 @@ var tns = function(options3) {
     onInit: false,
     useLocalStorage: true,
     nonce: false
-  }, options3 || {});
+  }, options2 || {});
   var doc = document, win3 = window, KEYS = {
     ENTER: 13,
     SPACE: 32,
     LEFT: 37,
     RIGHT: 39
-  }, tnsStorage = {}, localStorageAccess = options3.useLocalStorage;
+  }, tnsStorage = {}, localStorageAccess = options2.useLocalStorage;
   if (localStorageAccess) {
     var browserInfo = navigator.userAgent;
     var uid = /* @__PURE__ */ new Date();
@@ -565,7 +565,7 @@ var tns = function(options3) {
       if (!localStorageAccess) {
         tnsStorage = {};
       }
-    } catch (e) {
+    } catch (e2) {
       localStorageAccess = false;
     }
     if (localStorageAccess) {
@@ -580,29 +580,29 @@ var tns = function(options3) {
   var CALC = tnsStorage["tC"] ? checkStorageValue(tnsStorage["tC"]) : setLocalStorage(tnsStorage, "tC", calc(), localStorageAccess), PERCENTAGELAYOUT = tnsStorage["tPL"] ? checkStorageValue(tnsStorage["tPL"]) : setLocalStorage(tnsStorage, "tPL", percentageLayout(), localStorageAccess), CSSMQ = tnsStorage["tMQ"] ? checkStorageValue(tnsStorage["tMQ"]) : setLocalStorage(tnsStorage, "tMQ", mediaquerySupport(), localStorageAccess), TRANSFORM = tnsStorage["tTf"] ? checkStorageValue(tnsStorage["tTf"]) : setLocalStorage(tnsStorage, "tTf", whichProperty("transform"), localStorageAccess), HAS3DTRANSFORMS = tnsStorage["t3D"] ? checkStorageValue(tnsStorage["t3D"]) : setLocalStorage(tnsStorage, "t3D", has3DTransforms(TRANSFORM), localStorageAccess), TRANSITIONDURATION = tnsStorage["tTDu"] ? checkStorageValue(tnsStorage["tTDu"]) : setLocalStorage(tnsStorage, "tTDu", whichProperty("transitionDuration"), localStorageAccess), TRANSITIONDELAY = tnsStorage["tTDe"] ? checkStorageValue(tnsStorage["tTDe"]) : setLocalStorage(tnsStorage, "tTDe", whichProperty("transitionDelay"), localStorageAccess), ANIMATIONDURATION = tnsStorage["tADu"] ? checkStorageValue(tnsStorage["tADu"]) : setLocalStorage(tnsStorage, "tADu", whichProperty("animationDuration"), localStorageAccess), ANIMATIONDELAY = tnsStorage["tADe"] ? checkStorageValue(tnsStorage["tADe"]) : setLocalStorage(tnsStorage, "tADe", whichProperty("animationDelay"), localStorageAccess), TRANSITIONEND = tnsStorage["tTE"] ? checkStorageValue(tnsStorage["tTE"]) : setLocalStorage(tnsStorage, "tTE", getEndProperty(TRANSITIONDURATION, "Transition"), localStorageAccess), ANIMATIONEND = tnsStorage["tAE"] ? checkStorageValue(tnsStorage["tAE"]) : setLocalStorage(tnsStorage, "tAE", getEndProperty(ANIMATIONDURATION, "Animation"), localStorageAccess);
   var supportConsoleWarn = win3.console && typeof win3.console.warn === "function", tnsList = ["container", "controlsContainer", "prevButton", "nextButton", "navContainer", "autoplayButton"], optionsElements = {};
   tnsList.forEach(function(item) {
-    if (typeof options3[item] === "string") {
-      var str = options3[item], el = doc.querySelector(str);
+    if (typeof options2[item] === "string") {
+      var str = options2[item], el = doc.querySelector(str);
       optionsElements[item] = str;
       if (el && el.nodeName) {
-        options3[item] = el;
+        options2[item] = el;
       } else {
         if (supportConsoleWarn) {
-          console.warn("Can't find", options3[item]);
+          console.warn("Can't find", options2[item]);
         }
         return;
       }
     }
   });
-  if (options3.container.children.length < 1) {
+  if (options2.container.children.length < 1) {
     if (supportConsoleWarn) {
-      console.warn("No slides found in", options3.container);
+      console.warn("No slides found in", options2.container);
     }
     return;
   }
-  var responsive = options3.responsive, nested = options3.nested, carousel = options3.mode === "carousel" ? true : false;
+  var responsive = options2.responsive, nested = options2.nested, carousel = options2.mode === "carousel" ? true : false;
   if (responsive) {
     if (0 in responsive) {
-      options3 = extend(options3, responsive[0]);
+      options2 = extend(options2, responsive[0]);
       delete responsive[0];
     }
     var responsiveTem = {};
@@ -633,31 +633,31 @@ var tns = function(options3) {
     }
   }
   if (!carousel) {
-    updateOptions(options3);
+    updateOptions(options2);
   }
   if (!carousel) {
-    options3.axis = "horizontal";
-    options3.slideBy = "page";
-    options3.edgePadding = false;
-    var animateIn = options3.animateIn, animateOut = options3.animateOut, animateDelay = options3.animateDelay, animateNormal = options3.animateNormal;
+    options2.axis = "horizontal";
+    options2.slideBy = "page";
+    options2.edgePadding = false;
+    var animateIn = options2.animateIn, animateOut = options2.animateOut, animateDelay = options2.animateDelay, animateNormal = options2.animateNormal;
   }
-  var horizontal = options3.axis === "horizontal" ? true : false, outerWrapper = doc.createElement("div"), innerWrapper = doc.createElement("div"), middleWrapper, container = options3.container, containerParent = container.parentNode, containerHTML = container.outerHTML, slideItems = container.children, slideCount = slideItems.length, breakpointZone, windowWidth = getWindowWidth(), isOn = false;
+  var horizontal = options2.axis === "horizontal" ? true : false, outerWrapper = doc.createElement("div"), innerWrapper = doc.createElement("div"), middleWrapper, container = options2.container, containerParent = container.parentNode, containerHTML = container.outerHTML, slideItems = container.children, slideCount = slideItems.length, breakpointZone, windowWidth = getWindowWidth(), isOn = false;
   if (responsive) {
     setBreakpointZone();
   }
   if (carousel) {
     container.className += " tns-vpfix";
   }
-  var autoWidth = options3.autoWidth, fixedWidth = getOption("fixedWidth"), edgePadding = getOption("edgePadding"), gutter = getOption("gutter"), viewport = getViewportWidth(), center = getOption("center"), items = !autoWidth ? Math.floor(getOption("items")) : 1, slideBy = getOption("slideBy"), viewportMax = options3.viewportMax || options3.fixedWidthViewportWidth, arrowKeys = getOption("arrowKeys"), speed = getOption("speed"), rewind = options3.rewind, loop = rewind ? false : options3.loop, autoHeight = getOption("autoHeight"), controls = getOption("controls"), controlsText = getOption("controlsText"), nav = getOption("nav"), touch = getOption("touch"), mouseDrag = getOption("mouseDrag"), autoplay = getOption("autoplay"), autoplayTimeout = getOption("autoplayTimeout"), autoplayText = getOption("autoplayText"), autoplayHoverPause = getOption("autoplayHoverPause"), autoplayResetOnVisibility = getOption("autoplayResetOnVisibility"), sheet = createStyleSheet(null, getOption("nonce")), lazyload = options3.lazyload, lazyloadSelector = options3.lazyloadSelector, slidePositions, slideItemsOut = [], cloneCount = loop ? getCloneCountForLoop() : 0, slideCountNew = !carousel ? slideCount + cloneCount : slideCount + cloneCount * 2, hasRightDeadZone = (fixedWidth || autoWidth) && !loop ? true : false, rightBoundary = fixedWidth ? getRightBoundary() : null, updateIndexBeforeTransform = !carousel || !loop ? true : false, transformAttr = horizontal ? "left" : "top", transformPrefix = "", transformPostfix = "", getIndexMax = function() {
+  var autoWidth = options2.autoWidth, fixedWidth = getOption("fixedWidth"), edgePadding = getOption("edgePadding"), gutter = getOption("gutter"), viewport = getViewportWidth(), center = getOption("center"), items = !autoWidth ? Math.floor(getOption("items")) : 1, slideBy = getOption("slideBy"), viewportMax = options2.viewportMax || options2.fixedWidthViewportWidth, arrowKeys = getOption("arrowKeys"), speed = getOption("speed"), rewind = options2.rewind, loop = rewind ? false : options2.loop, autoHeight = getOption("autoHeight"), controls = getOption("controls"), controlsText = getOption("controlsText"), nav = getOption("nav"), touch = getOption("touch"), mouseDrag = getOption("mouseDrag"), autoplay = getOption("autoplay"), autoplayTimeout = getOption("autoplayTimeout"), autoplayText = getOption("autoplayText"), autoplayHoverPause = getOption("autoplayHoverPause"), autoplayResetOnVisibility = getOption("autoplayResetOnVisibility"), sheet = createStyleSheet(null, getOption("nonce")), lazyload = options2.lazyload, lazyloadSelector = options2.lazyloadSelector, slidePositions, slideItemsOut = [], cloneCount = loop ? getCloneCountForLoop() : 0, slideCountNew = !carousel ? slideCount + cloneCount : slideCount + cloneCount * 2, hasRightDeadZone = (fixedWidth || autoWidth) && !loop ? true : false, rightBoundary = fixedWidth ? getRightBoundary() : null, updateIndexBeforeTransform = !carousel || !loop ? true : false, transformAttr = horizontal ? "left" : "top", transformPrefix = "", transformPostfix = "", getIndexMax = function() {
     if (fixedWidth) {
       return function() {
         return center && !loop ? slideCount - 1 : Math.ceil(-rightBoundary / (fixedWidth + gutter));
       };
     } else if (autoWidth) {
       return function() {
-        for (var i = 0; i < slideCountNew; i++) {
-          if (slidePositions[i] >= -rightBoundary) {
-            return i;
+        for (var i3 = 0; i3 < slideCountNew; i3++) {
+          if (slidePositions[i3] >= -rightBoundary) {
+            return i3;
           }
         }
       };
@@ -670,7 +670,7 @@ var tns = function(options3) {
         }
       };
     }
-  }(), index = getStartIndex(getOption("startIndex")), indexCached = index, displayIndex = getCurrentSlide(), indexMin = 0, indexMax = !autoWidth ? getIndexMax() : null, resizeTimer, preventActionWhenRunning = options3.preventActionWhenRunning, swipeAngle = options3.swipeAngle, moveDirectionExpected = swipeAngle ? "?" : true, running = false, onInit = options3.onInit, events = new Events(), newContainerClasses = " tns-slider tns-" + options3.mode, slideId = container.id || getSlideId(), disable = getOption("disable"), disabled = false, freezable = options3.freezable, freeze = freezable && !autoWidth ? getFreeze() : false, frozen = false, controlsEvents = {
+  }(), index = getStartIndex(getOption("startIndex")), indexCached = index, displayIndex = getCurrentSlide(), indexMin = 0, indexMax = !autoWidth ? getIndexMax() : null, resizeTimer, preventActionWhenRunning = options2.preventActionWhenRunning, swipeAngle = options2.swipeAngle, moveDirectionExpected = swipeAngle ? "?" : true, running = false, onInit = options2.onInit, events = new Events(), newContainerClasses = " tns-slider tns-" + options2.mode, slideId = container.id || getSlideId(), disable = getOption("disable"), disabled = false, freezable = options2.freezable, freeze = freezable && !autoWidth ? getFreeze() : false, frozen = false, controlsEvents = {
     "click": onControlsClick,
     "keydown": onControlsKeydown
   }, navEvents = {
@@ -689,18 +689,18 @@ var tns = function(options3) {
     "mousemove": onPanMove,
     "mouseup": onPanEnd,
     "mouseleave": onPanEnd
-  }, hasControls = hasOption("controls"), hasNav = hasOption("nav"), navAsThumbnails = autoWidth ? true : options3.navAsThumbnails, hasAutoplay = hasOption("autoplay"), hasTouch = hasOption("touch"), hasMouseDrag = hasOption("mouseDrag"), slideActiveClass = "tns-slide-active", slideClonedClass = "tns-slide-cloned", imgCompleteClass = "tns-complete", imgEvents = {
+  }, hasControls = hasOption("controls"), hasNav = hasOption("nav"), navAsThumbnails = autoWidth ? true : options2.navAsThumbnails, hasAutoplay = hasOption("autoplay"), hasTouch = hasOption("touch"), hasMouseDrag = hasOption("mouseDrag"), slideActiveClass = "tns-slide-active", slideClonedClass = "tns-slide-cloned", imgCompleteClass = "tns-complete", imgEvents = {
     "load": onImgLoaded,
     "error": onImgFailed
-  }, imgsComplete, liveregionCurrent, preventScroll = options3.preventScrollOnTouch === "force" ? true : false;
+  }, imgsComplete, liveregionCurrent, preventScroll = options2.preventScrollOnTouch === "force" ? true : false;
   if (hasControls) {
-    var controlsContainer = options3.controlsContainer, controlsContainerHTML = options3.controlsContainer ? options3.controlsContainer.outerHTML : "", prevButton = options3.prevButton, nextButton = options3.nextButton, prevButtonHTML = options3.prevButton ? options3.prevButton.outerHTML : "", nextButtonHTML = options3.nextButton ? options3.nextButton.outerHTML : "", prevIsButton, nextIsButton;
+    var controlsContainer = options2.controlsContainer, controlsContainerHTML = options2.controlsContainer ? options2.controlsContainer.outerHTML : "", prevButton = options2.prevButton, nextButton = options2.nextButton, prevButtonHTML = options2.prevButton ? options2.prevButton.outerHTML : "", nextButtonHTML = options2.nextButton ? options2.nextButton.outerHTML : "", prevIsButton, nextIsButton;
   }
   if (hasNav) {
-    var navContainer = options3.navContainer, navContainerHTML = options3.navContainer ? options3.navContainer.outerHTML : "", navItems, pages = autoWidth ? slideCount : getPages(), pagesCached = 0, navClicked = -1, navCurrentIndex = getCurrentNavIndex(), navCurrentIndexCached = navCurrentIndex, navActiveClass = "tns-nav-active", navStr = "Carousel Page ", navStrCurrent = " (Current Slide)";
+    var navContainer = options2.navContainer, navContainerHTML = options2.navContainer ? options2.navContainer.outerHTML : "", navItems, pages = autoWidth ? slideCount : getPages(), pagesCached = 0, navClicked = -1, navCurrentIndex = getCurrentNavIndex(), navCurrentIndexCached = navCurrentIndex, navActiveClass = "tns-nav-active", navStr = "Carousel Page ", navStrCurrent = " (Current Slide)";
   }
   if (hasAutoplay) {
-    var autoplayDirection = options3.autoplayDirection === "forward" ? 1 : -1, autoplayButton = options3.autoplayButton, autoplayButtonHTML = options3.autoplayButton ? options3.autoplayButton.outerHTML : "", autoplayHtmlStrings = ["<span class='tns-visually-hidden'>", " animation</span>"], autoplayTimer, animating, autoplayHoverPaused, autoplayUserPaused, autoplayVisibilityPaused;
+    var autoplayDirection = options2.autoplayDirection === "forward" ? 1 : -1, autoplayButton = options2.autoplayButton, autoplayButtonHTML = options2.autoplayButton ? options2.autoplayButton.outerHTML : "", autoplayHtmlStrings = ["<span class='tns-visually-hidden'>", " animation</span>"], autoplayTimer, animating, autoplayHoverPaused, autoplayUserPaused, autoplayVisibilityPaused;
   }
   if (hasTouch || hasMouseDrag) {
     var initPosition = {}, lastPosition = {}, translateInit, disX, disY, panStart = false, rafIndex, getDist = horizontal ? function(a, b) {
@@ -745,17 +745,17 @@ var tns = function(options3) {
     ind = ind ? Math.max(0, Math.min(loop ? slideCount - 1 : slideCount - items, ind)) : 0;
     return carousel ? ind + cloneCount : ind;
   }
-  function getAbsIndex(i) {
-    if (i == null) {
-      i = index;
+  function getAbsIndex(i3) {
+    if (i3 == null) {
+      i3 = index;
     }
     if (carousel) {
-      i -= cloneCount;
+      i3 -= cloneCount;
     }
-    while (i < 0) {
-      i += slideCount;
+    while (i3 < 0) {
+      i3 += slideCount;
     }
-    return Math.floor(i % slideCount);
+    return Math.floor(i3 % slideCount);
   }
   function getCurrentNavIndex() {
     var absIndex = getAbsIndex(), result;
@@ -770,8 +770,8 @@ var tns = function(options3) {
       return slideCount - 1;
     } else {
       var str = fixedWidth ? "fixedWidth" : "items", arr = [];
-      if (fixedWidth || options3[str] < slideCount) {
-        arr.push(options3[str]);
+      if (fixedWidth || options2[str] < slideCount) {
+        arr.push(options2[str]);
       }
       if (responsive) {
         for (var bp in responsive) {
@@ -814,7 +814,7 @@ var tns = function(options3) {
     return getClientWidth(containerParent) - gap;
   }
   function hasOption(item) {
-    if (options3[item]) {
+    if (options2[item]) {
       return true;
     } else {
       if (responsive) {
@@ -834,7 +834,7 @@ var tns = function(options3) {
     if (item === "items" && fixedWidth) {
       return Math.floor((viewport + gutter) / (fixedWidth + gutter)) || 1;
     } else {
-      var result = options3[item];
+      var result = options2[item];
       if (responsive) {
         for (var bp in responsive) {
           if (ww >= parseInt(bp)) {
@@ -853,8 +853,8 @@ var tns = function(options3) {
       return result;
     }
   }
-  function getSlideMarginLeft(i) {
-    return CALC ? CALC + "(" + i * 100 + "% / " + slideCountNew + ")" : i * 100 / slideCountNew + "%";
+  function getSlideMarginLeft(i3) {
+    return CALC ? CALC + "(" + i3 * 100 + "% / " + slideCountNew + ")" : i3 * 100 / slideCountNew + "%";
   }
   function getInnerWrapperStyles(edgePaddingTem, gutterTem, fixedWidthTem, speedTem, autoHeightBP) {
     var str = "";
@@ -929,7 +929,7 @@ var tns = function(options3) {
     if (autoWidth) {
       newContainerClasses += " tns-autowidth";
     }
-    newContainerClasses += " tns-" + options3.axis;
+    newContainerClasses += " tns-" + options2.axis;
     container.className += newContainerClasses;
     if (carousel) {
       middleWrapper = doc.createElement("div");
@@ -946,10 +946,10 @@ var tns = function(options3) {
     }
     containerParent.insertBefore(outerWrapper, container);
     innerWrapper.appendChild(container);
-    forEach(slideItems, function(item, i) {
+    forEach(slideItems, function(item, i3) {
       addClass(item, "tns-item");
       if (!item.id) {
-        item.id = slideId + "-item" + i;
+        item.id = slideId + "-item" + i3;
       }
       if (!carousel && animateNormal) {
         addClass(item, animateNormal);
@@ -1049,9 +1049,9 @@ var tns = function(options3) {
   }
   function initSheet() {
     if (!carousel) {
-      for (var i = index, l = index + Math.min(slideCount, items); i < l; i++) {
-        var item = slideItems[i];
-        item.style.left = (i - index) * 100 / items + "%";
+      for (var i3 = index, l = index + Math.min(slideCount, items); i3 < l; i3++) {
+        var item = slideItems[i3];
+        item.style.left = (i3 - index) * 100 / items + "%";
         addClass(item, animateIn);
         removeClass(item, animateNormal);
       }
@@ -1061,28 +1061,28 @@ var tns = function(options3) {
         addCSSRule(sheet, "#" + slideId + " > .tns-item", "font-size:" + win3.getComputedStyle(slideItems[0]).fontSize + ";", getCssRulesLength(sheet));
         addCSSRule(sheet, "#" + slideId, "font-size:0;", getCssRulesLength(sheet));
       } else if (carousel) {
-        forEach(slideItems, function(slide, i2) {
-          slide.style.marginLeft = getSlideMarginLeft(i2);
+        forEach(slideItems, function(slide, i4) {
+          slide.style.marginLeft = getSlideMarginLeft(i4);
         });
       }
     }
     if (CSSMQ) {
       if (TRANSITIONDURATION) {
-        var str = middleWrapper && options3.autoHeight ? getTransitionDurationStyle(options3.speed) : "";
+        var str = middleWrapper && options2.autoHeight ? getTransitionDurationStyle(options2.speed) : "";
         addCSSRule(sheet, "#" + slideId + "-mw", str, getCssRulesLength(sheet));
       }
-      str = getInnerWrapperStyles(options3.edgePadding, options3.gutter, options3.fixedWidth, options3.speed, options3.autoHeight);
+      str = getInnerWrapperStyles(options2.edgePadding, options2.gutter, options2.fixedWidth, options2.speed, options2.autoHeight);
       addCSSRule(sheet, "#" + slideId + "-iw", str, getCssRulesLength(sheet));
       if (carousel) {
-        str = horizontal && !autoWidth ? "width:" + getContainerWidth(options3.fixedWidth, options3.gutter, options3.items) + ";" : "";
+        str = horizontal && !autoWidth ? "width:" + getContainerWidth(options2.fixedWidth, options2.gutter, options2.items) + ";" : "";
         if (TRANSITIONDURATION) {
           str += getTransitionDurationStyle(speed);
         }
         addCSSRule(sheet, "#" + slideId, str, getCssRulesLength(sheet));
       }
-      str = horizontal && !autoWidth ? getSlideWidthStyle(options3.fixedWidth, options3.gutter, options3.items) : "";
-      if (options3.gutter) {
-        str += getSlideGutterStyle(options3.gutter);
+      str = horizontal && !autoWidth ? getSlideWidthStyle(options2.fixedWidth, options2.gutter, options2.items) : "";
+      if (options2.gutter) {
+        str += getSlideGutterStyle(options2.gutter);
       }
       if (!carousel) {
         if (TRANSITIONDURATION) {
@@ -1160,8 +1160,8 @@ var tns = function(options3) {
       var txt = autoplay ? "stop" : "start";
       if (autoplayButton) {
         setAttrs(autoplayButton, { "data-action": txt });
-      } else if (options3.autoplayButtonOutput) {
-        outerWrapper.insertAdjacentHTML(getInsertPosition(options3.autoplayPosition), '<button type="button" data-action="' + txt + '">' + autoplayHtmlStrings[0] + txt + autoplayHtmlStrings[1] + autoplayText[0] + "</button>");
+      } else if (options2.autoplayButtonOutput) {
+        outerWrapper.insertAdjacentHTML(getInsertPosition(options2.autoplayPosition), '<button type="button" data-action="' + txt + '">' + autoplayHtmlStrings[0] + txt + autoplayHtmlStrings[1] + autoplayText[0] + "</button>");
         autoplayButton = outerWrapper.querySelector("[data-action]");
       }
       if (autoplayButton) {
@@ -1182,21 +1182,21 @@ var tns = function(options3) {
       if (navContainer) {
         setAttrs(navContainer, { "aria-label": "Carousel Pagination" });
         navItems = navContainer.children;
-        forEach(navItems, function(item, i2) {
+        forEach(navItems, function(item, i4) {
           setAttrs(item, {
-            "data-nav": i2,
+            "data-nav": i4,
             "tabindex": "-1",
-            "aria-label": navStr + (i2 + 1),
+            "aria-label": navStr + (i4 + 1),
             "aria-controls": slideId
           });
         });
       } else {
         var navHtml = "", hiddenStr = navAsThumbnails ? "" : 'style="display:none"';
-        for (var i = 0; i < slideCount; i++) {
-          navHtml += '<button type="button" data-nav="' + i + '" tabindex="-1" aria-controls="' + slideId + '" ' + hiddenStr + ' aria-label="' + navStr + (i + 1) + '"></button>';
+        for (var i3 = 0; i3 < slideCount; i3++) {
+          navHtml += '<button type="button" data-nav="' + i3 + '" tabindex="-1" aria-controls="' + slideId + '" ' + hiddenStr + ' aria-label="' + navStr + (i3 + 1) + '"></button>';
         }
         navHtml = '<div class="tns-nav" aria-label="Carousel Pagination">' + navHtml + "</div>";
-        outerWrapper.insertAdjacentHTML(getInsertPosition(options3.navPosition), navHtml);
+        outerWrapper.insertAdjacentHTML(getInsertPosition(options2.navPosition), navHtml);
         navContainer = outerWrapper.querySelector(".tns-nav");
         navItems = navContainer.children;
       }
@@ -1215,26 +1215,26 @@ var tns = function(options3) {
     }
     if (hasControls) {
       if (!controlsContainer && (!prevButton || !nextButton)) {
-        outerWrapper.insertAdjacentHTML(getInsertPosition(options3.controlsPosition), '<div class="tns-controls" aria-label="Carousel Navigation" tabindex="0"><button type="button" data-controls="prev" tabindex="-1" aria-controls="' + slideId + '">' + controlsText[0] + '</button><button type="button" data-controls="next" tabindex="-1" aria-controls="' + slideId + '">' + controlsText[1] + "</button></div>");
+        outerWrapper.insertAdjacentHTML(getInsertPosition(options2.controlsPosition), '<div class="tns-controls" aria-label="Carousel Navigation" tabindex="0"><button type="button" data-controls="prev" tabindex="-1" aria-controls="' + slideId + '">' + controlsText[0] + '</button><button type="button" data-controls="next" tabindex="-1" aria-controls="' + slideId + '">' + controlsText[1] + "</button></div>");
         controlsContainer = outerWrapper.querySelector(".tns-controls");
       }
       if (!prevButton || !nextButton) {
         prevButton = controlsContainer.children[0];
         nextButton = controlsContainer.children[1];
       }
-      if (options3.controlsContainer) {
+      if (options2.controlsContainer) {
         setAttrs(controlsContainer, {
           "aria-label": "Carousel Navigation",
           "tabindex": "0"
         });
       }
-      if (options3.controlsContainer || options3.prevButton && options3.nextButton) {
+      if (options2.controlsContainer || options2.prevButton && options2.nextButton) {
         setAttrs([prevButton, nextButton], {
           "aria-controls": slideId,
           "tabindex": "-1"
         });
       }
-      if (options3.controlsContainer || options3.prevButton && options3.nextButton) {
+      if (options2.controlsContainer || options2.prevButton && options2.nextButton) {
         setAttrs(prevButton, { "data-controls": "prev" });
         setAttrs(nextButton, { "data-controls": "next" });
       }
@@ -1257,7 +1257,7 @@ var tns = function(options3) {
       addEvents(container, eve);
     }
     if (touch) {
-      addEvents(container, touchEvents, options3.preventScrollOnTouch);
+      addEvents(container, touchEvents, options2.preventScrollOnTouch);
     }
     if (mouseDrag) {
       addEvents(container, dragEvents);
@@ -1330,12 +1330,12 @@ var tns = function(options3) {
       removeEvents(container, dragEvents);
     }
     var htmlList = [containerHTML, controlsContainerHTML, prevButtonHTML, nextButtonHTML, navContainerHTML, autoplayButtonHTML];
-    tnsList.forEach(function(item, i) {
-      var el = item === "container" ? outerWrapper : options3[item];
+    tnsList.forEach(function(item, i3) {
+      var el = item === "container" ? outerWrapper : options2[item];
       if (typeof el === "object" && el) {
         var prevEl = el.previousElementSibling ? el.previousElementSibling : false, parentEl = el.parentNode;
-        el.outerHTML = htmlList[i];
-        options3[item] = prevEl ? prevEl.nextElementSibling : parentEl.firstElementChild;
+        el.outerHTML = htmlList[i3];
+        options2[item] = prevEl ? prevEl.nextElementSibling : parentEl.firstElementChild;
       }
     });
     tnsList = animateIn = animateOut = animateDelay = animateNormal = horizontal = outerWrapper = innerWrapper = container = containerParent = containerHTML = slideItems = slideCount = breakpointZone = windowWidth = autoWidth = fixedWidth = edgePadding = gutter = viewport = items = slideBy = viewportMax = arrowKeys = speed = rewind = loop = autoHeight = sheet = lazyload = slidePositions = slideItemsOut = cloneCount = slideCountNew = hasRightDeadZone = rightBoundary = updateIndexBeforeTransform = transformAttr = transformPrefix = transformPostfix = getIndexMax = index = indexCached = indexMin = indexMax = resizeTimer = swipeAngle = moveDirectionExpected = running = onInit = events = newContainerClasses = slideId = disable = disabled = freezable = freeze = frozen = controlsEvents = navEvents = hoverEvents = visibilityEvent = docmentKeydownEvent = touchEvents = dragEvents = hasControls = hasNav = navAsThumbnails = hasAutoplay = hasTouch = hasMouseDrag = slideActiveClass = imgCompleteClass = imgEvents = imgsComplete = controls = controlsText = controlsContainer = controlsContainerHTML = prevButton = nextButton = prevIsButton = nextIsButton = nav = navContainer = navContainerHTML = navItems = pages = pagesCached = navClicked = navCurrentIndex = navCurrentIndexCached = navActiveClass = navStr = navStrCurrent = autoplay = autoplayTimeout = autoplayDirection = autoplayText = autoplayHoverPause = autoplayButton = autoplayButtonHTML = autoplayResetOnVisibility = autoplayHtmlStrings = autoplayTimer = animating = autoplayHoverPaused = autoplayUserPaused = autoplayVisibilityPaused = initPosition = lastPosition = translateInit = disX = disY = panStart = rafIndex = getDist = touch = mouseDrag = null;
@@ -1346,17 +1346,17 @@ var tns = function(options3) {
     }
     isOn = false;
   }
-  function onResize(e) {
+  function onResize(e2) {
     raf(function() {
-      resizeTasks(getEvent(e));
+      resizeTasks(getEvent(e2));
     });
   }
-  function resizeTasks(e) {
+  function resizeTasks(e2) {
     if (!isOn) {
       return;
     }
     if (nested === "outer") {
-      events.emit("outerResized", info(e));
+      events.emit("outerResized", info(e2));
     }
     windowWidth = getWindowWidth();
     var bpChanged, breakpointZoneTem = breakpointZone, needContainerTransform = false;
@@ -1364,7 +1364,7 @@ var tns = function(options3) {
       setBreakpointZone();
       bpChanged = breakpointZoneTem !== breakpointZone;
       if (bpChanged) {
-        events.emit("newBreakpointStart", info(e));
+        events.emit("newBreakpointStart", info(e2));
       }
     }
     var indChanged, itemsChanged, itemsTem = items, disableTem = disable, freezeTem = freeze, arrowKeysTem = arrowKeys, controlsTem = controls, navTem = nav, touchTem = touch, mouseDragTem = mouseDrag, autoplayTem = autoplay, autoplayHoverPauseTem = autoplayHoverPause, autoplayResetOnVisibilityTem = autoplayResetOnVisibility, indexTem = index;
@@ -1482,7 +1482,7 @@ var tns = function(options3) {
       }
     }
     if (touch !== touchTem) {
-      touch ? addEvents(container, touchEvents, options3.preventScrollOnTouch) : removeEvents(container, touchEvents);
+      touch ? addEvents(container, touchEvents, options2.preventScrollOnTouch) : removeEvents(container, touchEvents);
     }
     if (mouseDrag !== mouseDragTem) {
       mouseDrag ? addEvents(container, dragEvents) : removeEvents(container, dragEvents);
@@ -1524,9 +1524,9 @@ var tns = function(options3) {
         nextButton.innerHTML = controlsText[1];
       }
       if (autoplayButton && autoplayText !== autoplayTextTem) {
-        var i = autoplay ? 1 : 0, html = autoplayButton.innerHTML, len = html.length - autoplayTextTem[i].length;
-        if (html.substring(len) === autoplayTextTem[i]) {
-          autoplayButton.innerHTML = html.substring(0, len) + autoplayText[i];
+        var i3 = autoplay ? 1 : 0, html = autoplayButton.innerHTML, len = html.length - autoplayTextTem[i3].length;
+        if (html.substring(len) === autoplayTextTem[i3]) {
+          autoplayButton.innerHTML = html.substring(0, len) + autoplayText[i3];
         }
       }
     } else {
@@ -1577,7 +1577,7 @@ var tns = function(options3) {
       }
     }
     if (bpChanged) {
-      events.emit("newBreakpointEnd", info(e));
+      events.emit("newBreakpointEnd", info(e2));
     }
   }
   function getFreeze() {
@@ -1692,11 +1692,11 @@ var tns = function(options3) {
     }
     if (cloneCount) {
       var str = "tns-transparent";
-      for (var i = cloneCount; i--; ) {
+      for (var i3 = cloneCount; i3--; ) {
         if (carousel) {
-          addClass(slideItems[i], str);
+          addClass(slideItems[i3], str);
         }
-        addClass(slideItems[slideCountNew - i - 1], str);
+        addClass(slideItems[slideCountNew - i3 - 1], str);
       }
     }
     disableUI();
@@ -1711,11 +1711,11 @@ var tns = function(options3) {
     }
     if (cloneCount) {
       var str = "tns-transparent";
-      for (var i = cloneCount; i--; ) {
+      for (var i3 = cloneCount; i3--; ) {
         if (carousel) {
-          removeClass(slideItems[i], str);
+          removeClass(slideItems[i3], str);
         }
-        removeClass(slideItems[slideCountNew - i - 1], str);
+        removeClass(slideItems[slideCountNew - i3 - 1], str);
       }
     }
     enableUI();
@@ -1740,8 +1740,8 @@ var tns = function(options3) {
       removeAttrs(innerWrapper, ["style"]);
     }
     if (!carousel) {
-      for (var i = index, l = index + slideCount; i < l; i++) {
-        var item = slideItems[i];
+      for (var i3 = index, l = index + slideCount; i3 < l; i3++) {
+        var item = slideItems[i3];
         removeAttrs(item, ["style"]);
         removeClass(item, animateIn);
         removeClass(item, animateNormal);
@@ -1766,9 +1766,9 @@ var tns = function(options3) {
       }
     }
     if (!carousel) {
-      for (var i = index, l = index + slideCount; i < l; i++) {
-        var item = slideItems[i], classN = i < index + items ? animateIn : animateNormal;
-        item.style.left = (i - index) * 100 / items + "%";
+      for (var i3 = index, l = index + slideCount; i3 < l; i3++) {
+        var item = slideItems[i3], classN = i3 < index + items ? animateIn : animateNormal;
+        item.style.left = (i3 - index) * 100 / items + "%";
         addClass(item, classN);
       }
     }
@@ -1782,14 +1782,14 @@ var tns = function(options3) {
     }
   }
   function getLiveRegionStr() {
-    var arr = getVisibleSlideRange(), start = arr[0] + 1, end = arr[1] + 1;
-    return start === end ? start + "" : start + " to " + end;
+    var arr = getVisibleSlideRange(), start2 = arr[0] + 1, end = arr[1] + 1;
+    return start2 === end ? start2 + "" : start2 + " to " + end;
   }
   function getVisibleSlideRange(val2) {
     if (val2 == null) {
       val2 = getContainerTransformValue();
     }
-    var start = index, end, rangestart, rangeend;
+    var start2 = index, end, rangestart, rangeend;
     if (center || edgePadding) {
       if (autoWidth || fixedWidth) {
         rangestart = -(parseFloat(val2) + edgePadding);
@@ -1802,13 +1802,13 @@ var tns = function(options3) {
       }
     }
     if (autoWidth) {
-      slidePositions.forEach(function(point, i) {
-        if (i < slideCountNew) {
+      slidePositions.forEach(function(point, i3) {
+        if (i3 < slideCountNew) {
           if ((center || edgePadding) && point <= rangestart + 0.5) {
-            start = i;
+            start2 = i3;
           }
           if (rangeend - point >= 0.5) {
-            end = i;
+            end = i3;
           }
         }
       });
@@ -1816,35 +1816,35 @@ var tns = function(options3) {
       if (fixedWidth) {
         var cell = fixedWidth + gutter;
         if (center || edgePadding) {
-          start = Math.floor(rangestart / cell);
+          start2 = Math.floor(rangestart / cell);
           end = Math.ceil(rangeend / cell - 1);
         } else {
-          end = start + Math.ceil(viewport / cell) - 1;
+          end = start2 + Math.ceil(viewport / cell) - 1;
         }
       } else {
         if (center || edgePadding) {
           var a = items - 1;
           if (center) {
-            start -= a / 2;
+            start2 -= a / 2;
             end = index + a / 2;
           } else {
             end = index + a;
           }
           if (edgePadding) {
             var b = edgePadding * items / viewport;
-            start -= b;
+            start2 -= b;
             end += b;
           }
-          start = Math.floor(start);
+          start2 = Math.floor(start2);
           end = Math.ceil(end);
         } else {
-          end = start + items - 1;
+          end = start2 + items - 1;
         }
       }
-      start = Math.max(start, 0);
+      start2 = Math.max(start2, 0);
       end = Math.min(end, slideCountNew - 1);
     }
-    return [start, end];
+    return [start2, end];
   }
   function doLazyLoad() {
     if (lazyload && !disable) {
@@ -1853,8 +1853,8 @@ var tns = function(options3) {
       getImageArray.apply(null, arg).forEach(function(img) {
         if (!hasClass(img, imgCompleteClass)) {
           var eve = {};
-          eve[TRANSITIONEND] = function(e) {
-            e.stopPropagation();
+          eve[TRANSITIONEND] = function(e2) {
+            e2.stopPropagation();
           };
           addEvents(img, eve);
           addEvents(img, imgEvents);
@@ -1868,11 +1868,11 @@ var tns = function(options3) {
       });
     }
   }
-  function onImgLoaded(e) {
-    imgLoaded(getTarget(e));
+  function onImgLoaded(e2) {
+    imgLoaded(getTarget(e2));
   }
-  function onImgFailed(e) {
-    imgFailed(getTarget(e));
+  function onImgFailed(e2) {
+    imgFailed(getTarget(e2));
   }
   function imgLoaded(img) {
     addClass(img, "loaded");
@@ -1887,16 +1887,16 @@ var tns = function(options3) {
     removeClass(img, "loading");
     removeEvents(img, imgEvents);
   }
-  function getImageArray(start, end, imgSelector) {
+  function getImageArray(start2, end, imgSelector) {
     var imgs = [];
     if (!imgSelector) {
       imgSelector = "img";
     }
-    while (start <= end) {
-      forEach(slideItems[start].querySelectorAll(imgSelector), function(img) {
+    while (start2 <= end) {
+      forEach(slideItems[start2].querySelectorAll(imgSelector), function(img) {
         imgs.push(img);
       });
-      start++;
+      start2++;
     }
     return imgs;
   }
@@ -1939,8 +1939,8 @@ var tns = function(options3) {
   }
   function getMaxSlideHeight(slideStart, slideRange) {
     var heights = [];
-    for (var i = slideStart, l = Math.min(slideStart + slideRange, slideCountNew); i < l; i++) {
-      heights.push(slideItems[i].offsetHeight);
+    for (var i3 = slideStart, l = Math.min(slideStart + slideRange, slideCountNew); i3 < l; i3++) {
+      heights.push(slideItems[i3].offsetHeight);
     }
     return Math.max.apply(null, heights);
   }
@@ -1953,19 +1953,19 @@ var tns = function(options3) {
   function setSlidePositions() {
     slidePositions = [0];
     var attr = horizontal ? "left" : "top", attr2 = horizontal ? "right" : "bottom", base = slideItems[0].getBoundingClientRect()[attr];
-    forEach(slideItems, function(item, i) {
-      if (i) {
+    forEach(slideItems, function(item, i3) {
+      if (i3) {
         slidePositions.push(item.getBoundingClientRect()[attr] - base);
       }
-      if (i === slideCountNew - 1) {
+      if (i3 === slideCountNew - 1) {
         slidePositions.push(item.getBoundingClientRect()[attr2] - base);
       }
     });
   }
   function updateSlideStatus() {
-    var range = getVisibleSlideRange(), start = range[0], end = range[1];
-    forEach(slideItems, function(item, i) {
-      if (i >= start && i <= end) {
+    var range = getVisibleSlideRange(), start2 = range[0], end = range[1];
+    forEach(slideItems, function(item, i3) {
+      if (i3 >= start2 && i3 <= end) {
         if (hasAttr(item, "aria-hidden")) {
           removeAttrs(item, ["aria-hidden", "tabindex"]);
           addClass(item, slideActiveClass);
@@ -1983,11 +1983,11 @@ var tns = function(options3) {
   }
   function updateGallerySlidePositions() {
     var l = index + Math.min(slideCount, items);
-    for (var i = slideCountNew; i--; ) {
-      var item = slideItems[i];
-      if (i >= index && i < l) {
+    for (var i3 = slideCountNew; i3--; ) {
+      var item = slideItems[i3];
+      if (i3 >= index && i3 < l) {
         addClass(item, "tns-moving");
-        item.style.left = (i - index) * 100 / items + "%";
+        item.style.left = (i3 - index) * 100 / items + "%";
         addClass(item, animateIn);
         removeClass(item, animateNormal);
       } else if (item.style.left) {
@@ -2125,13 +2125,13 @@ var tns = function(options3) {
     if (!loop) {
       l = Math.min(l, slideCountNew);
     }
-    for (var i = number; i < l; i++) {
-      var item = slideItems[i];
+    for (var i3 = number; i3 < l; i3++) {
+      var item = slideItems[i3];
       if (!isOut) {
-        item.style.left = (i - index) * 100 / items + "%";
+        item.style.left = (i3 - index) * 100 / items + "%";
       }
       if (animateDelay && TRANSITIONDELAY) {
-        item.style[TRANSITIONDELAY] = item.style[ANIMATIONDELAY] = animateDelay * (i - number) / 1e3 + "s";
+        item.style[TRANSITIONDELAY] = item.style[ANIMATIONDELAY] = animateDelay * (i3 - number) / 1e3 + "s";
       }
       removeClass(item, classOut);
       addClass(item, classIn);
@@ -2167,7 +2167,7 @@ var tns = function(options3) {
       }
     };
   }();
-  function render(e, sliderMoved) {
+  function render(e2, sliderMoved) {
     if (updateIndexBeforeTransform) {
       updateIndex();
     }
@@ -2177,7 +2177,7 @@ var tns = function(options3) {
       if (autoHeight) {
         doAutoHeight();
       }
-      if (animating && e && ["click", "keydown"].indexOf(e.type) >= 0) {
+      if (animating && e2 && ["click", "keydown"].indexOf(e2.type) >= 0) {
         stopAutoplay();
       }
       running = true;
@@ -2191,8 +2191,8 @@ var tns = function(options3) {
     if (carousel || running) {
       events.emit("transitionEnd", info(event));
       if (!carousel && slideItemsOut.length > 0) {
-        for (var i = 0; i < slideItemsOut.length; i++) {
-          var item = slideItemsOut[i];
+        for (var i3 = 0; i3 < slideItemsOut.length; i3++) {
+          var item = slideItemsOut[i3];
           item.style.left = "";
           if (ANIMATIONDELAY && TRANSITIONDELAY) {
             item.style[ANIMATIONDELAY] = "";
@@ -2219,14 +2219,14 @@ var tns = function(options3) {
       }
     }
   }
-  function goTo(targetIndex, e) {
+  function goTo(targetIndex, e2) {
     if (freeze) {
       return;
     }
     if (targetIndex === "prev") {
-      onControlsClick(e, -1);
+      onControlsClick(e2, -1);
     } else if (targetIndex === "next") {
-      onControlsClick(e, 1);
+      onControlsClick(e2, 1);
     } else {
       if (running) {
         if (preventActionWhenRunning) {
@@ -2245,7 +2245,7 @@ var tns = function(options3) {
           targetIndex = parseInt(targetIndex);
         }
         if (!isNaN(targetIndex)) {
-          if (!e) {
+          if (!e2) {
             targetIndex = Math.max(0, Math.min(slideCount - 1, targetIndex));
           }
           indexGap = targetIndex - absIndex;
@@ -2265,11 +2265,11 @@ var tns = function(options3) {
         }
       }
       if (getAbsIndex(index) !== getAbsIndex(indexCached)) {
-        render(e);
+        render(e2);
       }
     }
   }
-  function onControlsClick(e, dir) {
+  function onControlsClick(e2, dir) {
     if (running) {
       if (preventActionWhenRunning) {
         return;
@@ -2279,8 +2279,8 @@ var tns = function(options3) {
     }
     var passEventObject;
     if (!dir) {
-      e = getEvent(e);
-      var target = getTarget(e);
+      e2 = getEvent(e2);
+      var target = getTarget(e2);
       while (target !== controlsContainer && [prevButton, nextButton].indexOf(target) < 0) {
         target = target.parentNode;
       }
@@ -2292,10 +2292,10 @@ var tns = function(options3) {
     }
     if (rewind) {
       if (index === indexMin && dir === -1) {
-        goTo("last", e);
+        goTo("last", e2);
         return;
       } else if (index === indexMax && dir === 1) {
-        goTo("first", e);
+        goTo("first", e2);
         return;
       }
     }
@@ -2304,10 +2304,10 @@ var tns = function(options3) {
       if (autoWidth) {
         index = Math.floor(index);
       }
-      render(passEventObject || e && e.type === "keydown" ? e : null);
+      render(passEventObject || e2 && e2.type === "keydown" ? e2 : null);
     }
   }
-  function onNavClick(e) {
+  function onNavClick(e2) {
     if (running) {
       if (preventActionWhenRunning) {
         return;
@@ -2315,14 +2315,14 @@ var tns = function(options3) {
         onTransitionEnd();
       }
     }
-    e = getEvent(e);
-    var target = getTarget(e), navIndex;
+    e2 = getEvent(e2);
+    var target = getTarget(e2), navIndex;
     while (target !== navContainer && !hasAttr(target, "data-nav")) {
       target = target.parentNode;
     }
     if (hasAttr(target, "data-nav")) {
       var navIndex = navClicked = Number(getAttr(target, "data-nav")), targetIndexBase = fixedWidth || autoWidth ? navIndex * slideCount / pages : navIndex * items, targetIndex = navAsThumbnails ? navIndex : Math.min(Math.ceil(targetIndexBase), slideCount - 1);
-      goTo(targetIndex, e);
+      goTo(targetIndex, e2);
       if (navCurrentIndex === navIndex) {
         if (animating) {
           stopAutoplay();
@@ -2401,36 +2401,36 @@ var tns = function(options3) {
       autoplayHoverPaused = false;
     }
   }
-  function onDocumentKeydown(e) {
-    e = getEvent(e);
-    var keyIndex = [KEYS.LEFT, KEYS.RIGHT].indexOf(e.keyCode);
+  function onDocumentKeydown(e2) {
+    e2 = getEvent(e2);
+    var keyIndex = [KEYS.LEFT, KEYS.RIGHT].indexOf(e2.keyCode);
     if (keyIndex >= 0) {
-      onControlsClick(e, keyIndex === 0 ? -1 : 1);
+      onControlsClick(e2, keyIndex === 0 ? -1 : 1);
     }
   }
-  function onControlsKeydown(e) {
-    e = getEvent(e);
-    var keyIndex = [KEYS.LEFT, KEYS.RIGHT].indexOf(e.keyCode);
+  function onControlsKeydown(e2) {
+    e2 = getEvent(e2);
+    var keyIndex = [KEYS.LEFT, KEYS.RIGHT].indexOf(e2.keyCode);
     if (keyIndex >= 0) {
       if (keyIndex === 0) {
         if (!prevButton.disabled) {
-          onControlsClick(e, -1);
+          onControlsClick(e2, -1);
         }
       } else if (!nextButton.disabled) {
-        onControlsClick(e, 1);
+        onControlsClick(e2, 1);
       }
     }
   }
   function setFocus(el) {
     el.focus();
   }
-  function onNavKeydown(e) {
-    e = getEvent(e);
+  function onNavKeydown(e2) {
+    e2 = getEvent(e2);
     var curElement = doc.activeElement;
     if (!hasAttr(curElement, "data-nav")) {
       return;
     }
-    var keyIndex = [KEYS.LEFT, KEYS.RIGHT, KEYS.ENTER, KEYS.SPACE].indexOf(e.keyCode), navIndex = Number(getAttr(curElement, "data-nav"));
+    var keyIndex = [KEYS.LEFT, KEYS.RIGHT, KEYS.ENTER, KEYS.SPACE].indexOf(e2.keyCode), navIndex = Number(getAttr(curElement, "data-nav"));
     if (keyIndex >= 0) {
       if (keyIndex === 0) {
         if (navIndex > 0) {
@@ -2442,27 +2442,27 @@ var tns = function(options3) {
         }
       } else {
         navClicked = navIndex;
-        goTo(navIndex, e);
+        goTo(navIndex, e2);
       }
     }
   }
-  function getEvent(e) {
-    e = e || win3.event;
-    return isTouchEvent(e) ? e.changedTouches[0] : e;
+  function getEvent(e2) {
+    e2 = e2 || win3.event;
+    return isTouchEvent(e2) ? e2.changedTouches[0] : e2;
   }
-  function getTarget(e) {
-    return e.target || win3.event.srcElement;
+  function getTarget(e2) {
+    return e2.target || win3.event.srcElement;
   }
-  function isTouchEvent(e) {
-    return e.type.indexOf("touch") >= 0;
+  function isTouchEvent(e2) {
+    return e2.type.indexOf("touch") >= 0;
   }
-  function preventDefaultBehavior(e) {
-    e.preventDefault ? e.preventDefault() : e.returnValue = false;
+  function preventDefaultBehavior(e2) {
+    e2.preventDefault ? e2.preventDefault() : e2.returnValue = false;
   }
   function getMoveDirectionExpected() {
-    return getTouchDirection(toDegree(lastPosition.y - initPosition.y, lastPosition.x - initPosition.x), swipeAngle) === options3.axis;
+    return getTouchDirection(toDegree(lastPosition.y - initPosition.y, lastPosition.x - initPosition.x), swipeAngle) === options2.axis;
   }
-  function onPanStart(e) {
+  function onPanStart(e2) {
     if (running) {
       if (preventActionWhenRunning) {
         return;
@@ -2478,10 +2478,10 @@ var tns = function(options3) {
       caf(rafIndex);
       rafIndex = null;
     }
-    var $ = getEvent(e);
-    events.emit(isTouchEvent(e) ? "touchStart" : "dragStart", info(e));
-    if (!isTouchEvent(e) && ["img", "a"].indexOf(getLowerCaseNodeName(getTarget(e))) >= 0) {
-      preventDefaultBehavior(e);
+    var $ = getEvent(e2);
+    events.emit(isTouchEvent(e2) ? "touchStart" : "dragStart", info(e2));
+    if (!isTouchEvent(e2) && ["img", "a"].indexOf(getLowerCaseNodeName(getTarget(e2))) >= 0) {
+      preventDefaultBehavior(e2);
     }
     lastPosition.x = initPosition.x = $.clientX;
     lastPosition.y = initPosition.y = $.clientY;
@@ -2490,15 +2490,15 @@ var tns = function(options3) {
       resetDuration(container, "0s");
     }
   }
-  function onPanMove(e) {
+  function onPanMove(e2) {
     if (panStart) {
-      var $ = getEvent(e);
+      var $ = getEvent(e2);
       lastPosition.x = $.clientX;
       lastPosition.y = $.clientY;
       if (carousel) {
         if (!rafIndex) {
           rafIndex = raf(function() {
-            panUpdate(e);
+            panUpdate(e2);
           });
         }
       } else {
@@ -2509,12 +2509,12 @@ var tns = function(options3) {
           preventScroll = true;
         }
       }
-      if ((typeof e.cancelable !== "boolean" || e.cancelable) && preventScroll) {
-        e.preventDefault();
+      if ((typeof e2.cancelable !== "boolean" || e2.cancelable) && preventScroll) {
+        e2.preventDefault();
       }
     }
   }
-  function panUpdate(e) {
+  function panUpdate(e2) {
     if (!moveDirectionExpected) {
       panStart = false;
       return;
@@ -2522,19 +2522,19 @@ var tns = function(options3) {
     caf(rafIndex);
     if (panStart) {
       rafIndex = raf(function() {
-        panUpdate(e);
+        panUpdate(e2);
       });
     }
     if (moveDirectionExpected === "?") {
       moveDirectionExpected = getMoveDirectionExpected();
     }
     if (moveDirectionExpected) {
-      if (!preventScroll && isTouchEvent(e)) {
+      if (!preventScroll && isTouchEvent(e2)) {
         preventScroll = true;
       }
       try {
-        if (e.type) {
-          events.emit(isTouchEvent(e) ? "touchMove" : "dragMove", info(e));
+        if (e2.type) {
+          events.emit(isTouchEvent(e2) ? "touchMove" : "dragMove", info(e2));
         }
       } catch (err) {
       }
@@ -2550,7 +2550,7 @@ var tns = function(options3) {
       container.style[transformAttr] = transformPrefix + x + transformPostfix;
     }
   }
-  function onPanEnd(e) {
+  function onPanEnd(e2) {
     if (panStart) {
       if (rafIndex) {
         caf(rafIndex);
@@ -2560,15 +2560,15 @@ var tns = function(options3) {
         resetDuration(container, "");
       }
       panStart = false;
-      var $ = getEvent(e);
+      var $ = getEvent(e2);
       lastPosition.x = $.clientX;
       lastPosition.y = $.clientY;
       var dist = getDist(lastPosition, initPosition);
       if (Math.abs(dist)) {
-        if (!isTouchEvent(e)) {
-          var target = getTarget(e);
-          addEvents(target, { "click": function preventClick(e2) {
-            preventDefaultBehavior(e2);
+        if (!isTouchEvent(e2)) {
+          var target = getTarget(e2);
+          addEvents(target, { "click": function preventClick(e3) {
+            preventDefaultBehavior(e3);
             removeEvents(target, { "click": preventClick });
           } });
         }
@@ -2585,27 +2585,27 @@ var tns = function(options3) {
               } else if (moved >= slidePositions[slideCountNew - 1]) {
                 index = indexMax;
               } else {
-                var i = 0;
-                while (i < slideCountNew && moved >= slidePositions[i]) {
-                  index = i;
-                  if (moved > slidePositions[i] && dist < 0) {
+                var i3 = 0;
+                while (i3 < slideCountNew && moved >= slidePositions[i3]) {
+                  index = i3;
+                  if (moved > slidePositions[i3] && dist < 0) {
                     index += 1;
                   }
-                  i++;
+                  i3++;
                 }
               }
             }
-            render(e, dist);
-            events.emit(isTouchEvent(e) ? "touchEnd" : "dragEnd", info(e));
+            render(e2, dist);
+            events.emit(isTouchEvent(e2) ? "touchEnd" : "dragEnd", info(e2));
           });
         } else {
           if (moveDirectionExpected) {
-            onControlsClick(e, dist > 0 ? -1 : 1);
+            onControlsClick(e2, dist > 0 ? -1 : 1);
           }
         }
       }
     }
-    if (options3.preventScrollOnTouch === "auto") {
+    if (options2.preventScrollOnTouch === "auto") {
       preventScroll = false;
     }
     if (swipeAngle) {
@@ -2641,7 +2641,7 @@ var tns = function(options3) {
       pagesCached = pages;
     }
   }
-  function info(e) {
+  function info(e2) {
     return {
       container,
       slideItems,
@@ -2665,7 +2665,7 @@ var tns = function(options3) {
       pagesCached,
       sheet,
       isOn,
-      event: e || {}
+      event: e2 || {}
     };
   }
   return {
@@ -2680,7 +2680,7 @@ var tns = function(options3) {
     refresh: initSliderTransform,
     destroy,
     rebuild: function() {
-      return tns(extend(options3, optionsElements));
+      return tns(extend(options2, optionsElements));
     }
   };
 };
@@ -2725,31 +2725,341 @@ function sliderInit() {
   console.log("Init called");
   updateSlides();
 }
-var slider = tns({
-  container: "#tiny-slider",
-  items: 3,
-  slideBy: 1,
-  speed: 500,
-  preventActionWhenRunning: true,
-  onInit: sliderInit,
-  controls: false,
-  nav: false
-});
-slider.events.on("indexChanged", updateSlides);
+var slider;
+if (document.querySelector("#tiny-slider")) {
+  try {
+    slider = tns({
+      container: "#tiny-slider",
+      items: 3,
+      slideBy: 1,
+      speed: 500,
+      preventActionWhenRunning: true,
+      onInit: sliderInit,
+      controls: false,
+      nav: false
+    });
+  } catch (error) {
+    console.error(error);
+  }
+  try {
+    slider.events.on("indexChanged", updateSlides);
+  } catch (error) {
+    console.error(error);
+  }
+}
 var scrollRoot2 = document.querySelector("[data-scroller]");
 var videoSection = document.querySelector("[data-video-section]");
-var options2 = {
-  root: scrollRoot2,
-  threshold: 0
-};
-var onVideoIntersect = (entries, observer2) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      playMainSlide();
-    } else {
-      pauseMainSlide();
+if (videoSection) {
+  const options2 = {
+    root: scrollRoot2,
+    threshold: 0
+  };
+  const onVideoIntersect = (entries, observer2) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        playMainSlide();
+      } else {
+        pauseMainSlide();
+      }
+    });
+  };
+  try {
+    const videoObserver = new IntersectionObserver(onVideoIntersect, options2);
+    videoObserver.observe(videoSection);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// ready.js
+function ready(fn) {
+  if (document.readyState !== "loading") {
+    fn();
+    return;
+  }
+  document.addEventListener("DOMContentLoaded", fn);
+}
+
+// node_modules/typed.js/dist/typed.module.js
+function t() {
+  return t = Object.assign ? Object.assign.bind() : function(t2) {
+    for (var s2 = 1; s2 < arguments.length; s2++) {
+      var e2 = arguments[s2];
+      for (var n2 in e2)
+        Object.prototype.hasOwnProperty.call(e2, n2) && (t2[n2] = e2[n2]);
     }
+    return t2;
+  }, t.apply(this, arguments);
+}
+var s = { strings: ["These are the default values...", "You know what you should do?", "Use your own!", "Have a great day!"], stringsElement: null, typeSpeed: 0, startDelay: 0, backSpeed: 0, smartBackspace: true, shuffle: false, backDelay: 700, fadeOut: false, fadeOutClass: "typed-fade-out", fadeOutDelay: 500, loop: false, loopCount: Infinity, showCursor: true, cursorChar: "|", autoInsertCss: true, attr: null, bindInputFocusEvents: false, contentType: "html", onBegin: function(t2) {
+}, onComplete: function(t2) {
+}, preStringTyped: function(t2, s2) {
+}, onStringTyped: function(t2, s2) {
+}, onLastStringBackspaced: function(t2) {
+}, onTypingPaused: function(t2, s2) {
+}, onTypingResumed: function(t2, s2) {
+}, onReset: function(t2) {
+}, onStop: function(t2, s2) {
+}, onStart: function(t2, s2) {
+}, onDestroy: function(t2) {
+} };
+var e = new (/* @__PURE__ */ function() {
+  function e2() {
+  }
+  var n2 = e2.prototype;
+  return n2.load = function(e3, n3, i3) {
+    if (e3.el = "string" == typeof i3 ? document.querySelector(i3) : i3, e3.options = t({}, s, n3), e3.isInput = "input" === e3.el.tagName.toLowerCase(), e3.attr = e3.options.attr, e3.bindInputFocusEvents = e3.options.bindInputFocusEvents, e3.showCursor = !e3.isInput && e3.options.showCursor, e3.cursorChar = e3.options.cursorChar, e3.cursorBlinking = true, e3.elContent = e3.attr ? e3.el.getAttribute(e3.attr) : e3.el.textContent, e3.contentType = e3.options.contentType, e3.typeSpeed = e3.options.typeSpeed, e3.startDelay = e3.options.startDelay, e3.backSpeed = e3.options.backSpeed, e3.smartBackspace = e3.options.smartBackspace, e3.backDelay = e3.options.backDelay, e3.fadeOut = e3.options.fadeOut, e3.fadeOutClass = e3.options.fadeOutClass, e3.fadeOutDelay = e3.options.fadeOutDelay, e3.isPaused = false, e3.strings = e3.options.strings.map(function(t2) {
+      return t2.trim();
+    }), e3.stringsElement = "string" == typeof e3.options.stringsElement ? document.querySelector(e3.options.stringsElement) : e3.options.stringsElement, e3.stringsElement) {
+      e3.strings = [], e3.stringsElement.style.cssText = "clip: rect(0 0 0 0);clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px;";
+      var r = Array.prototype.slice.apply(e3.stringsElement.children), o = r.length;
+      if (o)
+        for (var a = 0; a < o; a += 1)
+          e3.strings.push(r[a].innerHTML.trim());
+    }
+    for (var u in e3.strPos = 0, e3.currentElContent = this.getCurrentElContent(e3), e3.currentElContent && e3.currentElContent.length > 0 && (e3.strPos = e3.currentElContent.length - 1, e3.strings.unshift(e3.currentElContent)), e3.sequence = [], e3.strings)
+      e3.sequence[u] = u;
+    e3.arrayPos = 0, e3.stopNum = 0, e3.loop = e3.options.loop, e3.loopCount = e3.options.loopCount, e3.curLoop = 0, e3.shuffle = e3.options.shuffle, e3.pause = { status: false, typewrite: true, curString: "", curStrPos: 0 }, e3.typingComplete = false, e3.autoInsertCss = e3.options.autoInsertCss, e3.autoInsertCss && (this.appendCursorAnimationCss(e3), this.appendFadeOutAnimationCss(e3));
+  }, n2.getCurrentElContent = function(t2) {
+    return t2.attr ? t2.el.getAttribute(t2.attr) : t2.isInput ? t2.el.value : "html" === t2.contentType ? t2.el.innerHTML : t2.el.textContent;
+  }, n2.appendCursorAnimationCss = function(t2) {
+    var s2 = "data-typed-js-cursor-css";
+    if (t2.showCursor && !document.querySelector("[" + s2 + "]")) {
+      var e3 = document.createElement("style");
+      e3.setAttribute(s2, "true"), e3.innerHTML = "\n        .typed-cursor{\n          opacity: 1;\n        }\n        .typed-cursor.typed-cursor--blink{\n          animation: typedjsBlink 0.7s infinite;\n          -webkit-animation: typedjsBlink 0.7s infinite;\n                  animation: typedjsBlink 0.7s infinite;\n        }\n        @keyframes typedjsBlink{\n          50% { opacity: 0.0; }\n        }\n        @-webkit-keyframes typedjsBlink{\n          0% { opacity: 1; }\n          50% { opacity: 0.0; }\n          100% { opacity: 1; }\n        }\n      ", document.body.appendChild(e3);
+    }
+  }, n2.appendFadeOutAnimationCss = function(t2) {
+    var s2 = "data-typed-fadeout-js-css";
+    if (t2.fadeOut && !document.querySelector("[" + s2 + "]")) {
+      var e3 = document.createElement("style");
+      e3.setAttribute(s2, "true"), e3.innerHTML = "\n        .typed-fade-out{\n          opacity: 0;\n          transition: opacity .25s;\n        }\n        .typed-cursor.typed-cursor--blink.typed-fade-out{\n          -webkit-animation: 0;\n          animation: 0;\n        }\n      ", document.body.appendChild(e3);
+    }
+  }, e2;
+}())();
+var n = new (/* @__PURE__ */ function() {
+  function t2() {
+  }
+  var s2 = t2.prototype;
+  return s2.typeHtmlChars = function(t3, s3, e2) {
+    if ("html" !== e2.contentType)
+      return s3;
+    var n2 = t3.substring(s3).charAt(0);
+    if ("<" === n2 || "&" === n2) {
+      var i3;
+      for (i3 = "<" === n2 ? ">" : ";"; t3.substring(s3 + 1).charAt(0) !== i3 && !(1 + ++s3 > t3.length); )
+        ;
+      s3++;
+    }
+    return s3;
+  }, s2.backSpaceHtmlChars = function(t3, s3, e2) {
+    if ("html" !== e2.contentType)
+      return s3;
+    var n2 = t3.substring(s3).charAt(0);
+    if (">" === n2 || ";" === n2) {
+      var i3;
+      for (i3 = ">" === n2 ? "<" : "&"; t3.substring(s3 - 1).charAt(0) !== i3 && !(--s3 < 0); )
+        ;
+      s3--;
+    }
+    return s3;
+  }, t2;
+}())();
+var i2 = /* @__PURE__ */ function() {
+  function t2(t3, s3) {
+    e.load(this, s3, t3), this.begin();
+  }
+  var s2 = t2.prototype;
+  return s2.toggle = function() {
+    this.pause.status ? this.start() : this.stop();
+  }, s2.stop = function() {
+    this.typingComplete || this.pause.status || (this.toggleBlinking(true), this.pause.status = true, this.options.onStop(this.arrayPos, this));
+  }, s2.start = function() {
+    this.typingComplete || this.pause.status && (this.pause.status = false, this.pause.typewrite ? this.typewrite(this.pause.curString, this.pause.curStrPos) : this.backspace(this.pause.curString, this.pause.curStrPos), this.options.onStart(this.arrayPos, this));
+  }, s2.destroy = function() {
+    this.reset(false), this.options.onDestroy(this);
+  }, s2.reset = function(t3) {
+    void 0 === t3 && (t3 = true), clearInterval(this.timeout), this.replaceText(""), this.cursor && this.cursor.parentNode && (this.cursor.parentNode.removeChild(this.cursor), this.cursor = null), this.strPos = 0, this.arrayPos = 0, this.curLoop = 0, t3 && (this.insertCursor(), this.options.onReset(this), this.begin());
+  }, s2.begin = function() {
+    var t3 = this;
+    this.options.onBegin(this), this.typingComplete = false, this.shuffleStringsIfNeeded(this), this.insertCursor(), this.bindInputFocusEvents && this.bindFocusEvents(), this.timeout = setTimeout(function() {
+      0 === t3.strPos ? t3.typewrite(t3.strings[t3.sequence[t3.arrayPos]], t3.strPos) : t3.backspace(t3.strings[t3.sequence[t3.arrayPos]], t3.strPos);
+    }, this.startDelay);
+  }, s2.typewrite = function(t3, s3) {
+    var e2 = this;
+    this.fadeOut && this.el.classList.contains(this.fadeOutClass) && (this.el.classList.remove(this.fadeOutClass), this.cursor && this.cursor.classList.remove(this.fadeOutClass));
+    var i3 = this.humanizer(this.typeSpeed), r = 1;
+    true !== this.pause.status ? this.timeout = setTimeout(function() {
+      s3 = n.typeHtmlChars(t3, s3, e2);
+      var i4 = 0, o = t3.substring(s3);
+      if ("^" === o.charAt(0) && /^\^\d+/.test(o)) {
+        var a = 1;
+        a += (o = /\d+/.exec(o)[0]).length, i4 = parseInt(o), e2.temporaryPause = true, e2.options.onTypingPaused(e2.arrayPos, e2), t3 = t3.substring(0, s3) + t3.substring(s3 + a), e2.toggleBlinking(true);
+      }
+      if ("`" === o.charAt(0)) {
+        for (; "`" !== t3.substring(s3 + r).charAt(0) && (r++, !(s3 + r > t3.length)); )
+          ;
+        var u = t3.substring(0, s3), p = t3.substring(u.length + 1, s3 + r), c = t3.substring(s3 + r + 1);
+        t3 = u + p + c, r--;
+      }
+      e2.timeout = setTimeout(function() {
+        e2.toggleBlinking(false), s3 >= t3.length ? e2.doneTyping(t3, s3) : e2.keepTyping(t3, s3, r), e2.temporaryPause && (e2.temporaryPause = false, e2.options.onTypingResumed(e2.arrayPos, e2));
+      }, i4);
+    }, i3) : this.setPauseStatus(t3, s3, true);
+  }, s2.keepTyping = function(t3, s3, e2) {
+    0 === s3 && (this.toggleBlinking(false), this.options.preStringTyped(this.arrayPos, this));
+    var n2 = t3.substring(0, s3 += e2);
+    this.replaceText(n2), this.typewrite(t3, s3);
+  }, s2.doneTyping = function(t3, s3) {
+    var e2 = this;
+    this.options.onStringTyped(this.arrayPos, this), this.toggleBlinking(true), this.arrayPos === this.strings.length - 1 && (this.complete(), false === this.loop || this.curLoop === this.loopCount) || (this.timeout = setTimeout(function() {
+      e2.backspace(t3, s3);
+    }, this.backDelay));
+  }, s2.backspace = function(t3, s3) {
+    var e2 = this;
+    if (true !== this.pause.status) {
+      if (this.fadeOut)
+        return this.initFadeOut();
+      this.toggleBlinking(false);
+      var i3 = this.humanizer(this.backSpeed);
+      this.timeout = setTimeout(function() {
+        s3 = n.backSpaceHtmlChars(t3, s3, e2);
+        var i4 = t3.substring(0, s3);
+        if (e2.replaceText(i4), e2.smartBackspace) {
+          var r = e2.strings[e2.arrayPos + 1];
+          e2.stopNum = r && i4 === r.substring(0, s3) ? s3 : 0;
+        }
+        s3 > e2.stopNum ? (s3--, e2.backspace(t3, s3)) : s3 <= e2.stopNum && (e2.arrayPos++, e2.arrayPos === e2.strings.length ? (e2.arrayPos = 0, e2.options.onLastStringBackspaced(), e2.shuffleStringsIfNeeded(), e2.begin()) : e2.typewrite(e2.strings[e2.sequence[e2.arrayPos]], s3));
+      }, i3);
+    } else
+      this.setPauseStatus(t3, s3, false);
+  }, s2.complete = function() {
+    this.options.onComplete(this), this.loop ? this.curLoop++ : this.typingComplete = true;
+  }, s2.setPauseStatus = function(t3, s3, e2) {
+    this.pause.typewrite = e2, this.pause.curString = t3, this.pause.curStrPos = s3;
+  }, s2.toggleBlinking = function(t3) {
+    this.cursor && (this.pause.status || this.cursorBlinking !== t3 && (this.cursorBlinking = t3, t3 ? this.cursor.classList.add("typed-cursor--blink") : this.cursor.classList.remove("typed-cursor--blink")));
+  }, s2.humanizer = function(t3) {
+    return Math.round(Math.random() * t3 / 2) + t3;
+  }, s2.shuffleStringsIfNeeded = function() {
+    this.shuffle && (this.sequence = this.sequence.sort(function() {
+      return Math.random() - 0.5;
+    }));
+  }, s2.initFadeOut = function() {
+    var t3 = this;
+    return this.el.className += " " + this.fadeOutClass, this.cursor && (this.cursor.className += " " + this.fadeOutClass), setTimeout(function() {
+      t3.arrayPos++, t3.replaceText(""), t3.strings.length > t3.arrayPos ? t3.typewrite(t3.strings[t3.sequence[t3.arrayPos]], 0) : (t3.typewrite(t3.strings[0], 0), t3.arrayPos = 0);
+    }, this.fadeOutDelay);
+  }, s2.replaceText = function(t3) {
+    this.attr ? this.el.setAttribute(this.attr, t3) : this.isInput ? this.el.value = t3 : "html" === this.contentType ? this.el.innerHTML = t3 : this.el.textContent = t3;
+  }, s2.bindFocusEvents = function() {
+    var t3 = this;
+    this.isInput && (this.el.addEventListener("focus", function(s3) {
+      t3.stop();
+    }), this.el.addEventListener("blur", function(s3) {
+      t3.el.value && 0 !== t3.el.value.length || t3.start();
+    }));
+  }, s2.insertCursor = function() {
+    this.showCursor && (this.cursor || (this.cursor = document.createElement("span"), this.cursor.className = "typed-cursor", this.cursor.setAttribute("aria-hidden", true), this.cursor.innerHTML = this.cursorChar, this.el.parentNode && this.el.parentNode.insertBefore(this.cursor, this.el.nextSibling)));
+  }, t2;
+}();
+
+// hero.js
+var headline = document.querySelector("#new-hero_heading-h1");
+var count;
+createCircles();
+if (headline) {
+  try {
+    ready(() => {
+      window.requestAnimationFrame(step);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+var circles;
+function createCircles() {
+  const container = document.querySelector(".new-hero_circles-container");
+  if (container) {
+    const targetDiameter = 256;
+    let windowWidth = window.innerWidth;
+    count = Math.round(windowWidth / targetDiameter);
+    let newDiameter = windowWidth / count;
+    try {
+      container.style.setProperty("--d", newDiameter + "px");
+    } catch (error) {
+      console.error(error);
+    }
+    for (let i3 = 0; i3 < count * 2; i3++) {
+      let el = document.createElement("div");
+      el.classList.add("circle");
+      try {
+        container.append(el);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    circles = [...document.querySelectorAll(".circle")];
+  }
+}
+function invertColors() {
+  const section = document.querySelector(".home_new-hero");
+  if (section) {
+    try {
+      section.classList.add("invert");
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}
+function createTypedElement() {
+  let typed = new i2("#type-span", {
+    strings: ["by \ninfluencing consumers at \nevery stage of their journey"],
+    typeSpeed: 50,
+    showCursor: false
   });
-};
-var videoObserver = new IntersectionObserver(onVideoIntersect, options2);
-videoObserver.observe(videoSection);
+}
+var start;
+var previousTimeStamp;
+var circlesDone = false;
+var typewriterDone = false;
+var headingRevealed = false;
+var colorsInverted = false;
+i = 0;
+function step(timeStamp) {
+  if (start === void 0) {
+    start = timeStamp;
+  }
+  const elapsed = timeStamp - start;
+  if (!headingRevealed && elapsed > 500) {
+    headline.classList.add("reveal");
+    headingRevealed = true;
+  }
+  if (circles && elapsed > 1500 + 100 * i && i < circles.length) {
+    console.log(timeStamp / 1e3 + " - " + i);
+    circles[i].classList.add("reveal");
+    if (i == circles.length - 1) {
+      circlesDone = true;
+    } else {
+      i++;
+    }
+  }
+  if (!colorsInverted && elapsed > 4e3) {
+    invertColors();
+    colorsInverted = true;
+  }
+  if (!typewriterDone && elapsed > 6e3) {
+    createTypedElement();
+    typewriterDone = true;
+  }
+  previousTimeStamp = timeStamp;
+  if (!typewriterDone || !circlesDone) {
+    window.requestAnimationFrame(step);
+  } else {
+    console.log("done");
+  }
+}
+
+// index.js
+ready(() => {
+  console.log("I'm Ready");
+});

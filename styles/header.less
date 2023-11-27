@@ -1,0 +1,25 @@
+.header-logo-svg svg{
+    color:var(--nav-color);
+    transition:color 0.2s;
+}
+.header_container{
+    transition:all 0.2s;
+}
+.header_container.nav-open .header-logo-svg svg{
+    color:var(--dark-teal);
+}
+.header_container.nav-open .header_menu-button{
+    border-color:var(--light-teal);
+}
+.header_container.nav-open .header_menu-button-span{
+    color:var(--light-teal);
+}
+[data-theme="dark-teal"]{
+    --nav-color:var(--light-teal);
+}
+[data-theme="light-teal"]{
+    --nav-color:var(--dark-teal);
+}
+[data-theme="cream"]{
+    --nav-color:var(--dark-teal);
+}
