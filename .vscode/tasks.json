@@ -15,7 +15,10 @@
         },
         {
             "label": "default",
-            "type": "shell"
+            "type": "shell",
+            "problemMatcher": [
+                "$lessc"
+            ]
         }
     ]
 }

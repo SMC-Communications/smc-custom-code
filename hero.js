@@ -73,12 +73,11 @@ function step(timeStamp){
     }
     const elapsed = timeStamp - start
 
-    if (!headingRevealed && (elapsed > 500)){
+    if (!headingRevealed && (elapsed > 0)){
         headline.classList.add("reveal")
         headingRevealed = true
     }
-    if (circles && (elapsed > (1500+(100*i))) && (i < circles.length)){
-        console.log(timeStamp/1000 + " - " + i)
+    if (circles && (elapsed > (500+(100*i))) && (i < circles.length)){
         circles[i].classList.add("reveal")
         if (i == (circles.length - 1)){
             circlesDone = true
@@ -86,11 +85,11 @@ function step(timeStamp){
             i++
         }
     }
-    if (!colorsInverted && (elapsed > 4000)){
+    if (!colorsInverted && (elapsed > 2500)){
         invertColors()
         colorsInverted = true
     }
-    if (!typewriterDone && (elapsed > 6000)){
+    if (!typewriterDone && (elapsed > 3000)){
         createTypedElement()
         typewriterDone = true
     }
@@ -99,7 +98,5 @@ function step(timeStamp){
 
     if ((!typewriterDone) || (!circlesDone)) {
         window.requestAnimationFrame(step)
-    } else {
-        console.log("done")
     }
 }

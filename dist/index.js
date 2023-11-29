@@ -3030,12 +3030,11 @@ function step(timeStamp) {
     start = timeStamp;
   }
   const elapsed = timeStamp - start;
-  if (!headingRevealed && elapsed > 500) {
+  if (!headingRevealed && elapsed > 0) {
     headline.classList.add("reveal");
     headingRevealed = true;
   }
-  if (circles && elapsed > 1500 + 100 * i && i < circles.length) {
-    console.log(timeStamp / 1e3 + " - " + i);
+  if (circles && elapsed > 500 + 100 * i && i < circles.length) {
     circles[i].classList.add("reveal");
     if (i == circles.length - 1) {
       circlesDone = true;
@@ -3043,23 +3042,16 @@ function step(timeStamp) {
       i++;
     }
   }
-  if (!colorsInverted && elapsed > 4e3) {
+  if (!colorsInverted && elapsed > 2500) {
     invertColors();
     colorsInverted = true;
   }
-  if (!typewriterDone && elapsed > 6e3) {
+  if (!typewriterDone && elapsed > 3e3) {
     createTypedElement();
     typewriterDone = true;
   }
   previousTimeStamp = timeStamp;
   if (!typewriterDone || !circlesDone) {
     window.requestAnimationFrame(step);
-  } else {
-    console.log("done");
   }
 }
-
-// index.js
-ready(() => {
-  console.log("I'm Ready");
-});
