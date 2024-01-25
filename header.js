@@ -7,7 +7,7 @@ let direction = 'up'
 
 const options = {
   root: scrollRoot,
-  rootMargin: `${header.offsetHeight * -1}px`,
+  rootMargin: `${header.offsetHeight * -0.5}px 0px ${(window.innerHeight - header.offsetHeight) * -1}px 0px`,
   threshold: 0
 }
 
@@ -27,6 +27,7 @@ const updateColors = (target) => {
 }
 
 const shouldUpdate = (entry) => {
+
   if (direction === 'down' && !entry.isIntersecting) {
     return true
   }
@@ -45,7 +46,7 @@ const onIntersect = (entries, observer) => {
     } else {
       direction = 'up'
     }
-    
+
     prevYPosition = scrollRoot.scrollTop
     
     const target = direction === 'down' ? getTargetSection(entry) : entry.target
@@ -61,3 +62,33 @@ const observer = new IntersectionObserver(onIntersect, options)
 sections.forEach((section) => {
   observer.observe(section)
 })
+
+// Select the node that will be observed for mutations
+const targetNode = document.getElementById("main-nav");
+
+// Options for the observer (which mutations to observe)
+const config = { attributes: true};
+
+// Callback function to execute when mutations are observed
+let navOpen = false
+const callback = (mutationList, mutationObserver) => {
+  for (const mutation of mutationList) {
+    if (mutation.type === "attributes") {
+      console.log(`The ${mutation.attributeName} attribute was modified.`);
+      if ((mutation.attributeName === "data-nav-menu-open") && !navOpen){
+        console.log("open")
+        navOpen = true
+        header.classList.add("nav-open")
+      } else if ((mutation.attributeName === "data-nav-menu-open") && navOpen){
+        console.log("closed")
+        navOpen = false
+        header.classList.remove("nav-open")
+      }
+    }
+  }
+}
+// Create an observer instance linked to the callback function
+const mutationObserver = new MutationObserver(callback);
+
+// Start observing the target node for configured mutations
+mutationObserver.observe(targetNode, config)

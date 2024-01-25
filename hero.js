@@ -2,11 +2,19 @@ import {ready} from './ready.js'
 import Typed from 'typed.js';
 
 const headline = document.querySelector("#new-hero_heading-h1")
+const hiddenText = document.querySelector(".hidden-text")
+const section = document.querySelector(".home_new-hero")
 let count
+let hasSeenIntro = sessionStorage.getItem("hasSeenIntro")
+if (hasSeenIntro === undefined){
+    sessionStorage.setItem("hasSeenIntro", "false")
+}
 
 createCircles()
 
-if(headline){
+if (hasSeenIntro === "true"){
+    skipIntro()
+} else if (headline){
     try {
         ready(()=>{
             window.requestAnimationFrame(step)
@@ -16,6 +24,17 @@ if(headline){
     }
 }
 let circles
+function skipIntro(){
+    section.classList.add("no-transition")
+    headline.classList.add("no-transition")
+    invertColors()
+    createCircles()
+    circles.forEach((circle)=>{
+        circle.classList.add("reveal")
+    })
+    headline.classList.add("reveal")
+    hiddenText.classList.add("reveal")
+}
 function createCircles(){
     const container = document.querySelector(".new-hero_circles-container")
     if (container){
@@ -43,7 +62,6 @@ function createCircles(){
     }
 }
 function invertColors(){
-    const section = document.querySelector(".home_new-hero")
     if (section){
         try {
             section.classList.add("invert")
@@ -92,6 +110,7 @@ function step(timeStamp){
     if (!typewriterDone && (elapsed > 3000)){
         createTypedElement()
         typewriterDone = true
+        sessionStorage.setItem("hasSeenIntro", "true")
     }
 
     previousTimeStamp = timeStamp

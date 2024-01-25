@@ -6,11 +6,11 @@ var prevYPosition = 0;
 var direction = "up";
 var options = {
   root: scrollRoot,
-  rootMargin: `${header.offsetHeight * -1}px`,
+  rootMargin: `${header.offsetHeight * -0.5}px 0px ${(window.innerHeight - header.offsetHeight) * -1}px 0px`,
   threshold: 0
 };
 var getTargetSection = (entry) => {
-  const index = sections.findIndex((section) => section == entry.target);
+  const index = sections.findIndex((section2) => section2 == entry.target);
   if (index >= sections.length - 1) {
     return entry.target;
   } else {
@@ -45,9 +45,30 @@ var onIntersect = (entries, observer2) => {
   });
 };
 var observer = new IntersectionObserver(onIntersect, options);
-sections.forEach((section) => {
-  observer.observe(section);
+sections.forEach((section2) => {
+  observer.observe(section2);
 });
+var targetNode = document.getElementById("main-nav");
+var config = { attributes: true };
+var navOpen = false;
+var callback = (mutationList, mutationObserver2) => {
+  for (const mutation of mutationList) {
+    if (mutation.type === "attributes") {
+      console.log(`The ${mutation.attributeName} attribute was modified.`);
+      if (mutation.attributeName === "data-nav-menu-open" && !navOpen) {
+        console.log("open");
+        navOpen = true;
+        header.classList.add("nav-open");
+      } else if (mutation.attributeName === "data-nav-menu-open" && navOpen) {
+        console.log("closed");
+        navOpen = false;
+        header.classList.remove("nav-open");
+      }
+    }
+  }
+};
+var mutationObserver = new MutationObserver(callback);
+mutationObserver.observe(targetNode, config);
 
 // node_modules/tiny-slider/src/helpers/raf.js
 var win = window;
@@ -238,9 +259,9 @@ function getTouchDirection(angle, range) {
 }
 
 // node_modules/tiny-slider/src/helpers/forEach.js
-function forEach(arr, callback, scope) {
+function forEach(arr, callback2, scope) {
   for (var i3 = 0, l = arr.length; i3 < l; i3++) {
-    callback.call(scope, arr[i3], i3);
+    callback2.call(scope, arr[i3], i3);
   }
 }
 
@@ -455,7 +476,7 @@ function Events() {
 }
 
 // node_modules/tiny-slider/src/helpers/jsTransform.js
-function jsTransform(element, attr, prefix, postfix, to, duration, callback) {
+function jsTransform(element, attr, prefix, postfix, to, duration, callback2) {
   var tick = Math.min(duration, 10), unit = to.indexOf("%") >= 0 ? "%" : "px", to = to.replace(unit, ""), from = Number(element.style[attr].replace(prefix, "").replace(postfix, "").replace(unit, "")), positionTick = (to - from) / duration * tick, running;
   setTimeout(moveElement, tick);
   function moveElement() {
@@ -465,7 +486,7 @@ function jsTransform(element, attr, prefix, postfix, to, duration, callback) {
     if (duration > 0) {
       setTimeout(moveElement, tick);
     } else {
-      callback();
+      callback2();
     }
   }
 }
@@ -2965,9 +2986,17 @@ var i2 = /* @__PURE__ */ function() {
 
 // hero.js
 var headline = document.querySelector("#new-hero_heading-h1");
+var hiddenText = document.querySelector(".hidden-text");
+var section = document.querySelector(".home_new-hero");
 var count;
+var hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
+if (hasSeenIntro === void 0) {
+  sessionStorage.setItem("hasSeenIntro", "false");
+}
 createCircles();
-if (headline) {
+if (hasSeenIntro === "true") {
+  skipIntro();
+} else if (headline) {
   try {
     ready(() => {
       window.requestAnimationFrame(step);
@@ -2977,6 +3006,17 @@ if (headline) {
   }
 }
 var circles;
+function skipIntro() {
+  section.classList.add("no-transition");
+  headline.classList.add("no-transition");
+  invertColors();
+  createCircles();
+  circles.forEach((circle) => {
+    circle.classList.add("reveal");
+  });
+  headline.classList.add("reveal");
+  hiddenText.classList.add("reveal");
+}
 function createCircles() {
   const container = document.querySelector(".new-hero_circles-container");
   if (container) {
@@ -3002,7 +3042,6 @@ function createCircles() {
   }
 }
 function invertColors() {
-  const section = document.querySelector(".home_new-hero");
   if (section) {
     try {
       section.classList.add("invert");
@@ -3049,6 +3088,7 @@ function step(timeStamp) {
   if (!typewriterDone && elapsed > 3e3) {
     createTypedElement();
     typewriterDone = true;
+    sessionStorage.setItem("hasSeenIntro", "true");
   }
   previousTimeStamp = timeStamp;
   if (!typewriterDone || !circlesDone) {

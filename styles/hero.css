@@ -19,11 +19,10 @@
 .circle.reveal {
   opacity: 1;
 }
-#new-hero_heading-h1 {
+#new-hero_heading-h1:not(.no-transition) {
   opacity: 0;
   transition: opacity 0.5s ease-in;
   transition-delay: 0.5s;
-  white-space: pre;
 }
 #new-hero_heading-h1.reveal {
   opacity: 1;
@@ -34,16 +33,24 @@
 #new-hero_heading-h1 #by {
   transition: opacity 0.5s ease-in;
 }
-.home_new-hero {
+.home_new-hero:not(.no-transition) {
   transition: background-color 1s ease-in;
 }
 .home_new-hero.invert {
-  transition: all 1s linear;
   background-color: var(--dark-teal);
+}
+.home_new-hero.invert:not(.no-transition) {
+  transition: all 1s linear;
 }
 .home_new-hero.invert .circle {
   border-color: var(--light-teal);
 }
 .home_new-hero.invert #new-hero_heading-h1 {
   color: var(--light-teal);
+}
+.hidden-text {
+  display: none;
+}
+.hidden-text.reveal {
+  display: inline;
 }
