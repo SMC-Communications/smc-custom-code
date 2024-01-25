@@ -131,6 +131,9 @@
 .header_container.nav-open .header_menu-button {
   border-color: var(--light-teal);
 }
+.header_container.nav-open .hamburger-container .line {
+  background-color: var(--light-teal);
+}
 .header_container.nav-open .header_menu-button-span {
   color: var(--light-teal);
 }
