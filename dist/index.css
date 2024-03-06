@@ -102,6 +102,7 @@
   object-fit: cover;
   border-radius: 1.5rem;
   overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 .tns-item {
   transform: scale(0.8);
