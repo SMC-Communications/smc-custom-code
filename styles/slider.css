@@ -19,7 +19,7 @@
   height: 100%;
   width: 100%;
   display: block;
-  object-fit: fill;
+  object-fit: cover;
 }
 .tns-item {
   transform: scale(0.8);

@@ -104,7 +104,7 @@
   height: 100%;
   width: 100%;
   display: block;
-  object-fit: fill;
+  object-fit: cover;
 }
 .tns-item {
   transform: scale(0.8);
@@ -137,6 +137,11 @@
 }
 .header_container.nav-open .hamburger-container .line {
   background-color: var(--light-teal);
+}
+@media screen and (max-width: 567px) {
+  .header_container.nav-open .hamburger-container .line {
+    background-color: var(--dark-teal);
+  }
 }
 .header_container.nav-open .header_menu-button-span {
   color: var(--light-teal);

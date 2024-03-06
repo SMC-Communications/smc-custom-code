@@ -38,7 +38,7 @@ function skipIntro(){
 function createCircles(){
     const container = document.querySelector(".new-hero_circles-container")
     if (container){
-        const targetDiameter = 256
+        const targetDiameter = container.offsetHeight
         let windowWidth = window.innerWidth
         count = Math.round(windowWidth / targetDiameter)
         let newDiameter = (windowWidth / count)
