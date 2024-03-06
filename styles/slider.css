@@ -7,8 +7,8 @@
   height: 100%;
 }
 .tiny-slider_slide-embed {
-  height: 100%;
-  aspect-ratio: 1 / 2;
+  height: 60vh;
+  width: 33.75vh;
   margin: auto;
   box-sizing: border-box;
   position: relative;
@@ -18,12 +18,11 @@
 }
 .tiny-slider_slide video {
   height: 100%;
+  width: 100%;
   display: block;
-  object-fit: cover;
   border: 1px solid red;
   border-radius: 1.5rem;
   overflow: hidden;
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 .tns-item {
   transform: scale(0.8);
