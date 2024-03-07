@@ -2754,7 +2754,9 @@ if (document.querySelector("#tiny-slider")) {
       items: 3,
       slideBy: 1,
       speed: 500,
+      swipeAngle: 30,
       preventActionWhenRunning: true,
+      preventScrollOnTouch: "auto",
       onInit: sliderInit,
       controls: false,
       nav: false

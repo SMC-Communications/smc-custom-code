@@ -1,27 +1,27 @@
 import './node_modules/tiny-slider/dist/tiny-slider.css'
-import {tns} from './node_modules/tiny-slider/src/tiny-slider.js'
+import { tns } from './node_modules/tiny-slider/src/tiny-slider.js'
 
 
 let activeSlides = []
 
-function nextSlide(){
+function nextSlide() {
     slider.goTo("next")
     slider.events.on("transitionEnd", playMainSlide)
 }
-function prevSlide(){
+function prevSlide() {
     slider.goTo("prev")
     slider.events.on("transitionEnd", playMainSlide)
 }
-function playMainSlide(){
+function playMainSlide() {
     document.querySelector(".active-slide1 video").play()
 }
-function pauseMainSlide(){
+function pauseMainSlide() {
     document.querySelector(".active-slide1 video").pause()
 }
-function updateSlides(){
+function updateSlides() {
     console.log("Update called")
     if (activeSlides.length) {
-        activeSlides.forEach((slide)=>{
+        activeSlides.forEach((slide) => {
             slide.removeEventListener("click", prevSlide)
             slide.removeEventListener("click", nextSlide)
             slide.classList.remove("active-slide0")
@@ -30,7 +30,7 @@ function updateSlides(){
             slide.querySelector("video").pause()
         })
     }
-    
+
     activeSlides = [...document.querySelectorAll("#tiny-slider .tns-slide-active")]
     console.log("Updating slides")
     activeSlides[0].classList.add("active-slide0")
@@ -41,24 +41,26 @@ function updateSlides(){
     activeSlides[2].addEventListener("click", nextSlide)
 
 }
-function sliderInit(){
+function sliderInit() {
     console.log("Init called")
     updateSlides();
 }
 let slider
-if (document.querySelector("#tiny-slider")){
-    
+if (document.querySelector("#tiny-slider")) {
+
     try {
         slider = tns({
             container: '#tiny-slider',
             items: 3,
             slideBy: 1,
             speed: 500,
+            swipeAngle: 30,
             preventActionWhenRunning: true,
+            preventScrollOnTouch: "auto",
             onInit: sliderInit,
             controls: false,
             nav: false
-        })    
+        })
     } catch (error) {
         console.error(error)
     }
@@ -71,7 +73,7 @@ if (document.querySelector("#tiny-slider")){
 /* INTERSECTION OBSERVER */
 const scrollRoot = document.querySelector("[data-scroller]")
 const videoSection = document.querySelector("[data-video-section]")
-if (videoSection){
+if (videoSection) {
     const options = {
         root: scrollRoot,
         threshold: 0
