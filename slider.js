@@ -59,7 +59,12 @@ if (document.querySelector("#tiny-slider")) {
             preventScrollOnTouch: "auto",
             onInit: sliderInit,
             controls: false,
-            nav: false
+            nav: false,
+            responsive: {
+                1280: {
+
+                }
+            }
         })
     } catch (error) {
         console.error(error)
