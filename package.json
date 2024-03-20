@@ -18,6 +18,8 @@
     "serve": "^14.2.1"
   },
   "dependencies": {
+    "gsap": "file:gsap-bonus.tgz",
+    "onetime": "^7.0.0",
     "tiny-slider": "^2.9.4",
     "typed.js": "^2.1.0"
   }
