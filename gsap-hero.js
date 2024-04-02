@@ -33,7 +33,7 @@ window.addEventListener('load', ()=>{
     tl.to(root, {duration:0.3, ["--nav-color"]:"var(--light-teal)",  ease:"power1.inOut"}, "<")
 
     //Type Headeing
-    tl.to(typed, {duration:0.01, stagger:0.1, opacity: 1, color:"var(--light-teal)", ease:"none", onComplete: preloadVideo}, "+=0.5")
+    tl.to(typed, {duration:0.01, stagger:0.05, opacity: 1, color:"var(--light-teal)", ease:"none", onComplete: preloadVideo}, "+=0.5")
 })
 
 function preloadVideo(){
@@ -54,6 +54,7 @@ function createCircles(){
 
         try {
             container.style.setProperty('--d', newDiameter + 'px')
+            container.style.setProperty('--offset', (newDiameter / -4) + 'px')
         } catch (error) {
             console.error(error)
         }
