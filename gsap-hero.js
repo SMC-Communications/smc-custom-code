@@ -41,7 +41,7 @@ window.addEventListener('load', ()=>{
     tl.to(typed, {duration:0.5, stagger:0.03, opacity: 1, ease:"power1.out", onComplete: preloadVideo},"<")
 
     //Reveal Header
-    tl.to(header, {duration:0.5, opacity:1, ease:"power1.out"}, "+=0.25")
+    tl.to(header, {duration:0.5, opacity:1, ease:"power1.out"})
 })
 
 function preloadVideo(){
