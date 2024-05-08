@@ -12,28 +12,36 @@ window.addEventListener('load', ()=>{
     let hero = document.querySelector(".gsap-hero_light-bg")
     let header = document.querySelector(".header_container")
     let heading = document.querySelector(".gsap-hero_heading")
-    heading.style.opacity = "1"
-    let split = new SplitText(".gsap-hero_heading")
-    let tagline = split.chars.slice(0, 15)
-    let typed = split.chars.slice(15, -1)
+    let split, tagline, typed
+    
+    if (heading){
+        heading.style.opacity = "1"
+        split = new SplitText(".gsap-hero_heading")
+        tagline = split.chars.slice(0, 15)
+        typed = split.chars.slice(15, -1)
+    }
  
     let tl = gsap.timeline()
 
     // Draw Circles
-    tl.to(circles, {duration:0.1, opacity:1, stagger:0.1})
-
-    //Reveal Tagline & Header
-    tl.to(tagline, {duration:1, opacity:1, ease:"power1.out"})
-    tl.to(header, {duration:1, opacity:1, ease:"power1.out"}, "<")
+    tl.to(circles, {duration:0, opacity:1, stagger:0.05, ease:"none"})
 
     //Invert colors
-    tl.to(hero, {duration:0.3, opacity:0, ease:"power1.inOut"}, "+=0.5")
-    tl.to(tagline, {duration:0.3, color:"var(--light-teal)", ease:"power1.inOut"}, "<")
-    tl.to(circles, {duration:0.3, borderColor:"var(--light-teal)", ease:"power1.inOut"}, "<")
-    tl.to(root, {duration:0.3, ["--nav-color"]:"var(--light-teal)",  ease:"power1.inOut"}, "<")
+    tl.to(hero, {duration:0.5, opacity:0, ease:"power1.inOut"},"-=0.25")
+    tl.to(tagline, {duration:0.5, color:"var(--light-teal)", ease:"power1.inOut"}, "<")
+    tl.to(circles, {duration:0.5, borderColor:"var(--light-teal)", ease:"power1.inOut"}, "<")
+    tl.to(root, {duration:0.5, ["--nav-color"]:"var(--light-teal)",  ease:"power1.inOut"}, "<")
+
+    //Reveal Tagline
+    tl.to(tagline, {duration:1, opacity:1, ease:"power1.out"})    
 
     //Type Headeing
-    tl.to(typed, {duration:0.01, stagger:0.05, opacity: 1, color:"var(--light-teal)", ease:"none", onComplete: preloadVideo}, "+=0.5")
+    tl.to(typed, {duration:0, color:"var(--light-teal)"},"-=0.5")
+    tl.from(typed, {duration:0.5, stagger:0.03, rotateZ:"1deg", translateY:"0.1em", ease:"power1.out", onComplete: preloadVideo},"<")
+    tl.to(typed, {duration:0.5, stagger:0.03, opacity: 1, ease:"power1.out", onComplete: preloadVideo},"<")
+
+    //Reveal Header
+    tl.to(header, {duration:0.5, opacity:1, ease:"power1.out"}, "+=0.25")
 })
 
 function preloadVideo(){
