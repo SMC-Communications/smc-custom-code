@@ -138,6 +138,9 @@ button,
   transform: translateX(-50%);
   transition: transform 0.2s ease-in-out;
 }
+.button.is-text.is-cream::after {
+  background: linear-gradient(90deg, #fea086 0%, #fea086 50%, #fdfbf6 50%, #fdfbf6 100%);
+}
 .button.is-text:hover::after {
   transform: translateX(0%);
 }

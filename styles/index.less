@@ -71,9 +71,13 @@ section, .nav-menu--left, [data-theme="light-teal"], [data-theme="cream"], .page
     width:200%;
     margin-top:1rem;
     height:1px;
-    background:linear-gradient(90deg, rgb(254, 160, 134) 0%, rgb(254, 160, 134) 50%, rgb(18, 60, 66) 50%,  rgb(18, 60, 66) 100% );
+    background:linear-gradient(90deg, rgb(254, 160, 134) 0%, rgb(254, 160, 134) 50%, rgb(18, 60, 66) 50%, rgb(18, 60, 66) 100% );
     transform: translateX(-50%);
     transition: transform 0.2s ease-in-out
+  }
+  &.is-cream::after{
+    background:linear-gradient(90deg, rgb(254, 160, 134) 0%, rgb(254, 160, 134) 50%, rgb(253, 251, 246) 50%, rgb(253, 251, 246) 100% );
+
   }
   &:hover::after{
     transform:translateX(0%);
