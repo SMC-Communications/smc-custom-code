@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "serve",
     "build": "./node_modules/.bin/esbuild index.js --bundle --outfile=dist/index.js --watch --platform=node",
-    "build-file": "node builder.js"
+    "build:css": "less-watch-compiler ./styles ./styles styles.less",
+    "build-file": "node builder.js",
+    "dev": "concurrently --kill-others \"npm run serve\" \"npm run build\" \"npm run build:css\""
   },
   "author": "",
   "license": "ISC",

@@ -1,5 +1,7 @@
 import './styles/styles.css'
-import './header.js'
+//import './header.js'
 import './slider.js'
 //import './hero.js'
 import './gsap-hero.js'
+import './animations.js'
+import './gsap-header.js'
