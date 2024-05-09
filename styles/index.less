@@ -26,3 +26,24 @@
 .a-class {
   color: #fff;
 }
+
+.w-nav-overlay{
+	position:fixed;
+}
+[data-section="dark-teal"]{
+	-webkit-font-smoothing:antialiased;
+}
+:root{
+	--cursor-dark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' width='1.5rem' height='1.5rem'%3E%3Ccircle cx='5' cy='5' r='4' fill='none' stroke='%23123c42'/%3E%3C/svg%3E");
+  --cursor-light:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' width='1.5rem' height='1.5rem'%3E%3Ccircle cx='5' cy='5' r='4' fill='none' stroke='%23b9f4d8'/%3E%3C/svg%3E");
+  --cursor-active:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' width='1.5rem' height='1.5rem'%3E%3Ccircle cx='5' cy='5' r='4' fill='%23FEA086' stroke='none'/%3E%3C/svg%3E");
+}
+section, .nav-menu--left, [data-theme="light-teal"], [data-theme="cream"]{
+ cursor:var(--cursor-dark), auto;
+}
+[data-section="dark-teal"],[data-theme="dark-teal"], .nav-menu--right{
+	 cursor:var(--cursor-light), auto;
+}
+:any-link, button, .button, [role="button"], .team-member{
+	cursor:var(--cursor-active), auto;
+}
