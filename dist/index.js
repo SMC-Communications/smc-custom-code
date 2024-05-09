@@ -71,7 +71,7 @@ var require_gsap = __commonJS({
         return _isFunction3(value) || _isString3(value);
       }, _isTypedArray = typeof ArrayBuffer === "function" && ArrayBuffer.isView || function() {
       }, _isArray = Array.isArray, _strictNumExp = /(?:-?\.?\d|\.)+/gi, _numExp = /[-+=.]*\d+[.e\-+]*\d*[e\-+]*\d*/g, _numWithUnitExp = /[-+=.]*\d+[.e-]*\d*[a-z%]*/g, _complexStringNumExp = /[-+=.]*\d+\.?\d*(?:e-|e\+)?\d*/gi, _relExp = /[+-]=-?[.\d]+/, _delimitedValueExp = /[^,'"\[\]\s]+/gi, _unitExp = /^[+\-=e\s\d]*\d+[.\d]*([a-z]*|%)\s*$/i, _globalTimeline, _win4, _coreInitted4, _doc4, _globals = {}, _installScope = {}, _coreReady, _install = function _install2(scope) {
-        return (_installScope = _merge(scope, _globals)) && gsap7;
+        return (_installScope = _merge(scope, _globals)) && gsap8;
       }, _missingPlugin = function _missingPlugin2(property, value) {
         return console.warn("Invalid property", property, "set to", value, "Missing plugin? gsap.registerPlugin()");
       }, _warn = function _warn2(message, suppress) {
@@ -90,17 +90,17 @@ var require_gsap = __commonJS({
       }, _revertConfig = {
         suppressEvents: true
       }, _reservedProps = {}, _lazyTweens = [], _lazyLookup = {}, _lastRenderedFrame, _plugins = {}, _effects = {}, _nextGCFrame = 30, _harnessPlugins = [], _callbackNames = "", _harness = function _harness2(targets) {
-        var target = targets[0], harnessPlugin, i;
+        var target = targets[0], harnessPlugin, i2;
         _isObject3(target) || _isFunction3(target) || (targets = [targets]);
         if (!(harnessPlugin = (target._gsap || {}).harness)) {
-          i = _harnessPlugins.length;
-          while (i-- && !_harnessPlugins[i].targetTest(target)) {
+          i2 = _harnessPlugins.length;
+          while (i2-- && !_harnessPlugins[i2].targetTest(target)) {
           }
-          harnessPlugin = _harnessPlugins[i];
+          harnessPlugin = _harnessPlugins[i2];
         }
-        i = targets.length;
-        while (i--) {
-          targets[i] && (targets[i]._gsap || (targets[i]._gsap = new GSCache(targets[i], harnessPlugin))) || targets.splice(i, 1);
+        i2 = targets.length;
+        while (i2--) {
+          targets[i2] && (targets[i2]._gsap || (targets[i2]._gsap = new GSCache(targets[i2], harnessPlugin))) || targets.splice(i2, 1);
         }
         return targets;
       }, _getCache = function _getCache2(target) {
@@ -118,16 +118,16 @@ var require_gsap = __commonJS({
         start = parseFloat(start);
         return operator === "+" ? start + end : operator === "-" ? start - end : operator === "*" ? start * end : start / end;
       }, _arrayContainsAny = function _arrayContainsAny2(toSearch, toFind) {
-        var l = toFind.length, i = 0;
-        for (; toSearch.indexOf(toFind[i]) < 0 && ++i < l; ) {
+        var l = toFind.length, i2 = 0;
+        for (; toSearch.indexOf(toFind[i2]) < 0 && ++i2 < l; ) {
         }
-        return i < l;
+        return i2 < l;
       }, _lazyRender = function _lazyRender2() {
-        var l = _lazyTweens.length, a = _lazyTweens.slice(0), i, tween;
+        var l = _lazyTweens.length, a = _lazyTweens.slice(0), i2, tween;
         _lazyLookup = {};
         _lazyTweens.length = 0;
-        for (i = 0; i < l; i++) {
-          tween = a[i];
+        for (i2 = 0; i2 < l; i2++) {
+          tween = a[i2];
           tween && tween._lazy && (tween.render(tween._lazy[0], tween._lazy[1], true)._lazy = 0);
         }
       }, _lazySafeRender = function _lazySafeRender2(animation, time, suppressEvents, force) {
@@ -176,10 +176,10 @@ var require_gsap = __commonJS({
         }
         return vars;
       }, _arraysMatch = function _arraysMatch2(a1, a2) {
-        var i = a1.length, match = i === a2.length;
-        while (match && i-- && a1[i] === a2[i]) {
+        var i2 = a1.length, match = i2 === a2.length;
+        while (match && i2-- && a1[i2] === a2[i2]) {
         }
-        return i < 0;
+        return i2 < 0;
       }, _addLinkedListItem = function _addLinkedListItem2(parent, child, firstProp, lastProp, sortBy) {
         if (firstProp === void 0) {
           firstProp = "_first";
@@ -389,24 +389,24 @@ var require_gsap = __commonJS({
         endTime: _emptyFunc,
         totalDuration: _emptyFunc
       }, _parsePosition3 = function _parsePosition4(animation, position, percentAnimation) {
-        var labels = animation.labels, recent = animation._recent || _zeroPosition, clippedDuration = animation.duration() >= _bigNum ? recent.endTime(false) : animation._dur, i, offset, isPercent;
+        var labels = animation.labels, recent = animation._recent || _zeroPosition, clippedDuration = animation.duration() >= _bigNum ? recent.endTime(false) : animation._dur, i2, offset, isPercent;
         if (_isString3(position) && (isNaN(position) || position in labels)) {
           offset = position.charAt(0);
           isPercent = position.substr(-1) === "%";
-          i = position.indexOf("=");
+          i2 = position.indexOf("=");
           if (offset === "<" || offset === ">") {
-            i >= 0 && (position = position.replace(/=/, ""));
-            return (offset === "<" ? recent._start : recent.endTime(recent._repeat >= 0)) + (parseFloat(position.substr(1)) || 0) * (isPercent ? (i < 0 ? recent : percentAnimation).totalDuration() / 100 : 1);
+            i2 >= 0 && (position = position.replace(/=/, ""));
+            return (offset === "<" ? recent._start : recent.endTime(recent._repeat >= 0)) + (parseFloat(position.substr(1)) || 0) * (isPercent ? (i2 < 0 ? recent : percentAnimation).totalDuration() / 100 : 1);
           }
-          if (i < 0) {
+          if (i2 < 0) {
             position in labels || (labels[position] = clippedDuration);
             return labels[position];
           }
-          offset = parseFloat(position.charAt(i - 1) + position.substr(i + 1));
+          offset = parseFloat(position.charAt(i2 - 1) + position.substr(i2 + 1));
           if (isPercent && percentAnimation) {
             offset = offset / 100 * (_isArray(percentAnimation) ? percentAnimation[0] : percentAnimation).totalDuration();
           }
-          return i > 1 ? _parsePosition4(animation, position.substr(0, i - 1), percentAnimation) + offset : clippedDuration + offset;
+          return i2 > 1 ? _parsePosition4(animation, position.substr(0, i2 - 1), percentAnimation) + offset : clippedDuration + offset;
         }
         return position == null ? clippedDuration : +position;
       }, _createTweenType = function _createTweenType2(type, params, timeline) {
@@ -473,7 +473,7 @@ var require_gsap = __commonJS({
           ratioX = from[0];
           ratioY = from[1];
         }
-        return function(i, target, a) {
+        return function(i2, target, a) {
           var l = (a || vars).length, distances = cache[l], originX, originY, x, y, d, j, max, min, wrapAt;
           if (!distances) {
             wrapAt = vars.grid === "auto" ? 0 : (vars.grid || [1, _bigNum])[1];
@@ -503,7 +503,7 @@ var require_gsap = __commonJS({
             distances.u = getUnit(vars.amount || vars.each) || 0;
             ease = ease && l < 0 ? _invertEase(ease) : ease;
           }
-          l = (distances[i] - distances.min) / distances.max || 0;
+          l = (distances[i2] - distances.min) / distances.max || 0;
           return _roundPrecise(distances.b + (ease ? ease(l) : l) * distances.v) + distances.u;
         };
       }, _roundModifier = function _roundModifier2(v) {
@@ -529,18 +529,18 @@ var require_gsap = __commonJS({
           is2D = snapTo(raw);
           return Math.abs(is2D - raw) <= radius ? is2D : raw;
         } : function(raw) {
-          var x = parseFloat(is2D ? raw.x : raw), y = parseFloat(is2D ? raw.y : 0), min = _bigNum, closest = 0, i = snapTo.length, dx, dy;
-          while (i--) {
+          var x = parseFloat(is2D ? raw.x : raw), y = parseFloat(is2D ? raw.y : 0), min = _bigNum, closest = 0, i2 = snapTo.length, dx, dy;
+          while (i2--) {
             if (is2D) {
-              dx = snapTo[i].x - x;
-              dy = snapTo[i].y - y;
+              dx = snapTo[i2].x - x;
+              dy = snapTo[i2].y - y;
               dx = dx * dx + dy * dy;
             } else {
-              dx = Math.abs(snapTo[i] - x);
+              dx = Math.abs(snapTo[i2] - x);
             }
             if (dx < min) {
               min = dx;
-              closest = i;
+              closest = i2;
             }
           }
           closest = !radius || min <= radius ? snapTo[closest] : raw;
@@ -581,12 +581,12 @@ var require_gsap = __commonJS({
           return min + (value2 > range ? total - value2 : value2);
         });
       }, _replaceRandom = function _replaceRandom2(value) {
-        var prev = 0, s = "", i, nums, end, isArray;
-        while (~(i = value.indexOf("random(", prev))) {
-          end = value.indexOf(")", i);
-          isArray = value.charAt(i + 7) === "[";
-          nums = value.substr(i + 7, end - i - 7).match(isArray ? _delimitedValueExp : _strictNumExp);
-          s += value.substr(prev, i - prev) + random(isArray ? nums : +nums[0], isArray ? 0 : +nums[1], +nums[2] || 1e-5);
+        var prev = 0, s = "", i2, nums, end, isArray;
+        while (~(i2 = value.indexOf("random(", prev))) {
+          end = value.indexOf(")", i2);
+          isArray = value.charAt(i2 + 7) === "[";
+          nums = value.substr(i2 + 7, end - i2 - 7).match(isArray ? _delimitedValueExp : _strictNumExp);
+          s += value.substr(prev, i2 - prev) + random(isArray ? nums : +nums[0], isArray ? 0 : +nums[1], +nums[2] || 1e-5);
           prev = end + 1;
         }
         return s + value.substr(prev, value.length - prev);
@@ -600,7 +600,7 @@ var require_gsap = __commonJS({
           return (1 - p2) * start + p2 * end;
         };
         if (!func) {
-          var isString = _isString3(start), master = {}, p, i, interpolators, l, il;
+          var isString = _isString3(start), master = {}, p, i2, interpolators, l, il;
           progress === true && (mutate = 1) && (progress = null);
           if (isString) {
             start = {
@@ -613,14 +613,14 @@ var require_gsap = __commonJS({
             interpolators = [];
             l = start.length;
             il = l - 2;
-            for (i = 1; i < l; i++) {
-              interpolators.push(interpolate2(start[i - 1], start[i]));
+            for (i2 = 1; i2 < l; i2++) {
+              interpolators.push(interpolate2(start[i2 - 1], start[i2]));
             }
             l--;
             func = function func2(p2) {
               p2 *= l;
-              var i2 = Math.min(il, ~~p2);
-              return interpolators[i2](p2 - i2);
+              var i3 = Math.min(il, ~~p2);
+              return interpolators[i3](p2 - i3);
             };
             progress = end;
           } else if (!mutate) {
@@ -699,7 +699,7 @@ var require_gsap = __commonJS({
             name = (name === "css" ? "CSS" : name.charAt(0).toUpperCase() + name.substr(1)) + "Plugin";
           }
           _addGlobal(name, Plugin);
-          config2.register && config2.register(gsap7, Plugin, PropTween);
+          config2.register && config2.register(gsap8, Plugin, PropTween);
         } else {
           _registerPluginQueue.push(config2);
         }
@@ -791,16 +791,16 @@ var require_gsap = __commonJS({
         forceAlpha && a.length < 4 && (a[3] = 1);
         return a;
       }, _colorOrderData = function _colorOrderData2(v) {
-        var values = [], c = [], i = -1;
+        var values = [], c = [], i2 = -1;
         v.split(_colorExp).forEach(function(v2) {
           var a = v2.match(_numWithUnitExp) || [];
           values.push.apply(values, a);
-          c.push(i += a.length + 1);
+          c.push(i2 += a.length + 1);
         });
         values.c = c;
         return values;
       }, _formatColors = function _formatColors2(s, toHSL, orderMatchData) {
-        var result = "", colors = (s + result).match(_colorExp), type = toHSL ? "hsla(" : "rgba(", i = 0, c, shell, d, l;
+        var result = "", colors = (s + result).match(_colorExp), type = toHSL ? "hsla(" : "rgba(", i2 = 0, c, shell, d, l;
         if (!colors) {
           return s;
         }
@@ -813,16 +813,16 @@ var require_gsap = __commonJS({
           if (c.join(result) !== d.c.join(result)) {
             shell = s.replace(_colorExp, "1").split(_numWithUnitExp);
             l = shell.length - 1;
-            for (; i < l; i++) {
-              result += shell[i] + (~c.indexOf(i) ? colors.shift() || type + "0,0,0,0)" : (d.length ? d : colors.length ? colors : orderMatchData).shift());
+            for (; i2 < l; i2++) {
+              result += shell[i2] + (~c.indexOf(i2) ? colors.shift() || type + "0,0,0,0)" : (d.length ? d : colors.length ? colors : orderMatchData).shift());
             }
           }
         }
         if (!shell) {
           shell = s.split(_colorExp);
           l = shell.length - 1;
-          for (; i < l; i++) {
-            result += shell[i] + colors[i];
+          for (; i2 < l; i2++) {
+            result += shell[i2] + colors[i2];
           }
         }
         return result + shell[l];
@@ -876,8 +876,8 @@ var require_gsap = __commonJS({
               if (!_coreInitted4 && _windowExists3()) {
                 _win4 = _coreInitted4 = window;
                 _doc4 = _win4.document || {};
-                _globals.gsap = gsap7;
-                (_win4.gsapVersions || (_win4.gsapVersions = [])).push(gsap7.version);
+                _globals.gsap = gsap8;
+                (_win4.gsapVersions || (_win4.gsapVersions = [])).push(gsap8.version);
                 _install(_installScope || _win4.GreenSockGlobals || !_win4.gsap && _win4 || {});
                 _registerPluginQueue.forEach(_createPlugin);
               }
@@ -913,8 +913,8 @@ var require_gsap = __commonJS({
             _wake();
             return func;
           },
-          remove: function remove(callback2, i) {
-            ~(i = _listeners3.indexOf(callback2)) && _listeners3.splice(i, 1) && _i2 >= i && _i2--;
+          remove: function remove(callback2, i2) {
+            ~(i2 = _listeners3.indexOf(callback2)) && _listeners3.splice(i2, 1) && _i2 >= i2 && _i2--;
           },
           _listeners: _listeners3
         };
@@ -922,10 +922,10 @@ var require_gsap = __commonJS({
       }(), _wake = function _wake2() {
         return !_tickerActive && _ticker.wake();
       }, _easeMap = {}, _customEaseExp = /^[\d.\-M][\d.\-,\s]/, _quotesExp = /["']/g, _parseObjectInString = function _parseObjectInString2(value) {
-        var obj = {}, split = value.substr(1, value.length - 3).split(":"), key = split[0], i = 1, l = split.length, index, val, parsedVal;
-        for (; i < l; i++) {
-          val = split[i];
-          index = i !== l - 1 ? val.lastIndexOf(",") : val.length;
+        var obj = {}, split = value.substr(1, value.length - 3).split(":"), key = split[0], i2 = 1, l = split.length, index, val, parsedVal;
+        for (; i2 < l; i2++) {
+          val = split[i2];
+          index = i2 !== l - 1 ? val.lastIndexOf(",") : val.length;
           parsedVal = val.substr(0, index);
           obj[key] = isNaN(parsedVal) ? parsedVal.replace(_quotesExp, "").trim() : +parsedVal;
           key = val.substr(index + 1).trim();
@@ -1013,9 +1013,9 @@ var require_gsap = __commonJS({
         };
         return ease;
       };
-      _forEachName("Linear,Quad,Cubic,Quart,Quint,Strong", function(name, i) {
-        var power = i < 5 ? i + 1 : i;
-        _insertEase(name + ",Power" + (power - 1), i ? function(p) {
+      _forEachName("Linear,Quad,Cubic,Quart,Quint,Strong", function(name, i2) {
+        var power = i2 < 5 ? i2 + 1 : i2;
+        _insertEase(name + ",Power" + (power - 1), i2 ? function(p) {
           return Math.pow(p, power);
         } : function(p) {
           return p;
@@ -1585,10 +1585,10 @@ var require_gsap = __commonJS({
           return a;
         };
         _proto2.getById = function getById(id) {
-          var animations = this.getChildren(1, 1, 1), i = animations.length;
-          while (i--) {
-            if (animations[i].vars.id === id) {
-              return animations[i];
+          var animations = this.getChildren(1, 1, 1), i2 = animations.length;
+          while (i2--) {
+            if (animations[i2].vars.id === id) {
+              return animations[i2];
             }
           }
         };
@@ -1642,9 +1642,9 @@ var require_gsap = __commonJS({
           }
         };
         _proto2.killTweensOf = function killTweensOf(targets, props, onlyActive) {
-          var tweens = this.getTweensOf(targets, onlyActive), i = tweens.length;
-          while (i--) {
-            _overwritingTween !== tweens[i] && tweens[i].kill(targets, props);
+          var tweens = this.getTweensOf(targets, onlyActive), i2 = tweens.length;
+          while (i2--) {
+            _overwritingTween !== tweens[i2] && tweens[i2].kill(targets, props);
           }
           return this;
         };
@@ -1890,20 +1890,20 @@ var require_gsap = __commonJS({
         }
         return copy;
       }, _checkPlugin = function _checkPlugin2(property, vars, tween, index, target, targets) {
-        var plugin, pt, ptLookup, i;
+        var plugin, pt, ptLookup, i2;
         if (_plugins[property] && (plugin = new _plugins[property]()).init(target, plugin.rawVars ? vars[property] : _processVars(vars[property], index, target, targets, tween), tween, index, targets) !== false) {
           tween._pt = pt = new PropTween(tween._pt, target, property, 0, 1, plugin.render, plugin, 0, plugin.priority);
           if (tween !== _quickTween) {
             ptLookup = tween._ptLookup[tween._targets.indexOf(target)];
-            i = plugin._props.length;
-            while (i--) {
-              ptLookup[plugin._props[i]] = pt;
+            i2 = plugin._props.length;
+            while (i2--) {
+              ptLookup[plugin._props[i2]] = pt;
             }
           }
         }
         return plugin;
       }, _overwritingTween, _forceAllPropTweens, _initTween = function _initTween2(tween, time, tTime) {
-        var vars = tween.vars, ease = vars.ease, startAt = vars.startAt, immediateRender = vars.immediateRender, lazy = vars.lazy, onUpdate = vars.onUpdate, runBackwards = vars.runBackwards, yoyoEase = vars.yoyoEase, keyframes = vars.keyframes, autoRevert = vars.autoRevert, dur = tween._dur, prevStartAt = tween._startAt, targets = tween._targets, parent = tween.parent, fullTargets = parent && parent.data === "nested" ? parent.vars.targets : targets, autoOverwrite = tween._overwrite === "auto" && !_suppressOverwrites2, tl = tween.timeline, cleanVars, i, p, pt, target, hasPriority, gsData, harness, plugin, ptLookup, index, harnessVars, overwritten;
+        var vars = tween.vars, ease = vars.ease, startAt = vars.startAt, immediateRender = vars.immediateRender, lazy = vars.lazy, onUpdate = vars.onUpdate, runBackwards = vars.runBackwards, yoyoEase = vars.yoyoEase, keyframes = vars.keyframes, autoRevert = vars.autoRevert, dur = tween._dur, prevStartAt = tween._startAt, targets = tween._targets, parent = tween.parent, fullTargets = parent && parent.data === "nested" ? parent.vars.targets : targets, autoOverwrite = tween._overwrite === "auto" && !_suppressOverwrites2, tl = tween.timeline, cleanVars, i2, p, pt, target, hasPriority, gsData, harness, plugin, ptLookup, index, harnessVars, overwritten;
         tl && (!keyframes || !ease) && (ease = "none");
         tween._ease = _parseEase(ease, _defaults2.ease);
         tween._yEase = yoyoEase ? _invertEase(_parseEase(yoyoEase === true ? ease : yoyoEase, _defaults2.ease)) : 0;
@@ -1971,12 +1971,12 @@ var require_gsap = __commonJS({
           }
           tween._pt = tween._ptCache = 0;
           lazy = dur && _isNotFalse(lazy) || lazy && !dur;
-          for (i = 0; i < targets.length; i++) {
-            target = targets[i];
-            gsData = target._gsap || _harness(targets)[i]._gsap;
-            tween._ptLookup[i] = ptLookup = {};
+          for (i2 = 0; i2 < targets.length; i2++) {
+            target = targets[i2];
+            gsData = target._gsap || _harness(targets)[i2]._gsap;
+            tween._ptLookup[i2] = ptLookup = {};
             _lazyLookup[gsData.id] && _lazyTweens.length && _lazyRender();
-            index = fullTargets === targets ? i : fullTargets.indexOf(target);
+            index = fullTargets === targets ? i2 : fullTargets.indexOf(target);
             if (harness && (plugin = new harness()).init(target, harnessVars || cleanVars, tween, index, fullTargets) !== false) {
               tween._pt = pt = new PropTween(tween._pt, target, plugin.name, 0, 1, plugin.render, plugin, 0, plugin.priority);
               plugin._props.forEach(function(name) {
@@ -1993,7 +1993,7 @@ var require_gsap = __commonJS({
                 }
               }
             }
-            tween._op && tween._op[i] && tween.kill(target, tween._op[i]);
+            tween._op && tween._op[i2] && tween.kill(target, tween._op[i2]);
             if (autoOverwrite && tween._pt) {
               _overwritingTween = tween;
               _globalTimeline.killTweensOf(target, ptLookup, tween.globalTime(time));
@@ -2009,13 +2009,13 @@ var require_gsap = __commonJS({
         tween._initted = (!tween._op || tween._pt) && !overwritten;
         keyframes && time <= 0 && tl.render(_bigNum, true, true);
       }, _updatePropTweens = function _updatePropTweens2(tween, property, value, start, startIsRelative, ratio, time, skipRecursion) {
-        var ptCache = (tween._pt && tween._ptCache || (tween._ptCache = {}))[property], pt, rootPT, lookup, i;
+        var ptCache = (tween._pt && tween._ptCache || (tween._ptCache = {}))[property], pt, rootPT, lookup, i2;
         if (!ptCache) {
           ptCache = tween._ptCache[property] = [];
           lookup = tween._ptLookup;
-          i = tween._targets.length;
-          while (i--) {
-            pt = lookup[i][property];
+          i2 = tween._targets.length;
+          while (i2--) {
+            pt = lookup[i2][property];
             if (pt && pt.d && pt.d._pt) {
               pt = pt.d._pt;
               while (pt && pt.p !== property && pt.fp !== property) {
@@ -2032,9 +2032,9 @@ var require_gsap = __commonJS({
             ptCache.push(pt);
           }
         }
-        i = ptCache.length;
-        while (i--) {
-          rootPT = ptCache[i];
+        i2 = ptCache.length;
+        while (i2--) {
+          rootPT = ptCache[i2];
           pt = rootPT._pt || rootPT;
           pt.s = (start || start === 0) && !startIsRelative ? start : pt.s + (start || 0) + ratio * pt.c;
           pt.c = value - pt.s;
@@ -2042,7 +2042,7 @@ var require_gsap = __commonJS({
           rootPT.b && (rootPT.b = pt.s + getUnit(rootPT.b));
         }
       }, _addAliasesToVars = function _addAliasesToVars2(targets, vars) {
-        var harness = targets[0] ? _getCache(targets[0]).harness : 0, propertyAliases = harness && harness.aliases, copy, p, i, aliases;
+        var harness = targets[0] ? _getCache(targets[0]).harness : 0, propertyAliases = harness && harness.aliases, copy, p, i2, aliases;
         if (!propertyAliases) {
           return vars;
         }
@@ -2050,9 +2050,9 @@ var require_gsap = __commonJS({
         for (p in propertyAliases) {
           if (p in copy) {
             aliases = propertyAliases[p].split(",");
-            i = aliases.length;
-            while (i--) {
-              copy[aliases[i]] = copy[p];
+            i2 = aliases.length;
+            while (i2--) {
+              copy[aliases[i2]] = copy[p];
             }
           }
         }
@@ -2061,9 +2061,9 @@ var require_gsap = __commonJS({
         var ease = obj.ease || easeEach || "power1.inOut", p, a;
         if (_isArray(obj)) {
           a = allProps[prop] || (allProps[prop] = []);
-          obj.forEach(function(value, i) {
+          obj.forEach(function(value, i2) {
             return a.push({
-              t: i / (obj.length - 1) * 100,
+              t: i2 / (obj.length - 1) * 100,
               v: value,
               e: ease
             });
@@ -2078,8 +2078,8 @@ var require_gsap = __commonJS({
             });
           }
         }
-      }, _parseFuncOrString = function _parseFuncOrString2(value, tween, i, target, targets) {
-        return _isFunction3(value) ? value.call(tween, i, target, targets) : _isString3(value) && ~value.indexOf("random(") ? _replaceRandom(value) : value;
+      }, _parseFuncOrString = function _parseFuncOrString2(value, tween, i2, target, targets) {
+        return _isFunction3(value) ? value.call(tween, i2, target, targets) : _isString3(value) && ~value.indexOf("random(") ? _replaceRandom(value) : value;
       }, _staggerTweenProps = _callbackNames + "repeat,repeatDelay,yoyo,repeatRefresh,yoyoEase,autoRevert", _staggerPropsToSkip = {};
       _forEachName(_staggerTweenProps + ",id,stagger,delay,duration,paused,scrollTrigger", function(name) {
         return _staggerPropsToSkip[name] = 1;
@@ -2094,7 +2094,7 @@ var require_gsap = __commonJS({
             position = null;
           }
           _this3 = _Animation2.call(this, skipInherit ? vars : _inheritDefaults(vars)) || this;
-          var _this3$vars = _this3.vars, duration = _this3$vars.duration, delay = _this3$vars.delay, immediateRender = _this3$vars.immediateRender, stagger = _this3$vars.stagger, overwrite = _this3$vars.overwrite, keyframes = _this3$vars.keyframes, defaults = _this3$vars.defaults, scrollTrigger = _this3$vars.scrollTrigger, yoyoEase = _this3$vars.yoyoEase, parent = vars.parent || _globalTimeline, parsedTargets = (_isArray(targets) || _isTypedArray(targets) ? _isNumber3(targets[0]) : "length" in vars) ? [targets] : toArray(targets), tl, i, copy, l, p, curTarget, staggerFunc, staggerVarsToMerge;
+          var _this3$vars = _this3.vars, duration = _this3$vars.duration, delay = _this3$vars.delay, immediateRender = _this3$vars.immediateRender, stagger = _this3$vars.stagger, overwrite = _this3$vars.overwrite, keyframes = _this3$vars.keyframes, defaults = _this3$vars.defaults, scrollTrigger = _this3$vars.scrollTrigger, yoyoEase = _this3$vars.yoyoEase, parent = vars.parent || _globalTimeline, parsedTargets = (_isArray(targets) || _isTypedArray(targets) ? _isNumber3(targets[0]) : "length" in vars) ? [targets] : toArray(targets), tl, i2, copy, l, p, curTarget, staggerFunc, staggerVarsToMerge;
           _this3._targets = parsedTargets.length ? _harness(parsedTargets) : _warn("GSAP target " + targets + " not found. https://gsap.com", !_config.nullTargetWarn) || [];
           _this3._ptLookup = [];
           _this3._overwrite = overwrite;
@@ -2119,20 +2119,20 @@ var require_gsap = __commonJS({
                   }
                 }
               }
-              for (i = 0; i < l; i++) {
+              for (i2 = 0; i2 < l; i2++) {
                 copy = _copyExcluding(vars, _staggerPropsToSkip);
                 copy.stagger = 0;
                 yoyoEase && (copy.yoyoEase = yoyoEase);
                 staggerVarsToMerge && _merge(copy, staggerVarsToMerge);
-                curTarget = parsedTargets[i];
-                copy.duration = +_parseFuncOrString(duration, _assertThisInitialized(_this3), i, curTarget, parsedTargets);
-                copy.delay = (+_parseFuncOrString(delay, _assertThisInitialized(_this3), i, curTarget, parsedTargets) || 0) - _this3._delay;
+                curTarget = parsedTargets[i2];
+                copy.duration = +_parseFuncOrString(duration, _assertThisInitialized(_this3), i2, curTarget, parsedTargets);
+                copy.delay = (+_parseFuncOrString(delay, _assertThisInitialized(_this3), i2, curTarget, parsedTargets) || 0) - _this3._delay;
                 if (!stagger && l === 1 && copy.delay) {
                   _this3._delay = delay = copy.delay;
                   _this3._start += delay;
                   copy.delay = 0;
                 }
-                tl.to(curTarget, copy, staggerFunc ? staggerFunc(i, curTarget, parsedTargets) : 0);
+                tl.to(curTarget, copy, staggerFunc ? staggerFunc(i2, curTarget, parsedTargets) : 0);
                 tl._ease = _easeMap.none;
               }
               tl.duration() ? duration = delay = 0 : _this3.timeline = 0;
@@ -2157,11 +2157,11 @@ var require_gsap = __commonJS({
                     return a2.t - b.t;
                   });
                   time = 0;
-                  for (i = 0; i < a.length; i++) {
-                    kf = a[i];
+                  for (i2 = 0; i2 < a.length; i2++) {
+                    kf = a[i2];
                     v = {
                       ease: kf.e,
-                      duration: (kf.t - (i ? a[i - 1].t : 0)) / 100 * duration
+                      duration: (kf.t - (i2 ? a[i2 - 1].t : 0)) / 100 * duration
                     };
                     v[p] = kf.v;
                     tl.to(parsedTargets, v, time);
@@ -2322,7 +2322,7 @@ var require_gsap = __commonJS({
             this.parent && tDur !== this.timeline.totalDuration() && _setDuration(this, this._dur * this.timeline._tDur / tDur, 0, 1);
             return this;
           }
-          var parsedTargets = this._targets, killingTargets = targets ? toArray(targets) : parsedTargets, propTweenLookup = this._ptLookup, firstPT = this._pt, overwrittenProps, curLookup, curOverwriteProps, props, p, pt, i;
+          var parsedTargets = this._targets, killingTargets = targets ? toArray(targets) : parsedTargets, propTweenLookup = this._ptLookup, firstPT = this._pt, overwrittenProps, curLookup, curOverwriteProps, props, p, pt, i2;
           if ((!vars || vars === "all") && _arraysMatch(parsedTargets, killingTargets)) {
             vars === "all" && (this._pt = 0);
             return _interrupt(this);
@@ -2338,16 +2338,16 @@ var require_gsap = __commonJS({
             }
             vars = _addAliasesToVars(parsedTargets, vars);
           }
-          i = parsedTargets.length;
-          while (i--) {
-            if (~killingTargets.indexOf(parsedTargets[i])) {
-              curLookup = propTweenLookup[i];
+          i2 = parsedTargets.length;
+          while (i2--) {
+            if (~killingTargets.indexOf(parsedTargets[i2])) {
+              curLookup = propTweenLookup[i2];
               if (vars === "all") {
-                overwrittenProps[i] = vars;
+                overwrittenProps[i2] = vars;
                 props = curLookup;
                 curOverwriteProps = {};
               } else {
-                curOverwriteProps = overwrittenProps[i] = overwrittenProps[i] || {};
+                curOverwriteProps = overwrittenProps[i2] = overwrittenProps[i2] || {};
                 props = vars;
               }
               for (p in props) {
@@ -2614,9 +2614,9 @@ var require_gsap = __commonJS({
           var _this4 = this;
           if (revert) {
             (function() {
-              var tweens = _this4.getTweens(), i2 = _this4.data.length, t;
-              while (i2--) {
-                t = _this4.data[i2];
+              var tweens = _this4.getTweens(), i3 = _this4.data.length, t;
+              while (i3--) {
+                t = _this4.data[i3];
                 if (t.data === "isFlip") {
                   t.revert();
                   t.getChildren(true, true, false).forEach(function(tween) {
@@ -2634,9 +2634,9 @@ var require_gsap = __commonJS({
               }).forEach(function(o) {
                 return o.t.revert(revert);
               });
-              i2 = _this4.data.length;
-              while (i2--) {
-                t = _this4.data[i2];
+              i3 = _this4.data.length;
+              while (i3--) {
+                t = _this4.data[i3];
                 if (t instanceof Timeline) {
                   if (t.data !== "nested") {
                     t.scrollTrigger && t.scrollTrigger.revert();
@@ -2658,9 +2658,9 @@ var require_gsap = __commonJS({
           }
           this.clear();
           if (matchMedia) {
-            var i = _media.length;
-            while (i--) {
-              _media[i].id === this.id && _media.splice(i, 1);
+            var i2 = _media.length;
+            while (i2--) {
+              _media[i2].id === this.id && _media.splice(i2, 1);
             }
           }
         };
@@ -2739,12 +2739,12 @@ var require_gsap = __commonJS({
           target = toArray(target);
           if (target.length > 1) {
             var setters = target.map(function(t) {
-              return gsap7.quickSetter(t, property, unit);
+              return gsap8.quickSetter(t, property, unit);
             }), l = setters.length;
             return function(value) {
-              var i = l;
-              while (i--) {
-                setters[i](value);
+              var i2 = l;
+              while (i2--) {
+                setters[i2](value);
               }
             };
           }
@@ -2762,7 +2762,7 @@ var require_gsap = __commonJS({
         },
         quickTo: function quickTo(target, property, vars) {
           var _merge2;
-          var tween = gsap7.to(target, _merge((_merge2 = {}, _merge2[property] = "+=0.1", _merge2.paused = true, _merge2), vars || {})), func = function func2(value, start, startIsRelative) {
+          var tween = gsap8.to(target, _merge((_merge2 = {}, _merge2[property] = "+=0.1", _merge2.paused = true, _merge2), vars || {})), func = function func2(value, start, startIsRelative) {
             return tween.resetTo(property, value, start, startIsRelative);
           };
           func.tween = tween;
@@ -2844,8 +2844,8 @@ var require_gsap = __commonJS({
           ~a.indexOf(callback2) || a.push(callback2);
         },
         removeEventListener: function removeEventListener(type, callback2) {
-          var a = _listeners2[type], i = a && a.indexOf(callback2);
-          i >= 0 && a.splice(i, 1);
+          var a = _listeners2[type], i2 = a && a.indexOf(callback2);
+          i2 >= 0 && a.splice(i2, 1);
         },
         utils: {
           wrap,
@@ -2908,16 +2908,16 @@ var require_gsap = __commonJS({
         }
         return pt;
       }, _addModifiers = function _addModifiers2(tween, modifiers) {
-        var targets = tween._targets, p, i, pt;
+        var targets = tween._targets, p, i2, pt;
         for (p in modifiers) {
-          i = targets.length;
-          while (i--) {
-            pt = tween._ptLookup[i][p];
+          i2 = targets.length;
+          while (i2--) {
+            pt = tween._ptLookup[i2][p];
             if (pt && (pt = pt.d)) {
               if (pt._pt) {
                 pt = _getPluginPropTween(pt, p);
               }
-              pt && pt.modifier && pt.modifier(modifiers[p], tween, targets[i], p);
+              pt && pt.modifier && pt.modifier(modifiers[p], tween, targets[i2], p);
             }
           }
         }
@@ -2947,7 +2947,7 @@ var require_gsap = __commonJS({
           }
         };
       };
-      var gsap7 = _gsap.registerPlugin({
+      var gsap8 = _gsap.registerPlugin({
         name: "attr",
         init: function init(target, vars, tween, index, targets) {
           var p, pt, v;
@@ -2970,13 +2970,13 @@ var require_gsap = __commonJS({
       }, {
         name: "endArray",
         init: function init(target, value) {
-          var i = value.length;
-          while (i--) {
-            this.add(target, i, target[i] || 0, value[i], 0, 0, 0, 0, 0, 1);
+          var i2 = value.length;
+          while (i2--) {
+            this.add(target, i2, target[i2] || 0, value[i2], 0, 0, 0, 0, 0, 1);
           }
         }
       }, _buildModifierPlugin("roundProps", _roundModifier), _buildModifierPlugin("modifiers"), _buildModifierPlugin("snap", snap)) || _gsap;
-      Tween.version = Timeline.version = gsap7.version = "3.12.5";
+      Tween.version = Timeline.version = gsap8.version = "3.12.5";
       _coreReady = 1;
       _windowExists3() && _wake();
       var Power0 = _easeMap.Power0, Power1 = _easeMap.Power1, Power2 = _easeMap.Power2, Power3 = _easeMap.Power3, Power4 = _easeMap.Power4, Linear = _easeMap.Linear, Quad = _easeMap.Quad, Cubic = _easeMap.Cubic, Quart = _easeMap.Quart, Quint = _easeMap.Quint, Strong = _easeMap.Strong, Elastic = _easeMap.Elastic, Back = _easeMap.Back, SteppedEase = _easeMap.SteppedEase, Bounce = _easeMap.Bounce, Sine = _easeMap.Sine, Expo = _easeMap.Expo, Circ = _easeMap.Circ;
@@ -3048,9 +3048,9 @@ var require_gsap = __commonJS({
           style.removeProperty("rotate");
         }
       }, _revertStyle = function _revertStyle2() {
-        var props = this.props, target = this.target, style = target.style, cache = target._gsap, i, p;
-        for (i = 0; i < props.length; i += 3) {
-          props[i + 1] ? target[props[i]] = props[i + 2] : props[i + 2] ? style[props[i]] = props[i + 2] : style.removeProperty(props[i].substr(0, 2) === "--" ? props[i] : props[i].replace(_capsExp2, "-$1").toLowerCase());
+        var props = this.props, target = this.target, style = target.style, cache = target._gsap, i2, p;
+        for (i2 = 0; i2 < props.length; i2 += 3) {
+          props[i2 + 1] ? target[props[i2]] = props[i2 + 2] : props[i2 + 2] ? style[props[i2]] = props[i2 + 2] : style.removeProperty(props[i2].substr(0, 2) === "--" ? props[i2] : props[i2].replace(_capsExp2, "-$1").toLowerCase());
         }
         if (this.tfm) {
           for (p in this.tfm) {
@@ -3060,8 +3060,8 @@ var require_gsap = __commonJS({
             cache.renderTransform();
             target.setAttribute("data-svg-origin", this.svgo || "");
           }
-          i = _reverting$1();
-          if ((!i || !i.isStart) && !style[_transformProp2]) {
+          i2 = _reverting$1();
+          if ((!i2 || !i2.isStart) && !style[_transformProp2]) {
             _removeIndependentTransforms(style);
             if (cache.zOrigin && style[_transformOriginProp]) {
               style[_transformOriginProp] += " " + cache.zOrigin + "px";
@@ -3078,7 +3078,7 @@ var require_gsap = __commonJS({
           revert: _revertStyle,
           save: _saveStyle
         };
-        target._gsap || gsap7.core.getCache(target);
+        target._gsap || gsap8.core.getCache(target);
         properties && properties.split(",").forEach(function(p) {
           return saver.save(p);
         });
@@ -3090,14 +3090,14 @@ var require_gsap = __commonJS({
         var cs = getComputedStyle(target);
         return cs[property] || cs.getPropertyValue(property.replace(_capsExp2, "-$1").toLowerCase()) || cs.getPropertyValue(property) || !skipPrefixFallback && _getComputedProperty2(target, _checkPropPrefix(property) || property, 1) || "";
       }, _prefixes = "O,Moz,ms,Ms,Webkit".split(","), _checkPropPrefix = function _checkPropPrefix2(property, element, preferPrefix) {
-        var e = element || _tempDiv, s = e.style, i = 5;
+        var e = element || _tempDiv, s = e.style, i2 = 5;
         if (property in s && !preferPrefix) {
           return property;
         }
         property = property.charAt(0).toUpperCase() + property.substr(1);
-        while (i-- && !(_prefixes[i] + property in s)) {
+        while (i2-- && !(_prefixes[i2] + property in s)) {
         }
-        return i < 0 ? null : (i === 3 ? "ms" : i >= 0 ? _prefixes[i] : "") + property;
+        return i2 < 0 ? null : (i2 === 3 ? "ms" : i2 >= 0 ? _prefixes[i2] : "") + property;
       }, _initCore5 = function _initCore6() {
         if (_windowExists$1() && window.document) {
           _win$1 = window;
@@ -3111,7 +3111,7 @@ var require_gsap = __commonJS({
           _transformOriginProp = _transformProp2 + "Origin";
           _tempDiv.style.cssText = "border-width:0;line-height:0;position:absolute;padding:0";
           _supports3D = !!_checkPropPrefix("perspective");
-          _reverting$1 = gsap7.core.reverting;
+          _reverting$1 = gsap8.core.reverting;
           _pluginInitted = 1;
         }
       }, _getBBoxHack = function _getBBoxHack2(swapIfPossible) {
@@ -3140,10 +3140,10 @@ var require_gsap = __commonJS({
         this.style.cssText = oldCSS;
         return bbox;
       }, _getAttributeFallbacks = function _getAttributeFallbacks2(target, attributesArray) {
-        var i = attributesArray.length;
-        while (i--) {
-          if (target.hasAttribute(attributesArray[i])) {
-            return target.getAttribute(attributesArray[i]);
+        var i2 = attributesArray.length;
+        while (i2--) {
+          if (target.hasAttribute(attributesArray[i2])) {
+            return target.getAttribute(attributesArray[i2]);
           }
         }
       }, _getBBox = function _getBBox2(target) {
@@ -3341,15 +3341,15 @@ var require_gsap = __commonJS({
         return split.join(" ");
       }, _renderClearProps = function _renderClearProps2(ratio, data) {
         if (data.tween && data.tween._time === data.tween._dur) {
-          var target = data.t, style = target.style, props = data.u, cache = target._gsap, prop, clearTransforms, i;
+          var target = data.t, style = target.style, props = data.u, cache = target._gsap, prop, clearTransforms, i2;
           if (props === "all" || props === true) {
             style.cssText = "";
             clearTransforms = 1;
           } else {
             props = props.split(",");
-            i = props.length;
-            while (--i > -1) {
-              prop = props[i];
+            i2 = props.length;
+            while (--i2 > -1) {
+              prop = props[i2];
               if (_transformProps[prop]) {
                 clearTransforms = 1;
                 prop = prop === "transformOrigin" ? _transformOriginProp : _transformProp2;
@@ -3751,8 +3751,8 @@ var require_gsap = __commonJS({
           }
           a = (endValue + "").split(" ");
           vars = {};
-          props.forEach(function(prop, i) {
-            return vars[prop] = a[i] = a[i] || a[(i - 1) / 2 | 0];
+          props.forEach(function(prop, i2) {
+            return vars[prop] = a[i2] = a[i2] || a[(i2 - 1) / 2 | 0];
           });
           plugin.init(target, vars, tween);
         };
@@ -3921,8 +3921,8 @@ var require_gsap = __commonJS({
           _getMatrix
         }
       };
-      gsap7.utils.checkPrefix = _checkPropPrefix;
-      gsap7.core.getStyleSaver = _getStyleSaver;
+      gsap8.utils.checkPrefix = _checkPropPrefix;
+      gsap8.core.getStyleSaver = _getStyleSaver;
       (function(positionAndScale, rotation, others, aliases) {
         var all = _forEachName(positionAndScale + "," + rotation + "," + others, function(name) {
           _transformProps[name] = 1;
@@ -3940,8 +3940,8 @@ var require_gsap = __commonJS({
       _forEachName("x,y,z,top,right,bottom,left,width,height,fontSize,padding,margin,perspective", function(name) {
         _config.units[name] = "px";
       });
-      gsap7.registerPlugin(CSSPlugin);
-      var gsapWithCSS = gsap7.registerPlugin(CSSPlugin) || gsap7, TweenMaxWithCSS = gsapWithCSS.core.Tween;
+      gsap8.registerPlugin(CSSPlugin);
+      var gsapWithCSS = gsap8.registerPlugin(CSSPlugin) || gsap8, TweenMaxWithCSS = gsapWithCSS.core.Tween;
       exports2.Back = Back;
       exports2.Bounce = Bounce;
       exports2.CSSPlugin = CSSPlugin;
@@ -3990,9 +3990,9 @@ var caf = win2.cancelAnimationFrame || win2.mozCancelAnimationFrame || function(
 
 // node_modules/tiny-slider/src/helpers/extend.js
 function extend() {
-  var obj, name, copy, target = arguments[0] || {}, i = 1, length = arguments.length;
-  for (; i < length; i++) {
-    if ((obj = arguments[i]) !== null) {
+  var obj, name, copy, target = arguments[0] || {}, i2 = 1, length = arguments.length;
+  for (; i2 < length; i2++) {
+    if ((obj = arguments[i2]) !== null) {
       for (name in obj) {
         copy = obj[name];
         if (target === copy) {
@@ -4069,8 +4069,8 @@ function calc() {
   body.appendChild(div);
   try {
     var str = "(10px * 10)", vals = ["calc" + str, "-moz-calc" + str, "-webkit-calc" + str], val;
-    for (var i = 0; i < 3; i++) {
-      val = vals[i];
+    for (var i2 = 0; i2 < 3; i2++) {
+      val = vals[i2];
       div.style.width = val;
       if (div.offsetWidth === 100) {
         result = val.replace(str, "");
@@ -4088,7 +4088,7 @@ function percentageLayout() {
   var doc = document, body = getBody(), docOverflow = setFakeBody(body), wrapper = doc.createElement("div"), outer = doc.createElement("div"), str = "", count2 = 70, perPage = 3, supported = false;
   wrapper.className = "tns-t-subp2";
   outer.className = "tns-t-ct";
-  for (var i = 0; i < count2; i++) {
+  for (var i2 = 0; i2 < count2; i2++) {
     str += "<div></div>";
   }
   outer.innerHTML = str;
@@ -4166,8 +4166,8 @@ function getTouchDirection(angle, range) {
 
 // node_modules/tiny-slider/src/helpers/forEach.js
 function forEach(arr, callback2, scope) {
-  for (var i = 0, l = arr.length; i < l; i++) {
-    callback2.call(scope, arr[i], i);
+  for (var i2 = 0, l = arr.length; i2 < l; i2++) {
+    callback2.call(scope, arr[i2], i2);
   }
 }
 
@@ -4224,9 +4224,9 @@ function setAttrs(els, attrs) {
   if (Object.prototype.toString.call(attrs) !== "[object Object]") {
     return;
   }
-  for (var i = els.length; i--; ) {
+  for (var i2 = els.length; i2--; ) {
     for (var key in attrs) {
-      els[i].setAttribute(key, attrs[key]);
+      els[i2].setAttribute(key, attrs[key]);
     }
   }
 }
@@ -4236,9 +4236,9 @@ function removeAttrs(els, attrs) {
   els = isNodeList(els) || els instanceof Array ? els : [els];
   attrs = attrs instanceof Array ? attrs : [attrs];
   var attrLength = attrs.length;
-  for (var i = els.length; i--; ) {
+  for (var i2 = els.length; i2--; ) {
     for (var j = attrLength; j--; ) {
-      els[i].removeAttribute(attrs[j]);
+      els[i2].removeAttribute(attrs[j]);
     }
   }
 }
@@ -4246,8 +4246,8 @@ function removeAttrs(els, attrs) {
 // node_modules/tiny-slider/src/helpers/arrayFromNodeList.js
 function arrayFromNodeList(nl) {
   var arr = [];
-  for (var i = 0, l = nl.length; i < l; i++) {
-    arr.push(nl[i]);
+  for (var i2 = 0, l = nl.length; i2 < l; i2++) {
+    arr.push(nl[i2]);
   }
   return arr;
 }
@@ -4283,8 +4283,8 @@ function whichProperty(props) {
     props = arr;
   }
   var el = document.createElement("fakeelement"), len = props.length;
-  for (var i = 0; i < props.length; i++) {
-    var prop = props[i];
+  for (var i2 = 0; i2 < props.length; i2++) {
+    var prop = props[i2];
     if (el.style[prop] !== void 0) {
       return prop;
     }
@@ -4362,9 +4362,9 @@ function Events() {
     },
     off: function(eventName, fn) {
       if (this.topics[eventName]) {
-        for (var i = 0; i < this.topics[eventName].length; i++) {
-          if (this.topics[eventName][i] === fn) {
-            this.topics[eventName].splice(i, 1);
+        for (var i2 = 0; i2 < this.topics[eventName].length; i2++) {
+          if (this.topics[eventName][i2] === fn) {
+            this.topics[eventName].splice(i2, 1);
             break;
           }
         }
@@ -4575,16 +4575,16 @@ var tns = function(options) {
   if (carousel) {
     container.className += " tns-vpfix";
   }
-  var autoWidth = options.autoWidth, fixedWidth = getOption("fixedWidth"), edgePadding = getOption("edgePadding"), gutter = getOption("gutter"), viewport = getViewportWidth(), center = getOption("center"), items = !autoWidth ? Math.floor(getOption("items")) : 1, slideBy = getOption("slideBy"), viewportMax = options.viewportMax || options.fixedWidthViewportWidth, arrowKeys = getOption("arrowKeys"), speed = getOption("speed"), rewind = options.rewind, loop = rewind ? false : options.loop, autoHeight = getOption("autoHeight"), controls = getOption("controls"), controlsText = getOption("controlsText"), nav = getOption("nav"), touch = getOption("touch"), mouseDrag = getOption("mouseDrag"), autoplay = getOption("autoplay"), autoplayTimeout = getOption("autoplayTimeout"), autoplayText = getOption("autoplayText"), autoplayHoverPause = getOption("autoplayHoverPause"), autoplayResetOnVisibility = getOption("autoplayResetOnVisibility"), sheet = createStyleSheet(null, getOption("nonce")), lazyload = options.lazyload, lazyloadSelector = options.lazyloadSelector, slidePositions, slideItemsOut = [], cloneCount = loop ? getCloneCountForLoop() : 0, slideCountNew = !carousel ? slideCount + cloneCount : slideCount + cloneCount * 2, hasRightDeadZone = (fixedWidth || autoWidth) && !loop ? true : false, rightBoundary = fixedWidth ? getRightBoundary() : null, updateIndexBeforeTransform = !carousel || !loop ? true : false, transformAttr = horizontal ? "left" : "top", transformPrefix = "", transformPostfix = "", getIndexMax = function() {
+  var autoWidth = options.autoWidth, fixedWidth = getOption("fixedWidth"), edgePadding = getOption("edgePadding"), gutter = getOption("gutter"), viewport = getViewportWidth(), center = getOption("center"), items2 = !autoWidth ? Math.floor(getOption("items")) : 1, slideBy = getOption("slideBy"), viewportMax = options.viewportMax || options.fixedWidthViewportWidth, arrowKeys = getOption("arrowKeys"), speed = getOption("speed"), rewind = options.rewind, loop = rewind ? false : options.loop, autoHeight = getOption("autoHeight"), controls = getOption("controls"), controlsText = getOption("controlsText"), nav = getOption("nav"), touch = getOption("touch"), mouseDrag = getOption("mouseDrag"), autoplay = getOption("autoplay"), autoplayTimeout = getOption("autoplayTimeout"), autoplayText = getOption("autoplayText"), autoplayHoverPause = getOption("autoplayHoverPause"), autoplayResetOnVisibility = getOption("autoplayResetOnVisibility"), sheet = createStyleSheet(null, getOption("nonce")), lazyload = options.lazyload, lazyloadSelector = options.lazyloadSelector, slidePositions, slideItemsOut = [], cloneCount = loop ? getCloneCountForLoop() : 0, slideCountNew = !carousel ? slideCount + cloneCount : slideCount + cloneCount * 2, hasRightDeadZone = (fixedWidth || autoWidth) && !loop ? true : false, rightBoundary = fixedWidth ? getRightBoundary() : null, updateIndexBeforeTransform = !carousel || !loop ? true : false, transformAttr = horizontal ? "left" : "top", transformPrefix = "", transformPostfix = "", getIndexMax = function() {
     if (fixedWidth) {
       return function() {
         return center && !loop ? slideCount - 1 : Math.ceil(-rightBoundary / (fixedWidth + gutter));
       };
     } else if (autoWidth) {
       return function() {
-        for (var i = 0; i < slideCountNew; i++) {
-          if (slidePositions[i] >= -rightBoundary) {
-            return i;
+        for (var i2 = 0; i2 < slideCountNew; i2++) {
+          if (slidePositions[i2] >= -rightBoundary) {
+            return i2;
           }
         }
       };
@@ -4593,7 +4593,7 @@ var tns = function(options) {
         if (center && carousel && !loop) {
           return slideCount - 1;
         } else {
-          return loop || carousel ? Math.max(0, slideCountNew - Math.ceil(items)) : slideCountNew - 1;
+          return loop || carousel ? Math.max(0, slideCountNew - Math.ceil(items2)) : slideCountNew - 1;
         }
       };
     }
@@ -4669,24 +4669,24 @@ var tns = function(options) {
     return tem % slideCount + 1;
   }
   function getStartIndex(ind) {
-    ind = ind ? Math.max(0, Math.min(loop ? slideCount - 1 : slideCount - items, ind)) : 0;
+    ind = ind ? Math.max(0, Math.min(loop ? slideCount - 1 : slideCount - items2, ind)) : 0;
     return carousel ? ind + cloneCount : ind;
   }
-  function getAbsIndex(i) {
-    if (i == null) {
-      i = index;
+  function getAbsIndex(i2) {
+    if (i2 == null) {
+      i2 = index;
     }
     if (carousel) {
-      i -= cloneCount;
+      i2 -= cloneCount;
     }
-    while (i < 0) {
-      i += slideCount;
+    while (i2 < 0) {
+      i2 += slideCount;
     }
-    return Math.floor(i % slideCount);
+    return Math.floor(i2 % slideCount);
   }
   function getCurrentNavIndex() {
     var absIndex = getAbsIndex(), result;
-    result = navAsThumbnails ? absIndex : fixedWidth || autoWidth ? Math.ceil((absIndex + 1) * pages / slideCount - 1) : Math.floor(absIndex / items);
+    result = navAsThumbnails ? absIndex : fixedWidth || autoWidth ? Math.ceil((absIndex + 1) * pages / slideCount - 1) : Math.floor(absIndex / items2);
     if (!loop && carousel && index === indexMax) {
       result = pages - 1;
     }
@@ -4780,8 +4780,8 @@ var tns = function(options) {
       return result;
     }
   }
-  function getSlideMarginLeft(i) {
-    return CALC ? CALC + "(" + i * 100 + "% / " + slideCountNew + ")" : i * 100 / slideCountNew + "%";
+  function getSlideMarginLeft(i2) {
+    return CALC ? CALC + "(" + i2 * 100 + "% / " + slideCountNew + ")" : i2 * 100 / slideCountNew + "%";
   }
   function getInnerWrapperStyles(edgePaddingTem, gutterTem, fixedWidthTem, speedTem, autoHeightBP) {
     var str = "";
@@ -4873,10 +4873,10 @@ var tns = function(options) {
     }
     containerParent.insertBefore(outerWrapper, container);
     innerWrapper.appendChild(container);
-    forEach(slideItems, function(item, i) {
+    forEach(slideItems, function(item, i2) {
       addClass(item, "tns-item");
       if (!item.id) {
-        item.id = slideId + "-item" + i;
+        item.id = slideId + "-item" + i2;
       }
       if (!carousel && animateNormal) {
         addClass(item, animateNormal);
@@ -4927,7 +4927,7 @@ var tns = function(options) {
         });
       });
       if (hasOption("autoHeight")) {
-        imgs = getImageArray(index, Math.min(index + items - 1, slideCountNew - 1));
+        imgs = getImageArray(index, Math.min(index + items2 - 1, slideCountNew - 1));
       }
       lazyload ? initSliderTransformStyleCheck() : raf(function() {
         imgsLoadedCheck(arrayFromNodeList(imgs), initSliderTransformStyleCheck);
@@ -4976,9 +4976,9 @@ var tns = function(options) {
   }
   function initSheet() {
     if (!carousel) {
-      for (var i = index, l = index + Math.min(slideCount, items); i < l; i++) {
-        var item = slideItems[i];
-        item.style.left = (i - index) * 100 / items + "%";
+      for (var i2 = index, l = index + Math.min(slideCount, items2); i2 < l; i2++) {
+        var item = slideItems[i2];
+        item.style.left = (i2 - index) * 100 / items2 + "%";
         addClass(item, animateIn);
         removeClass(item, animateNormal);
       }
@@ -4988,8 +4988,8 @@ var tns = function(options) {
         addCSSRule(sheet, "#" + slideId + " > .tns-item", "font-size:" + win3.getComputedStyle(slideItems[0]).fontSize + ";", getCssRulesLength(sheet));
         addCSSRule(sheet, "#" + slideId, "font-size:0;", getCssRulesLength(sheet));
       } else if (carousel) {
-        forEach(slideItems, function(slide, i2) {
-          slide.style.marginLeft = getSlideMarginLeft(i2);
+        forEach(slideItems, function(slide, i3) {
+          slide.style.marginLeft = getSlideMarginLeft(i3);
         });
       }
     }
@@ -5026,9 +5026,9 @@ var tns = function(options) {
       update_carousel_transition_duration();
       innerWrapper.style.cssText = getInnerWrapperStyles(edgePadding, gutter, fixedWidth, autoHeight);
       if (carousel && horizontal && !autoWidth) {
-        container.style.width = getContainerWidth(fixedWidth, gutter, items);
+        container.style.width = getContainerWidth(fixedWidth, gutter, items2);
       }
-      var str = horizontal && !autoWidth ? getSlideWidthStyle(fixedWidth, gutter, items) : "";
+      var str = horizontal && !autoWidth ? getSlideWidthStyle(fixedWidth, gutter, items2) : "";
       if (gutter) {
         str += getSlideGutterStyle(gutter);
       }
@@ -5109,18 +5109,18 @@ var tns = function(options) {
       if (navContainer) {
         setAttrs(navContainer, { "aria-label": "Carousel Pagination" });
         navItems = navContainer.children;
-        forEach(navItems, function(item, i2) {
+        forEach(navItems, function(item, i3) {
           setAttrs(item, {
-            "data-nav": i2,
+            "data-nav": i3,
             "tabindex": "-1",
-            "aria-label": navStr + (i2 + 1),
+            "aria-label": navStr + (i3 + 1),
             "aria-controls": slideId
           });
         });
       } else {
         var navHtml = "", hiddenStr = navAsThumbnails ? "" : 'style="display:none"';
-        for (var i = 0; i < slideCount; i++) {
-          navHtml += '<button type="button" data-nav="' + i + '" tabindex="-1" aria-controls="' + slideId + '" ' + hiddenStr + ' aria-label="' + navStr + (i + 1) + '"></button>';
+        for (var i2 = 0; i2 < slideCount; i2++) {
+          navHtml += '<button type="button" data-nav="' + i2 + '" tabindex="-1" aria-controls="' + slideId + '" ' + hiddenStr + ' aria-label="' + navStr + (i2 + 1) + '"></button>';
         }
         navHtml = '<div class="tns-nav" aria-label="Carousel Pagination">' + navHtml + "</div>";
         outerWrapper.insertAdjacentHTML(getInsertPosition(options.navPosition), navHtml);
@@ -5257,15 +5257,15 @@ var tns = function(options) {
       removeEvents(container, dragEvents);
     }
     var htmlList = [containerHTML, controlsContainerHTML, prevButtonHTML, nextButtonHTML, navContainerHTML, autoplayButtonHTML];
-    tnsList.forEach(function(item, i) {
+    tnsList.forEach(function(item, i2) {
       var el = item === "container" ? outerWrapper : options[item];
       if (typeof el === "object" && el) {
         var prevEl = el.previousElementSibling ? el.previousElementSibling : false, parentEl = el.parentNode;
-        el.outerHTML = htmlList[i];
+        el.outerHTML = htmlList[i2];
         options[item] = prevEl ? prevEl.nextElementSibling : parentEl.firstElementChild;
       }
     });
-    tnsList = animateIn = animateOut = animateDelay = animateNormal = horizontal = outerWrapper = innerWrapper = container = containerParent = containerHTML = slideItems = slideCount = breakpointZone = windowWidth = autoWidth = fixedWidth = edgePadding = gutter = viewport = items = slideBy = viewportMax = arrowKeys = speed = rewind = loop = autoHeight = sheet = lazyload = slidePositions = slideItemsOut = cloneCount = slideCountNew = hasRightDeadZone = rightBoundary = updateIndexBeforeTransform = transformAttr = transformPrefix = transformPostfix = getIndexMax = index = indexCached = indexMin = indexMax = resizeTimer = swipeAngle = moveDirectionExpected = running = onInit = events = newContainerClasses = slideId = disable = disabled = freezable = freeze = frozen = controlsEvents = navEvents = hoverEvents = visibilityEvent = docmentKeydownEvent = touchEvents = dragEvents = hasControls = hasNav = navAsThumbnails = hasAutoplay = hasTouch = hasMouseDrag = slideActiveClass = imgCompleteClass = imgEvents = imgsComplete = controls = controlsText = controlsContainer = controlsContainerHTML = prevButton = nextButton = prevIsButton = nextIsButton = nav = navContainer = navContainerHTML = navItems = pages = pagesCached = navClicked = navCurrentIndex = navCurrentIndexCached = navActiveClass = navStr = navStrCurrent = autoplay = autoplayTimeout = autoplayDirection = autoplayText = autoplayHoverPause = autoplayButton = autoplayButtonHTML = autoplayResetOnVisibility = autoplayHtmlStrings = autoplayTimer = animating = autoplayHoverPaused = autoplayUserPaused = autoplayVisibilityPaused = initPosition = lastPosition = translateInit = disX = disY = panStart = rafIndex = getDist = touch = mouseDrag = null;
+    tnsList = animateIn = animateOut = animateDelay = animateNormal = horizontal = outerWrapper = innerWrapper = container = containerParent = containerHTML = slideItems = slideCount = breakpointZone = windowWidth = autoWidth = fixedWidth = edgePadding = gutter = viewport = items2 = slideBy = viewportMax = arrowKeys = speed = rewind = loop = autoHeight = sheet = lazyload = slidePositions = slideItemsOut = cloneCount = slideCountNew = hasRightDeadZone = rightBoundary = updateIndexBeforeTransform = transformAttr = transformPrefix = transformPostfix = getIndexMax = index = indexCached = indexMin = indexMax = resizeTimer = swipeAngle = moveDirectionExpected = running = onInit = events = newContainerClasses = slideId = disable = disabled = freezable = freeze = frozen = controlsEvents = navEvents = hoverEvents = visibilityEvent = docmentKeydownEvent = touchEvents = dragEvents = hasControls = hasNav = navAsThumbnails = hasAutoplay = hasTouch = hasMouseDrag = slideActiveClass = imgCompleteClass = imgEvents = imgsComplete = controls = controlsText = controlsContainer = controlsContainerHTML = prevButton = nextButton = prevIsButton = nextIsButton = nav = navContainer = navContainerHTML = navItems = pages = pagesCached = navClicked = navCurrentIndex = navCurrentIndexCached = navActiveClass = navStr = navStrCurrent = autoplay = autoplayTimeout = autoplayDirection = autoplayText = autoplayHoverPause = autoplayButton = autoplayButtonHTML = autoplayResetOnVisibility = autoplayHtmlStrings = autoplayTimer = animating = autoplayHoverPaused = autoplayUserPaused = autoplayVisibilityPaused = initPosition = lastPosition = translateInit = disX = disY = panStart = rafIndex = getDist = touch = mouseDrag = null;
     for (var a in this) {
       if (a !== "rebuild") {
         this[a] = null;
@@ -5294,7 +5294,7 @@ var tns = function(options) {
         events.emit("newBreakpointStart", info(e));
       }
     }
-    var indChanged, itemsChanged, itemsTem = items, disableTem = disable, freezeTem = freeze, arrowKeysTem = arrowKeys, controlsTem = controls, navTem = nav, touchTem = touch, mouseDragTem = mouseDrag, autoplayTem = autoplay, autoplayHoverPauseTem = autoplayHoverPause, autoplayResetOnVisibilityTem = autoplayResetOnVisibility, indexTem = index;
+    var indChanged, itemsChanged, itemsTem = items2, disableTem = disable, freezeTem = freeze, arrowKeysTem = arrowKeys, controlsTem = controls, navTem = nav, touchTem = touch, mouseDragTem = mouseDrag, autoplayTem = autoplay, autoplayHoverPauseTem = autoplayHoverPause, autoplayResetOnVisibilityTem = autoplayResetOnVisibility, indexTem = index;
     if (bpChanged) {
       var fixedWidthTem = fixedWidth, autoHeightTem = autoHeight, controlsTextTem = controlsText, centerTem = center, autoplayTextTem = autoplayText;
       if (!CSSMQ) {
@@ -5337,9 +5337,9 @@ var tns = function(options) {
       indexMax = getIndexMax();
     }
     if (bpChanged || fixedWidth) {
-      items = getOption("items");
+      items2 = getOption("items");
       slideBy = getOption("slideBy");
-      itemsChanged = items !== itemsTem;
+      itemsChanged = items2 !== itemsTem;
       if (itemsChanged) {
         if (!fixedWidth && !autoWidth) {
           indexMax = getIndexMax();
@@ -5451,9 +5451,9 @@ var tns = function(options) {
         nextButton.innerHTML = controlsText[1];
       }
       if (autoplayButton && autoplayText !== autoplayTextTem) {
-        var i = autoplay ? 1 : 0, html = autoplayButton.innerHTML, len = html.length - autoplayTextTem[i].length;
-        if (html.substring(len) === autoplayTextTem[i]) {
-          autoplayButton.innerHTML = html.substring(0, len) + autoplayText[i];
+        var i2 = autoplay ? 1 : 0, html = autoplayButton.innerHTML, len = html.length - autoplayTextTem[i2].length;
+        if (html.substring(len) === autoplayTextTem[i2]) {
+          autoplayButton.innerHTML = html.substring(0, len) + autoplayText[i2];
         }
       }
     } else {
@@ -5488,9 +5488,9 @@ var tns = function(options) {
         }
         if (horizontal) {
           if (carousel) {
-            container.style.width = getContainerWidth(fixedWidth, gutter, items);
+            container.style.width = getContainerWidth(fixedWidth, gutter, items2);
           }
-          var str = getSlideWidthStyle(fixedWidth, gutter, items) + getSlideGutterStyle(gutter);
+          var str = getSlideWidthStyle(fixedWidth, gutter, items2) + getSlideGutterStyle(gutter);
           removeCSSRule(sheet, getCssRulesLength(sheet) - 1);
           addCSSRule(sheet, "#" + slideId + " > .tns-item", str, getCssRulesLength(sheet));
         }
@@ -5509,7 +5509,7 @@ var tns = function(options) {
   }
   function getFreeze() {
     if (!fixedWidth && !autoWidth) {
-      var a = center ? items - (items - 1) / 2 : items;
+      var a = center ? items2 - (items2 - 1) / 2 : items2;
       return slideCount <= a;
     }
     var width = fixedWidth ? (fixedWidth + gutter) * slideCount : slidePositions[slideCount], vp = edgePadding ? viewport + edgePadding * 2 : viewport + gutter;
@@ -5619,11 +5619,11 @@ var tns = function(options) {
     }
     if (cloneCount) {
       var str = "tns-transparent";
-      for (var i = cloneCount; i--; ) {
+      for (var i2 = cloneCount; i2--; ) {
         if (carousel) {
-          addClass(slideItems[i], str);
+          addClass(slideItems[i2], str);
         }
-        addClass(slideItems[slideCountNew - i - 1], str);
+        addClass(slideItems[slideCountNew - i2 - 1], str);
       }
     }
     disableUI();
@@ -5638,11 +5638,11 @@ var tns = function(options) {
     }
     if (cloneCount) {
       var str = "tns-transparent";
-      for (var i = cloneCount; i--; ) {
+      for (var i2 = cloneCount; i2--; ) {
         if (carousel) {
-          removeClass(slideItems[i], str);
+          removeClass(slideItems[i2], str);
         }
-        removeClass(slideItems[slideCountNew - i - 1], str);
+        removeClass(slideItems[slideCountNew - i2 - 1], str);
       }
     }
     enableUI();
@@ -5667,8 +5667,8 @@ var tns = function(options) {
       removeAttrs(innerWrapper, ["style"]);
     }
     if (!carousel) {
-      for (var i = index, l = index + slideCount; i < l; i++) {
-        var item = slideItems[i];
+      for (var i2 = index, l = index + slideCount; i2 < l; i2++) {
+        var item = slideItems[i2];
         removeAttrs(item, ["style"]);
         removeClass(item, animateIn);
         removeClass(item, animateNormal);
@@ -5693,9 +5693,9 @@ var tns = function(options) {
       }
     }
     if (!carousel) {
-      for (var i = index, l = index + slideCount; i < l; i++) {
-        var item = slideItems[i], classN = i < index + items ? animateIn : animateNormal;
-        item.style.left = (i - index) * 100 / items + "%";
+      for (var i2 = index, l = index + slideCount; i2 < l; i2++) {
+        var item = slideItems[i2], classN = i2 < index + items2 ? animateIn : animateNormal;
+        item.style.left = (i2 - index) * 100 / items2 + "%";
         addClass(item, classN);
       }
     }
@@ -5729,13 +5729,13 @@ var tns = function(options) {
       }
     }
     if (autoWidth) {
-      slidePositions.forEach(function(point, i) {
-        if (i < slideCountNew) {
+      slidePositions.forEach(function(point, i2) {
+        if (i2 < slideCountNew) {
           if ((center || edgePadding) && point <= rangestart + 0.5) {
-            start = i;
+            start = i2;
           }
           if (rangeend - point >= 0.5) {
-            end = i;
+            end = i2;
           }
         }
       });
@@ -5750,7 +5750,7 @@ var tns = function(options) {
         }
       } else {
         if (center || edgePadding) {
-          var a = items - 1;
+          var a = items2 - 1;
           if (center) {
             start -= a / 2;
             end = index + a / 2;
@@ -5758,14 +5758,14 @@ var tns = function(options) {
             end = index + a;
           }
           if (edgePadding) {
-            var b = edgePadding * items / viewport;
+            var b = edgePadding * items2 / viewport;
             start -= b;
             end += b;
           }
           start = Math.floor(start);
           end = Math.ceil(end);
         } else {
-          end = start + items - 1;
+          end = start + items2 - 1;
         }
       }
       start = Math.max(start, 0);
@@ -5866,13 +5866,13 @@ var tns = function(options) {
   }
   function getMaxSlideHeight(slideStart, slideRange) {
     var heights = [];
-    for (var i = slideStart, l = Math.min(slideStart + slideRange, slideCountNew); i < l; i++) {
-      heights.push(slideItems[i].offsetHeight);
+    for (var i2 = slideStart, l = Math.min(slideStart + slideRange, slideCountNew); i2 < l; i2++) {
+      heights.push(slideItems[i2].offsetHeight);
     }
     return Math.max.apply(null, heights);
   }
   function updateInnerWrapperHeight() {
-    var maxHeight = autoHeight ? getMaxSlideHeight(index, items) : getMaxSlideHeight(cloneCount, slideCount), wp = middleWrapper ? middleWrapper : innerWrapper;
+    var maxHeight = autoHeight ? getMaxSlideHeight(index, items2) : getMaxSlideHeight(cloneCount, slideCount), wp = middleWrapper ? middleWrapper : innerWrapper;
     if (wp.style.height !== maxHeight) {
       wp.style.height = maxHeight + "px";
     }
@@ -5880,19 +5880,19 @@ var tns = function(options) {
   function setSlidePositions() {
     slidePositions = [0];
     var attr = horizontal ? "left" : "top", attr2 = horizontal ? "right" : "bottom", base = slideItems[0].getBoundingClientRect()[attr];
-    forEach(slideItems, function(item, i) {
-      if (i) {
+    forEach(slideItems, function(item, i2) {
+      if (i2) {
         slidePositions.push(item.getBoundingClientRect()[attr] - base);
       }
-      if (i === slideCountNew - 1) {
+      if (i2 === slideCountNew - 1) {
         slidePositions.push(item.getBoundingClientRect()[attr2] - base);
       }
     });
   }
   function updateSlideStatus() {
     var range = getVisibleSlideRange(), start = range[0], end = range[1];
-    forEach(slideItems, function(item, i) {
-      if (i >= start && i <= end) {
+    forEach(slideItems, function(item, i2) {
+      if (i2 >= start && i2 <= end) {
         if (hasAttr(item, "aria-hidden")) {
           removeAttrs(item, ["aria-hidden", "tabindex"]);
           addClass(item, slideActiveClass);
@@ -5909,12 +5909,12 @@ var tns = function(options) {
     });
   }
   function updateGallerySlidePositions() {
-    var l = index + Math.min(slideCount, items);
-    for (var i = slideCountNew; i--; ) {
-      var item = slideItems[i];
-      if (i >= index && i < l) {
+    var l = index + Math.min(slideCount, items2);
+    for (var i2 = slideCountNew; i2--; ) {
+      var item = slideItems[i2];
+      if (i2 >= index && i2 < l) {
         addClass(item, "tns-moving");
-        item.style.left = (i - index) * 100 / items + "%";
+        item.style.left = (i2 - index) * 100 / items2 + "%";
         addClass(item, animateIn);
         removeClass(item, animateNormal);
       } else if (item.style.left) {
@@ -5995,7 +5995,7 @@ var tns = function(options) {
       num = index;
     }
     var gap = edgePadding ? gutter : 0;
-    return autoWidth ? (viewport - gap - (slidePositions[num + 1] - slidePositions[num] - gutter)) / 2 : fixedWidth ? (viewport - fixedWidth) / 2 : (items - 1) / 2;
+    return autoWidth ? (viewport - gap - (slidePositions[num + 1] - slidePositions[num] - gutter)) / 2 : fixedWidth ? (viewport - fixedWidth) / 2 : (items2 - 1) / 2;
   }
   function getRightBoundary() {
     var gap = edgePadding ? gutter : 0, result = viewport + gap - getSliderWidth();
@@ -6019,7 +6019,7 @@ var tns = function(options) {
           val2 += getCenterGap();
         }
       } else {
-        var denominator = TRANSFORM ? slideCountNew : items;
+        var denominator = TRANSFORM ? slideCountNew : items2;
         if (center) {
           num -= getCenterGap();
         }
@@ -6048,17 +6048,17 @@ var tns = function(options) {
     container.style[transformAttr] = transformPrefix + val2 + transformPostfix;
   }
   function animateSlide(number, classOut, classIn, isOut) {
-    var l = number + items;
+    var l = number + items2;
     if (!loop) {
       l = Math.min(l, slideCountNew);
     }
-    for (var i = number; i < l; i++) {
-      var item = slideItems[i];
+    for (var i2 = number; i2 < l; i2++) {
+      var item = slideItems[i2];
       if (!isOut) {
-        item.style.left = (i - index) * 100 / items + "%";
+        item.style.left = (i2 - index) * 100 / items2 + "%";
       }
       if (animateDelay && TRANSITIONDELAY) {
-        item.style[TRANSITIONDELAY] = item.style[ANIMATIONDELAY] = animateDelay * (i - number) / 1e3 + "s";
+        item.style[TRANSITIONDELAY] = item.style[ANIMATIONDELAY] = animateDelay * (i2 - number) / 1e3 + "s";
       }
       removeClass(item, classOut);
       addClass(item, classIn);
@@ -6118,8 +6118,8 @@ var tns = function(options) {
     if (carousel || running) {
       events.emit("transitionEnd", info(event));
       if (!carousel && slideItemsOut.length > 0) {
-        for (var i = 0; i < slideItemsOut.length; i++) {
-          var item = slideItemsOut[i];
+        for (var i2 = 0; i2 < slideItemsOut.length; i2++) {
+          var item = slideItemsOut[i2];
           item.style.left = "";
           if (ANIMATIONDELAY && TRANSITIONDELAY) {
             item.style[ANIMATIONDELAY] = "";
@@ -6166,7 +6166,7 @@ var tns = function(options) {
       if (targetIndex === "first") {
         indexGap = -absIndex;
       } else if (targetIndex === "last") {
-        indexGap = carousel ? slideCount - items - absIndex : slideCount - 1 - absIndex;
+        indexGap = carousel ? slideCount - items2 - absIndex : slideCount - 1 - absIndex;
       } else {
         if (typeof targetIndex !== "number") {
           targetIndex = parseInt(targetIndex);
@@ -6178,7 +6178,7 @@ var tns = function(options) {
           indexGap = targetIndex - absIndex;
         }
       }
-      if (!carousel && indexGap && Math.abs(indexGap) < items) {
+      if (!carousel && indexGap && Math.abs(indexGap) < items2) {
         var factor = indexGap > 0 ? 1 : -1;
         indexGap += index + indexGap - slideCount >= indexMin ? slideCount * factor : slideCount * 2 * factor * -1;
       }
@@ -6248,7 +6248,7 @@ var tns = function(options) {
       target = target.parentNode;
     }
     if (hasAttr(target, "data-nav")) {
-      var navIndex = navClicked = Number(getAttr(target, "data-nav")), targetIndexBase = fixedWidth || autoWidth ? navIndex * slideCount / pages : navIndex * items, targetIndex = navAsThumbnails ? navIndex : Math.min(Math.ceil(targetIndexBase), slideCount - 1);
+      var navIndex = navClicked = Number(getAttr(target, "data-nav")), targetIndexBase = fixedWidth || autoWidth ? navIndex * slideCount / pages : navIndex * items2, targetIndex = navAsThumbnails ? navIndex : Math.min(Math.ceil(targetIndexBase), slideCount - 1);
       goTo(targetIndex, e);
       if (navCurrentIndex === navIndex) {
         if (animating) {
@@ -6470,7 +6470,7 @@ var tns = function(options) {
         x += dist;
         x += "px";
       } else {
-        var percentageX = TRANSFORM ? dist * items * 100 / ((viewport + gutter) * slideCountNew) : dist * 100 / (viewport + gutter);
+        var percentageX = TRANSFORM ? dist * items2 * 100 / ((viewport + gutter) * slideCountNew) : dist * 100 / (viewport + gutter);
         x += percentageX;
         x += "%";
       }
@@ -6502,7 +6502,7 @@ var tns = function(options) {
         if (carousel) {
           rafIndex = raf(function() {
             if (horizontal && !autoWidth) {
-              var indexMoved = -dist * items / (viewport + gutter);
+              var indexMoved = -dist * items2 / (viewport + gutter);
               indexMoved = dist > 0 ? Math.floor(indexMoved) : Math.ceil(indexMoved);
               index += indexMoved;
             } else {
@@ -6512,13 +6512,13 @@ var tns = function(options) {
               } else if (moved >= slidePositions[slideCountNew - 1]) {
                 index = indexMax;
               } else {
-                var i = 0;
-                while (i < slideCountNew && moved >= slidePositions[i]) {
-                  index = i;
-                  if (moved > slidePositions[i] && dist < 0) {
+                var i2 = 0;
+                while (i2 < slideCountNew && moved >= slidePositions[i2]) {
+                  index = i2;
+                  if (moved > slidePositions[i2] && dist < 0) {
                     index += 1;
                   }
-                  i++;
+                  i2++;
                 }
               }
             }
@@ -6544,10 +6544,10 @@ var tns = function(options) {
   }
   function updateContentWrapperHeight() {
     var wp = middleWrapper ? middleWrapper : innerWrapper;
-    wp.style.height = slidePositions[index + items] - slidePositions[index] + "px";
+    wp.style.height = slidePositions[index + items2] - slidePositions[index] + "px";
   }
   function getPages() {
-    var rough = fixedWidth ? (fixedWidth + gutter) * slideCount / viewport : slideCount / items;
+    var rough = fixedWidth ? (fixedWidth + gutter) * slideCount / viewport : slideCount / items2;
     return Math.min(Math.ceil(rough), slideCount);
   }
   function updateNavVisibility() {
@@ -6578,7 +6578,7 @@ var tns = function(options) {
       hasControls,
       prevButton,
       nextButton,
-      items,
+      items: items2,
       slideBy,
       cloneCount,
       slideCount,
@@ -6753,9 +6753,9 @@ var _isAbsolute = function _isAbsolute2(vars) {
   return vars.position === "absolute" || vars.absolute === true;
 };
 var _findSpecialChars = function _findSpecialChars2(text, chars) {
-  var i = chars.length, s;
-  while (--i > -1) {
-    s = chars[i];
+  var i2 = chars.length, s;
+  while (--i2 > -1) {
+    s = chars[i2];
     if (text.substr(0, s.length) === s) {
       return s.length;
     }
@@ -6785,9 +6785,9 @@ var _swapText = function _swapText2(element, oldText, newText) {
   }
 };
 var _pushReversed = function _pushReversed2(a, merge) {
-  var i = merge.length;
-  while (--i > -1) {
-    a.push(merge[i]);
+  var i2 = merge.length;
+  while (--i2 > -1) {
+    a.push(merge[i2]);
   }
 };
 var _isBeforeWordDelimiter = function _isBeforeWordDelimiter2(e, root, wordDelimiter) {
@@ -6801,13 +6801,13 @@ var _isBeforeWordDelimiter = function _isBeforeWordDelimiter2(e, root, wordDelim
   }
 };
 var _deWordify = function _deWordify2(e) {
-  var children = _toArray(e.childNodes), l = children.length, i, child;
-  for (i = 0; i < l; i++) {
-    child = children[i];
+  var children = _toArray(e.childNodes), l = children.length, i2, child;
+  for (i2 = 0; i2 < l; i2++) {
+    child = children[i2];
     if (child._isSplit) {
       _deWordify2(child);
     } else {
-      if (i && child.previousSibling && child.previousSibling.nodeType === 3) {
+      if (i2 && child.previousSibling && child.previousSibling.nodeType === 3) {
         child.previousSibling.nodeValue += child.nodeType === 3 ? child.nodeValue : child.firstChild.nodeValue;
         e.removeChild(child);
       } else if (child.nodeType !== 3) {
@@ -6821,22 +6821,22 @@ var _getStyleAsNumber = function _getStyleAsNumber2(name, computedStyle) {
   return parseFloat(computedStyle[name]) || 0;
 };
 var _setPositionsAfterSplit = function _setPositionsAfterSplit2(element, vars, allChars, allWords, allLines, origWidth, origHeight) {
-  var cs = _getComputedStyle(element), paddingLeft = _getStyleAsNumber("paddingLeft", cs), lineOffsetY = -999, borderTopAndBottom = _getStyleAsNumber("borderBottomWidth", cs) + _getStyleAsNumber("borderTopWidth", cs), borderLeftAndRight = _getStyleAsNumber("borderLeftWidth", cs) + _getStyleAsNumber("borderRightWidth", cs), padTopAndBottom = _getStyleAsNumber("paddingTop", cs) + _getStyleAsNumber("paddingBottom", cs), padLeftAndRight = _getStyleAsNumber("paddingLeft", cs) + _getStyleAsNumber("paddingRight", cs), lineThreshold = _getStyleAsNumber("fontSize", cs) * (vars.lineThreshold || 0.2), textAlign = cs.textAlign, charArray = [], wordArray = [], lineArray = [], wordDelimiter = vars.wordDelimiter || " ", tag = vars.tag ? vars.tag : vars.span ? "span" : "div", types = vars.type || vars.split || "chars,words,lines", lines = allLines && ~types.indexOf("lines") ? [] : null, words = ~types.indexOf("words"), chars = ~types.indexOf("chars"), absolute = _isAbsolute(vars), linesClass = vars.linesClass, iterateLine = ~(linesClass || "").indexOf("++"), spaceNodesToRemove = [], isFlex = cs.display === "flex", prevInlineDisplay = element.style.display, i, j, l, node, nodes, isChild, curLine, addWordSpaces, style, lineNode, lineWidth, offset;
+  var cs = _getComputedStyle(element), paddingLeft = _getStyleAsNumber("paddingLeft", cs), lineOffsetY = -999, borderTopAndBottom = _getStyleAsNumber("borderBottomWidth", cs) + _getStyleAsNumber("borderTopWidth", cs), borderLeftAndRight = _getStyleAsNumber("borderLeftWidth", cs) + _getStyleAsNumber("borderRightWidth", cs), padTopAndBottom = _getStyleAsNumber("paddingTop", cs) + _getStyleAsNumber("paddingBottom", cs), padLeftAndRight = _getStyleAsNumber("paddingLeft", cs) + _getStyleAsNumber("paddingRight", cs), lineThreshold = _getStyleAsNumber("fontSize", cs) * (vars.lineThreshold || 0.2), textAlign = cs.textAlign, charArray = [], wordArray = [], lineArray = [], wordDelimiter = vars.wordDelimiter || " ", tag = vars.tag ? vars.tag : vars.span ? "span" : "div", types = vars.type || vars.split || "chars,words,lines", lines = allLines && ~types.indexOf("lines") ? [] : null, words = ~types.indexOf("words"), chars = ~types.indexOf("chars"), absolute = _isAbsolute(vars), linesClass = vars.linesClass, iterateLine = ~(linesClass || "").indexOf("++"), spaceNodesToRemove = [], isFlex = cs.display === "flex", prevInlineDisplay = element.style.display, i2, j, l, node, nodes, isChild, curLine, addWordSpaces, style, lineNode, lineWidth, offset;
   iterateLine && (linesClass = linesClass.split("++").join(""));
   isFlex && (element.style.display = "block");
   j = element.getElementsByTagName("*");
   l = j.length;
   nodes = [];
-  for (i = 0; i < l; i++) {
-    nodes[i] = j[i];
+  for (i2 = 0; i2 < l; i2++) {
+    nodes[i2] = j[i2];
   }
   if (lines || absolute) {
-    for (i = 0; i < l; i++) {
-      node = nodes[i];
+    for (i2 = 0; i2 < l; i2++) {
+      node = nodes[i2];
       isChild = node.parentNode === element;
       if (isChild || absolute || chars && !words) {
         offset = node.offsetTop;
-        if (lines && isChild && Math.abs(offset - lineOffsetY) > lineThreshold && (node.nodeName !== "BR" || i === 0)) {
+        if (lines && isChild && Math.abs(offset - lineOffsetY) > lineThreshold && (node.nodeName !== "BR" || i2 === 0)) {
           curLine = [];
           lines.push(curLine);
           lineOffsetY = offset;
@@ -6855,20 +6855,20 @@ var _setPositionsAfterSplit = function _setPositionsAfterSplit2(element, vars, a
               node._wordEnd = true;
             }
           }
-          if (node.nodeName === "BR" && (node.nextSibling && node.nextSibling.nodeName === "BR" || i === 0)) {
+          if (node.nodeName === "BR" && (node.nextSibling && node.nextSibling.nodeName === "BR" || i2 === 0)) {
             lines.push([]);
           }
         }
       }
     }
   }
-  for (i = 0; i < l; i++) {
-    node = nodes[i];
+  for (i2 = 0; i2 < l; i2++) {
+    node = nodes[i2];
     isChild = node.parentNode === element;
     if (node.nodeName === "BR") {
       if (lines || absolute) {
         node.parentNode && node.parentNode.removeChild(node);
-        nodes.splice(i--, 1);
+        nodes.splice(i2--, 1);
         l--;
       } else if (!words) {
         element.appendChild(node);
@@ -6907,7 +6907,7 @@ var _setPositionsAfterSplit = function _setPositionsAfterSplit2(element, vars, a
         }
         node._next = node.nextSibling && node.nextSibling._isFirst ? null : node.nextSibling;
         node.parentNode.removeChild(node);
-        nodes.splice(i--, 1);
+        nodes.splice(i2--, 1);
         l--;
       } else if (!isChild) {
         offset = !node.nextSibling && _isBeforeWordDelimiter(node.parentNode, element, wordDelimiter);
@@ -6927,9 +6927,9 @@ var _setPositionsAfterSplit = function _setPositionsAfterSplit2(element, vars, a
       charArray.push(node);
     }
   }
-  i = spaceNodesToRemove.length;
-  while (--i > -1) {
-    spaceNodesToRemove[i].parentNode.removeChild(spaceNodesToRemove[i]);
+  i2 = spaceNodesToRemove.length;
+  while (--i2 > -1) {
+    spaceNodesToRemove[i2].parentNode.removeChild(spaceNodesToRemove[i2]);
   }
   if (lines) {
     if (absolute) {
@@ -6945,12 +6945,12 @@ var _setPositionsAfterSplit = function _setPositionsAfterSplit2(element, vars, a
       element.removeChild(element.firstChild);
     }
     addWordSpaces = wordDelimiter === " " && (!absolute || !words && !chars);
-    for (i = 0; i < lines.length; i++) {
-      curLine = lines[i];
+    for (i2 = 0; i2 < lines.length; i2++) {
+      curLine = lines[i2];
       lineNode = _doc.createElement(tag);
       lineNode.style.cssText = "display:block;text-align:" + textAlign + ";position:" + (absolute ? "absolute;" : "relative;");
       if (linesClass) {
-        lineNode.className = linesClass + (iterateLine ? i + 1 : "");
+        lineNode.className = linesClass + (iterateLine ? i2 + 1 : "");
       }
       lineArray.push(lineNode);
       l = curLine.length;
@@ -7007,7 +7007,7 @@ var _setPositionsAfterSplit = function _setPositionsAfterSplit2(element, vars, a
 var _splitRawText = function _splitRawText2(element, vars, wordStart, charStart) {
   var tag = vars.tag ? vars.tag : vars.span ? "span" : "div", types = vars.type || vars.split || "chars,words,lines", chars = ~types.indexOf("chars"), absolute = _isAbsolute(vars), wordDelimiter = vars.wordDelimiter || " ", isWordDelimiter = function isWordDelimiter2(_char) {
     return _char === wordDelimiter || _char === _nonBreakingSpace && wordDelimiter === " ";
-  }, space = wordDelimiter !== " " ? "" : absolute ? "&#173; " : " ", wordEnd = "</" + tag + ">", wordIsOpen = 1, specialChars = vars.specialChars ? typeof vars.specialChars === "function" ? vars.specialChars : _findSpecialChars : null, text, splitText, i, j, l, character, hasTagStart, testResult, container = _doc.createElement("div"), parent = element.parentNode;
+  }, space = wordDelimiter !== " " ? "" : absolute ? "&#173; " : " ", wordEnd = "</" + tag + ">", wordIsOpen = 1, specialChars = vars.specialChars ? typeof vars.specialChars === "function" ? vars.specialChars : _findSpecialChars : null, text, splitText, i2, j, l, character, hasTagStart, testResult, container = _doc.createElement("div"), parent = element.parentNode;
   parent.insertBefore(container, element);
   container.textContent = element.nodeValue;
   parent.removeChild(element);
@@ -7022,32 +7022,32 @@ var _splitRawText = function _splitRawText2(element, vars, wordStart, charStart)
   }
   l = text.length;
   splitText = (text.charAt(0) === " " ? space : "") + wordStart();
-  for (i = 0; i < l; i++) {
-    character = text.charAt(i);
-    if (specialChars && (testResult = specialChars(text.substr(i), vars.specialChars))) {
-      character = text.substr(i, testResult || 1);
+  for (i2 = 0; i2 < l; i2++) {
+    character = text.charAt(i2);
+    if (specialChars && (testResult = specialChars(text.substr(i2), vars.specialChars))) {
+      character = text.substr(i2, testResult || 1);
       splitText += chars && character !== " " ? charStart() + character + "</" + tag + ">" : character;
-      i += testResult - 1;
-    } else if (isWordDelimiter(character) && !isWordDelimiter(text.charAt(i - 1)) && i) {
+      i2 += testResult - 1;
+    } else if (isWordDelimiter(character) && !isWordDelimiter(text.charAt(i2 - 1)) && i2) {
       splitText += wordIsOpen ? wordEnd : "";
       wordIsOpen = 0;
-      while (isWordDelimiter(text.charAt(i + 1))) {
+      while (isWordDelimiter(text.charAt(i2 + 1))) {
         splitText += space;
-        i++;
+        i2++;
       }
-      if (i === l - 1) {
+      if (i2 === l - 1) {
         splitText += space;
-      } else if (text.charAt(i + 1) !== ")") {
+      } else if (text.charAt(i2 + 1) !== ")") {
         splitText += space + wordStart();
         wordIsOpen = 1;
       }
-    } else if (character === "{" && text.substr(i, 6) === "{{LT}}") {
+    } else if (character === "{" && text.substr(i2, 6) === "{{LT}}") {
       splitText += chars ? charStart() + "{{LT}}</" + tag + ">" : "{{LT}}";
-      i += 5;
-    } else if (character.charCodeAt(0) >= 55296 && character.charCodeAt(0) <= 56319 || text.charCodeAt(i + 1) >= 65024 && text.charCodeAt(i + 1) <= 65039) {
-      j = ((text.substr(i, 12).split(emojiExp) || [])[1] || "").length || 2;
-      splitText += chars && character !== " " ? charStart() + text.substr(i, j) + "</" + tag + ">" : text.substr(i, j);
-      i += j - 1;
+      i2 += 5;
+    } else if (character.charCodeAt(0) >= 55296 && character.charCodeAt(0) <= 56319 || text.charCodeAt(i2 + 1) >= 65024 && text.charCodeAt(i2 + 1) <= 65039) {
+      j = ((text.substr(i2, 12).split(emojiExp) || [])[1] || "").length || 2;
+      splitText += chars && character !== " " ? charStart() + text.substr(i2, j) + "</" + tag + ">" : text.substr(i2, j);
+      i2 += j - 1;
     } else {
       splitText += chars && character !== " " ? charStart() + character + "</" + tag + ">" : character;
     }
@@ -7056,11 +7056,11 @@ var _splitRawText = function _splitRawText2(element, vars, wordStart, charStart)
   hasTagStart && _swapText(parent, "{{LT}}", "<");
 };
 var _split = function _split2(element, vars, wordStart, charStart) {
-  var children = _toArray(element.childNodes), l = children.length, absolute = _isAbsolute(vars), i, child;
+  var children = _toArray(element.childNodes), l = children.length, absolute = _isAbsolute(vars), i2, child;
   if (element.nodeType !== 3 || l > 1) {
     vars.absolute = false;
-    for (i = 0; i < l; i++) {
-      child = children[i];
+    for (i2 = 0; i2 < l; i2++) {
+      child = children[i2];
       child._next = child._isFirst = child._parent = child._wordEnd = null;
       if (child.nodeType !== 3 || /\S+/.test(child.nodeValue)) {
         if (absolute && child.nodeType !== 3 && _getComputedStyle(child).display === "inline") {
@@ -7094,10 +7094,10 @@ var SplitText = /* @__PURE__ */ function() {
     this.isSplit && this.revert();
     this.vars = vars = vars || this.vars;
     this._originals.length = this.chars.length = this.words.length = this.lines.length = 0;
-    var i = this.elements.length, tag = vars.tag ? vars.tag : vars.span ? "span" : "div", wordStart = _cssClassFunc(vars.wordsClass, tag), charStart = _cssClassFunc(vars.charsClass, tag), origHeight, origWidth, e;
-    while (--i > -1) {
-      e = this.elements[i];
-      this._originals[i] = {
+    var i2 = this.elements.length, tag = vars.tag ? vars.tag : vars.span ? "span" : "div", wordStart = _cssClassFunc(vars.wordsClass, tag), charStart = _cssClassFunc(vars.charsClass, tag), origHeight, origWidth, e;
+    while (--i2 > -1) {
+      e = this.elements[i2];
+      this._originals[i2] = {
         html: e.innerHTML,
         style: e.getAttribute("style")
       };
@@ -7117,9 +7117,9 @@ var SplitText = /* @__PURE__ */ function() {
     if (!originals) {
       throw "revert() call wasn't scoped properly.";
     }
-    this.elements.forEach(function(e, i) {
-      e.innerHTML = originals[i].html;
-      e.setAttribute("style", originals[i].style);
+    this.elements.forEach(function(e, i2) {
+      e.innerHTML = originals[i2].html;
+      e.setAttribute("style", originals[i2].style);
     });
     this.chars = [];
     this.words = [];
@@ -7183,7 +7183,7 @@ function createCircles() {
     } catch (error) {
       console.error(error);
     }
-    for (let i = 0; i < count * 2; i++) {
+    for (let i2 = 0; i2 < count * 2; i2++) {
       let el = document.createElement("div");
       el.classList.add("gsap-hero_circle");
       try {
@@ -7201,8 +7201,8 @@ var import_gsap2 = __toESM(require_gsap());
 
 // node_modules/gsap/Observer.js
 function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
+  for (var i2 = 0; i2 < props.length; i2++) {
+    var descriptor = props[i2];
     descriptor.enumerable = descriptor.enumerable || false;
     descriptor.configurable = true;
     if ("value" in descriptor)
@@ -7323,10 +7323,10 @@ var _getTarget = function _getTarget2(t, self2) {
 var _getScrollFunc = function _getScrollFunc2(element, _ref) {
   var s = _ref.s, sc = _ref.sc;
   _isViewport(element) && (element = _doc2.scrollingElement || _docEl);
-  var i = _scrollers.indexOf(element), offset = sc === _vertical.sc ? 1 : 2;
-  !~i && (i = _scrollers.push(element) - 1);
-  _scrollers[i + offset] || _addListener(element, "scroll", _onScroll);
-  var prev = _scrollers[i + offset], func = prev || (_scrollers[i + offset] = _scrollCacheFunc(_getProxyProp(element, s), true) || (_isViewport(element) ? sc : _scrollCacheFunc(function(value) {
+  var i2 = _scrollers.indexOf(element), offset = sc === _vertical.sc ? 1 : 2;
+  !~i2 && (i2 = _scrollers.push(element) - 1);
+  _scrollers[i2 + offset] || _addListener(element, "scroll", _onScroll);
+  var prev = _scrollers[i2 + offset], func = prev || (_scrollers[i2 + offset] = _scrollCacheFunc(_getProxyProp(element, s), true) || (_isViewport(element) ? sc : _scrollCacheFunc(function(value) {
     return arguments.length ? element[s] = value : element[s];
   })));
   func.target = element;
@@ -7634,8 +7634,8 @@ var Observer = /* @__PURE__ */ function() {
     };
     self2.kill = self2.revert = function() {
       self2.disable();
-      var i = _observers.indexOf(self2);
-      i >= 0 && _observers.splice(i, 1);
+      var i2 = _observers.indexOf(self2);
+      i2 >= 0 && _observers.splice(i2, 1);
       _normalizer === self2 && (_normalizer = 0);
     };
     _observers.push(self2);
@@ -7772,8 +7772,8 @@ var _maxScroll = function _maxScroll2(element, _ref2) {
   return Math.max(0, (s = "scroll" + d2) && (a = _getProxyProp(element, s)) ? a() - _getBoundsFunc(element)()[d] : _isViewport3(element) ? (_docEl2[s] || _body2[s]) - _getViewportDimension(d2) : element[s] - element["offset" + d2]);
 };
 var _iterateAutoRefresh = function _iterateAutoRefresh2(func, events) {
-  for (var i = 0; i < _autoRefresh.length; i += 3) {
-    (!events || ~events.indexOf(_autoRefresh[i + 1])) && func(_autoRefresh[i], _autoRefresh[i + 1], _autoRefresh[i + 2]);
+  for (var i2 = 0; i2 < _autoRefresh.length; i2 += 3) {
+    (!events || ~events.indexOf(_autoRefresh[i2 + 1])) && func(_autoRefresh[i2], _autoRefresh[i2 + 1], _autoRefresh[i2 + 2]);
   }
 };
 var _isString = function _isString2(value) {
@@ -7868,24 +7868,24 @@ var _snapDirectional = function _snapDirectional2(snapIncrementOrArray) {
     if (threshold === void 0) {
       threshold = 1e-3;
     }
-    var i;
+    var i2;
     if (!direction) {
       return snap(value);
     }
     if (direction > 0) {
       value -= threshold;
-      for (i = 0; i < a.length; i++) {
-        if (a[i] >= value) {
-          return a[i];
+      for (i2 = 0; i2 < a.length; i2++) {
+        if (a[i2] >= value) {
+          return a[i2];
         }
       }
-      return a[i - 1];
+      return a[i2 - 1];
     } else {
-      i = a.length;
+      i2 = a.length;
       value += threshold;
-      while (i--) {
-        if (a[i] <= value) {
-          return a[i];
+      while (i2--) {
+        if (a[i2] <= value) {
+          return a[i2];
         }
       }
     }
@@ -8018,11 +8018,11 @@ var _dispatch = function _dispatch2(type) {
 };
 var _savedStyles = [];
 var _revertRecorded = function _revertRecorded2(media) {
-  for (var i = 0; i < _savedStyles.length; i += 5) {
-    if (!media || _savedStyles[i + 4] && _savedStyles[i + 4].query === media) {
-      _savedStyles[i].style.cssText = _savedStyles[i + 1];
-      _savedStyles[i].getBBox && _savedStyles[i].setAttribute("transform", _savedStyles[i + 2] || "");
-      _savedStyles[i + 3].uncache = 1;
+  for (var i2 = 0; i2 < _savedStyles.length; i2 += 5) {
+    if (!media || _savedStyles[i2 + 4] && _savedStyles[i2 + 4].query === media) {
+      _savedStyles[i2].style.cssText = _savedStyles[i2 + 1];
+      _savedStyles[i2].getBBox && _savedStyles[i2].setAttribute("transform", _savedStyles[i2 + 2] || "");
+      _savedStyles[i2 + 3].uncache = 1;
     }
   }
 };
@@ -8182,9 +8182,9 @@ var _swapPinOut = function _swapPinOut2(pin, spacer, state) {
 };
 var _swapPinIn = function _swapPinIn2(pin, spacer, cs, spacerState) {
   if (!pin._gsap.swappedIn) {
-    var i = _propNamesToCopy.length, spacerStyle = spacer.style, pinStyle = pin.style, p;
-    while (i--) {
-      p = _propNamesToCopy[i];
+    var i2 = _propNamesToCopy.length, spacerStyle = spacer.style, pinStyle = pin.style, p;
+    while (i2--) {
+      p = _propNamesToCopy[i2];
       spacerStyle[p] = cs[p];
     }
     spacerStyle.position = cs.position === "absolute" ? "absolute" : "relative";
@@ -8210,11 +8210,11 @@ var _swapPinIn = function _swapPinIn2(pin, spacer, cs, spacerState) {
 var _capsExp = /([A-Z])/g;
 var _setState = function _setState2(state) {
   if (state) {
-    var style = state.t.style, l = state.length, i = 0, p, value;
+    var style = state.t.style, l = state.length, i2 = 0, p, value;
     (state.t._gsap || gsap4.core.getCache(state.t)).uncache = 1;
-    for (; i < l; i += 2) {
-      value = state[i + 1];
-      p = state[i];
+    for (; i2 < l; i2 += 2) {
+      value = state[i2 + 1];
+      p = state[i2];
       if (value) {
         style[p] = value;
       } else if (style[p]) {
@@ -8224,18 +8224,18 @@ var _setState = function _setState2(state) {
   }
 };
 var _getState = function _getState2(element) {
-  var l = _stateProps.length, style = element.style, state = [], i = 0;
-  for (; i < l; i++) {
-    state.push(_stateProps[i], style[_stateProps[i]]);
+  var l = _stateProps.length, style = element.style, state = [], i2 = 0;
+  for (; i2 < l; i2++) {
+    state.push(_stateProps[i2], style[_stateProps[i2]]);
   }
   state.t = element;
   return state;
 };
 var _copyState = function _copyState2(state, override, omitOffsets) {
-  var result = [], l = state.length, i = omitOffsets ? 8 : 0, p;
-  for (; i < l; i += 2) {
-    p = state[i];
-    result.push(p, p in override ? override[p] : state[i + 1]);
+  var result = [], l = state.length, i2 = omitOffsets ? 8 : 0, p;
+  for (; i2 < l; i2 += 2) {
+    p = state[i2];
+    result.push(p, p in override ? override[p] : state[i2 + 1]);
   }
   result.t = state.t;
   return result;
@@ -8613,13 +8613,13 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
       }).invalidate();
       self2.isReverted || self2.revert(true, true);
       self2._subPinOffset = false;
-      var size = getScrollerSize(), scrollerBounds = getScrollerOffsets(), max = containerAnimation ? containerAnimation.duration() : _maxScroll(scroller, direction), isFirstRefresh = change <= 0.01, offset2 = 0, otherPinOffset = pinOffset || 0, parsedEnd = _isObject(position) ? position.end : vars.end, parsedEndTrigger = vars.endTrigger || trigger, parsedStart = _isObject(position) ? position.start : vars.start || (vars.start === 0 || !trigger ? 0 : pin ? "0 0" : "0 100%"), pinnedContainer = self2.pinnedContainer = vars.pinnedContainer && _getTarget(vars.pinnedContainer, self2), triggerIndex = trigger && Math.max(0, _triggers.indexOf(self2)) || 0, i = triggerIndex, cs2, bounds, scroll, isVertical, override, curTrigger, curPin, oppositeScroll, initted, revertedPins, forcedOverflow, markerStartOffset, markerEndOffset;
+      var size = getScrollerSize(), scrollerBounds = getScrollerOffsets(), max = containerAnimation ? containerAnimation.duration() : _maxScroll(scroller, direction), isFirstRefresh = change <= 0.01, offset2 = 0, otherPinOffset = pinOffset || 0, parsedEnd = _isObject(position) ? position.end : vars.end, parsedEndTrigger = vars.endTrigger || trigger, parsedStart = _isObject(position) ? position.start : vars.start || (vars.start === 0 || !trigger ? 0 : pin ? "0 0" : "0 100%"), pinnedContainer = self2.pinnedContainer = vars.pinnedContainer && _getTarget(vars.pinnedContainer, self2), triggerIndex = trigger && Math.max(0, _triggers.indexOf(self2)) || 0, i2 = triggerIndex, cs2, bounds, scroll, isVertical, override, curTrigger, curPin, oppositeScroll, initted, revertedPins, forcedOverflow, markerStartOffset, markerEndOffset;
       if (markers && _isObject(position)) {
         markerStartOffset = gsap4.getProperty(markerStartTrigger, direction.p);
         markerEndOffset = gsap4.getProperty(markerEndTrigger, direction.p);
       }
-      while (i--) {
-        curTrigger = _triggers[i];
+      while (i2--) {
+        curTrigger = _triggers[i2];
         curTrigger.end || curTrigger.refresh(0, 1) || (_refreshing = self2);
         curPin = curTrigger.pin;
         if (curPin && (curPin === trigger || curPin === pin || curPin === pinnedContainer) && !curTrigger.isReverted) {
@@ -8627,9 +8627,9 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
           revertedPins.unshift(curTrigger);
           curTrigger.revert(true, true);
         }
-        if (curTrigger !== _triggers[i]) {
+        if (curTrigger !== _triggers[i2]) {
           triggerIndex--;
-          i--;
+          i2--;
         }
       }
       _isFunction(parsedStart) && (parsedStart = parsedStart(self2));
@@ -8648,9 +8648,9 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
       parsedEnd = _parseClamp(parsedEnd, "end", self2);
       end = Math.max(start, _parsePosition(parsedEnd || (parsedEndTrigger ? "100% 0" : max), parsedEndTrigger, size, direction, scrollFunc() + offset2, markerEnd, markerEndTrigger, self2, scrollerBounds, borderWidth, useFixedPosition, max, containerAnimation, self2._endClamp && "_endClamp")) || -1e-3;
       offset2 = 0;
-      i = triggerIndex;
-      while (i--) {
-        curTrigger = _triggers[i];
+      i2 = triggerIndex;
+      while (i2--) {
+        curTrigger = _triggers[i2];
         curPin = curTrigger.pin;
         if (curPin && curTrigger.start - curTrigger._pinPush <= start && !containerAnimation && curTrigger.end > 0) {
           cs2 = curTrigger.end - (self2._startClamp ? Math.max(0, curTrigger.start) : curTrigger.start);
@@ -8700,10 +8700,10 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
         if (pinSpacing) {
           spacerState = [pinSpacing + direction.os2, change + otherPinOffset + _px];
           spacerState.t = spacer;
-          i = pinSpacing === _padding ? _getSize(pin, direction) + change + otherPinOffset : 0;
-          if (i) {
-            spacerState.push(direction.d, i + _px);
-            spacer.style.flexBasis !== "auto" && (spacer.style.flexBasis = i + _px);
+          i2 = pinSpacing === _padding ? _getSize(pin, direction) + change + otherPinOffset : 0;
+          if (i2) {
+            spacerState.push(direction.d, i2 + _px);
+            spacer.style.flexBasis !== "auto" && (spacer.style.flexBasis = i2 + _px);
           }
           _setState(spacerState);
           if (pinnedContainer) {
@@ -8715,8 +8715,8 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
           }
           useFixedPosition && scrollFunc(prevScroll);
         } else {
-          i = _getSize(pin, direction);
-          i && spacer.style.flexBasis !== "auto" && (spacer.style.flexBasis = i + _px);
+          i2 = _getSize(pin, direction);
+          i2 && spacer.style.flexBasis !== "auto" && (spacer.style.flexBasis = i2 + _px);
         }
         if (useFixedPosition) {
           override = {
@@ -8813,7 +8813,7 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
       return animation && animation.labels && (start || self2.refresh() || start) + animation.labels[label] / animation.duration() * change || 0;
     };
     self2.getTrailing = function(name) {
-      var i = _triggers.indexOf(self2), a = self2.direction > 0 ? _triggers.slice(0, i).reverse() : _triggers.slice(i + 1);
+      var i2 = _triggers.indexOf(self2), a = self2.direction > 0 ? _triggers.slice(0, i2).reverse() : _triggers.slice(i2 + 1);
       return (_isString(name) ? a.filter(function(t) {
         return t.vars.preventOverlaps === name;
       }) : a).filter(function(t) {
@@ -8962,8 +8962,8 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
     };
     self2.adjustPinSpacing = function(amount) {
       if (spacerState && amount) {
-        var i = spacerState.indexOf(direction.d) + 1;
-        spacerState[i] = parseFloat(spacerState[i]) + amount + _px;
+        var i2 = spacerState.indexOf(direction.d) + 1;
+        spacerState[i2] = parseFloat(spacerState[i2]) + amount + _px;
         spacerState[1] = parseFloat(spacerState[1]) + amount + _px;
         _setState(spacerState);
       }
@@ -8981,9 +8981,9 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
           tweenTo.tween && tweenTo.tween.kill() && (tweenTo.tween = 0);
         }
         if (!isViewport) {
-          var i = _triggers.length;
-          while (i--) {
-            if (_triggers[i].scroller === scroller && _triggers[i] !== self2) {
+          var i2 = _triggers.length;
+          while (i2--) {
+            if (_triggers[i2].scroller === scroller && _triggers[i2] !== self2) {
               return;
             }
           }
@@ -8996,14 +8996,14 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
       self2.disable(revert, allowAnimation);
       scrubTween && !allowAnimation && scrubTween.kill();
       id && delete _ids[id];
-      var i = _triggers.indexOf(self2);
-      i >= 0 && _triggers.splice(i, 1);
-      i === _i && _direction > 0 && _i--;
-      i = 0;
+      var i2 = _triggers.indexOf(self2);
+      i2 >= 0 && _triggers.splice(i2, 1);
+      i2 === _i && _direction > 0 && _i--;
+      i2 = 0;
       _triggers.forEach(function(t) {
-        return t.scroller === self2.scroller && (i = 1);
+        return t.scroller === self2.scroller && (i2 = 1);
       });
-      i || _refreshingAll || (self2.scroll.rec = 0);
+      i2 || _refreshingAll || (self2.scroll.rec = 0);
       if (animation) {
         animation.scrollTrigger = null;
         revert && animation.revert({
@@ -9017,11 +9017,11 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
       _primary === self2 && (_primary = 0);
       if (pin) {
         pinCache && (pinCache.uncache = 1);
-        i = 0;
+        i2 = 0;
         _triggers.forEach(function(t) {
-          return t.pin === pin && i++;
+          return t.pin === pin && i2++;
         });
-        i || (pinCache.spacer = 0);
+        i2 || (pinCache.spacer = 0);
       }
       vars.onKill && vars.onKill(self2);
     };
@@ -9072,9 +9072,9 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
     _multiListener(_removeListener3, _doc3, "pointerup,touchend,mouseup", _pointerUpHandler);
     _resizeDelay.kill();
     _iterateAutoRefresh(_removeListener3);
-    for (var i = 0; i < _scrollers.length; i += 3) {
-      _wheelListener(_removeListener3, _scrollers[i], _scrollers[i + 1]);
-      _wheelListener(_removeListener3, _scrollers[i], _scrollers[i + 2]);
+    for (var i2 = 0; i2 < _scrollers.length; i2 += 3) {
+      _wheelListener(_removeListener3, _scrollers[i2], _scrollers[i2 + 1]);
+      _wheelListener(_removeListener3, _scrollers[i2], _scrollers[i2 + 2]);
     }
   };
   ScrollTrigger3.enable = function enable() {
@@ -9130,7 +9130,7 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
         }
         _setBaseDimensions();
         _addListener3(_doc3, "scroll", _onScroll3);
-        var bodyStyle = _body2.style, border = bodyStyle.borderTopStyle, AnimationProto = gsap4.core.Animation.prototype, bounds, i;
+        var bodyStyle = _body2.style, border = bodyStyle.borderTopStyle, AnimationProto = gsap4.core.Animation.prototype, bounds, i2;
         AnimationProto.revert || Object.defineProperty(AnimationProto, "revert", {
           value: function value() {
             return this.time(-0.01, true);
@@ -9166,9 +9166,9 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
         _triggers.forEach(function(trigger) {
           return trigger.enable(0, 1);
         });
-        for (i = 0; i < _scrollers.length; i += 3) {
-          _wheelListener(_removeListener3, _scrollers[i], _scrollers[i + 1]);
-          _wheelListener(_removeListener3, _scrollers[i], _scrollers[i + 2]);
+        for (i2 = 0; i2 < _scrollers.length; i2 += 3) {
+          _wheelListener(_removeListener3, _scrollers[i2], _scrollers[i2 + 1]);
+          _wheelListener(_removeListener3, _scrollers[i2], _scrollers[i2 + 2]);
         }
       }
     }
@@ -9184,9 +9184,9 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
     }
   };
   ScrollTrigger3.scrollerProxy = function scrollerProxy(target, vars) {
-    var t = _getTarget(target), i = _scrollers.indexOf(t), isViewport = _isViewport3(t);
-    if (~i) {
-      _scrollers.splice(i, isViewport ? 6 : 2);
+    var t = _getTarget(target), i2 = _scrollers.indexOf(t), isViewport = _isViewport3(t);
+    if (~i2) {
+      _scrollers.splice(i2, isViewport ? 6 : 2);
     }
     if (vars) {
       isViewport ? _proxies.unshift(_win3, vars, _body2, vars, _docEl2, vars) : _proxies.unshift(t, vars);
@@ -9224,8 +9224,8 @@ ScrollTrigger2.version = "3.12.5";
 ScrollTrigger2.saveStyles = function(targets) {
   return targets ? _toArray2(targets).forEach(function(target) {
     if (target && target.style) {
-      var i = _savedStyles.indexOf(target);
-      i >= 0 && _savedStyles.splice(i, 5);
+      var i2 = _savedStyles.indexOf(target);
+      i2 >= 0 && _savedStyles.splice(i2, 5);
       _savedStyles.push(target, target.style.cssText, target.getBBox && target.getAttribute("transform"), gsap4.core.getCache(target), _context3());
     }
   }) : _savedStyles;
@@ -9266,8 +9266,8 @@ ScrollTrigger2.addEventListener = function(type, callback2) {
   ~a.indexOf(callback2) || a.push(callback2);
 };
 ScrollTrigger2.removeEventListener = function(type, callback2) {
-  var a = _listeners[type], i = a && a.indexOf(callback2);
-  i >= 0 && a.splice(i, 1);
+  var a = _listeners[type], i2 = a && a.indexOf(callback2);
+  i2 >= 0 && a.splice(i2, 1);
 };
 ScrollTrigger2.batch = function(targets, vars) {
   var result = [], varsCopy = {}, interval = vars.interval || 0.016, batchMax = vars.batchMax || 1e9, proxyCallback = function proxyCallback2(type, callback2) {
@@ -9570,12 +9570,12 @@ var header = document.querySelector("[data-header]");
 console.log(sections[0].dataset.section);
 header.setAttribute("data-theme", sections[0].dataset.section);
 var height = header.offsetHeight;
-sections.forEach((section) => {
+sections.forEach((section2) => {
   ScrollTrigger2.create({
-    trigger: section,
+    trigger: section2,
     start: () => "top +=" + height / 2 + "px",
     onUpdate: () => {
-      let theme = section.dataset.section;
+      let theme = section2.dataset.section;
       header.setAttribute("data-theme", theme);
     }
   });
@@ -9601,6 +9601,26 @@ var callback = (mutationList, mutationObserver2) => {
 };
 var mutationObserver = new MutationObserver(callback);
 mutationObserver.observe(targetNode, config);
+
+// our-process.js
+var import_gsap4 = __toESM(require_gsap());
+import_gsap4.gsap.registerPlugin(ScrollTrigger2);
+var section = document.querySelector(".our-process-section");
+var items = import_gsap4.gsap.utils.toArray(".our-process-process-item");
+var i = 1;
+items.forEach((item) => {
+  item.dataset.index = i++;
+  ScrollTrigger2.create({
+    trigger: item,
+    start: "top bottom",
+    onEnter: () => {
+      section.style.cursor = "var(--process-cursor-" + item.dataset.index + "), auto";
+    },
+    onEnterBack: () => {
+      section.style.cursor = "var(--process-cursor-" + item.dataset.index + "), auto";
+    }
+  });
+});
 /*! Bundled license information:
 
 gsap/dist/gsap.js:
