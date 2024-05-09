@@ -92,7 +92,9 @@
 section,
 .nav-menu--left,
 [data-theme=light-teal],
-[data-theme=cream] {
+[data-theme=cream],
+.page-wrapper,
+.site-wrapper {
   cursor: var(--cursor-dark), auto;
 }
 [data-section=dark-teal],
@@ -110,6 +112,31 @@ button,
 }
 .our-process-section {
   cursor: var(--process-cursor-1), auto;
+}
+.button.is-text {
+  display: block;
+  overflow: hidden;
+}
+.button.is-text > div {
+  display: inline-block;
+}
+.button.is-text .w-embed {
+  margin-left: 1rem;
+  position: relative;
+  top: 0.1rem;
+}
+.button.is-text::after {
+  content: "";
+  display: block;
+  width: 200%;
+  margin-top: 1rem;
+  height: 1px;
+  background: linear-gradient(90deg, #fea086 0%, #fea086 50%, #123c42 50%, #123c42 100%);
+  transform: translateX(-50%);
+  transition: transform 0.2s ease-in-out;
+}
+.button.is-text:hover::after {
+  transform: translateX(0%);
 }
 .tns-outer,
 .tns-ovh,
