@@ -197,9 +197,11 @@ button,
 }
 [data-theme=dark-teal] {
   --nav-color: var(--light-teal);
+  --header-bg: rgba(18, 60, 66, 0.003);
 }
 [data-theme=light-teal] {
   --nav-color: var(--dark-teal);
+  --header-bg: rgba(185, 244, 216, 0.003);
 }
 [data-theme=cream] {
   --nav-color: var(--dark-teal);
@@ -215,7 +217,7 @@ button,
 }
 .gsap-hero_circles-wrapper {
   white-space: nowrap;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .gsap-hero_circle {
   display: inline-block;

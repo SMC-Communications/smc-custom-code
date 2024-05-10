@@ -45,10 +45,10 @@ window.addEventListener('load', ()=>{
 })
 
 function preloadVideo(){
-    console.log("Preloading Metadata")
+    console.log("Loading Videos..")
     videos = [...document.querySelectorAll(".slider-video")]
     videos.forEach(el => {
-        el.setAttribute("preload", "metadata")
+        el.setAttribute("preload", "auto")
     });
 }
 

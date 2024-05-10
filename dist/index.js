@@ -7164,10 +7164,10 @@ window.addEventListener("load", () => {
   tl.to(header2, { duration: 0.5, opacity: 1, ease: "power1.out" });
 });
 function preloadVideo() {
-  console.log("Preloading Metadata");
+  console.log("Loading Videos..");
   videos = [...document.querySelectorAll(".slider-video")];
   videos.forEach((el) => {
-    el.setAttribute("preload", "metadata");
+    el.setAttribute("preload", "auto");
   });
 }
 function createCircles() {
