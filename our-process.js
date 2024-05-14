@@ -22,3 +22,14 @@ let items = gsap.utils.toArray('.our-process-process-item')
                 }
             })
         })
+
+/* PIN PROCESS TITLE */
+if (section){
+    console.log (items[0].offsetHeight)
+    ScrollTrigger.create({
+        trigger: '#process-heading',
+        pin: true,
+        start: 'top top',
+        end: ()=> '+=' + (items[0].offsetHeight + items[1].offsetHeight + items[2].offsetHeight)
+    }) 
+}
