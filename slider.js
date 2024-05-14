@@ -1,6 +1,9 @@
 import './node_modules/tiny-slider/dist/tiny-slider.css'
 import { tns } from './node_modules/tiny-slider/src/tiny-slider.js'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+gsap.registerPlugin(ScrollTrigger)
 
 let activeSlides = []
 
@@ -98,4 +101,15 @@ if (videoSection) {
     } catch (error) {
         console.error(error)
     }
+}
+
+/* SCROLL TRIGGER */
+let section = document.getElementById('magnify-stories')
+if (section){
+    ScrollTrigger.create({
+        trigger: '#magnify-stories',
+        start: 'top top',
+        end: ()=> "+=" + document.getElementById('magnify-stories').offsetHeight,
+        pin:true
+    })
 }
