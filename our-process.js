@@ -32,7 +32,7 @@ mm.add('(min-width:992px)', ()=>{
             pin: '#process-heading',
             pinSpacing: false,
             start: 'top top',
-            end: self => "+=" + self.trigger.offsetHeight
+            end: () => "+=" + (items[0].offsetHeight + items[1].offsetHeight + items[2].offsetHeight)
         }) 
     } 
 })
