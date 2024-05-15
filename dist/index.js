@@ -6317,10 +6317,11 @@ var init_our_process = __esm({
     });
     if (section) {
       ScrollTrigger2.create({
-        trigger: "#process-heading",
-        pin: true,
+        trigger: "#process-section",
+        pin: "#process-heading",
+        pinSpacing: false,
         start: "top top",
-        end: (self2) => "+=" + self2.offsetHeight
+        end: (self2) => "+=" + self2.trigger.offsetHeight
       });
     }
   }
