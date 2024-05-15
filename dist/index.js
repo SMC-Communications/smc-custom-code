@@ -6320,7 +6320,7 @@ var init_our_process = __esm({
         trigger: "#process-heading",
         pin: true,
         start: "top top",
-        end: () => "+=" + (items[0].offsetHeight + items[1].offsetHeight + items[2].offsetHeight)
+        end: (self2) => "+=" + self2.offsetHeight
       });
     }
   }

@@ -29,6 +29,6 @@ if (section){
         trigger: '#process-heading',
         pin: true,
         start: 'top top',
-        end: ()=> '+=' + (items[0].offsetHeight + items[1].offsetHeight + items[2].offsetHeight)
+        end: self => "+=" + self.offsetHeight
     }) 
 }
