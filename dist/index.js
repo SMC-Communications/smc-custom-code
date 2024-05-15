@@ -53,7 +53,7 @@ var require_gsap = __commonJS({
         duration: 0.5,
         overwrite: false,
         delay: 0
-      }, _suppressOverwrites2, _reverting, _context4, _bigNum = 1e8, _tinyNum = 1 / _bigNum, _2PI = Math.PI * 2, _HALF_PI = _2PI / 4, _gsID = 0, _sqrt = Math.sqrt, _cos = Math.cos, _sin = Math.sin, _isString3 = function _isString4(value) {
+      }, _suppressOverwrites2, _reverting, _context5, _bigNum = 1e8, _tinyNum = 1 / _bigNum, _2PI = Math.PI * 2, _HALF_PI = _2PI / 4, _gsID = 0, _sqrt = Math.sqrt, _cos = Math.cos, _sin = Math.sin, _isString3 = function _isString4(value) {
         return typeof value === "string";
       }, _isFunction3 = function _isFunction4(value) {
         return typeof value === "function";
@@ -65,13 +65,13 @@ var require_gsap = __commonJS({
         return typeof value === "object";
       }, _isNotFalse = function _isNotFalse2(value) {
         return value !== false;
-      }, _windowExists3 = function _windowExists4() {
+      }, _windowExists5 = function _windowExists6() {
         return typeof window !== "undefined";
       }, _isFuncOrString = function _isFuncOrString2(value) {
         return _isFunction3(value) || _isString3(value);
       }, _isTypedArray = typeof ArrayBuffer === "function" && ArrayBuffer.isView || function() {
-      }, _isArray = Array.isArray, _strictNumExp = /(?:-?\.?\d|\.)+/gi, _numExp = /[-+=.]*\d+[.e\-+]*\d*[e\-+]*\d*/g, _numWithUnitExp = /[-+=.]*\d+[.e-]*\d*[a-z%]*/g, _complexStringNumExp = /[-+=.]*\d+\.?\d*(?:e-|e\+)?\d*/gi, _relExp = /[+-]=-?[.\d]+/, _delimitedValueExp = /[^,'"\[\]\s]+/gi, _unitExp = /^[+\-=e\s\d]*\d+[.\d]*([a-z]*|%)\s*$/i, _globalTimeline, _win4, _coreInitted4, _doc4, _globals = {}, _installScope = {}, _coreReady, _install = function _install2(scope) {
-        return (_installScope = _merge(scope, _globals)) && gsap8;
+      }, _isArray = Array.isArray, _strictNumExp = /(?:-?\.?\d|\.)+/gi, _numExp = /[-+=.]*\d+[.e\-+]*\d*[e\-+]*\d*/g, _numWithUnitExp = /[-+=.]*\d+[.e-]*\d*[a-z%]*/g, _complexStringNumExp = /[-+=.]*\d+\.?\d*(?:e-|e\+)?\d*/gi, _relExp = /[+-]=-?[.\d]+/, _delimitedValueExp = /[^,'"\[\]\s]+/gi, _unitExp = /^[+\-=e\s\d]*\d+[.\d]*([a-z]*|%)\s*$/i, _globalTimeline, _win5, _coreInitted5, _doc5, _globals = {}, _installScope = {}, _coreReady, _install = function _install2(scope) {
+        return (_installScope = _merge(scope, _globals)) && gsap11;
       }, _missingPlugin = function _missingPlugin2(property, value) {
         return console.warn("Invalid property", property, "set to", value, "Missing plugin? gsap.registerPlugin()");
       }, _warn = function _warn2(message, suppress) {
@@ -109,7 +109,7 @@ var require_gsap = __commonJS({
         return (v = target[property]) && _isFunction3(v) ? target[property]() : _isUndefined(v) && target.getAttribute && target.getAttribute(property) || v;
       }, _forEachName = function _forEachName2(names, func) {
         return (names = names.split(",")).forEach(func) || names;
-      }, _round3 = function _round4(value) {
+      }, _round5 = function _round6(value) {
         return Math.round(value * 1e5) / 1e5 || 0;
       }, _roundPrecise = function _roundPrecise2(value) {
         return Math.round(value * 1e7) / 1e7 || 0;
@@ -273,7 +273,7 @@ var require_gsap = __commonJS({
         var t;
         if (child._time || !child._dur && child._initted || child._start < timeline._time && (child._dur || !child.add)) {
           t = _parentToChildTotalTime(timeline.rawTime(), child);
-          if (!child._dur || _clamp3(0, child.totalDuration(), t) - child._tTime > _tinyNum) {
+          if (!child._dur || _clamp4(0, child.totalDuration(), t) - child._tTime > _tinyNum) {
             child.render(t, true);
           }
         }
@@ -317,7 +317,7 @@ var require_gsap = __commonJS({
       }, _renderZeroDurationTween = function _renderZeroDurationTween2(tween, totalTime, suppressEvents, force) {
         var prevRatio = tween.ratio, ratio = totalTime < 0 || !totalTime && (!tween._start && _parentPlayheadIsBeforeStart(tween) && !(!tween._initted && _isFromOrFromStart(tween)) || (tween._ts < 0 || tween._dp._ts < 0) && !_isFromOrFromStart(tween)) ? 0 : 1, repeatDelay = tween._rDelay, tTime = 0, pt, iteration, prevIteration;
         if (repeatDelay && tween._repeat) {
-          tTime = _clamp3(0, tween._tDur, totalTime);
+          tTime = _clamp4(0, tween._tDur, totalTime);
           iteration = _animationCycle(tTime, repeatDelay);
           tween._yoyo && iteration & 1 && (ratio = 1 - ratio);
           if (iteration !== _animationCycle(tween._tTime, repeatDelay)) {
@@ -426,16 +426,16 @@ var require_gsap = __commonJS({
         return new Tween(params[0], vars, params[varsIndex + 1]);
       }, _conditionalReturn = function _conditionalReturn2(value, func) {
         return value || value === 0 ? func(value) : func;
-      }, _clamp3 = function _clamp4(min, max, value) {
+      }, _clamp4 = function _clamp5(min, max, value) {
         return value < min ? min : value > max ? max : value;
       }, getUnit = function getUnit2(value, v) {
         return !_isString3(value) || !(v = _unitExp.exec(value)) ? "" : v[1];
       }, clamp = function clamp2(min, max, value) {
         return _conditionalReturn(value, function(v) {
-          return _clamp3(min, max, v);
+          return _clamp4(min, max, v);
         });
       }, _slice = [].slice, _isArrayLike = function _isArrayLike2(value, nonEmpty) {
-        return value && _isObject3(value) && "length" in value && (!nonEmpty && !value.length || value.length - 1 in value && _isObject3(value[0])) && !value.nodeType && value !== _win4;
+        return value && _isObject3(value) && "length" in value && (!nonEmpty && !value.length || value.length - 1 in value && _isObject3(value[0])) && !value.nodeType && value !== _win5;
       }, _flatten = function _flatten2(ar, leaveStrings, accumulator) {
         if (accumulator === void 0) {
           accumulator = [];
@@ -445,12 +445,12 @@ var require_gsap = __commonJS({
           return _isString3(value) && !leaveStrings || _isArrayLike(value, 1) ? (_accumulator = accumulator).push.apply(_accumulator, toArray(value)) : accumulator.push(value);
         }) || accumulator;
       }, toArray = function toArray2(value, scope, leaveStrings) {
-        return _context4 && !scope && _context4.selector ? _context4.selector(value) : _isString3(value) && !leaveStrings && (_coreInitted4 || !_wake()) ? _slice.call((scope || _doc4).querySelectorAll(value), 0) : _isArray(value) ? _flatten(value, leaveStrings) : _isArrayLike(value) ? _slice.call(value, 0) : value ? [value] : [];
+        return _context5 && !scope && _context5.selector ? _context5.selector(value) : _isString3(value) && !leaveStrings && (_coreInitted5 || !_wake()) ? _slice.call((scope || _doc5).querySelectorAll(value), 0) : _isArray(value) ? _flatten(value, leaveStrings) : _isArrayLike(value) ? _slice.call(value, 0) : value ? [value] : [];
       }, selector = function selector2(value) {
         value = toArray(value)[0] || _warn("Invalid scope") || {};
         return function(v) {
           var el = value.current || value.nativeElement || value;
-          return toArray(v, el.querySelectorAll ? el : el === value ? _warn("Invalid scope") || _doc4.createElement("div") : value);
+          return toArray(v, el.querySelectorAll ? el : el === value ? _warn("Invalid scope") || _doc5.createElement("div") : value);
         };
       }, shuffle = function shuffle2(a) {
         return a.sort(function() {
@@ -647,16 +647,16 @@ var require_gsap = __commonJS({
         }
         return label;
       }, _callback3 = function _callback4(animation, type, executeLazyFirst) {
-        var v = animation.vars, callback2 = v[type], prevContext = _context4, context = animation._ctx, params, scope, result;
+        var v = animation.vars, callback2 = v[type], prevContext = _context5, context = animation._ctx, params, scope, result;
         if (!callback2) {
           return;
         }
         params = v[type + "Params"];
         scope = v.callbackScope || animation;
         executeLazyFirst && _lazyTweens.length && _lazyRender();
-        context && (_context4 = context);
+        context && (_context5 = context);
         result = params ? callback2.apply(scope, params) : callback2.call(scope);
-        _context4 = prevContext;
+        _context5 = prevContext;
         return result;
       }, _interrupt = function _interrupt2(animation) {
         _removeFromParent(animation);
@@ -667,7 +667,7 @@ var require_gsap = __commonJS({
         if (!config2)
           return;
         config2 = !config2.name && config2["default"] || config2;
-        if (_windowExists3() || config2.headless) {
+        if (_windowExists5() || config2.headless) {
           var name = config2.name, isFunc = _isFunction3(config2), Plugin = name && !isFunc && config2.init ? function() {
             this._props = [];
           } : config2, instanceDefaults = {
@@ -699,7 +699,7 @@ var require_gsap = __commonJS({
             name = (name === "css" ? "CSS" : name.charAt(0).toUpperCase() + name.substr(1)) + "Plugin";
           }
           _addGlobal(name, Plugin);
-          config2.register && config2.register(gsap8, Plugin, PropTween);
+          config2.register && config2.register(gsap11, Plugin, PropTween);
         } else {
           _registerPluginQueue.push(config2);
         }
@@ -873,12 +873,12 @@ var require_gsap = __commonJS({
           },
           wake: function wake() {
             if (_coreReady) {
-              if (!_coreInitted4 && _windowExists3()) {
-                _win4 = _coreInitted4 = window;
-                _doc4 = _win4.document || {};
-                _globals.gsap = gsap8;
-                (_win4.gsapVersions || (_win4.gsapVersions = [])).push(gsap8.version);
-                _install(_installScope || _win4.GreenSockGlobals || !_win4.gsap && _win4 || {});
+              if (!_coreInitted5 && _windowExists5()) {
+                _win5 = _coreInitted5 = window;
+                _doc5 = _win5.document || {};
+                _globals.gsap = gsap11;
+                (_win5.gsapVersions || (_win5.gsapVersions = [])).push(gsap11.version);
+                _install(_installScope || _win5.GreenSockGlobals || !_win5.gsap && _win5 || {});
                 _registerPluginQueue.forEach(_createPlugin);
               }
               _raf = typeof requestAnimationFrame !== "undefined" && requestAnimationFrame;
@@ -1052,7 +1052,7 @@ var require_gsap = __commonJS({
           }
           var p1 = 1 / steps, p2 = steps + (immediateStart ? 0 : 1), p3 = immediateStart ? 1 : 0, max = 1 - _tinyNum;
           return function(p) {
-            return ((p2 * _clamp3(0, max, p) | 0) + p3) * p1;
+            return ((p2 * _clamp4(0, max, p) | 0) + p3) * p1;
           };
         }
       };
@@ -1079,9 +1079,9 @@ var require_gsap = __commonJS({
           this._ts = 1;
           _setDuration(this, +vars.duration, 1, 1);
           this.data = vars.data;
-          if (_context4) {
-            this._ctx = _context4;
-            _context4.data.push(this);
+          if (_context5) {
+            this._ctx = _context5;
+            _context5.data.push(this);
           }
           _tickerActive || _ticker.wake();
         }
@@ -1152,7 +1152,7 @@ var require_gsap = __commonJS({
           var tTime = this.parent && this._ts ? _parentToChildTotalTime(this.parent._time, this) : this._tTime;
           this._rts = +value || 0;
           this._ts = this._ps || value === -_tinyNum ? 0 : this._rts;
-          this.totalTime(_clamp3(-Math.abs(this._delay), this._tDur, tTime), suppressEvents !== false);
+          this.totalTime(_clamp4(-Math.abs(this._delay), this._tDur, tTime), suppressEvents !== false);
           _setEnd(this);
           return _recacheAncestors(this);
         };
@@ -2038,7 +2038,7 @@ var require_gsap = __commonJS({
           pt = rootPT._pt || rootPT;
           pt.s = (start || start === 0) && !startIsRelative ? start : pt.s + (start || 0) + ratio * pt.c;
           pt.c = value - pt.s;
-          rootPT.e && (rootPT.e = _round3(value) + getUnit(rootPT.e));
+          rootPT.e && (rootPT.e = _round5(value) + getUnit(rootPT.e));
           rootPT.b && (rootPT.b = pt.s + getUnit(rootPT.b));
         }
       }, _addAliasesToVars = function _addAliasesToVars2(targets, vars) {
@@ -2539,7 +2539,7 @@ var require_gsap = __commonJS({
           _media.forEach(function(c) {
             var queries = c.queries, conditions = c.conditions, match, p, anyMatch, toggled;
             for (p in queries) {
-              match = _win4.matchMedia(queries[p]).matches;
+              match = _win5.matchMedia(queries[p]).matches;
               match && (anyMatch = 1);
               if (match !== conditions[p]) {
                 conditions[p] = match;
@@ -2578,13 +2578,13 @@ var require_gsap = __commonJS({
             name = _isFunction3;
           }
           var self2 = this, f = function f2() {
-            var prev = _context4, prevSelector = self2.selector, result;
+            var prev = _context5, prevSelector = self2.selector, result;
             prev && prev !== self2 && prev.data.push(self2);
             scope && (self2.selector = selector(scope));
-            _context4 = self2;
+            _context5 = self2;
             result = func.apply(self2, arguments);
             _isFunction3(result) && self2._r.push(result);
-            _context4 = prev;
+            _context5 = prev;
             self2.selector = prevSelector;
             self2.isReverted = false;
             return result;
@@ -2595,10 +2595,10 @@ var require_gsap = __commonJS({
           }) : name ? self2[name] = f : f;
         };
         _proto5.ignore = function ignore(func) {
-          var prev = _context4;
-          _context4 = null;
+          var prev = _context5;
+          _context5 = null;
           func(this);
-          _context4 = prev;
+          _context5 = prev;
         };
         _proto5.getTweens = function getTweens() {
           var a = [];
@@ -2673,7 +2673,7 @@ var require_gsap = __commonJS({
         function MatchMedia2(scope) {
           this.contexts = [];
           this.scope = scope;
-          _context4 && _context4.data.push(this);
+          _context5 && _context5.data.push(this);
         }
         var _proto6 = MatchMedia2.prototype;
         _proto6.add = function add(conditions, func, scope) {
@@ -2681,7 +2681,7 @@ var require_gsap = __commonJS({
             matches: conditions
           });
           var context = new Context(0, scope || this.scope), cond = context.conditions = {}, mq, p, active;
-          _context4 && !context.selector && (context.selector = _context4.selector);
+          _context5 && !context.selector && (context.selector = _context5.selector);
           this.contexts.push(context);
           func = context.add("onMatch", func);
           context.queries = conditions;
@@ -2689,7 +2689,7 @@ var require_gsap = __commonJS({
             if (p === "all") {
               active = 1;
             } else {
-              mq = _win4.matchMedia(conditions[p]);
+              mq = _win5.matchMedia(conditions[p]);
               if (mq) {
                 _media.indexOf(context) < 0 && _media.push(context);
                 (cond[p] = mq.matches) && (active = 1);
@@ -2739,7 +2739,7 @@ var require_gsap = __commonJS({
           target = toArray(target);
           if (target.length > 1) {
             var setters = target.map(function(t) {
-              return gsap8.quickSetter(t, property, unit);
+              return gsap11.quickSetter(t, property, unit);
             }), l = setters.length;
             return function(value) {
               var i2 = l;
@@ -2762,7 +2762,7 @@ var require_gsap = __commonJS({
         },
         quickTo: function quickTo(target, property, vars) {
           var _merge2;
-          var tween = gsap8.to(target, _merge((_merge2 = {}, _merge2[property] = "+=0.1", _merge2.paused = true, _merge2), vars || {})), func = function func2(value, start, startIsRelative) {
+          var tween = gsap11.to(target, _merge((_merge2 = {}, _merge2[property] = "+=0.1", _merge2.paused = true, _merge2), vars || {})), func = function func2(value, start, startIsRelative) {
             return tween.resetTo(property, value, start, startIsRelative);
           };
           func.tween = tween;
@@ -2822,7 +2822,7 @@ var require_gsap = __commonJS({
           return tl;
         },
         context: function context(func, scope) {
-          return func ? new Context(func, scope) : _context4;
+          return func ? new Context(func, scope) : _context5;
         },
         matchMedia: function matchMedia(scope) {
           return new MatchMedia(scope);
@@ -2883,11 +2883,11 @@ var require_gsap = __commonJS({
             return _reverting;
           },
           context: function context(toAdd) {
-            if (toAdd && _context4) {
-              _context4.data.push(toAdd);
-              toAdd._ctx = _context4;
+            if (toAdd && _context5) {
+              _context5.data.push(toAdd);
+              toAdd._ctx = _context5;
             }
-            return _context4;
+            return _context5;
           },
           suppressOverwrites: function suppressOverwrites(value) {
             return _suppressOverwrites2 = value;
@@ -2947,7 +2947,7 @@ var require_gsap = __commonJS({
           }
         };
       };
-      var gsap8 = _gsap.registerPlugin({
+      var gsap11 = _gsap.registerPlugin({
         name: "attr",
         init: function init(target, vars, tween, index, targets) {
           var p, pt, v;
@@ -2976,11 +2976,11 @@ var require_gsap = __commonJS({
           }
         }
       }, _buildModifierPlugin("roundProps", _roundModifier), _buildModifierPlugin("modifiers"), _buildModifierPlugin("snap", snap)) || _gsap;
-      Tween.version = Timeline.version = gsap8.version = "3.12.5";
+      Tween.version = Timeline.version = gsap11.version = "3.12.5";
       _coreReady = 1;
-      _windowExists3() && _wake();
+      _windowExists5() && _wake();
       var Power0 = _easeMap.Power0, Power1 = _easeMap.Power1, Power2 = _easeMap.Power2, Power3 = _easeMap.Power3, Power4 = _easeMap.Power4, Linear = _easeMap.Linear, Quad = _easeMap.Quad, Cubic = _easeMap.Cubic, Quart = _easeMap.Quart, Quint = _easeMap.Quint, Strong = _easeMap.Strong, Elastic = _easeMap.Elastic, Back = _easeMap.Back, SteppedEase = _easeMap.SteppedEase, Bounce = _easeMap.Bounce, Sine = _easeMap.Sine, Expo = _easeMap.Expo, Circ = _easeMap.Circ;
-      var _win$1, _doc$1, _docElement, _pluginInitted, _tempDiv, _tempDivStyler, _recentSetterPlugin, _reverting$1, _windowExists$1 = function _windowExists4() {
+      var _win$1, _doc$1, _docElement, _pluginInitted, _tempDiv, _tempDivStyler, _recentSetterPlugin, _reverting$1, _windowExists$1 = function _windowExists6() {
         return typeof window !== "undefined";
       }, _transformProps = {}, _RAD2DEG = 180 / Math.PI, _DEG2RAD = Math.PI / 180, _atan2 = Math.atan2, _bigNum$1 = 1e8, _capsExp2 = /([A-Z])/g, _horizontalExp = /(left|right|width|margin|padding|x)/i, _complexExp = /[\s,\(]\S/, _propertyAliases = {
         autoAlpha: "opacity,visibility",
@@ -3078,7 +3078,7 @@ var require_gsap = __commonJS({
           revert: _revertStyle,
           save: _saveStyle
         };
-        target._gsap || gsap8.core.getCache(target);
+        target._gsap || gsap11.core.getCache(target);
         properties && properties.split(",").forEach(function(p) {
           return saver.save(p);
         });
@@ -3111,7 +3111,7 @@ var require_gsap = __commonJS({
           _transformOriginProp = _transformProp2 + "Origin";
           _tempDiv.style.cssText = "border-width:0;line-height:0;position:absolute;padding:0";
           _supports3D = !!_checkPropPrefix("perspective");
-          _reverting$1 = gsap8.core.reverting;
+          _reverting$1 = gsap11.core.reverting;
           _pluginInitted = 1;
         }
       }, _getBBoxHack = function _getBBoxHack2(swapIfPossible) {
@@ -3201,7 +3201,7 @@ var require_gsap = __commonJS({
         isSVG = target.getCTM && _isSVG(target);
         if ((toPercent || curUnit === "%") && (_transformProps[property] || ~property.indexOf("adius"))) {
           px = isSVG ? target.getBBox()[horizontal ? "width" : "height"] : target[measureProperty];
-          return _round3(toPercent ? curValue / px * amount : curValue / 100 * px);
+          return _round5(toPercent ? curValue / px * amount : curValue / 100 * px);
         }
         style[horizontal ? "width" : "height"] = amount + (toPixels ? curUnit : unit);
         parent = ~property.indexOf("adius") || unit === "em" && target.appendChild && !isRootSVG ? target : target.parentNode;
@@ -3213,7 +3213,7 @@ var require_gsap = __commonJS({
         }
         cache = parent._gsap;
         if (cache && toPercent && cache.width && horizontal && cache.time === _ticker.time && !cache.uncache) {
-          return _round3(curValue / cache.width * amount);
+          return _round5(curValue / cache.width * amount);
         } else {
           if (toPercent && (property === "height" || property === "width")) {
             var v = target.style[property];
@@ -3234,7 +3234,7 @@ var require_gsap = __commonJS({
             cache.width = parent[measureProperty];
           }
         }
-        return _round3(toPixels ? px * curValue / amount : px && curValue ? amount / px * curValue : 0);
+        return _round5(toPixels ? px * curValue / amount : px && curValue ? amount / px * curValue : 0);
       }, _get = function _get2(target, property, unit, uncache) {
         var value;
         _pluginInitted || _initCore5();
@@ -3382,7 +3382,7 @@ var require_gsap = __commonJS({
         return value === "matrix(1, 0, 0, 1, 0, 0)" || value === "none" || !value;
       }, _getComputedTransformMatrixAsArray = function _getComputedTransformMatrixAsArray2(target) {
         var matrixString = _getComputedProperty(target, _transformProp2);
-        return _isNullTransform(matrixString) ? _identity2DMatrix : matrixString.substr(7).match(_numExp).map(_round3);
+        return _isNullTransform(matrixString) ? _identity2DMatrix : matrixString.substr(7).match(_numExp).map(_round5);
       }, _getMatrix = function _getMatrix2(target, force2D) {
         var cache = target._gsap || _getCache(target), style = target.style, matrix = _getComputedTransformMatrixAsArray(target), parent, nextSibling, temp, addedToDOM;
         if (cache.svg && target.getAttribute("transform")) {
@@ -3538,8 +3538,8 @@ var require_gsap = __commonJS({
               rotationX = rotation = 0;
               rotationY = 180 - rotationY;
             }
-            scaleX = _round3(Math.sqrt(a * a + b * b + c * c));
-            scaleY = _round3(Math.sqrt(a22 * a22 + a32 * a32));
+            scaleX = _round5(Math.sqrt(a * a + b * b + c * c));
+            scaleY = _round5(Math.sqrt(a22 * a22 + a32 * a32));
             angle = _atan2(a12, a22);
             skewX = Math.abs(angle) > 2e-4 ? angle * _RAD2DEG : 0;
             perspective = a43 ? 1 / (a43 < 0 ? -a43 : a43) : 0;
@@ -3564,11 +3564,11 @@ var require_gsap = __commonJS({
         cache.x = x - ((cache.xPercent = x && (!uncache && cache.xPercent || (Math.round(target.offsetWidth / 2) === Math.round(-x) ? -50 : 0))) ? target.offsetWidth * cache.xPercent / 100 : 0) + px;
         cache.y = y - ((cache.yPercent = y && (!uncache && cache.yPercent || (Math.round(target.offsetHeight / 2) === Math.round(-y) ? -50 : 0))) ? target.offsetHeight * cache.yPercent / 100 : 0) + px;
         cache.z = z + px;
-        cache.scaleX = _round3(scaleX);
-        cache.scaleY = _round3(scaleY);
-        cache.rotation = _round3(rotation) + deg;
-        cache.rotationX = _round3(rotationX) + deg;
-        cache.rotationY = _round3(rotationY) + deg;
+        cache.scaleX = _round5(scaleX);
+        cache.scaleY = _round5(scaleY);
+        cache.rotation = _round5(rotation) + deg;
+        cache.rotationX = _round5(rotationX) + deg;
+        cache.rotationY = _round5(rotationY) + deg;
         cache.skewX = skewX + deg;
         cache.skewY = skewY + deg;
         cache.transformPerspective = perspective + px;
@@ -3584,7 +3584,7 @@ var require_gsap = __commonJS({
         return (value = value.split(" "))[0] + " " + value[1];
       }, _addPxTranslate = function _addPxTranslate2(target, start, value) {
         var unit = getUnit(start);
-        return _round3(parseFloat(start) + parseFloat(_convertToUnit(target, "x", value + "px", unit))) + unit;
+        return _round5(parseFloat(start) + parseFloat(_convertToUnit(target, "x", value + "px", unit))) + unit;
       }, _renderNon3DTransforms = function _renderNon3DTransforms2(ratio, cache) {
         cache.z = "0px";
         cache.rotationY = cache.rotationX = "0deg";
@@ -3655,10 +3655,10 @@ var require_gsap = __commonJS({
               a21 *= temp;
             }
           }
-          a11 = _round3(a11);
-          a21 = _round3(a21);
-          a12 = _round3(a12);
-          a22 = _round3(a22);
+          a11 = _round5(a11);
+          a21 = _round5(a21);
+          a12 = _round5(a12);
+          a22 = _round5(a22);
         } else {
           a11 = scaleX;
           a22 = scaleY;
@@ -3669,13 +3669,13 @@ var require_gsap = __commonJS({
           ty = _convertToUnit(target, "y", y, "px");
         }
         if (xOrigin || yOrigin || xOffset || yOffset) {
-          tx = _round3(tx + xOrigin - (xOrigin * a11 + yOrigin * a12) + xOffset);
-          ty = _round3(ty + yOrigin - (xOrigin * a21 + yOrigin * a22) + yOffset);
+          tx = _round5(tx + xOrigin - (xOrigin * a11 + yOrigin * a12) + xOffset);
+          ty = _round5(ty + yOrigin - (xOrigin * a21 + yOrigin * a22) + yOffset);
         }
         if (xPercent || yPercent) {
           temp = target.getBBox();
-          tx = _round3(tx + xPercent / 100 * temp.width);
-          ty = _round3(ty + yPercent / 100 * temp.height);
+          tx = _round5(tx + xPercent / 100 * temp.width);
+          ty = _round5(ty + yPercent / 100 * temp.height);
         }
         temp = "matrix(" + a11 + "," + a21 + "," + a12 + "," + a22 + "," + tx + "," + ty + ")";
         target.setAttribute("transform", temp);
@@ -3921,8 +3921,8 @@ var require_gsap = __commonJS({
           _getMatrix
         }
       };
-      gsap8.utils.checkPrefix = _checkPropPrefix;
-      gsap8.core.getStyleSaver = _getStyleSaver;
+      gsap11.utils.checkPrefix = _checkPropPrefix;
+      gsap11.core.getStyleSaver = _getStyleSaver;
       (function(positionAndScale, rotation, others, aliases) {
         var all = _forEachName(positionAndScale + "," + rotation + "," + others, function(name) {
           _transformProps[name] = 1;
@@ -3940,8 +3940,8 @@ var require_gsap = __commonJS({
       _forEachName("x,y,z,top,right,bottom,left,width,height,fontSize,padding,margin,perspective", function(name) {
         _config.units[name] = "px";
       });
-      gsap8.registerPlugin(CSSPlugin);
-      var gsapWithCSS = gsap8.registerPlugin(CSSPlugin) || gsap8, TweenMaxWithCSS = gsapWithCSS.core.Tween;
+      gsap11.registerPlugin(CSSPlugin);
+      var gsapWithCSS = gsap11.registerPlugin(CSSPlugin) || gsap11, TweenMaxWithCSS = gsapWithCSS.core.Tween;
       exports2.Back = Back;
       exports2.Bounce = Bounce;
       exports2.CSSPlugin = CSSPlugin;
@@ -6613,591 +6613,7 @@ var tns = function(options) {
 };
 
 // slider.js
-var activeSlides = [];
-function nextSlide() {
-  slider.goTo("next");
-  slider.events.on("transitionEnd", playMainSlide);
-}
-function prevSlide() {
-  slider.goTo("prev");
-  slider.events.on("transitionEnd", playMainSlide);
-}
-function playMainSlide() {
-  document.querySelector(".active-slide1 video").play();
-}
-function pauseMainSlide() {
-  document.querySelector(".active-slide1 video").pause();
-}
-function updateSlides() {
-  console.log("Update called");
-  if (activeSlides.length) {
-    activeSlides.forEach((slide) => {
-      slide.removeEventListener("click", prevSlide);
-      slide.removeEventListener("click", nextSlide);
-      slide.classList.remove("active-slide0");
-      slide.classList.remove("active-slide1");
-      slide.classList.remove("active-slide2");
-      slide.querySelector("video").pause();
-    });
-  }
-  activeSlides = [...document.querySelectorAll("#tiny-slider .tns-slide-active")];
-  console.log("Updating slides");
-  activeSlides[0].classList.add("active-slide0");
-  activeSlides[1].classList.add("active-slide1");
-  activeSlides[2].classList.add("active-slide2");
-  activeSlides[0].addEventListener("click", prevSlide);
-  activeSlides[2].addEventListener("click", nextSlide);
-}
-function sliderInit() {
-  console.log("Init called");
-  updateSlides();
-}
-var slider;
-if (document.querySelector("#tiny-slider")) {
-  try {
-    slider = tns({
-      container: "#tiny-slider",
-      items: 3,
-      slideBy: 1,
-      speed: 500,
-      swipeAngle: 30,
-      preventActionWhenRunning: true,
-      preventScrollOnTouch: "auto",
-      onInit: sliderInit,
-      controls: false,
-      nav: false,
-      responsive: {
-        1280: {}
-      }
-    });
-  } catch (error) {
-    console.error(error);
-  }
-  try {
-    slider.events.on("indexChanged", updateSlides);
-  } catch (error) {
-    console.error(error);
-  }
-}
-var scrollRoot = document.querySelector("[data-scroller]");
-var videoSection = document.querySelector("[data-video-section]");
-if (videoSection) {
-  const options = {
-    root: scrollRoot,
-    threshold: 0
-  };
-  const onVideoIntersect = (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        playMainSlide();
-      } else {
-        pauseMainSlide();
-      }
-    });
-  };
-  try {
-    const videoObserver = new IntersectionObserver(onVideoIntersect, options);
-    videoObserver.observe(videoSection);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-// gsap-hero.js
 var import_gsap = __toESM(require_gsap());
-
-// node_modules/gsap/utils/strings.js
-var emojiExp = /([\uD800-\uDBFF][\uDC00-\uDFFF](?:[\u200D\uFE0F][\uD800-\uDBFF][\uDC00-\uDFFF]){2,}|\uD83D\uDC69(?:\u200D(?:(?:\uD83D\uDC69\u200D)?\uD83D\uDC67|(?:\uD83D\uDC69\u200D)?\uD83D\uDC66)|\uD83C[\uDFFB-\uDFFF])|\uD83D\uDC69\u200D(?:\uD83D\uDC69\u200D)?\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC69\u200D(?:\uD83D\uDC69\u200D)?\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67])|\uD83C\uDFF3\uFE0F\u200D\uD83C\uDF08|(?:\uD83C[\uDFC3\uDFC4\uDFCA]|\uD83D[\uDC6E\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4-\uDEB6]|\uD83E[\uDD26\uDD37-\uDD39\uDD3D\uDD3E\uDDD6-\uDDDD])(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2640\u2642]\uFE0F|\uD83D\uDC69(?:\uD83C[\uDFFB-\uDFFF])\u200D(?:\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92])|(?:\uD83C[\uDFC3\uDFC4\uDFCA]|\uD83D[\uDC6E\uDC6F\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4-\uDEB6]|\uD83E[\uDD26\uDD37-\uDD39\uDD3C-\uDD3E\uDDD6-\uDDDF])\u200D[\u2640\u2642]\uFE0F|\uD83C\uDDFD\uD83C\uDDF0|\uD83C\uDDF6\uD83C\uDDE6|\uD83C\uDDF4\uD83C\uDDF2|\uD83C\uDDE9(?:\uD83C[\uDDEA\uDDEC\uDDEF\uDDF0\uDDF2\uDDF4\uDDFF])|\uD83C\uDDF7(?:\uD83C[\uDDEA\uDDF4\uDDF8\uDDFA\uDDFC])|\uD83C\uDDE8(?:\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDEE\uDDF0-\uDDF5\uDDF7\uDDFA-\uDDFF])|(?:\u26F9|\uD83C[\uDFCB\uDFCC]|\uD83D\uDD75)(?:\uFE0F\u200D[\u2640\u2642]|(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2640\u2642])\uFE0F|(?:\uD83D\uDC41\uFE0F\u200D\uD83D\uDDE8|\uD83D\uDC69(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2695\u2696\u2708]|\uD83D\uDC69\u200D[\u2695\u2696\u2708]|\uD83D\uDC68(?:(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2695\u2696\u2708]|\u200D[\u2695\u2696\u2708]))\uFE0F|\uD83C\uDDF2(?:\uD83C[\uDDE6\uDDE8-\uDDED\uDDF0-\uDDFF])|\uD83D\uDC69\u200D(?:\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\u2764\uFE0F\u200D(?:\uD83D\uDC8B\u200D(?:\uD83D[\uDC68\uDC69])|\uD83D[\uDC68\uDC69]))|\uD83C\uDDF1(?:\uD83C[\uDDE6-\uDDE8\uDDEE\uDDF0\uDDF7-\uDDFB\uDDFE])|\uD83C\uDDEF(?:\uD83C[\uDDEA\uDDF2\uDDF4\uDDF5])|\uD83C\uDDED(?:\uD83C[\uDDF0\uDDF2\uDDF3\uDDF7\uDDF9\uDDFA])|\uD83C\uDDEB(?:\uD83C[\uDDEE-\uDDF0\uDDF2\uDDF4\uDDF7])|[#\*0-9]\uFE0F\u20E3|\uD83C\uDDE7(?:\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEF\uDDF1-\uDDF4\uDDF6-\uDDF9\uDDFB\uDDFC\uDDFE\uDDFF])|\uD83C\uDDE6(?:\uD83C[\uDDE8-\uDDEC\uDDEE\uDDF1\uDDF2\uDDF4\uDDF6-\uDDFA\uDDFC\uDDFD\uDDFF])|\uD83C\uDDFF(?:\uD83C[\uDDE6\uDDF2\uDDFC])|\uD83C\uDDF5(?:\uD83C[\uDDE6\uDDEA-\uDDED\uDDF0-\uDDF3\uDDF7-\uDDF9\uDDFC\uDDFE])|\uD83C\uDDFB(?:\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDEE\uDDF3\uDDFA])|\uD83C\uDDF3(?:\uD83C[\uDDE6\uDDE8\uDDEA-\uDDEC\uDDEE\uDDF1\uDDF4\uDDF5\uDDF7\uDDFA\uDDFF])|\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62(?:\uDB40\uDC77\uDB40\uDC6C\uDB40\uDC73|\uDB40\uDC73\uDB40\uDC63\uDB40\uDC74|\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67)\uDB40\uDC7F|\uD83D\uDC68(?:\u200D(?:\u2764\uFE0F\u200D(?:\uD83D\uDC8B\u200D)?\uD83D\uDC68|(?:(?:\uD83D[\uDC68\uDC69])\u200D)?\uD83D\uDC66\u200D\uD83D\uDC66|(?:(?:\uD83D[\uDC68\uDC69])\u200D)?\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92])|(?:\uD83C[\uDFFB-\uDFFF])\u200D(?:\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]))|\uD83C\uDDF8(?:\uD83C[\uDDE6-\uDDEA\uDDEC-\uDDF4\uDDF7-\uDDF9\uDDFB\uDDFD-\uDDFF])|\uD83C\uDDF0(?:\uD83C[\uDDEA\uDDEC-\uDDEE\uDDF2\uDDF3\uDDF5\uDDF7\uDDFC\uDDFE\uDDFF])|\uD83C\uDDFE(?:\uD83C[\uDDEA\uDDF9])|\uD83C\uDDEE(?:\uD83C[\uDDE8-\uDDEA\uDDF1-\uDDF4\uDDF6-\uDDF9])|\uD83C\uDDF9(?:\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDED\uDDEF-\uDDF4\uDDF7\uDDF9\uDDFB\uDDFC\uDDFF])|\uD83C\uDDEC(?:\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEE\uDDF1-\uDDF3\uDDF5-\uDDFA\uDDFC\uDDFE])|\uD83C\uDDFA(?:\uD83C[\uDDE6\uDDEC\uDDF2\uDDF3\uDDF8\uDDFE\uDDFF])|\uD83C\uDDEA(?:\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDED\uDDF7-\uDDFA])|\uD83C\uDDFC(?:\uD83C[\uDDEB\uDDF8])|(?:\u26F9|\uD83C[\uDFCB\uDFCC]|\uD83D\uDD75)(?:\uD83C[\uDFFB-\uDFFF])|(?:\uD83C[\uDFC3\uDFC4\uDFCA]|\uD83D[\uDC6E\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4-\uDEB6]|\uD83E[\uDD26\uDD37-\uDD39\uDD3D\uDD3E\uDDD6-\uDDDD])(?:\uD83C[\uDFFB-\uDFFF])|(?:[\u261D\u270A-\u270D]|\uD83C[\uDF85\uDFC2\uDFC7]|\uD83D[\uDC42\uDC43\uDC46-\uDC50\uDC66\uDC67\uDC70\uDC72\uDC74-\uDC76\uDC78\uDC7C\uDC83\uDC85\uDCAA\uDD74\uDD7A\uDD90\uDD95\uDD96\uDE4C\uDE4F\uDEC0\uDECC]|\uD83E[\uDD18-\uDD1C\uDD1E\uDD1F\uDD30-\uDD36\uDDD1-\uDDD5])(?:\uD83C[\uDFFB-\uDFFF])|\uD83D\uDC68(?:\u200D(?:(?:(?:\uD83D[\uDC68\uDC69])\u200D)?\uD83D\uDC67|(?:(?:\uD83D[\uDC68\uDC69])\u200D)?\uD83D\uDC66)|\uD83C[\uDFFB-\uDFFF])|(?:[\u261D\u26F9\u270A-\u270D]|\uD83C[\uDF85\uDFC2-\uDFC4\uDFC7\uDFCA-\uDFCC]|\uD83D[\uDC42\uDC43\uDC46-\uDC50\uDC66-\uDC69\uDC6E\uDC70-\uDC78\uDC7C\uDC81-\uDC83\uDC85-\uDC87\uDCAA\uDD74\uDD75\uDD7A\uDD90\uDD95\uDD96\uDE45-\uDE47\uDE4B-\uDE4F\uDEA3\uDEB4-\uDEB6\uDEC0\uDECC]|\uD83E[\uDD18-\uDD1C\uDD1E\uDD1F\uDD26\uDD30-\uDD39\uDD3D\uDD3E\uDDD1-\uDDDD])(?:\uD83C[\uDFFB-\uDFFF])?|(?:[\u231A\u231B\u23E9-\u23EC\u23F0\u23F3\u25FD\u25FE\u2614\u2615\u2648-\u2653\u267F\u2693\u26A1\u26AA\u26AB\u26BD\u26BE\u26C4\u26C5\u26CE\u26D4\u26EA\u26F2\u26F3\u26F5\u26FA\u26FD\u2705\u270A\u270B\u2728\u274C\u274E\u2753-\u2755\u2757\u2795-\u2797\u27B0\u27BF\u2B1B\u2B1C\u2B50\u2B55]|\uD83C[\uDC04\uDCCF\uDD8E\uDD91-\uDD9A\uDDE6-\uDDFF\uDE01\uDE1A\uDE2F\uDE32-\uDE36\uDE38-\uDE3A\uDE50\uDE51\uDF00-\uDF20\uDF2D-\uDF35\uDF37-\uDF7C\uDF7E-\uDF93\uDFA0-\uDFCA\uDFCF-\uDFD3\uDFE0-\uDFF0\uDFF4\uDFF8-\uDFFF]|\uD83D[\uDC00-\uDC3E\uDC40\uDC42-\uDCFC\uDCFF-\uDD3D\uDD4B-\uDD4E\uDD50-\uDD67\uDD7A\uDD95\uDD96\uDDA4\uDDFB-\uDE4F\uDE80-\uDEC5\uDECC\uDED0-\uDED2\uDEEB\uDEEC\uDEF4-\uDEF8]|\uD83E[\uDD10-\uDD3A\uDD3C-\uDD3E\uDD40-\uDD45\uDD47-\uDD4C\uDD50-\uDD6B\uDD80-\uDD97\uDDC0\uDDD0-\uDDE6])|(?:[#\*0-9\xA9\xAE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9\u21AA\u231A\u231B\u2328\u23CF\u23E9-\u23F3\u23F8-\u23FA\u24C2\u25AA\u25AB\u25B6\u25C0\u25FB-\u25FE\u2600-\u2604\u260E\u2611\u2614\u2615\u2618\u261D\u2620\u2622\u2623\u2626\u262A\u262E\u262F\u2638-\u263A\u2640\u2642\u2648-\u2653\u2660\u2663\u2665\u2666\u2668\u267B\u267F\u2692-\u2697\u2699\u269B\u269C\u26A0\u26A1\u26AA\u26AB\u26B0\u26B1\u26BD\u26BE\u26C4\u26C5\u26C8\u26CE\u26CF\u26D1\u26D3\u26D4\u26E9\u26EA\u26F0-\u26F5\u26F7-\u26FA\u26FD\u2702\u2705\u2708-\u270D\u270F\u2712\u2714\u2716\u271D\u2721\u2728\u2733\u2734\u2744\u2747\u274C\u274E\u2753-\u2755\u2757\u2763\u2764\u2795-\u2797\u27A1\u27B0\u27BF\u2934\u2935\u2B05-\u2B07\u2B1B\u2B1C\u2B50\u2B55\u3030\u303D\u3297\u3299]|\uD83C[\uDC04\uDCCF\uDD70\uDD71\uDD7E\uDD7F\uDD8E\uDD91-\uDD9A\uDDE6-\uDDFF\uDE01\uDE02\uDE1A\uDE2F\uDE32-\uDE3A\uDE50\uDE51\uDF00-\uDF21\uDF24-\uDF93\uDF96\uDF97\uDF99-\uDF9B\uDF9E-\uDFF0\uDFF3-\uDFF5\uDFF7-\uDFFF]|\uD83D[\uDC00-\uDCFD\uDCFF-\uDD3D\uDD49-\uDD4E\uDD50-\uDD67\uDD6F\uDD70\uDD73-\uDD7A\uDD87\uDD8A-\uDD8D\uDD90\uDD95\uDD96\uDDA4\uDDA5\uDDA8\uDDB1\uDDB2\uDDBC\uDDC2-\uDDC4\uDDD1-\uDDD3\uDDDC-\uDDDE\uDDE1\uDDE3\uDDE8\uDDEF\uDDF3\uDDFA-\uDE4F\uDE80-\uDEC5\uDECB-\uDED2\uDEE0-\uDEE5\uDEE9\uDEEB\uDEEC\uDEF0\uDEF3-\uDEF8]|\uD83E[\uDD10-\uDD3A\uDD3C-\uDD3E\uDD40-\uDD45\uDD47-\uDD4C\uDD50-\uDD6B\uDD80-\uDD97\uDDC0\uDDD0-\uDDE6])\uFE0F)/;
-function getText(e) {
-  var type = e.nodeType, result = "";
-  if (type === 1 || type === 9 || type === 11) {
-    if (typeof e.textContent === "string") {
-      return e.textContent;
-    } else {
-      for (e = e.firstChild; e; e = e.nextSibling) {
-        result += getText(e);
-      }
-    }
-  } else if (type === 3 || type === 4) {
-    return e.nodeValue;
-  }
-  return result;
-}
-
-// node_modules/gsap/SplitText.js
-var _doc;
-var _win;
-var _coreInitted;
-var gsap;
-var _context;
-var _toArray;
-var _stripExp = /(?:\r|\n|\t\t)/g;
-var _multipleSpacesExp = /(?:\s\s+)/g;
-var _nonBreakingSpace = String.fromCharCode(160);
-var _initCore = function _initCore2(core) {
-  _doc = document;
-  _win = window;
-  gsap = gsap || core || _win.gsap || console.warn("Please gsap.registerPlugin(SplitText)");
-  if (gsap) {
-    _toArray = gsap.utils.toArray;
-    _context = gsap.core.context || function() {
-    };
-    _coreInitted = 1;
-  }
-};
-var _bonusValidated = 1;
-var _getComputedStyle = function _getComputedStyle2(element) {
-  return _win.getComputedStyle(element);
-};
-var _isAbsolute = function _isAbsolute2(vars) {
-  return vars.position === "absolute" || vars.absolute === true;
-};
-var _findSpecialChars = function _findSpecialChars2(text, chars) {
-  var i2 = chars.length, s;
-  while (--i2 > -1) {
-    s = chars[i2];
-    if (text.substr(0, s.length) === s) {
-      return s.length;
-    }
-  }
-};
-var _divStart = " style='position:relative;display:inline-block;'";
-var _cssClassFunc = function _cssClassFunc2(cssClass, tag) {
-  if (cssClass === void 0) {
-    cssClass = "";
-  }
-  var iterate = ~cssClass.indexOf("++"), num = 1;
-  if (iterate) {
-    cssClass = cssClass.split("++").join("");
-  }
-  return function() {
-    return "<" + tag + _divStart + (cssClass ? " class='" + cssClass + (iterate ? num++ : "") + "'>" : ">");
-  };
-};
-var _swapText = function _swapText2(element, oldText, newText) {
-  var type = element.nodeType;
-  if (type === 1 || type === 9 || type === 11) {
-    for (element = element.firstChild; element; element = element.nextSibling) {
-      _swapText2(element, oldText, newText);
-    }
-  } else if (type === 3 || type === 4) {
-    element.nodeValue = element.nodeValue.split(oldText).join(newText);
-  }
-};
-var _pushReversed = function _pushReversed2(a, merge) {
-  var i2 = merge.length;
-  while (--i2 > -1) {
-    a.push(merge[i2]);
-  }
-};
-var _isBeforeWordDelimiter = function _isBeforeWordDelimiter2(e, root, wordDelimiter) {
-  var next;
-  while (e && e !== root) {
-    next = e._next || e.nextSibling;
-    if (next) {
-      return next.textContent.charAt(0) === wordDelimiter;
-    }
-    e = e.parentNode || e._parent;
-  }
-};
-var _deWordify = function _deWordify2(e) {
-  var children = _toArray(e.childNodes), l = children.length, i2, child;
-  for (i2 = 0; i2 < l; i2++) {
-    child = children[i2];
-    if (child._isSplit) {
-      _deWordify2(child);
-    } else {
-      if (i2 && child.previousSibling && child.previousSibling.nodeType === 3) {
-        child.previousSibling.nodeValue += child.nodeType === 3 ? child.nodeValue : child.firstChild.nodeValue;
-        e.removeChild(child);
-      } else if (child.nodeType !== 3) {
-        e.insertBefore(child.firstChild, child);
-        e.removeChild(child);
-      }
-    }
-  }
-};
-var _getStyleAsNumber = function _getStyleAsNumber2(name, computedStyle) {
-  return parseFloat(computedStyle[name]) || 0;
-};
-var _setPositionsAfterSplit = function _setPositionsAfterSplit2(element, vars, allChars, allWords, allLines, origWidth, origHeight) {
-  var cs = _getComputedStyle(element), paddingLeft = _getStyleAsNumber("paddingLeft", cs), lineOffsetY = -999, borderTopAndBottom = _getStyleAsNumber("borderBottomWidth", cs) + _getStyleAsNumber("borderTopWidth", cs), borderLeftAndRight = _getStyleAsNumber("borderLeftWidth", cs) + _getStyleAsNumber("borderRightWidth", cs), padTopAndBottom = _getStyleAsNumber("paddingTop", cs) + _getStyleAsNumber("paddingBottom", cs), padLeftAndRight = _getStyleAsNumber("paddingLeft", cs) + _getStyleAsNumber("paddingRight", cs), lineThreshold = _getStyleAsNumber("fontSize", cs) * (vars.lineThreshold || 0.2), textAlign = cs.textAlign, charArray = [], wordArray = [], lineArray = [], wordDelimiter = vars.wordDelimiter || " ", tag = vars.tag ? vars.tag : vars.span ? "span" : "div", types = vars.type || vars.split || "chars,words,lines", lines = allLines && ~types.indexOf("lines") ? [] : null, words = ~types.indexOf("words"), chars = ~types.indexOf("chars"), absolute = _isAbsolute(vars), linesClass = vars.linesClass, iterateLine = ~(linesClass || "").indexOf("++"), spaceNodesToRemove = [], isFlex = cs.display === "flex", prevInlineDisplay = element.style.display, i2, j, l, node, nodes, isChild, curLine, addWordSpaces, style, lineNode, lineWidth, offset;
-  iterateLine && (linesClass = linesClass.split("++").join(""));
-  isFlex && (element.style.display = "block");
-  j = element.getElementsByTagName("*");
-  l = j.length;
-  nodes = [];
-  for (i2 = 0; i2 < l; i2++) {
-    nodes[i2] = j[i2];
-  }
-  if (lines || absolute) {
-    for (i2 = 0; i2 < l; i2++) {
-      node = nodes[i2];
-      isChild = node.parentNode === element;
-      if (isChild || absolute || chars && !words) {
-        offset = node.offsetTop;
-        if (lines && isChild && Math.abs(offset - lineOffsetY) > lineThreshold && (node.nodeName !== "BR" || i2 === 0)) {
-          curLine = [];
-          lines.push(curLine);
-          lineOffsetY = offset;
-        }
-        if (absolute) {
-          node._x = node.offsetLeft;
-          node._y = offset;
-          node._w = node.offsetWidth;
-          node._h = node.offsetHeight;
-        }
-        if (lines) {
-          if (node._isSplit && isChild || !chars && isChild || words && isChild || !words && node.parentNode.parentNode === element && !node.parentNode._isSplit) {
-            curLine.push(node);
-            node._x -= paddingLeft;
-            if (_isBeforeWordDelimiter(node, element, wordDelimiter)) {
-              node._wordEnd = true;
-            }
-          }
-          if (node.nodeName === "BR" && (node.nextSibling && node.nextSibling.nodeName === "BR" || i2 === 0)) {
-            lines.push([]);
-          }
-        }
-      }
-    }
-  }
-  for (i2 = 0; i2 < l; i2++) {
-    node = nodes[i2];
-    isChild = node.parentNode === element;
-    if (node.nodeName === "BR") {
-      if (lines || absolute) {
-        node.parentNode && node.parentNode.removeChild(node);
-        nodes.splice(i2--, 1);
-        l--;
-      } else if (!words) {
-        element.appendChild(node);
-      }
-      continue;
-    }
-    if (absolute) {
-      style = node.style;
-      if (!words && !isChild) {
-        node._x += node.parentNode._x;
-        node._y += node.parentNode._y;
-      }
-      style.left = node._x + "px";
-      style.top = node._y + "px";
-      style.position = "absolute";
-      style.display = "block";
-      style.width = node._w + 1 + "px";
-      style.height = node._h + "px";
-    }
-    if (!words && chars) {
-      if (node._isSplit) {
-        node._next = j = node.nextSibling;
-        node.parentNode.appendChild(node);
-        while (j && j.nodeType === 3 && j.textContent === " ") {
-          node._next = j.nextSibling;
-          node.parentNode.appendChild(j);
-          j = j.nextSibling;
-        }
-      } else if (node.parentNode._isSplit) {
-        node._parent = node.parentNode;
-        if (!node.previousSibling && node.firstChild) {
-          node.firstChild._isFirst = true;
-        }
-        if (node.nextSibling && node.nextSibling.textContent === " " && !node.nextSibling.nextSibling) {
-          spaceNodesToRemove.push(node.nextSibling);
-        }
-        node._next = node.nextSibling && node.nextSibling._isFirst ? null : node.nextSibling;
-        node.parentNode.removeChild(node);
-        nodes.splice(i2--, 1);
-        l--;
-      } else if (!isChild) {
-        offset = !node.nextSibling && _isBeforeWordDelimiter(node.parentNode, element, wordDelimiter);
-        node.parentNode._parent && node.parentNode._parent.appendChild(node);
-        offset && node.parentNode.appendChild(_doc.createTextNode(" "));
-        if (tag === "span") {
-          node.style.display = "inline";
-        }
-        charArray.push(node);
-      }
-    } else if (node.parentNode._isSplit && !node._isSplit && node.innerHTML !== "") {
-      wordArray.push(node);
-    } else if (chars && !node._isSplit) {
-      if (tag === "span") {
-        node.style.display = "inline";
-      }
-      charArray.push(node);
-    }
-  }
-  i2 = spaceNodesToRemove.length;
-  while (--i2 > -1) {
-    spaceNodesToRemove[i2].parentNode.removeChild(spaceNodesToRemove[i2]);
-  }
-  if (lines) {
-    if (absolute) {
-      lineNode = _doc.createElement(tag);
-      element.appendChild(lineNode);
-      lineWidth = lineNode.offsetWidth + "px";
-      offset = lineNode.offsetParent === element ? 0 : element.offsetLeft;
-      element.removeChild(lineNode);
-    }
-    style = element.style.cssText;
-    element.style.cssText = "display:none;";
-    while (element.firstChild) {
-      element.removeChild(element.firstChild);
-    }
-    addWordSpaces = wordDelimiter === " " && (!absolute || !words && !chars);
-    for (i2 = 0; i2 < lines.length; i2++) {
-      curLine = lines[i2];
-      lineNode = _doc.createElement(tag);
-      lineNode.style.cssText = "display:block;text-align:" + textAlign + ";position:" + (absolute ? "absolute;" : "relative;");
-      if (linesClass) {
-        lineNode.className = linesClass + (iterateLine ? i2 + 1 : "");
-      }
-      lineArray.push(lineNode);
-      l = curLine.length;
-      for (j = 0; j < l; j++) {
-        if (curLine[j].nodeName !== "BR") {
-          node = curLine[j];
-          lineNode.appendChild(node);
-          addWordSpaces && node._wordEnd && lineNode.appendChild(_doc.createTextNode(" "));
-          if (absolute) {
-            if (j === 0) {
-              lineNode.style.top = node._y + "px";
-              lineNode.style.left = paddingLeft + offset + "px";
-            }
-            node.style.top = "0px";
-            if (offset) {
-              node.style.left = node._x - offset + "px";
-            }
-          }
-        }
-      }
-      if (l === 0) {
-        lineNode.innerHTML = "&nbsp;";
-      } else if (!words && !chars) {
-        _deWordify(lineNode);
-        _swapText(lineNode, String.fromCharCode(160), " ");
-      }
-      if (absolute) {
-        lineNode.style.width = lineWidth;
-        lineNode.style.height = node._h + "px";
-      }
-      element.appendChild(lineNode);
-    }
-    element.style.cssText = style;
-  }
-  if (absolute) {
-    if (origHeight > element.clientHeight) {
-      element.style.height = origHeight - padTopAndBottom + "px";
-      if (element.clientHeight < origHeight) {
-        element.style.height = origHeight + borderTopAndBottom + "px";
-      }
-    }
-    if (origWidth > element.clientWidth) {
-      element.style.width = origWidth - padLeftAndRight + "px";
-      if (element.clientWidth < origWidth) {
-        element.style.width = origWidth + borderLeftAndRight + "px";
-      }
-    }
-  }
-  isFlex && (prevInlineDisplay ? element.style.display = prevInlineDisplay : element.style.removeProperty("display"));
-  _pushReversed(allChars, charArray);
-  words && _pushReversed(allWords, wordArray);
-  _pushReversed(allLines, lineArray);
-};
-var _splitRawText = function _splitRawText2(element, vars, wordStart, charStart) {
-  var tag = vars.tag ? vars.tag : vars.span ? "span" : "div", types = vars.type || vars.split || "chars,words,lines", chars = ~types.indexOf("chars"), absolute = _isAbsolute(vars), wordDelimiter = vars.wordDelimiter || " ", isWordDelimiter = function isWordDelimiter2(_char) {
-    return _char === wordDelimiter || _char === _nonBreakingSpace && wordDelimiter === " ";
-  }, space = wordDelimiter !== " " ? "" : absolute ? "&#173; " : " ", wordEnd = "</" + tag + ">", wordIsOpen = 1, specialChars = vars.specialChars ? typeof vars.specialChars === "function" ? vars.specialChars : _findSpecialChars : null, text, splitText, i2, j, l, character, hasTagStart, testResult, container = _doc.createElement("div"), parent = element.parentNode;
-  parent.insertBefore(container, element);
-  container.textContent = element.nodeValue;
-  parent.removeChild(element);
-  element = container;
-  text = getText(element);
-  hasTagStart = text.indexOf("<") !== -1;
-  if (vars.reduceWhiteSpace !== false) {
-    text = text.replace(_multipleSpacesExp, " ").replace(_stripExp, "");
-  }
-  if (hasTagStart) {
-    text = text.split("<").join("{{LT}}");
-  }
-  l = text.length;
-  splitText = (text.charAt(0) === " " ? space : "") + wordStart();
-  for (i2 = 0; i2 < l; i2++) {
-    character = text.charAt(i2);
-    if (specialChars && (testResult = specialChars(text.substr(i2), vars.specialChars))) {
-      character = text.substr(i2, testResult || 1);
-      splitText += chars && character !== " " ? charStart() + character + "</" + tag + ">" : character;
-      i2 += testResult - 1;
-    } else if (isWordDelimiter(character) && !isWordDelimiter(text.charAt(i2 - 1)) && i2) {
-      splitText += wordIsOpen ? wordEnd : "";
-      wordIsOpen = 0;
-      while (isWordDelimiter(text.charAt(i2 + 1))) {
-        splitText += space;
-        i2++;
-      }
-      if (i2 === l - 1) {
-        splitText += space;
-      } else if (text.charAt(i2 + 1) !== ")") {
-        splitText += space + wordStart();
-        wordIsOpen = 1;
-      }
-    } else if (character === "{" && text.substr(i2, 6) === "{{LT}}") {
-      splitText += chars ? charStart() + "{{LT}}</" + tag + ">" : "{{LT}}";
-      i2 += 5;
-    } else if (character.charCodeAt(0) >= 55296 && character.charCodeAt(0) <= 56319 || text.charCodeAt(i2 + 1) >= 65024 && text.charCodeAt(i2 + 1) <= 65039) {
-      j = ((text.substr(i2, 12).split(emojiExp) || [])[1] || "").length || 2;
-      splitText += chars && character !== " " ? charStart() + text.substr(i2, j) + "</" + tag + ">" : text.substr(i2, j);
-      i2 += j - 1;
-    } else {
-      splitText += chars && character !== " " ? charStart() + character + "</" + tag + ">" : character;
-    }
-  }
-  element.outerHTML = splitText + (wordIsOpen ? wordEnd : "");
-  hasTagStart && _swapText(parent, "{{LT}}", "<");
-};
-var _split = function _split2(element, vars, wordStart, charStart) {
-  var children = _toArray(element.childNodes), l = children.length, absolute = _isAbsolute(vars), i2, child;
-  if (element.nodeType !== 3 || l > 1) {
-    vars.absolute = false;
-    for (i2 = 0; i2 < l; i2++) {
-      child = children[i2];
-      child._next = child._isFirst = child._parent = child._wordEnd = null;
-      if (child.nodeType !== 3 || /\S+/.test(child.nodeValue)) {
-        if (absolute && child.nodeType !== 3 && _getComputedStyle(child).display === "inline") {
-          child.style.display = "inline-block";
-          child.style.position = "relative";
-        }
-        child._isSplit = true;
-        _split2(child, vars, wordStart, charStart);
-      }
-    }
-    vars.absolute = absolute;
-    element._isSplit = true;
-    return;
-  }
-  _splitRawText(element, vars, wordStart, charStart);
-};
-var SplitText = /* @__PURE__ */ function() {
-  function SplitText2(element, vars) {
-    _coreInitted || _initCore();
-    this.elements = _toArray(element);
-    this.chars = [];
-    this.words = [];
-    this.lines = [];
-    this._originals = [];
-    this.vars = vars || {};
-    _context(this);
-    _bonusValidated && this.split(vars);
-  }
-  var _proto = SplitText2.prototype;
-  _proto.split = function split(vars) {
-    this.isSplit && this.revert();
-    this.vars = vars = vars || this.vars;
-    this._originals.length = this.chars.length = this.words.length = this.lines.length = 0;
-    var i2 = this.elements.length, tag = vars.tag ? vars.tag : vars.span ? "span" : "div", wordStart = _cssClassFunc(vars.wordsClass, tag), charStart = _cssClassFunc(vars.charsClass, tag), origHeight, origWidth, e;
-    while (--i2 > -1) {
-      e = this.elements[i2];
-      this._originals[i2] = {
-        html: e.innerHTML,
-        style: e.getAttribute("style")
-      };
-      origHeight = e.clientHeight;
-      origWidth = e.clientWidth;
-      _split(e, vars, wordStart, charStart);
-      _setPositionsAfterSplit(e, vars, this.chars, this.words, this.lines, origWidth, origHeight);
-    }
-    this.chars.reverse();
-    this.words.reverse();
-    this.lines.reverse();
-    this.isSplit = true;
-    return this;
-  };
-  _proto.revert = function revert() {
-    var originals = this._originals;
-    if (!originals) {
-      throw "revert() call wasn't scoped properly.";
-    }
-    this.elements.forEach(function(e, i2) {
-      e.innerHTML = originals[i2].html;
-      e.setAttribute("style", originals[i2].style);
-    });
-    this.chars = [];
-    this.words = [];
-    this.lines = [];
-    this.isSplit = false;
-    return this;
-  };
-  SplitText2.create = function create(element, vars) {
-    return new SplitText2(element, vars);
-  };
-  return SplitText2;
-}();
-SplitText.version = "3.12.5";
-SplitText.register = _initCore;
-
-// gsap-hero.js
-import_gsap.gsap.registerPlugin(SplitText);
-var circles;
-createCircles();
-window.addEventListener("load", () => {
-  let root = document.documentElement;
-  let hero = document.querySelector(".gsap-hero_light-bg");
-  let header2 = document.querySelector(".header_container");
-  let heading = document.querySelector(".gsap-hero_heading");
-  let split, tagline, typed;
-  if (heading) {
-    heading.style.opacity = "1";
-    split = new SplitText(".gsap-hero_heading");
-    tagline = split.chars.slice(0, 15);
-    typed = split.chars.slice(15, -1);
-  }
-  let tl = import_gsap.gsap.timeline();
-  tl.to(circles, { duration: 0, opacity: 1, stagger: 0.05, ease: "none" });
-  tl.to(hero, { duration: 0.5, opacity: 0, ease: "power1.inOut" }, "-=0.25");
-  tl.to(tagline, { duration: 0.5, color: "var(--light-teal)", ease: "power1.inOut" }, "<");
-  tl.to(circles, { duration: 0.5, borderColor: "var(--light-teal)", ease: "power1.inOut" }, "<");
-  tl.to(root, { duration: 0.5, ["--nav-color"]: "var(--light-teal)", ease: "power1.inOut" }, "<");
-  tl.to(tagline, { duration: 1, opacity: 1, ease: "power1.out" });
-  tl.to(typed, { duration: 0, color: "var(--light-teal)" }, "-=0.5");
-  tl.from(typed, { duration: 0.5, stagger: 0.03, rotateZ: "1deg", translateY: "0.1em", ease: "power1.out", onComplete: preloadVideo }, "<");
-  tl.to(typed, { duration: 0.5, stagger: 0.03, opacity: 1, ease: "power1.out", onComplete: preloadVideo }, "<");
-  tl.to(header2, { duration: 0.5, opacity: 1, ease: "power1.out" });
-});
-function preloadVideo() {
-  console.log("Loading Videos..");
-  videos = [...document.querySelectorAll(".slider-video")];
-  videos.forEach((el) => {
-    el.setAttribute("preload", "auto");
-  });
-}
-function createCircles() {
-  const container = document.querySelector(".gsap-hero_circles-wrapper");
-  if (container) {
-    const targetDiameter = container.offsetHeight;
-    let windowWidth = window.innerWidth;
-    count = 2 * Math.round(windowWidth / targetDiameter / 2);
-    let newDiameter = windowWidth / count;
-    try {
-      container.style.setProperty("--d", newDiameter + "px");
-      container.style.setProperty("--offset", newDiameter / -4 + "px");
-    } catch (error) {
-      console.error(error);
-    }
-    for (let i2 = 0; i2 < count * 2; i2++) {
-      let el = document.createElement("div");
-      el.classList.add("gsap-hero_circle");
-      try {
-        container.append(el);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    circles = [...document.querySelectorAll(".gsap-hero_circle")];
-  }
-}
-
-// animations.js
-var import_gsap2 = __toESM(require_gsap());
 
 // node_modules/gsap/Observer.js
 function _defineProperties(target, props) {
@@ -7217,11 +6633,11 @@ function _createClass(Constructor, protoProps, staticProps) {
     _defineProperties(Constructor, staticProps);
   return Constructor;
 }
-var gsap3;
-var _coreInitted2;
+var gsap;
+var _coreInitted;
 var _clamp;
-var _win2;
-var _doc2;
+var _win;
+var _doc;
 var _docEl;
 var _body;
 var _isTouch;
@@ -7230,9 +6646,9 @@ var ScrollTrigger;
 var _root;
 var _normalizer;
 var _eventTypes;
-var _context2;
+var _context;
 var _getGSAP = function _getGSAP2() {
-  return gsap3 || typeof window !== "undefined" && (gsap3 = window.gsap) && gsap3.registerPlugin && gsap3;
+  return gsap || typeof window !== "undefined" && (gsap = window.gsap) && gsap.registerPlugin && gsap;
 };
 var _startup = 1;
 var _observers = [];
@@ -7275,7 +6691,7 @@ var _onScroll = function _onScroll2() {
 var _scrollCacheFunc = function _scrollCacheFunc2(f, doNotCache) {
   var cachingFunc = function cachingFunc2(value) {
     if (value || value === 0) {
-      _startup && (_win2.history.scrollRestoration = "manual");
+      _startup && (_win.history.scrollRestoration = "manual");
       var isNormalizing = _normalizer && _normalizer.isPressed;
       value = cachingFunc2.v = Math.round(value) || (_normalizer && _normalizer.iOS ? 1 : 0);
       f(value);
@@ -7300,7 +6716,7 @@ var _horizontal = {
   d2: "Width",
   a: "x",
   sc: _scrollCacheFunc(function(value) {
-    return arguments.length ? _win2.scrollTo(value, _vertical.sc()) : _win2.pageXOffset || _doc2[_scrollLeft] || _docEl[_scrollLeft] || _body[_scrollLeft] || 0;
+    return arguments.length ? _win.scrollTo(value, _vertical.sc()) : _win.pageXOffset || _doc[_scrollLeft] || _docEl[_scrollLeft] || _body[_scrollLeft] || 0;
   })
 };
 var _vertical = {
@@ -7314,15 +6730,15 @@ var _vertical = {
   a: "y",
   op: _horizontal,
   sc: _scrollCacheFunc(function(value) {
-    return arguments.length ? _win2.scrollTo(_horizontal.sc(), value) : _win2.pageYOffset || _doc2[_scrollTop] || _docEl[_scrollTop] || _body[_scrollTop] || 0;
+    return arguments.length ? _win.scrollTo(_horizontal.sc(), value) : _win.pageYOffset || _doc[_scrollTop] || _docEl[_scrollTop] || _body[_scrollTop] || 0;
   })
 };
 var _getTarget = function _getTarget2(t, self2) {
-  return (self2 && self2._ctx && self2._ctx.selector || gsap3.utils.toArray)(t)[0] || (typeof t === "string" && gsap3.config().nullTargetWarn !== false ? console.warn("Element not found:", t) : null);
+  return (self2 && self2._ctx && self2._ctx.selector || gsap.utils.toArray)(t)[0] || (typeof t === "string" && gsap.config().nullTargetWarn !== false ? console.warn("Element not found:", t) : null);
 };
 var _getScrollFunc = function _getScrollFunc2(element, _ref) {
   var s = _ref.s, sc = _ref.sc;
-  _isViewport(element) && (element = _doc2.scrollingElement || _docEl);
+  _isViewport(element) && (element = _doc.scrollingElement || _docEl);
   var i2 = _scrollers.indexOf(element), offset = sc === _vertical.sc ? 1 : 2;
   !~i2 && (i2 = _scrollers.push(element) - 1);
   _scrollers[i2 + offset] || _addListener(element, "scroll", _onScroll);
@@ -7330,7 +6746,7 @@ var _getScrollFunc = function _getScrollFunc2(element, _ref) {
     return arguments.length ? element[s] = value : element[s];
   })));
   func.target = element;
-  prev || (func.smooth = gsap3.getProperty(element, "scrollBehavior") === "smooth");
+  prev || (func.smooth = gsap.getProperty(element, "scrollBehavior") === "smooth");
   return func;
 };
 var _getVelocityProp = function _getVelocityProp2(value, minTimeRefresh, useDelta) {
@@ -7369,30 +6785,30 @@ var _getAbsoluteMax = function _getAbsoluteMax2(a) {
   return Math.abs(max) >= Math.abs(min) ? max : min;
 };
 var _setScrollTrigger = function _setScrollTrigger2() {
-  ScrollTrigger = gsap3.core.globals().ScrollTrigger;
+  ScrollTrigger = gsap.core.globals().ScrollTrigger;
   ScrollTrigger && ScrollTrigger.core && _integrate();
 };
-var _initCore3 = function _initCore4(core) {
-  gsap3 = core || _getGSAP();
-  if (!_coreInitted2 && gsap3 && typeof document !== "undefined" && document.body) {
-    _win2 = window;
-    _doc2 = document;
-    _docEl = _doc2.documentElement;
-    _body = _doc2.body;
-    _root = [_win2, _doc2, _docEl, _body];
-    _clamp = gsap3.utils.clamp;
-    _context2 = gsap3.core.context || function() {
+var _initCore = function _initCore2(core) {
+  gsap = core || _getGSAP();
+  if (!_coreInitted && gsap && typeof document !== "undefined" && document.body) {
+    _win = window;
+    _doc = document;
+    _docEl = _doc.documentElement;
+    _body = _doc.body;
+    _root = [_win, _doc, _docEl, _body];
+    _clamp = gsap.utils.clamp;
+    _context = gsap.core.context || function() {
     };
     _pointerType = "onpointerenter" in _body ? "pointer" : "mouse";
-    _isTouch = Observer.isTouch = _win2.matchMedia && _win2.matchMedia("(hover: none), (pointer: coarse)").matches ? 1 : "ontouchstart" in _win2 || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0 ? 2 : 0;
+    _isTouch = Observer.isTouch = _win.matchMedia && _win.matchMedia("(hover: none), (pointer: coarse)").matches ? 1 : "ontouchstart" in _win || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0 ? 2 : 0;
     _eventTypes = Observer.eventTypes = ("ontouchstart" in _docEl ? "touchstart,touchmove,touchcancel,touchend" : !("onpointerdown" in _docEl) ? "mousedown,mousemove,mouseup,mouseup" : "pointerdown,pointermove,pointercancel,pointerup").split(",");
     setTimeout(function() {
       return _startup = 0;
     }, 500);
     _setScrollTrigger();
-    _coreInitted2 = 1;
+    _coreInitted = 1;
   }
-  return _coreInitted2;
+  return _coreInitted;
 };
 _horizontal.op = _vertical;
 _scrollers.cache = 0;
@@ -7402,20 +6818,20 @@ var Observer = /* @__PURE__ */ function() {
   }
   var _proto = Observer2.prototype;
   _proto.init = function init(vars) {
-    _coreInitted2 || _initCore3(gsap3) || console.warn("Please gsap.registerPlugin(Observer)");
+    _coreInitted || _initCore(gsap) || console.warn("Please gsap.registerPlugin(Observer)");
     ScrollTrigger || _setScrollTrigger();
     var tolerance = vars.tolerance, dragMinimum = vars.dragMinimum, type = vars.type, target = vars.target, lineHeight = vars.lineHeight, debounce = vars.debounce, preventDefault = vars.preventDefault, onStop = vars.onStop, onStopDelay = vars.onStopDelay, ignore = vars.ignore, wheelSpeed = vars.wheelSpeed, event = vars.event, onDragStart = vars.onDragStart, onDragEnd = vars.onDragEnd, onDrag = vars.onDrag, onPress = vars.onPress, onRelease = vars.onRelease, onRight = vars.onRight, onLeft = vars.onLeft, onUp = vars.onUp, onDown = vars.onDown, onChangeX = vars.onChangeX, onChangeY = vars.onChangeY, onChange = vars.onChange, onToggleX = vars.onToggleX, onToggleY = vars.onToggleY, onHover = vars.onHover, onHoverEnd = vars.onHoverEnd, onMove = vars.onMove, ignoreCheck = vars.ignoreCheck, isNormalizer = vars.isNormalizer, onGestureStart = vars.onGestureStart, onGestureEnd = vars.onGestureEnd, onWheel = vars.onWheel, onEnable = vars.onEnable, onDisable = vars.onDisable, onClick = vars.onClick, scrollSpeed = vars.scrollSpeed, capture = vars.capture, allowClicks = vars.allowClicks, lockAxis = vars.lockAxis, onLockAxis = vars.onLockAxis;
     this.target = target = _getTarget(target) || _docEl;
     this.vars = vars;
-    ignore && (ignore = gsap3.utils.toArray(ignore));
+    ignore && (ignore = gsap.utils.toArray(ignore));
     tolerance = tolerance || 1e-9;
     dragMinimum = dragMinimum || 0;
     wheelSpeed = wheelSpeed || 1;
     scrollSpeed = scrollSpeed || 1;
     type = type || "wheel,touch,pointer";
     debounce = debounce !== false;
-    lineHeight || (lineHeight = parseFloat(_win2.getComputedStyle(_body).lineHeight) || 22);
-    var id, onStopDelayedCall, dragged, moved, wheeled, locked, axis, self2 = this, prevDeltaX = 0, prevDeltaY = 0, passive = vars.passive || !preventDefault, scrollFuncX = _getScrollFunc(target, _horizontal), scrollFuncY = _getScrollFunc(target, _vertical), scrollX = scrollFuncX(), scrollY = scrollFuncY(), limitToTouch = ~type.indexOf("touch") && !~type.indexOf("pointer") && _eventTypes[0] === "pointerdown", isViewport = _isViewport(target), ownerDoc = target.ownerDocument || _doc2, deltaX = [0, 0, 0], deltaY = [0, 0, 0], onClickTime = 0, clickCapture = function clickCapture2() {
+    lineHeight || (lineHeight = parseFloat(_win.getComputedStyle(_body).lineHeight) || 22);
+    var id, onStopDelayedCall, dragged, moved, wheeled, locked, axis, self2 = this, prevDeltaX = 0, prevDeltaY = 0, passive = vars.passive || !preventDefault, scrollFuncX = _getScrollFunc(target, _horizontal), scrollFuncY = _getScrollFunc(target, _vertical), scrollX = scrollFuncX(), scrollY = scrollFuncY(), limitToTouch = ~type.indexOf("touch") && !~type.indexOf("pointer") && _eventTypes[0] === "pointerdown", isViewport = _isViewport(target), ownerDoc = target.ownerDocument || _doc, deltaX = [0, 0, 0], deltaY = [0, 0, 0], onClickTime = 0, clickCapture = function clickCapture2() {
       return onClickTime = _getTime();
     }, _ignoreCheck = function _ignoreCheck2(e, isPointerOrTouch) {
       return (self2.event = e) && ignore && ~ignore.indexOf(e.target) || isPointerOrTouch && limitToTouch && e.pointerType !== "touch" || ignoreCheck && ignoreCheck(e, isPointerOrTouch);
@@ -7517,13 +6933,13 @@ var Observer = /* @__PURE__ */ function() {
         self2._vx.reset();
         self2._vy.reset();
         if (preventDefault && allowClicks) {
-          gsap3.delayedCall(0.08, function() {
+          gsap.delayedCall(0.08, function() {
             if (_getTime() - onClickTime > 300 && !e.defaultPrevented) {
               if (e.target.click) {
                 e.target.click();
               } else if (ownerDoc.createEvent) {
                 var syntheticEvent = ownerDoc.createEvent("MouseEvents");
-                syntheticEvent.initMouseEvent("click", true, true, _win2, 1, eventData.screenX, eventData.screenY, eventData.clientX, eventData.clientY, false, false, false, false, 0, null);
+                syntheticEvent.initMouseEvent("click", true, true, _win, 1, eventData.screenX, eventData.screenY, eventData.clientX, eventData.clientY, false, false, false, false, 0, null);
                 e.target.dispatchEvent(syntheticEvent);
               }
             }
@@ -7553,7 +6969,7 @@ var Observer = /* @__PURE__ */ function() {
       }
       e = _getEvent(e, preventDefault);
       onWheel && (wheeled = true);
-      var multiplier = (e.deltaMode === 1 ? lineHeight : e.deltaMode === 2 ? _win2.innerHeight : 1) * wheelSpeed;
+      var multiplier = (e.deltaMode === 1 ? lineHeight : e.deltaMode === 2 ? _win.innerHeight : 1) * wheelSpeed;
       onDelta(e.deltaX * multiplier, e.deltaY * multiplier, 0);
       onStop && !isNormalizer && onStopDelayedCall.restart(true);
     }, _onMove = function _onMove2(e) {
@@ -7575,14 +6991,14 @@ var Observer = /* @__PURE__ */ function() {
     }, _onClick = function _onClick2(e) {
       return _ignoreCheck(e) || _getEvent(e, preventDefault) && onClick(self2);
     };
-    onStopDelayedCall = self2._dc = gsap3.delayedCall(onStopDelay || 0.25, onStopFunc).pause();
+    onStopDelayedCall = self2._dc = gsap.delayedCall(onStopDelay || 0.25, onStopFunc).pause();
     self2.deltaX = self2.deltaY = 0;
     self2._vx = _getVelocityProp(0, 50, true);
     self2._vy = _getVelocityProp(0, 50, true);
     self2.scrollX = scrollFuncX;
     self2.scrollY = scrollFuncY;
     self2.isDragging = self2.isGesturing = self2.isPressed = false;
-    _context2(this);
+    _context(this);
     self2.enable = function(e) {
       if (!self2.isEnabled) {
         _addListener(isViewport ? ownerDoc : target, "scroll", _onScroll);
@@ -7659,7 +7075,7 @@ Observer.version = "3.12.5";
 Observer.create = function(vars) {
   return new Observer(vars);
 };
-Observer.register = _initCore3;
+Observer.register = _initCore;
 Observer.getAll = function() {
   return _observers.slice();
 };
@@ -7668,18 +7084,18 @@ Observer.getById = function(id) {
     return o.vars.id === id;
   })[0];
 };
-_getGSAP() && gsap3.registerPlugin(Observer);
+_getGSAP() && gsap.registerPlugin(Observer);
 
 // node_modules/gsap/ScrollTrigger.js
-var gsap4;
-var _coreInitted3;
-var _win3;
-var _doc3;
+var gsap2;
+var _coreInitted2;
+var _win2;
+var _doc2;
 var _docEl2;
 var _body2;
 var _root2;
 var _resizeDelay;
-var _toArray2;
+var _toArray;
 var _clamp2;
 var _time2;
 var _syncInterval;
@@ -7698,7 +7114,7 @@ var _ignoreMobileResize;
 var _baseScreenHeight;
 var _baseScreenWidth;
 var _fixIOSBug;
-var _context3;
+var _context2;
 var _scrollRestoration;
 var _div100vh;
 var _100vh;
@@ -7737,17 +7153,17 @@ var _windowExists = function _windowExists2() {
   return typeof window !== "undefined";
 };
 var _getGSAP3 = function _getGSAP4() {
-  return gsap4 || _windowExists() && (gsap4 = window.gsap) && gsap4.registerPlugin && gsap4;
+  return gsap2 || _windowExists() && (gsap2 = window.gsap) && gsap2.registerPlugin && gsap2;
 };
 var _isViewport3 = function _isViewport4(e) {
   return !!~_root2.indexOf(e);
 };
 var _getViewportDimension = function _getViewportDimension2(dimensionProperty) {
-  return (dimensionProperty === "Height" ? _100vh : _win3["inner" + dimensionProperty]) || _docEl2["client" + dimensionProperty] || _body2["client" + dimensionProperty];
+  return (dimensionProperty === "Height" ? _100vh : _win2["inner" + dimensionProperty]) || _docEl2["client" + dimensionProperty] || _body2["client" + dimensionProperty];
 };
 var _getBoundsFunc = function _getBoundsFunc2(element) {
   return _getProxyProp(element, "getBoundingClientRect") || (_isViewport3(element) ? function() {
-    _winOffsets.width = _win3.innerWidth;
+    _winOffsets.width = _win2.innerWidth;
     _winOffsets.height = _100vh;
     return _winOffsets;
   } : function() {
@@ -7815,11 +7231,11 @@ var _margin = "margin";
 var _Width = "Width";
 var _Height = "Height";
 var _px = "px";
-var _getComputedStyle3 = function _getComputedStyle4(element) {
-  return _win3.getComputedStyle(element);
+var _getComputedStyle = function _getComputedStyle2(element) {
+  return _win2.getComputedStyle(element);
 };
 var _makePositionable = function _makePositionable2(element) {
-  var position = _getComputedStyle3(element).position;
+  var position = _getComputedStyle(element).position;
   element.style.position = position === "absolute" || position === "fixed" ? position : "relative";
 };
 var _setDefaults = function _setDefaults2(obj, defaults) {
@@ -7829,7 +7245,7 @@ var _setDefaults = function _setDefaults2(obj, defaults) {
   return obj;
 };
 var _getBounds = function _getBounds2(element, withoutTransforms) {
-  var tween = withoutTransforms && _getComputedStyle3(element)[_transformProp] !== "matrix(1, 0, 0, 1, 0, 0)" && gsap4.to(element, {
+  var tween = withoutTransforms && _getComputedStyle(element)[_transformProp] !== "matrix(1, 0, 0, 1, 0, 0)" && gsap2.to(element, {
     x: 0,
     y: 0,
     xPercent: 0,
@@ -7857,11 +7273,11 @@ var _getLabelRatioArray = function _getLabelRatioArray2(timeline) {
 };
 var _getClosestLabel = function _getClosestLabel2(animation) {
   return function(value) {
-    return gsap4.utils.snap(_getLabelRatioArray(animation), value);
+    return gsap2.utils.snap(_getLabelRatioArray(animation), value);
   };
 };
 var _snapDirectional = function _snapDirectional2(snapIncrementOrArray) {
-  var snap = gsap4.utils.snap(snapIncrementOrArray), a = Array.isArray(snapIncrementOrArray) && snapIncrementOrArray.slice(0).sort(function(a2, b) {
+  var snap = gsap2.utils.snap(snapIncrementOrArray), a = Array.isArray(snapIncrementOrArray) && snapIncrementOrArray.slice(0).sort(function(a2, b) {
     return a2 - b;
   });
   return a ? function(value, direction, threshold) {
@@ -7955,7 +7371,7 @@ var _offsetToPx = function _offsetToPx2(value, size) {
 };
 var _createMarker = function _createMarker2(type, name, container, direction, _ref4, offset, matchWidthEl, containerAnimation) {
   var startColor = _ref4.startColor, endColor = _ref4.endColor, fontSize = _ref4.fontSize, indent = _ref4.indent, fontWeight = _ref4.fontWeight;
-  var e = _doc3.createElement("div"), useFixedPosition = _isViewport3(container) || _getProxyProp(container, "pinType") === "fixed", isScroller = type.indexOf("scroller") !== -1, parent = useFixedPosition ? _body2 : container, isStart = type.indexOf("start") !== -1, color = isStart ? startColor : endColor, css = "border-color:" + color + ";font-size:" + fontSize + ";color:" + color + ";font-weight:" + fontWeight + ";pointer-events:none;white-space:nowrap;font-family:sans-serif,Arial;z-index:1000;padding:4px 8px;border-width:0;border-style:solid;";
+  var e = _doc2.createElement("div"), useFixedPosition = _isViewport3(container) || _getProxyProp(container, "pinType") === "fixed", isScroller = type.indexOf("scroller") !== -1, parent = useFixedPosition ? _body2 : container, isStart = type.indexOf("start") !== -1, color = isStart ? startColor : endColor, css = "border-color:" + color + ";font-size:" + fontSize + ";color:" + color + ";font-weight:" + fontWeight + ";pointer-events:none;white-space:nowrap;font-family:sans-serif,Arial;z-index:1000;padding:4px 8px;border-width:0;border-style:solid;";
   css += "position:" + ((isScroller || containerAnimation) && useFixedPosition ? "fixed;" : "absolute;");
   (isScroller || containerAnimation || !useFixedPosition) && (css += (direction === _vertical ? _right : _bottom) + ":" + (offset + parseFloat(indent)) + "px;");
   matchWidthEl && (css += "box-sizing:border-box;text-align:left;width:" + matchWidthEl.offsetWidth + "px;");
@@ -7978,7 +7394,7 @@ var _positionMarker = function _positionMarker2(marker, start, direction, flippe
   vars["border" + side + _Width] = 1;
   vars["border" + oppositeSide + _Width] = 0;
   vars[direction.p] = start + "px";
-  gsap4.set(marker, vars);
+  gsap2.set(marker, vars);
 };
 var _triggers = [];
 var _ids = {};
@@ -7999,12 +7415,12 @@ var _onScroll3 = function _onScroll4() {
   }
 };
 var _setBaseDimensions = function _setBaseDimensions2() {
-  _baseScreenWidth = _win3.innerWidth;
-  _baseScreenHeight = _win3.innerHeight;
+  _baseScreenWidth = _win2.innerWidth;
+  _baseScreenHeight = _win2.innerHeight;
 };
 var _onResize = function _onResize2() {
   _scrollers.cache++;
-  !_refreshing && !_ignoreResize && !_doc3.fullscreenElement && !_doc3.webkitFullscreenElement && (!_ignoreMobileResize || _baseScreenWidth !== _win3.innerWidth || Math.abs(_win3.innerHeight - _baseScreenHeight) > _win3.innerHeight * 0.25) && _resizeDelay.restart(true);
+  !_refreshing && !_ignoreResize && !_doc2.fullscreenElement && !_doc2.webkitFullscreenElement && (!_ignoreMobileResize || _baseScreenWidth !== _win2.innerWidth || Math.abs(_win2.innerHeight - _baseScreenHeight) > _win2.innerHeight * 0.25) && _resizeDelay.restart(true);
 };
 var _listeners = {};
 var _emptyArray = [];
@@ -8047,7 +7463,7 @@ var _clearScrollMemory = function _clearScrollMemory2(scrollRestoration, force) 
   (force || !_refreshingAll) && _scrollers.forEach(function(obj) {
     return _isFunction(obj) && obj.cacheID++ && (obj.rec = 0);
   });
-  _isString(scrollRestoration) && (_win3.history.scrollRestoration = _scrollRestoration = scrollRestoration);
+  _isString(scrollRestoration) && (_win2.history.scrollRestoration = _scrollRestoration = scrollRestoration);
 };
 var _refreshingAll;
 var _refreshID = 0;
@@ -8062,11 +7478,11 @@ var _queueRefreshAll = function _queueRefreshAll2() {
 };
 var _refresh100vh = function _refresh100vh2() {
   _body2.appendChild(_div100vh);
-  _100vh = !_normalizer2 && _div100vh.offsetHeight || _win3.innerHeight;
+  _100vh = !_normalizer2 && _div100vh.offsetHeight || _win2.innerHeight;
   _body2.removeChild(_div100vh);
 };
 var _hideAllMarkers = function _hideAllMarkers2(hide) {
-  return _toArray2(".gsap-marker-start, .gsap-marker-end, .gsap-marker-scroller-start, .gsap-marker-scroller-end").forEach(function(el) {
+  return _toArray(".gsap-marker-start, .gsap-marker-end, .gsap-marker-scroller-start, .gsap-marker-scroller-end").forEach(function(el) {
     return el.style.display = hide ? "none" : "block";
   });
 };
@@ -8211,7 +7627,7 @@ var _capsExp = /([A-Z])/g;
 var _setState = function _setState2(state) {
   if (state) {
     var style = state.t.style, l = state.length, i2 = 0, p, value;
-    (state.t._gsap || gsap4.core.getCache(state.t)).uncache = 1;
+    (state.t._gsap || gsap2.core.getCache(state.t)).uncache = 1;
     for (; i2 < l; i2 += 2) {
       value = state[i2 + 1];
       p = state[i2];
@@ -8257,7 +7673,7 @@ var _parsePosition = function _parsePosition2(value, trigger, scrollerSize, dire
     var offsets = (value || "0").split(" "), bounds, localOffset, globalOffset, display;
     element = _getTarget(trigger, self2) || _body2;
     bounds = _getBounds(element) || {};
-    if ((!bounds || !bounds.left && !bounds.top) && _getComputedStyle3(element).display === "none") {
+    if ((!bounds || !bounds.left && !bounds.top) && _getComputedStyle(element).display === "none") {
       display = element.style.display;
       element.style.display = "block";
       bounds = _getBounds(element);
@@ -8269,7 +7685,7 @@ var _parsePosition = function _parsePosition2(value, trigger, scrollerSize, dire
     markerScroller && _positionMarker(markerScroller, globalOffset, direction, scrollerSize - globalOffset < 20 || markerScroller._isStart && globalOffset > 20);
     scrollerSize -= scrollerSize - globalOffset;
   } else {
-    containerAnimation && (value = gsap4.utils.mapRange(containerAnimation.scrollTrigger.start, containerAnimation.scrollTrigger.end, 0, scrollerMax, value));
+    containerAnimation && (value = gsap2.utils.mapRange(containerAnimation.scrollTrigger.start, containerAnimation.scrollTrigger.end, 0, scrollerMax, value));
     markerScroller && _positionMarker(markerScroller, scrollerSize, direction, true);
   }
   if (clampZeroProp) {
@@ -8301,7 +7717,7 @@ var _reparent = function _reparent2(element, parent, top, left) {
     var style = element.style, p, cs;
     if (parent === _body2) {
       element._stOrig = style.cssText;
-      cs = _getComputedStyle3(element);
+      cs = _getComputedStyle(element);
       for (p in cs) {
         if (!+p && !_prefixExp.test(p) && cs[p] && typeof style[p] === "string" && p !== "0") {
           style[p] = cs[p];
@@ -8312,7 +7728,7 @@ var _reparent = function _reparent2(element, parent, top, left) {
     } else {
       style.cssText = element._stOrig;
     }
-    gsap4.core.getCache(element).uncache = 1;
+    gsap2.core.getCache(element).uncache = 1;
     parent.appendChild(element);
   }
 };
@@ -8332,7 +7748,7 @@ var _interruptionTracker = function _interruptionTracker2(getValueFunc, initialV
 var _shiftMarker = function _shiftMarker2(marker, direction, value) {
   var vars = {};
   vars[direction.p] = "+=" + value;
-  gsap4.set(marker, vars);
+  gsap2.set(marker, vars);
 };
 var _getTweenCreator = function _getTweenCreator2(scroller, direction) {
   var getScroll = _getScrollFunc(scroller, direction), prop = "_scroll" + direction.p2, getTween = function getTween2(scrollTo, vars, initialValue, change1, change2) {
@@ -8359,7 +7775,7 @@ var _getTweenCreator = function _getTweenCreator2(scroller, direction) {
       getTween2.tween = 0;
       onComplete && onComplete.call(tween);
     };
-    tween = getTween2.tween = gsap4.to(scroller, vars);
+    tween = getTween2.tween = gsap2.to(scroller, vars);
     return tween;
   };
   scroller[prop] = getScroll;
@@ -8371,12 +7787,12 @@ var _getTweenCreator = function _getTweenCreator2(scroller, direction) {
   return getTween;
 };
 var ScrollTrigger2 = /* @__PURE__ */ function() {
-  function ScrollTrigger3(vars, animation) {
-    _coreInitted3 || ScrollTrigger3.register(gsap4) || console.warn("Please gsap.registerPlugin(ScrollTrigger)");
-    _context3(this);
+  function ScrollTrigger4(vars, animation) {
+    _coreInitted2 || ScrollTrigger4.register(gsap2) || console.warn("Please gsap.registerPlugin(ScrollTrigger)");
+    _context2(this);
     this.init(vars, animation);
   }
-  var _proto = ScrollTrigger3.prototype;
+  var _proto = ScrollTrigger4.prototype;
   _proto.init = function init(vars, animation) {
     this.progress = this.start = 0;
     this.vars && this.kill(true, true);
@@ -8387,7 +7803,7 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
     vars = _setDefaults(_isString(vars) || _isNumber(vars) || vars.nodeType ? {
       trigger: vars
     } : vars, _defaults);
-    var _vars = vars, onUpdate = _vars.onUpdate, toggleClass = _vars.toggleClass, id = _vars.id, onToggle = _vars.onToggle, onRefresh = _vars.onRefresh, scrub = _vars.scrub, trigger = _vars.trigger, pin = _vars.pin, pinSpacing = _vars.pinSpacing, invalidateOnRefresh = _vars.invalidateOnRefresh, anticipatePin = _vars.anticipatePin, onScrubComplete = _vars.onScrubComplete, onSnapComplete = _vars.onSnapComplete, once = _vars.once, snap = _vars.snap, pinReparent = _vars.pinReparent, pinSpacer = _vars.pinSpacer, containerAnimation = _vars.containerAnimation, fastScrollEnd = _vars.fastScrollEnd, preventOverlaps = _vars.preventOverlaps, direction = vars.horizontal || vars.containerAnimation && vars.horizontal !== false ? _horizontal : _vertical, isToggle = !scrub && scrub !== 0, scroller = _getTarget(vars.scroller || _win3), scrollerCache = gsap4.core.getCache(scroller), isViewport = _isViewport3(scroller), useFixedPosition = ("pinType" in vars ? vars.pinType : _getProxyProp(scroller, "pinType") || isViewport && "fixed") === "fixed", callbacks = [vars.onEnter, vars.onLeave, vars.onEnterBack, vars.onLeaveBack], toggleActions = isToggle && vars.toggleActions.split(" "), markers = "markers" in vars ? vars.markers : _defaults.markers, borderWidth = isViewport ? 0 : parseFloat(_getComputedStyle3(scroller)["border" + direction.p2 + _Width]) || 0, self2 = this, onRefreshInit = vars.onRefreshInit && function() {
+    var _vars = vars, onUpdate = _vars.onUpdate, toggleClass = _vars.toggleClass, id = _vars.id, onToggle = _vars.onToggle, onRefresh = _vars.onRefresh, scrub = _vars.scrub, trigger = _vars.trigger, pin = _vars.pin, pinSpacing = _vars.pinSpacing, invalidateOnRefresh = _vars.invalidateOnRefresh, anticipatePin = _vars.anticipatePin, onScrubComplete = _vars.onScrubComplete, onSnapComplete = _vars.onSnapComplete, once = _vars.once, snap = _vars.snap, pinReparent = _vars.pinReparent, pinSpacer = _vars.pinSpacer, containerAnimation = _vars.containerAnimation, fastScrollEnd = _vars.fastScrollEnd, preventOverlaps = _vars.preventOverlaps, direction = vars.horizontal || vars.containerAnimation && vars.horizontal !== false ? _horizontal : _vertical, isToggle = !scrub && scrub !== 0, scroller = _getTarget(vars.scroller || _win2), scrollerCache = gsap2.core.getCache(scroller), isViewport = _isViewport3(scroller), useFixedPosition = ("pinType" in vars ? vars.pinType : _getProxyProp(scroller, "pinType") || isViewport && "fixed") === "fixed", callbacks = [vars.onEnter, vars.onLeave, vars.onEnterBack, vars.onLeaveBack], toggleActions = isToggle && vars.toggleActions.split(" "), markers = "markers" in vars ? vars.markers : _defaults.markers, borderWidth = isViewport ? 0 : parseFloat(_getComputedStyle(scroller)["border" + direction.p2 + _Width]) || 0, self2 = this, onRefreshInit = vars.onRefreshInit && function() {
       return vars.onRefreshInit(self2);
     }, getScrollerSize = _getSizeFunc(scroller, isViewport, direction), getScrollerOffsets = _getOffsetsFunc(scroller, isViewport), lastSnap = 0, lastRefresh = 0, prevProgress = 0, scrollFunc = _getScrollFunc(scroller, direction), tweenTo, pinCache, snapFunc, scroll1, scroll2, start, end, markerStart, markerEnd, markerStartTrigger, markerEndTrigger, markerVars, executingOnRefresh, change, pinOriginalState, pinActiveState, pinState, spacer, offset, pinGetter, pinSetter, pinStart, pinChange, spacingStart, spacerState, markerStartSetter, pinMoves, markerEndSetter, cs, snap1, snap2, scrubTween, scrubSmooth, snapDurClamp, snapDelayedCall, prevScroll, prevAnimProgress, caMarkerSetter, customRevertReturn;
     self2._startClamp = self2._endClamp = false;
@@ -8413,7 +7829,7 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
         scrubTween && scrubTween.progress(1).kill();
         scrubTween = 0;
       } else {
-        scrubTween ? scrubTween.duration(value) : scrubTween = gsap4.to(animation, {
+        scrubTween ? scrubTween.duration(value) : scrubTween = gsap2.to(animation, {
           ease: "expo",
           totalProgress: "+=0",
           inherit: false,
@@ -8440,24 +7856,24 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
           snapTo: snap
         };
       }
-      "scrollBehavior" in _body2.style && gsap4.set(isViewport ? [_body2, _docEl2] : scroller, {
+      "scrollBehavior" in _body2.style && gsap2.set(isViewport ? [_body2, _docEl2] : scroller, {
         scrollBehavior: "auto"
       });
       _scrollers.forEach(function(o) {
-        return _isFunction(o) && o.target === (isViewport ? _doc3.scrollingElement || _docEl2 : scroller) && (o.smooth = false);
+        return _isFunction(o) && o.target === (isViewport ? _doc2.scrollingElement || _docEl2 : scroller) && (o.smooth = false);
       });
       snapFunc = _isFunction(snap.snapTo) ? snap.snapTo : snap.snapTo === "labels" ? _getClosestLabel(animation) : snap.snapTo === "labelsDirectional" ? _getLabelAtDirection(animation) : snap.directional !== false ? function(value, st) {
         return _snapDirectional(snap.snapTo)(value, _getTime2() - lastRefresh < 500 ? 0 : st.direction);
-      } : gsap4.utils.snap(snap.snapTo);
+      } : gsap2.utils.snap(snap.snapTo);
       snapDurClamp = snap.duration || {
         min: 0.1,
         max: 2
       };
       snapDurClamp = _isObject(snapDurClamp) ? _clamp2(snapDurClamp.min, snapDurClamp.max) : _clamp2(snapDurClamp, snapDurClamp);
-      snapDelayedCall = gsap4.delayedCall(snap.delay || scrubSmooth / 2 || 0.1, function() {
+      snapDelayedCall = gsap2.delayedCall(snap.delay || scrubSmooth / 2 || 0.1, function() {
         var scroll = scrollFunc(), refreshedRecently = _getTime2() - lastRefresh < 500, tween = tweenTo.tween;
         if ((refreshedRecently || Math.abs(self2.getVelocity()) < 10) && !tween && !_pointerIsDown && lastSnap !== scroll) {
-          var progress = (scroll - start) / change, totalProgress = animation && !isToggle ? animation.totalProgress() : progress, velocity = refreshedRecently ? 0 : (totalProgress - snap2) / (_getTime2() - _time2) * 1e3 || 0, change1 = gsap4.utils.clamp(-progress, 1 - progress, _abs(velocity / 2) * velocity / 0.185), naturalEnd = progress + (snap.inertia === false ? 0 : change1), endValue, endScroll, _snap = snap, onStart = _snap.onStart, _onInterrupt = _snap.onInterrupt, _onComplete = _snap.onComplete;
+          var progress = (scroll - start) / change, totalProgress = animation && !isToggle ? animation.totalProgress() : progress, velocity = refreshedRecently ? 0 : (totalProgress - snap2) / (_getTime2() - _time2) * 1e3 || 0, change1 = gsap2.utils.clamp(-progress, 1 - progress, _abs(velocity / 2) * velocity / 0.185), naturalEnd = progress + (snap.inertia === false ? 0 : change1), endValue, endScroll, _snap = snap, onStart = _snap.onStart, _onInterrupt = _snap.onInterrupt, _onComplete = _snap.onComplete;
           endValue = snapFunc(naturalEnd, self2);
           _isNumber(endValue) || (endValue = naturalEnd);
           endScroll = Math.round(start + endValue * change);
@@ -8504,9 +7920,9 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
       className: toggleClass
     });
     if (pin) {
-      pinSpacing === false || pinSpacing === _margin || (pinSpacing = !pinSpacing && pin.parentNode && pin.parentNode.style && _getComputedStyle3(pin.parentNode).display === "flex" ? false : _padding);
+      pinSpacing === false || pinSpacing === _margin || (pinSpacing = !pinSpacing && pin.parentNode && pin.parentNode.style && _getComputedStyle(pin.parentNode).display === "flex" ? false : _padding);
       self2.pin = pin;
-      pinCache = gsap4.core.getCache(pin);
+      pinCache = gsap2.core.getCache(pin);
       if (!pinCache.spacer) {
         if (pinSpacer) {
           pinSpacer = _getTarget(pinSpacer);
@@ -8514,21 +7930,21 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
           pinCache.spacerIsNative = !!pinSpacer;
           pinSpacer && (pinCache.spacerState = _getState(pinSpacer));
         }
-        pinCache.spacer = spacer = pinSpacer || _doc3.createElement("div");
+        pinCache.spacer = spacer = pinSpacer || _doc2.createElement("div");
         spacer.classList.add("pin-spacer");
         id && spacer.classList.add("pin-spacer-" + id);
         pinCache.pinState = pinOriginalState = _getState(pin);
       } else {
         pinOriginalState = pinCache.pinState;
       }
-      vars.force3D !== false && gsap4.set(pin, {
+      vars.force3D !== false && gsap2.set(pin, {
         force3D: true
       });
       self2.spacer = spacer = pinCache.spacer;
-      cs = _getComputedStyle3(pin);
+      cs = _getComputedStyle(pin);
       spacingStart = cs[pinSpacing + direction.os2];
-      pinGetter = gsap4.getProperty(pin);
-      pinSetter = gsap4.quickSetter(pin, direction.a, _px);
+      pinGetter = gsap2.getProperty(pin);
+      pinSetter = gsap2.quickSetter(pin, direction.a, _px);
       _swapPinIn(pin, spacer, cs);
       pinState = _getState(pin);
     }
@@ -8540,14 +7956,14 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
       var content = _getTarget(_getProxyProp(scroller, "content") || scroller);
       markerStart = this.markerStart = _createMarker("start", id, content, direction, markerVars, offset, 0, containerAnimation);
       markerEnd = this.markerEnd = _createMarker("end", id, content, direction, markerVars, offset, 0, containerAnimation);
-      containerAnimation && (caMarkerSetter = gsap4.quickSetter([markerStart, markerEnd], direction.a, _px));
+      containerAnimation && (caMarkerSetter = gsap2.quickSetter([markerStart, markerEnd], direction.a, _px));
       if (!useFixedPosition && !(_proxies.length && _getProxyProp(scroller, "fixedMarkers") === true)) {
         _makePositionable(isViewport ? _body2 : scroller);
-        gsap4.set([markerStartTrigger, markerEndTrigger], {
+        gsap2.set([markerStartTrigger, markerEndTrigger], {
           force3D: true
         });
-        markerStartSetter = gsap4.quickSetter(markerStartTrigger, direction.a, _px);
-        markerEndSetter = gsap4.quickSetter(markerEndTrigger, direction.a, _px);
+        markerStartSetter = gsap2.quickSetter(markerStartTrigger, direction.a, _px);
+        markerEndSetter = gsap2.quickSetter(markerEndTrigger, direction.a, _px);
       }
     }
     if (containerAnimation) {
@@ -8585,7 +8001,7 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
           if (r) {
             _swapPinOut(pin, spacer, pinOriginalState);
           } else {
-            _swapPinIn(pin, spacer, _getComputedStyle3(pin), spacerState);
+            _swapPinIn(pin, spacer, _getComputedStyle(pin), spacerState);
           }
         }
         r || self2.update(r);
@@ -8598,7 +8014,7 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
         return;
       }
       if (pin && soft && _lastScrollTime) {
-        _addListener3(ScrollTrigger3, "scrollEnd", _softRefresh);
+        _addListener3(ScrollTrigger4, "scrollEnd", _softRefresh);
         return;
       }
       !_refreshingAll && onRefreshInit && onRefreshInit(self2);
@@ -8615,8 +8031,8 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
       self2._subPinOffset = false;
       var size = getScrollerSize(), scrollerBounds = getScrollerOffsets(), max = containerAnimation ? containerAnimation.duration() : _maxScroll(scroller, direction), isFirstRefresh = change <= 0.01, offset2 = 0, otherPinOffset = pinOffset || 0, parsedEnd = _isObject(position) ? position.end : vars.end, parsedEndTrigger = vars.endTrigger || trigger, parsedStart = _isObject(position) ? position.start : vars.start || (vars.start === 0 || !trigger ? 0 : pin ? "0 0" : "0 100%"), pinnedContainer = self2.pinnedContainer = vars.pinnedContainer && _getTarget(vars.pinnedContainer, self2), triggerIndex = trigger && Math.max(0, _triggers.indexOf(self2)) || 0, i2 = triggerIndex, cs2, bounds, scroll, isVertical, override, curTrigger, curPin, oppositeScroll, initted, revertedPins, forcedOverflow, markerStartOffset, markerEndOffset;
       if (markers && _isObject(position)) {
-        markerStartOffset = gsap4.getProperty(markerStartTrigger, direction.p);
-        markerEndOffset = gsap4.getProperty(markerEndTrigger, direction.p);
+        markerStartOffset = gsap2.getProperty(markerStartTrigger, direction.p);
+        markerEndOffset = gsap2.getProperty(markerEndTrigger, direction.p);
       }
       while (i2--) {
         curTrigger = _triggers[i2];
@@ -8641,7 +8057,7 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
           parsedEnd = (_isString(parsedStart) ? parsedStart.split(" ")[0] : "") + parsedEnd;
         } else {
           offset2 = _offsetToPx(parsedEnd.substr(2), size);
-          parsedEnd = _isString(parsedStart) ? parsedStart : (containerAnimation ? gsap4.utils.mapRange(0, containerAnimation.duration(), containerAnimation.scrollTrigger.start, containerAnimation.scrollTrigger.end, start) : start) + offset2;
+          parsedEnd = _isString(parsedStart) ? parsedStart : (containerAnimation ? gsap2.utils.mapRange(0, containerAnimation.duration(), containerAnimation.scrollTrigger.start, containerAnimation.scrollTrigger.end, start) : start) + offset2;
           parsedEndTrigger = trigger;
         }
       }
@@ -8669,27 +8085,27 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
       }
       change = end - start || (start -= 0.01) && 1e-3;
       if (isFirstRefresh) {
-        prevProgress = gsap4.utils.clamp(0, 1, gsap4.utils.normalize(start, end, prevScroll));
+        prevProgress = gsap2.utils.clamp(0, 1, gsap2.utils.normalize(start, end, prevScroll));
       }
       self2._pinPush = otherPinOffset;
       if (markerStart && offset2) {
         cs2 = {};
         cs2[direction.a] = "+=" + offset2;
         pinnedContainer && (cs2[direction.p] = "-=" + scrollFunc());
-        gsap4.set([markerStart, markerEnd], cs2);
+        gsap2.set([markerStart, markerEnd], cs2);
       }
       if (pin && !(_clampingMax && self2.end >= _maxScroll(scroller, direction))) {
-        cs2 = _getComputedStyle3(pin);
+        cs2 = _getComputedStyle(pin);
         isVertical = direction === _vertical;
         scroll = scrollFunc();
         pinStart = parseFloat(pinGetter(direction.a)) + otherPinOffset;
         if (!max && end > 1) {
-          forcedOverflow = (isViewport ? _doc3.scrollingElement || _docEl2 : scroller).style;
+          forcedOverflow = (isViewport ? _doc2.scrollingElement || _docEl2 : scroller).style;
           forcedOverflow = {
             style: forcedOverflow,
             value: forcedOverflow["overflow" + direction.a.toUpperCase()]
           };
-          if (isViewport && _getComputedStyle3(_body2)["overflow" + direction.a.toUpperCase()] !== "scroll") {
+          if (isViewport && _getComputedStyle(_body2)["overflow" + direction.a.toUpperCase()] !== "scroll") {
             forcedOverflow.style["overflow" + direction.a.toUpperCase()] = "scroll";
           }
         }
@@ -8780,14 +8196,14 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
       _refreshing = 0;
       animation && isToggle && (animation._initted || prevAnimProgress) && animation.progress() !== prevAnimProgress && animation.progress(prevAnimProgress || 0, true).render(animation.time(), true, true);
       if (isFirstRefresh || prevProgress !== self2.progress || containerAnimation || invalidateOnRefresh) {
-        animation && !isToggle && animation.totalProgress(containerAnimation && start < -1e-3 && !prevProgress ? gsap4.utils.normalize(start, end, 0) : prevProgress, true);
+        animation && !isToggle && animation.totalProgress(containerAnimation && start < -1e-3 && !prevProgress ? gsap2.utils.normalize(start, end, 0) : prevProgress, true);
         self2.progress = isFirstRefresh || (scroll1 - start) / change === prevProgress ? 0 : prevProgress;
       }
       pin && pinSpacing && (spacer._pinOffset = Math.round(self2.progress * pinChange));
       scrubTween && scrubTween.invalidate();
       if (!isNaN(markerStartOffset)) {
-        markerStartOffset -= gsap4.getProperty(markerStartTrigger, direction.p);
-        markerEndOffset -= gsap4.getProperty(markerEndTrigger, direction.p);
+        markerStartOffset -= gsap2.getProperty(markerStartTrigger, direction.p);
+        markerEndOffset -= gsap2.getProperty(markerEndTrigger, direction.p);
         _shiftMarker(markerStartTrigger, direction, markerStartOffset);
         _shiftMarker(markerStart, direction, markerStartOffset - (pinOffset || 0));
         _shiftMarker(markerEndTrigger, direction, markerEndOffset);
@@ -8889,7 +8305,7 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
           }
         }
         snap && !tweenTo.tween && !_refreshing && !_startup2 && snapDelayedCall.restart(true);
-        toggleClass && (toggled || once && clipped && (clipped < 1 || !_limitCallbacks)) && _toArray2(toggleClass.targets).forEach(function(el) {
+        toggleClass && (toggled || once && clipped && (clipped < 1 || !_limitCallbacks)) && _toArray(toggleClass.targets).forEach(function(el) {
           return el.classList[isActive || once ? "add" : "remove"](toggleClass.className);
         });
         onUpdate && !isToggle && !reset && onUpdate(self2);
@@ -8937,7 +8353,7 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
         self2.enabled = true;
         _addListener3(scroller, "resize", _onResize);
         isViewport || _addListener3(scroller, "scroll", _onScroll3);
-        onRefreshInit && _addListener3(ScrollTrigger3, "refreshInit", onRefreshInit);
+        onRefreshInit && _addListener3(ScrollTrigger4, "refreshInit", onRefreshInit);
         if (reset !== false) {
           self2.progress = prevProgress = 0;
           scroll1 = scroll2 = lastSnap = scrollFunc();
@@ -8975,7 +8391,7 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
         allowAnimation || scrubTween && scrubTween.pause();
         prevScroll = 0;
         pinCache && (pinCache.uncache = 1);
-        onRefreshInit && _removeListener3(ScrollTrigger3, "refreshInit", onRefreshInit);
+        onRefreshInit && _removeListener3(ScrollTrigger4, "refreshInit", onRefreshInit);
         if (snapDelayedCall) {
           snapDelayedCall.pause();
           tweenTo.tween && tweenTo.tween.kill() && (tweenTo.tween = 0);
@@ -9034,7 +8450,7 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
         self2.update = updateFunc;
         start || end || self2.refresh();
       };
-      gsap4.delayedCall(0.01, self2.update);
+      gsap2.delayedCall(0.01, self2.update);
       change = 0.01;
       start = end = 0;
     } else {
@@ -9042,15 +8458,15 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
     }
     pin && _queueRefreshAll();
   };
-  ScrollTrigger3.register = function register(core) {
-    if (!_coreInitted3) {
-      gsap4 = core || _getGSAP3();
-      _windowExists() && window.document && ScrollTrigger3.enable();
-      _coreInitted3 = _enabled;
+  ScrollTrigger4.register = function register(core) {
+    if (!_coreInitted2) {
+      gsap2 = core || _getGSAP3();
+      _windowExists() && window.document && ScrollTrigger4.enable();
+      _coreInitted2 = _enabled;
     }
-    return _coreInitted3;
+    return _coreInitted2;
   };
-  ScrollTrigger3.defaults = function defaults(config2) {
+  ScrollTrigger4.defaults = function defaults(config2) {
     if (config2) {
       for (var p in config2) {
         _defaults[p] = config2[p];
@@ -9058,18 +8474,18 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
     }
     return _defaults;
   };
-  ScrollTrigger3.disable = function disable(reset, kill) {
+  ScrollTrigger4.disable = function disable(reset, kill) {
     _enabled = 0;
     _triggers.forEach(function(trigger) {
       return trigger[kill ? "kill" : "disable"](reset);
     });
-    _removeListener3(_win3, "wheel", _onScroll3);
-    _removeListener3(_doc3, "scroll", _onScroll3);
+    _removeListener3(_win2, "wheel", _onScroll3);
+    _removeListener3(_doc2, "scroll", _onScroll3);
     clearInterval(_syncInterval);
-    _removeListener3(_doc3, "touchcancel", _passThrough);
+    _removeListener3(_doc2, "touchcancel", _passThrough);
     _removeListener3(_body2, "touchstart", _passThrough);
-    _multiListener(_removeListener3, _doc3, "pointerdown,touchstart,mousedown", _pointerDownHandler);
-    _multiListener(_removeListener3, _doc3, "pointerup,touchend,mouseup", _pointerUpHandler);
+    _multiListener(_removeListener3, _doc2, "pointerdown,touchstart,mousedown", _pointerDownHandler);
+    _multiListener(_removeListener3, _doc2, "pointerup,touchend,mouseup", _pointerUpHandler);
     _resizeDelay.kill();
     _iterateAutoRefresh(_removeListener3);
     for (var i2 = 0; i2 < _scrollers.length; i2 += 3) {
@@ -9077,19 +8493,19 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
       _wheelListener(_removeListener3, _scrollers[i2], _scrollers[i2 + 2]);
     }
   };
-  ScrollTrigger3.enable = function enable() {
-    _win3 = window;
-    _doc3 = document;
-    _docEl2 = _doc3.documentElement;
-    _body2 = _doc3.body;
-    if (gsap4) {
-      _toArray2 = gsap4.utils.toArray;
-      _clamp2 = gsap4.utils.clamp;
-      _context3 = gsap4.core.context || _passThrough;
-      _suppressOverwrites = gsap4.core.suppressOverwrites || _passThrough;
-      _scrollRestoration = _win3.history.scrollRestoration || "auto";
-      _lastScroll = _win3.pageYOffset;
-      gsap4.core.globals("ScrollTrigger", ScrollTrigger3);
+  ScrollTrigger4.enable = function enable() {
+    _win2 = window;
+    _doc2 = document;
+    _docEl2 = _doc2.documentElement;
+    _body2 = _doc2.body;
+    if (gsap2) {
+      _toArray = gsap2.utils.toArray;
+      _clamp2 = gsap2.utils.clamp;
+      _context2 = gsap2.core.context || _passThrough;
+      _suppressOverwrites = gsap2.core.suppressOverwrites || _passThrough;
+      _scrollRestoration = _win2.history.scrollRestoration || "auto";
+      _lastScroll = _win2.pageYOffset;
+      gsap2.core.globals("ScrollTrigger", ScrollTrigger4);
       if (_body2) {
         _enabled = 1;
         _div100vh = document.createElement("div");
@@ -9097,31 +8513,31 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
         _div100vh.style.position = "absolute";
         _refresh100vh();
         _rafBugFix();
-        Observer.register(gsap4);
-        ScrollTrigger3.isTouch = Observer.isTouch;
+        Observer.register(gsap2);
+        ScrollTrigger4.isTouch = Observer.isTouch;
         _fixIOSBug = Observer.isTouch && /(iPad|iPhone|iPod|Mac)/g.test(navigator.userAgent);
         _ignoreMobileResize = Observer.isTouch === 1;
-        _addListener3(_win3, "wheel", _onScroll3);
-        _root2 = [_win3, _doc3, _docEl2, _body2];
-        if (gsap4.matchMedia) {
-          ScrollTrigger3.matchMedia = function(vars) {
-            var mm = gsap4.matchMedia(), p;
+        _addListener3(_win2, "wheel", _onScroll3);
+        _root2 = [_win2, _doc2, _docEl2, _body2];
+        if (gsap2.matchMedia) {
+          ScrollTrigger4.matchMedia = function(vars) {
+            var mm = gsap2.matchMedia(), p;
             for (p in vars) {
               mm.add(p, vars[p]);
             }
             return mm;
           };
-          gsap4.addEventListener("matchMediaInit", function() {
+          gsap2.addEventListener("matchMediaInit", function() {
             return _revertAll();
           });
-          gsap4.addEventListener("matchMediaRevert", function() {
+          gsap2.addEventListener("matchMediaRevert", function() {
             return _revertRecorded();
           });
-          gsap4.addEventListener("matchMedia", function() {
+          gsap2.addEventListener("matchMedia", function() {
             _refreshAll(0, 1);
             _dispatch("matchMedia");
           });
-          gsap4.matchMedia("(orientation: portrait)", function() {
+          gsap2.matchMedia("(orientation: portrait)", function() {
             _setBaseDimensions();
             return _setBaseDimensions;
           });
@@ -9129,8 +8545,8 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
           console.warn("Requires GSAP 3.11.0 or later");
         }
         _setBaseDimensions();
-        _addListener3(_doc3, "scroll", _onScroll3);
-        var bodyStyle = _body2.style, border = bodyStyle.borderTopStyle, AnimationProto = gsap4.core.Animation.prototype, bounds, i2;
+        _addListener3(_doc2, "scroll", _onScroll3);
+        var bodyStyle = _body2.style, border = bodyStyle.borderTopStyle, AnimationProto = gsap2.core.Animation.prototype, bounds, i2;
         AnimationProto.revert || Object.defineProperty(AnimationProto, "revert", {
           value: function value() {
             return this.time(-0.01, true);
@@ -9142,26 +8558,26 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
         _horizontal.m = Math.round(bounds.left + _horizontal.sc()) || 0;
         border ? bodyStyle.borderTopStyle = border : bodyStyle.removeProperty("border-top-style");
         _syncInterval = setInterval(_sync, 250);
-        gsap4.delayedCall(0.5, function() {
+        gsap2.delayedCall(0.5, function() {
           return _startup2 = 0;
         });
-        _addListener3(_doc3, "touchcancel", _passThrough);
+        _addListener3(_doc2, "touchcancel", _passThrough);
         _addListener3(_body2, "touchstart", _passThrough);
-        _multiListener(_addListener3, _doc3, "pointerdown,touchstart,mousedown", _pointerDownHandler);
-        _multiListener(_addListener3, _doc3, "pointerup,touchend,mouseup", _pointerUpHandler);
-        _transformProp = gsap4.utils.checkPrefix("transform");
+        _multiListener(_addListener3, _doc2, "pointerdown,touchstart,mousedown", _pointerDownHandler);
+        _multiListener(_addListener3, _doc2, "pointerup,touchend,mouseup", _pointerUpHandler);
+        _transformProp = gsap2.utils.checkPrefix("transform");
         _stateProps.push(_transformProp);
-        _coreInitted3 = _getTime2();
-        _resizeDelay = gsap4.delayedCall(0.2, _refreshAll).pause();
-        _autoRefresh = [_doc3, "visibilitychange", function() {
-          var w = _win3.innerWidth, h = _win3.innerHeight;
-          if (_doc3.hidden) {
+        _coreInitted2 = _getTime2();
+        _resizeDelay = gsap2.delayedCall(0.2, _refreshAll).pause();
+        _autoRefresh = [_doc2, "visibilitychange", function() {
+          var w = _win2.innerWidth, h = _win2.innerHeight;
+          if (_doc2.hidden) {
             _prevWidth = w;
             _prevHeight = h;
           } else if (_prevWidth !== w || _prevHeight !== h) {
             _onResize();
           }
-        }, _doc3, "DOMContentLoaded", _refreshAll, _win3, "load", _refreshAll, _win3, "resize", _onResize];
+        }, _doc2, "DOMContentLoaded", _refreshAll, _win2, "load", _refreshAll, _win2, "resize", _onResize];
         _iterateAutoRefresh(_addListener3);
         _triggers.forEach(function(trigger) {
           return trigger.enable(0, 1);
@@ -9173,40 +8589,40 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
       }
     }
   };
-  ScrollTrigger3.config = function config2(vars) {
+  ScrollTrigger4.config = function config2(vars) {
     "limitCallbacks" in vars && (_limitCallbacks = !!vars.limitCallbacks);
     var ms = vars.syncInterval;
     ms && clearInterval(_syncInterval) || (_syncInterval = ms) && setInterval(_sync, ms);
-    "ignoreMobileResize" in vars && (_ignoreMobileResize = ScrollTrigger3.isTouch === 1 && vars.ignoreMobileResize);
+    "ignoreMobileResize" in vars && (_ignoreMobileResize = ScrollTrigger4.isTouch === 1 && vars.ignoreMobileResize);
     if ("autoRefreshEvents" in vars) {
       _iterateAutoRefresh(_removeListener3) || _iterateAutoRefresh(_addListener3, vars.autoRefreshEvents || "none");
       _ignoreResize = (vars.autoRefreshEvents + "").indexOf("resize") === -1;
     }
   };
-  ScrollTrigger3.scrollerProxy = function scrollerProxy(target, vars) {
+  ScrollTrigger4.scrollerProxy = function scrollerProxy(target, vars) {
     var t = _getTarget(target), i2 = _scrollers.indexOf(t), isViewport = _isViewport3(t);
     if (~i2) {
       _scrollers.splice(i2, isViewport ? 6 : 2);
     }
     if (vars) {
-      isViewport ? _proxies.unshift(_win3, vars, _body2, vars, _docEl2, vars) : _proxies.unshift(t, vars);
+      isViewport ? _proxies.unshift(_win2, vars, _body2, vars, _docEl2, vars) : _proxies.unshift(t, vars);
     }
   };
-  ScrollTrigger3.clearMatchMedia = function clearMatchMedia(query) {
+  ScrollTrigger4.clearMatchMedia = function clearMatchMedia(query) {
     _triggers.forEach(function(t) {
       return t._ctx && t._ctx.query === query && t._ctx.kill(true, true);
     });
   };
-  ScrollTrigger3.isInViewport = function isInViewport(element, ratio, horizontal) {
+  ScrollTrigger4.isInViewport = function isInViewport(element, ratio, horizontal) {
     var bounds = (_isString(element) ? _getTarget(element) : element).getBoundingClientRect(), offset = bounds[horizontal ? _width : _height] * ratio || 0;
-    return horizontal ? bounds.right - offset > 0 && bounds.left + offset < _win3.innerWidth : bounds.bottom - offset > 0 && bounds.top + offset < _win3.innerHeight;
+    return horizontal ? bounds.right - offset > 0 && bounds.left + offset < _win2.innerWidth : bounds.bottom - offset > 0 && bounds.top + offset < _win2.innerHeight;
   };
-  ScrollTrigger3.positionInViewport = function positionInViewport(element, referencePoint, horizontal) {
+  ScrollTrigger4.positionInViewport = function positionInViewport(element, referencePoint, horizontal) {
     _isString(element) && (element = _getTarget(element));
     var bounds = element.getBoundingClientRect(), size = bounds[horizontal ? _width : _height], offset = referencePoint == null ? size / 2 : referencePoint in _keywords ? _keywords[referencePoint] * size : ~referencePoint.indexOf("%") ? parseFloat(referencePoint) * size / 100 : parseFloat(referencePoint) || 0;
-    return horizontal ? (bounds.left + offset) / _win3.innerWidth : (bounds.top + offset) / _win3.innerHeight;
+    return horizontal ? (bounds.left + offset) / _win2.innerWidth : (bounds.top + offset) / _win2.innerHeight;
   };
-  ScrollTrigger3.killAll = function killAll(allowListeners) {
+  ScrollTrigger4.killAll = function killAll(allowListeners) {
     _triggers.slice(0).forEach(function(t) {
       return t.vars.id !== "ScrollSmoother" && t.kill();
     });
@@ -9218,15 +8634,15 @@ var ScrollTrigger2 = /* @__PURE__ */ function() {
       });
     }
   };
-  return ScrollTrigger3;
+  return ScrollTrigger4;
 }();
 ScrollTrigger2.version = "3.12.5";
 ScrollTrigger2.saveStyles = function(targets) {
-  return targets ? _toArray2(targets).forEach(function(target) {
+  return targets ? _toArray(targets).forEach(function(target) {
     if (target && target.style) {
       var i2 = _savedStyles.indexOf(target);
       i2 >= 0 && _savedStyles.splice(i2, 5);
-      _savedStyles.push(target, target.style.cssText, target.getBBox && target.getAttribute("transform"), gsap4.core.getCache(target), _context3());
+      _savedStyles.push(target, target.style.cssText, target.getBBox && target.getAttribute("transform"), gsap2.core.getCache(target), _context2());
     }
   }) : _savedStyles;
 };
@@ -9237,7 +8653,7 @@ ScrollTrigger2.create = function(vars, animation) {
   return new ScrollTrigger2(vars, animation);
 };
 ScrollTrigger2.refresh = function(safe) {
-  return safe ? _onResize() : (_coreInitted3 || ScrollTrigger2.register()) && _refreshAll(true);
+  return safe ? _onResize() : (_coreInitted2 || ScrollTrigger2.register()) && _refreshAll(true);
 };
 ScrollTrigger2.update = function(force) {
   return ++_scrollers.cache && _updateAll(force === true ? 2 : 0);
@@ -9271,7 +8687,7 @@ ScrollTrigger2.removeEventListener = function(type, callback2) {
 };
 ScrollTrigger2.batch = function(targets, vars) {
   var result = [], varsCopy = {}, interval = vars.interval || 0.016, batchMax = vars.batchMax || 1e9, proxyCallback = function proxyCallback2(type, callback2) {
-    var elements2 = [], triggers = [], delay = gsap4.delayedCall(interval, function() {
+    var elements2 = [], triggers = [], delay = gsap2.delayedCall(interval, function() {
       callback2(elements2, triggers);
       elements2 = [];
       triggers = [];
@@ -9292,7 +8708,7 @@ ScrollTrigger2.batch = function(targets, vars) {
       return batchMax = vars.batchMax();
     });
   }
-  _toArray2(targets).forEach(function(target) {
+  _toArray(targets).forEach(function(target) {
     var config2 = {};
     for (p in varsCopy) {
       config2[p] = varsCopy[p];
@@ -9320,12 +8736,12 @@ var _overflow = {
 };
 var _nestedScroll = function _nestedScroll2(_ref5) {
   var event = _ref5.event, target = _ref5.target, axis = _ref5.axis;
-  var node = (event.changedTouches ? event.changedTouches[0] : event).target, cache = node._gsap || gsap4.core.getCache(node), time = _getTime2(), cs;
+  var node = (event.changedTouches ? event.changedTouches[0] : event).target, cache = node._gsap || gsap2.core.getCache(node), time = _getTime2(), cs;
   if (!cache._isScrollT || time - cache._isScrollT > 2e3) {
-    while (node && node !== _body2 && (node.scrollHeight <= node.clientHeight && node.scrollWidth <= node.clientWidth || !(_overflow[(cs = _getComputedStyle3(node)).overflowY] || _overflow[cs.overflowX]))) {
+    while (node && node !== _body2 && (node.scrollHeight <= node.clientHeight && node.scrollWidth <= node.clientWidth || !(_overflow[(cs = _getComputedStyle(node)).overflowY] || _overflow[cs.overflowX]))) {
       node = node.parentNode;
     }
-    cache._isScroll = node && node !== target && !_isViewport3(node) && (_overflow[(cs = _getComputedStyle3(node)).overflowY] || _overflow[cs.overflowX]);
+    cache._isScroll = node && node !== target && !_isViewport3(node) && (_overflow[(cs = _getComputedStyle(node)).overflowY] || _overflow[cs.overflowX]);
     cache._isScrollT = time;
   }
   if (cache._isScroll || axis === "x") {
@@ -9345,10 +8761,10 @@ var _inputObserver = function _inputObserver2(target, type, inputs, nested) {
     onDrag: nested,
     onScroll: nested,
     onEnable: function onEnable() {
-      return inputs && _addListener3(_doc3, Observer.eventTypes[0], _captureInputs, false, true);
+      return inputs && _addListener3(_doc2, Observer.eventTypes[0], _captureInputs, false, true);
     },
     onDisable: function onDisable() {
-      return _removeListener3(_doc3, Observer.eventTypes[0], _captureInputs, true);
+      return _removeListener3(_doc2, Observer.eventTypes[0], _captureInputs, true);
     }
   });
 };
@@ -9367,7 +8783,7 @@ var _getScrollNormalizer = function _getScrollNormalizer2(vars) {
   vars.type || (vars.type = "wheel,touch");
   vars.debounce = !!vars.debounce;
   vars.id = vars.id || "normalizer";
-  var _vars2 = vars, normalizeScrollX = _vars2.normalizeScrollX, momentum = _vars2.momentum, allowNestedScroll = _vars2.allowNestedScroll, onRelease = _vars2.onRelease, self2, maxY, target = _getTarget(vars.target) || _docEl2, smoother = gsap4.core.globals().ScrollSmoother, smootherInstance = smoother && smoother.get(), content = _fixIOSBug && (vars.content && _getTarget(vars.content) || smootherInstance && vars.content !== false && !smootherInstance.smooth() && smootherInstance.content()), scrollFuncY = _getScrollFunc(target, _vertical), scrollFuncX = _getScrollFunc(target, _horizontal), scale = 1, initialScale = (Observer.isTouch && _win3.visualViewport ? _win3.visualViewport.scale * _win3.visualViewport.width : _win3.outerWidth) / _win3.innerWidth, wheelRefresh = 0, resolveMomentumDuration = _isFunction(momentum) ? function() {
+  var _vars2 = vars, normalizeScrollX = _vars2.normalizeScrollX, momentum = _vars2.momentum, allowNestedScroll = _vars2.allowNestedScroll, onRelease = _vars2.onRelease, self2, maxY, target = _getTarget(vars.target) || _docEl2, smoother = gsap2.core.globals().ScrollSmoother, smootherInstance = smoother && smoother.get(), content = _fixIOSBug && (vars.content && _getTarget(vars.content) || smootherInstance && vars.content !== false && !smootherInstance.smooth() && smootherInstance.content()), scrollFuncY = _getScrollFunc(target, _vertical), scrollFuncX = _getScrollFunc(target, _horizontal), scale = 1, initialScale = (Observer.isTouch && _win2.visualViewport ? _win2.visualViewport.scale * _win2.visualViewport.width : _win2.outerWidth) / _win2.innerWidth, wheelRefresh = 0, resolveMomentumDuration = _isFunction(momentum) ? function() {
     return momentum(self2);
   } : function() {
     return momentum || 2.8;
@@ -9404,7 +8820,7 @@ var _getScrollNormalizer = function _getScrollNormalizer2(vars) {
       scrollFuncY() > maxY ? tween.progress(1) && scrollFuncY(maxY) : tween.resetTo("scrollY", maxY);
     }
   };
-  content && gsap4.set(content, {
+  content && gsap2.set(content, {
     y: "+=0"
   });
   vars.ignoreCheck = function(e) {
@@ -9413,7 +8829,7 @@ var _getScrollNormalizer = function _getScrollNormalizer2(vars) {
   vars.onPress = function() {
     skipTouchMove = false;
     var prevScale = scale;
-    scale = _round((_win3.visualViewport && _win3.visualViewport.scale || 1) / initialScale);
+    scale = _round((_win2.visualViewport && _win2.visualViewport.scale || 1) / initialScale);
     tween.pause();
     prevScale !== scale && _allowNativePanning(target, scale > 1.01 ? true : normalizeScrollX ? false : "x");
     startScrollX = scrollFuncX();
@@ -9440,7 +8856,7 @@ var _getScrollNormalizer = function _getScrollNormalizer2(vars) {
       tween.vars.scrollY = scrollClampY(endScroll);
       tween.invalidate().duration(dur).play(0.01);
       if (_fixIOSBug && tween.vars.scrollY >= maxY || currentScroll >= maxY - 1) {
-        gsap4.to({}, {
+        gsap2.to({}, {
           onUpdate: onResize,
           duration: dur
         });
@@ -9469,7 +8885,7 @@ var _getScrollNormalizer = function _getScrollNormalizer2(vars) {
   vars.onEnable = function() {
     _allowNativePanning(target, normalizeScrollX ? false : "x");
     ScrollTrigger2.addEventListener("refresh", onResize);
-    _addListener3(_win3, "resize", onResize);
+    _addListener3(_win2, "resize", onResize);
     if (scrollFuncY.smooth) {
       scrollFuncY.target.style.scrollBehavior = "auto";
       scrollFuncY.smooth = scrollFuncX.smooth = false;
@@ -9478,7 +8894,7 @@ var _getScrollNormalizer = function _getScrollNormalizer2(vars) {
   };
   vars.onDisable = function() {
     _allowNativePanning(target, true);
-    _removeListener3(_win3, "resize", onResize);
+    _removeListener3(_win2, "resize", onResize);
     ScrollTrigger2.removeEventListener("refresh", onResize);
     inputObserver.kill();
   };
@@ -9486,9 +8902,9 @@ var _getScrollNormalizer = function _getScrollNormalizer2(vars) {
   self2 = new Observer(vars);
   self2.iOS = _fixIOSBug;
   _fixIOSBug && !scrollFuncY() && scrollFuncY(1);
-  _fixIOSBug && gsap4.ticker.add(_passThrough);
+  _fixIOSBug && gsap2.ticker.add(_passThrough);
   onStopDelayedCall = self2._dc;
-  tween = gsap4.to(self2, {
+  tween = gsap2.to(self2, {
     ease: "power4",
     paused: true,
     inherit: false,
@@ -9547,35 +8963,630 @@ ScrollTrigger2.core = {
     }
   }
 };
-_getGSAP3() && gsap4.registerPlugin(ScrollTrigger2);
+_getGSAP3() && gsap2.registerPlugin(ScrollTrigger2);
+
+// slider.js
+import_gsap.gsap.registerPlugin(ScrollTrigger2);
+var activeSlides = [];
+function nextSlide() {
+  slider.goTo("next");
+  slider.events.on("transitionEnd", playMainSlide);
+}
+function prevSlide() {
+  slider.goTo("prev");
+  slider.events.on("transitionEnd", playMainSlide);
+}
+function playMainSlide() {
+  document.querySelector(".active-slide1 video").play();
+}
+function pauseMainSlide() {
+  document.querySelector(".active-slide1 video").pause();
+}
+function updateSlides() {
+  console.log("Update called");
+  if (activeSlides.length) {
+    activeSlides.forEach((slide) => {
+      slide.removeEventListener("click", prevSlide);
+      slide.removeEventListener("click", nextSlide);
+      slide.classList.remove("active-slide0");
+      slide.classList.remove("active-slide1");
+      slide.classList.remove("active-slide2");
+      slide.querySelector("video").pause();
+    });
+  }
+  activeSlides = [...document.querySelectorAll("#tiny-slider .tns-slide-active")];
+  console.log("Updating slides");
+  activeSlides[0].classList.add("active-slide0");
+  activeSlides[1].classList.add("active-slide1");
+  activeSlides[2].classList.add("active-slide2");
+  activeSlides[0].addEventListener("click", prevSlide);
+  activeSlides[2].addEventListener("click", nextSlide);
+}
+function sliderInit() {
+  console.log("Init called");
+  updateSlides();
+}
+var slider;
+if (document.querySelector("#tiny-slider")) {
+  try {
+    slider = tns({
+      container: "#tiny-slider",
+      items: 3,
+      slideBy: 1,
+      speed: 500,
+      swipeAngle: 30,
+      preventActionWhenRunning: true,
+      preventScrollOnTouch: "auto",
+      onInit: sliderInit,
+      controls: false,
+      nav: false,
+      responsive: {
+        1280: {}
+      }
+    });
+  } catch (error) {
+    console.error(error);
+  }
+  try {
+    slider.events.on("indexChanged", updateSlides);
+  } catch (error) {
+    console.error(error);
+  }
+}
+var scrollRoot = document.querySelector("[data-scroller]");
+var videoSection = document.querySelector("[data-video-section]");
+if (videoSection) {
+  const options = {
+    root: scrollRoot,
+    threshold: 0
+  };
+  const onVideoIntersect = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        playMainSlide();
+      } else {
+        pauseMainSlide();
+      }
+    });
+  };
+  try {
+    const videoObserver = new IntersectionObserver(onVideoIntersect, options);
+    videoObserver.observe(videoSection);
+  } catch (error) {
+    console.error(error);
+  }
+}
+var section = document.getElementById("magnify-stories");
+if (section) {
+  ScrollTrigger2.create({
+    trigger: "#magnify-stories",
+    start: "top top",
+    end: () => "+=" + document.getElementById("magnify-stories").offsetHeight,
+    pin: true
+  });
+}
+
+// gsap-hero.js
+var import_gsap2 = __toESM(require_gsap());
+
+// node_modules/gsap/utils/strings.js
+var emojiExp = /([\uD800-\uDBFF][\uDC00-\uDFFF](?:[\u200D\uFE0F][\uD800-\uDBFF][\uDC00-\uDFFF]){2,}|\uD83D\uDC69(?:\u200D(?:(?:\uD83D\uDC69\u200D)?\uD83D\uDC67|(?:\uD83D\uDC69\u200D)?\uD83D\uDC66)|\uD83C[\uDFFB-\uDFFF])|\uD83D\uDC69\u200D(?:\uD83D\uDC69\u200D)?\uD83D\uDC66\u200D\uD83D\uDC66|\uD83D\uDC69\u200D(?:\uD83D\uDC69\u200D)?\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67])|\uD83C\uDFF3\uFE0F\u200D\uD83C\uDF08|(?:\uD83C[\uDFC3\uDFC4\uDFCA]|\uD83D[\uDC6E\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4-\uDEB6]|\uD83E[\uDD26\uDD37-\uDD39\uDD3D\uDD3E\uDDD6-\uDDDD])(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2640\u2642]\uFE0F|\uD83D\uDC69(?:\uD83C[\uDFFB-\uDFFF])\u200D(?:\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92])|(?:\uD83C[\uDFC3\uDFC4\uDFCA]|\uD83D[\uDC6E\uDC6F\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4-\uDEB6]|\uD83E[\uDD26\uDD37-\uDD39\uDD3C-\uDD3E\uDDD6-\uDDDF])\u200D[\u2640\u2642]\uFE0F|\uD83C\uDDFD\uD83C\uDDF0|\uD83C\uDDF6\uD83C\uDDE6|\uD83C\uDDF4\uD83C\uDDF2|\uD83C\uDDE9(?:\uD83C[\uDDEA\uDDEC\uDDEF\uDDF0\uDDF2\uDDF4\uDDFF])|\uD83C\uDDF7(?:\uD83C[\uDDEA\uDDF4\uDDF8\uDDFA\uDDFC])|\uD83C\uDDE8(?:\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDEE\uDDF0-\uDDF5\uDDF7\uDDFA-\uDDFF])|(?:\u26F9|\uD83C[\uDFCB\uDFCC]|\uD83D\uDD75)(?:\uFE0F\u200D[\u2640\u2642]|(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2640\u2642])\uFE0F|(?:\uD83D\uDC41\uFE0F\u200D\uD83D\uDDE8|\uD83D\uDC69(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2695\u2696\u2708]|\uD83D\uDC69\u200D[\u2695\u2696\u2708]|\uD83D\uDC68(?:(?:\uD83C[\uDFFB-\uDFFF])\u200D[\u2695\u2696\u2708]|\u200D[\u2695\u2696\u2708]))\uFE0F|\uD83C\uDDF2(?:\uD83C[\uDDE6\uDDE8-\uDDED\uDDF0-\uDDFF])|\uD83D\uDC69\u200D(?:\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\u2764\uFE0F\u200D(?:\uD83D\uDC8B\u200D(?:\uD83D[\uDC68\uDC69])|\uD83D[\uDC68\uDC69]))|\uD83C\uDDF1(?:\uD83C[\uDDE6-\uDDE8\uDDEE\uDDF0\uDDF7-\uDDFB\uDDFE])|\uD83C\uDDEF(?:\uD83C[\uDDEA\uDDF2\uDDF4\uDDF5])|\uD83C\uDDED(?:\uD83C[\uDDF0\uDDF2\uDDF3\uDDF7\uDDF9\uDDFA])|\uD83C\uDDEB(?:\uD83C[\uDDEE-\uDDF0\uDDF2\uDDF4\uDDF7])|[#\*0-9]\uFE0F\u20E3|\uD83C\uDDE7(?:\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEF\uDDF1-\uDDF4\uDDF6-\uDDF9\uDDFB\uDDFC\uDDFE\uDDFF])|\uD83C\uDDE6(?:\uD83C[\uDDE8-\uDDEC\uDDEE\uDDF1\uDDF2\uDDF4\uDDF6-\uDDFA\uDDFC\uDDFD\uDDFF])|\uD83C\uDDFF(?:\uD83C[\uDDE6\uDDF2\uDDFC])|\uD83C\uDDF5(?:\uD83C[\uDDE6\uDDEA-\uDDED\uDDF0-\uDDF3\uDDF7-\uDDF9\uDDFC\uDDFE])|\uD83C\uDDFB(?:\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDEE\uDDF3\uDDFA])|\uD83C\uDDF3(?:\uD83C[\uDDE6\uDDE8\uDDEA-\uDDEC\uDDEE\uDDF1\uDDF4\uDDF5\uDDF7\uDDFA\uDDFF])|\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62(?:\uDB40\uDC77\uDB40\uDC6C\uDB40\uDC73|\uDB40\uDC73\uDB40\uDC63\uDB40\uDC74|\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67)\uDB40\uDC7F|\uD83D\uDC68(?:\u200D(?:\u2764\uFE0F\u200D(?:\uD83D\uDC8B\u200D)?\uD83D\uDC68|(?:(?:\uD83D[\uDC68\uDC69])\u200D)?\uD83D\uDC66\u200D\uD83D\uDC66|(?:(?:\uD83D[\uDC68\uDC69])\u200D)?\uD83D\uDC67\u200D(?:\uD83D[\uDC66\uDC67])|\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92])|(?:\uD83C[\uDFFB-\uDFFF])\u200D(?:\uD83C[\uDF3E\uDF73\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]))|\uD83C\uDDF8(?:\uD83C[\uDDE6-\uDDEA\uDDEC-\uDDF4\uDDF7-\uDDF9\uDDFB\uDDFD-\uDDFF])|\uD83C\uDDF0(?:\uD83C[\uDDEA\uDDEC-\uDDEE\uDDF2\uDDF3\uDDF5\uDDF7\uDDFC\uDDFE\uDDFF])|\uD83C\uDDFE(?:\uD83C[\uDDEA\uDDF9])|\uD83C\uDDEE(?:\uD83C[\uDDE8-\uDDEA\uDDF1-\uDDF4\uDDF6-\uDDF9])|\uD83C\uDDF9(?:\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDED\uDDEF-\uDDF4\uDDF7\uDDF9\uDDFB\uDDFC\uDDFF])|\uD83C\uDDEC(?:\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEE\uDDF1-\uDDF3\uDDF5-\uDDFA\uDDFC\uDDFE])|\uD83C\uDDFA(?:\uD83C[\uDDE6\uDDEC\uDDF2\uDDF3\uDDF8\uDDFE\uDDFF])|\uD83C\uDDEA(?:\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDED\uDDF7-\uDDFA])|\uD83C\uDDFC(?:\uD83C[\uDDEB\uDDF8])|(?:\u26F9|\uD83C[\uDFCB\uDFCC]|\uD83D\uDD75)(?:\uD83C[\uDFFB-\uDFFF])|(?:\uD83C[\uDFC3\uDFC4\uDFCA]|\uD83D[\uDC6E\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4-\uDEB6]|\uD83E[\uDD26\uDD37-\uDD39\uDD3D\uDD3E\uDDD6-\uDDDD])(?:\uD83C[\uDFFB-\uDFFF])|(?:[\u261D\u270A-\u270D]|\uD83C[\uDF85\uDFC2\uDFC7]|\uD83D[\uDC42\uDC43\uDC46-\uDC50\uDC66\uDC67\uDC70\uDC72\uDC74-\uDC76\uDC78\uDC7C\uDC83\uDC85\uDCAA\uDD74\uDD7A\uDD90\uDD95\uDD96\uDE4C\uDE4F\uDEC0\uDECC]|\uD83E[\uDD18-\uDD1C\uDD1E\uDD1F\uDD30-\uDD36\uDDD1-\uDDD5])(?:\uD83C[\uDFFB-\uDFFF])|\uD83D\uDC68(?:\u200D(?:(?:(?:\uD83D[\uDC68\uDC69])\u200D)?\uD83D\uDC67|(?:(?:\uD83D[\uDC68\uDC69])\u200D)?\uD83D\uDC66)|\uD83C[\uDFFB-\uDFFF])|(?:[\u261D\u26F9\u270A-\u270D]|\uD83C[\uDF85\uDFC2-\uDFC4\uDFC7\uDFCA-\uDFCC]|\uD83D[\uDC42\uDC43\uDC46-\uDC50\uDC66-\uDC69\uDC6E\uDC70-\uDC78\uDC7C\uDC81-\uDC83\uDC85-\uDC87\uDCAA\uDD74\uDD75\uDD7A\uDD90\uDD95\uDD96\uDE45-\uDE47\uDE4B-\uDE4F\uDEA3\uDEB4-\uDEB6\uDEC0\uDECC]|\uD83E[\uDD18-\uDD1C\uDD1E\uDD1F\uDD26\uDD30-\uDD39\uDD3D\uDD3E\uDDD1-\uDDDD])(?:\uD83C[\uDFFB-\uDFFF])?|(?:[\u231A\u231B\u23E9-\u23EC\u23F0\u23F3\u25FD\u25FE\u2614\u2615\u2648-\u2653\u267F\u2693\u26A1\u26AA\u26AB\u26BD\u26BE\u26C4\u26C5\u26CE\u26D4\u26EA\u26F2\u26F3\u26F5\u26FA\u26FD\u2705\u270A\u270B\u2728\u274C\u274E\u2753-\u2755\u2757\u2795-\u2797\u27B0\u27BF\u2B1B\u2B1C\u2B50\u2B55]|\uD83C[\uDC04\uDCCF\uDD8E\uDD91-\uDD9A\uDDE6-\uDDFF\uDE01\uDE1A\uDE2F\uDE32-\uDE36\uDE38-\uDE3A\uDE50\uDE51\uDF00-\uDF20\uDF2D-\uDF35\uDF37-\uDF7C\uDF7E-\uDF93\uDFA0-\uDFCA\uDFCF-\uDFD3\uDFE0-\uDFF0\uDFF4\uDFF8-\uDFFF]|\uD83D[\uDC00-\uDC3E\uDC40\uDC42-\uDCFC\uDCFF-\uDD3D\uDD4B-\uDD4E\uDD50-\uDD67\uDD7A\uDD95\uDD96\uDDA4\uDDFB-\uDE4F\uDE80-\uDEC5\uDECC\uDED0-\uDED2\uDEEB\uDEEC\uDEF4-\uDEF8]|\uD83E[\uDD10-\uDD3A\uDD3C-\uDD3E\uDD40-\uDD45\uDD47-\uDD4C\uDD50-\uDD6B\uDD80-\uDD97\uDDC0\uDDD0-\uDDE6])|(?:[#\*0-9\xA9\xAE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9\u21AA\u231A\u231B\u2328\u23CF\u23E9-\u23F3\u23F8-\u23FA\u24C2\u25AA\u25AB\u25B6\u25C0\u25FB-\u25FE\u2600-\u2604\u260E\u2611\u2614\u2615\u2618\u261D\u2620\u2622\u2623\u2626\u262A\u262E\u262F\u2638-\u263A\u2640\u2642\u2648-\u2653\u2660\u2663\u2665\u2666\u2668\u267B\u267F\u2692-\u2697\u2699\u269B\u269C\u26A0\u26A1\u26AA\u26AB\u26B0\u26B1\u26BD\u26BE\u26C4\u26C5\u26C8\u26CE\u26CF\u26D1\u26D3\u26D4\u26E9\u26EA\u26F0-\u26F5\u26F7-\u26FA\u26FD\u2702\u2705\u2708-\u270D\u270F\u2712\u2714\u2716\u271D\u2721\u2728\u2733\u2734\u2744\u2747\u274C\u274E\u2753-\u2755\u2757\u2763\u2764\u2795-\u2797\u27A1\u27B0\u27BF\u2934\u2935\u2B05-\u2B07\u2B1B\u2B1C\u2B50\u2B55\u3030\u303D\u3297\u3299]|\uD83C[\uDC04\uDCCF\uDD70\uDD71\uDD7E\uDD7F\uDD8E\uDD91-\uDD9A\uDDE6-\uDDFF\uDE01\uDE02\uDE1A\uDE2F\uDE32-\uDE3A\uDE50\uDE51\uDF00-\uDF21\uDF24-\uDF93\uDF96\uDF97\uDF99-\uDF9B\uDF9E-\uDFF0\uDFF3-\uDFF5\uDFF7-\uDFFF]|\uD83D[\uDC00-\uDCFD\uDCFF-\uDD3D\uDD49-\uDD4E\uDD50-\uDD67\uDD6F\uDD70\uDD73-\uDD7A\uDD87\uDD8A-\uDD8D\uDD90\uDD95\uDD96\uDDA4\uDDA5\uDDA8\uDDB1\uDDB2\uDDBC\uDDC2-\uDDC4\uDDD1-\uDDD3\uDDDC-\uDDDE\uDDE1\uDDE3\uDDE8\uDDEF\uDDF3\uDDFA-\uDE4F\uDE80-\uDEC5\uDECB-\uDED2\uDEE0-\uDEE5\uDEE9\uDEEB\uDEEC\uDEF0\uDEF3-\uDEF8]|\uD83E[\uDD10-\uDD3A\uDD3C-\uDD3E\uDD40-\uDD45\uDD47-\uDD4C\uDD50-\uDD6B\uDD80-\uDD97\uDDC0\uDDD0-\uDDE6])\uFE0F)/;
+function getText(e) {
+  var type = e.nodeType, result = "";
+  if (type === 1 || type === 9 || type === 11) {
+    if (typeof e.textContent === "string") {
+      return e.textContent;
+    } else {
+      for (e = e.firstChild; e; e = e.nextSibling) {
+        result += getText(e);
+      }
+    }
+  } else if (type === 3 || type === 4) {
+    return e.nodeValue;
+  }
+  return result;
+}
+
+// node_modules/gsap/SplitText.js
+var _doc3;
+var _win3;
+var _coreInitted3;
+var gsap4;
+var _context3;
+var _toArray2;
+var _stripExp = /(?:\r|\n|\t\t)/g;
+var _multipleSpacesExp = /(?:\s\s+)/g;
+var _nonBreakingSpace = String.fromCharCode(160);
+var _initCore3 = function _initCore4(core) {
+  _doc3 = document;
+  _win3 = window;
+  gsap4 = gsap4 || core || _win3.gsap || console.warn("Please gsap.registerPlugin(SplitText)");
+  if (gsap4) {
+    _toArray2 = gsap4.utils.toArray;
+    _context3 = gsap4.core.context || function() {
+    };
+    _coreInitted3 = 1;
+  }
+};
+var _bonusValidated = 1;
+var _getComputedStyle3 = function _getComputedStyle4(element) {
+  return _win3.getComputedStyle(element);
+};
+var _isAbsolute = function _isAbsolute2(vars) {
+  return vars.position === "absolute" || vars.absolute === true;
+};
+var _findSpecialChars = function _findSpecialChars2(text, chars) {
+  var i2 = chars.length, s;
+  while (--i2 > -1) {
+    s = chars[i2];
+    if (text.substr(0, s.length) === s) {
+      return s.length;
+    }
+  }
+};
+var _divStart = " style='position:relative;display:inline-block;'";
+var _cssClassFunc = function _cssClassFunc2(cssClass, tag) {
+  if (cssClass === void 0) {
+    cssClass = "";
+  }
+  var iterate = ~cssClass.indexOf("++"), num = 1;
+  if (iterate) {
+    cssClass = cssClass.split("++").join("");
+  }
+  return function() {
+    return "<" + tag + _divStart + (cssClass ? " class='" + cssClass + (iterate ? num++ : "") + "'>" : ">");
+  };
+};
+var _swapText = function _swapText2(element, oldText, newText) {
+  var type = element.nodeType;
+  if (type === 1 || type === 9 || type === 11) {
+    for (element = element.firstChild; element; element = element.nextSibling) {
+      _swapText2(element, oldText, newText);
+    }
+  } else if (type === 3 || type === 4) {
+    element.nodeValue = element.nodeValue.split(oldText).join(newText);
+  }
+};
+var _pushReversed = function _pushReversed2(a, merge) {
+  var i2 = merge.length;
+  while (--i2 > -1) {
+    a.push(merge[i2]);
+  }
+};
+var _isBeforeWordDelimiter = function _isBeforeWordDelimiter2(e, root, wordDelimiter) {
+  var next;
+  while (e && e !== root) {
+    next = e._next || e.nextSibling;
+    if (next) {
+      return next.textContent.charAt(0) === wordDelimiter;
+    }
+    e = e.parentNode || e._parent;
+  }
+};
+var _deWordify = function _deWordify2(e) {
+  var children = _toArray2(e.childNodes), l = children.length, i2, child;
+  for (i2 = 0; i2 < l; i2++) {
+    child = children[i2];
+    if (child._isSplit) {
+      _deWordify2(child);
+    } else {
+      if (i2 && child.previousSibling && child.previousSibling.nodeType === 3) {
+        child.previousSibling.nodeValue += child.nodeType === 3 ? child.nodeValue : child.firstChild.nodeValue;
+        e.removeChild(child);
+      } else if (child.nodeType !== 3) {
+        e.insertBefore(child.firstChild, child);
+        e.removeChild(child);
+      }
+    }
+  }
+};
+var _getStyleAsNumber = function _getStyleAsNumber2(name, computedStyle) {
+  return parseFloat(computedStyle[name]) || 0;
+};
+var _setPositionsAfterSplit = function _setPositionsAfterSplit2(element, vars, allChars, allWords, allLines, origWidth, origHeight) {
+  var cs = _getComputedStyle3(element), paddingLeft = _getStyleAsNumber("paddingLeft", cs), lineOffsetY = -999, borderTopAndBottom = _getStyleAsNumber("borderBottomWidth", cs) + _getStyleAsNumber("borderTopWidth", cs), borderLeftAndRight = _getStyleAsNumber("borderLeftWidth", cs) + _getStyleAsNumber("borderRightWidth", cs), padTopAndBottom = _getStyleAsNumber("paddingTop", cs) + _getStyleAsNumber("paddingBottom", cs), padLeftAndRight = _getStyleAsNumber("paddingLeft", cs) + _getStyleAsNumber("paddingRight", cs), lineThreshold = _getStyleAsNumber("fontSize", cs) * (vars.lineThreshold || 0.2), textAlign = cs.textAlign, charArray = [], wordArray = [], lineArray = [], wordDelimiter = vars.wordDelimiter || " ", tag = vars.tag ? vars.tag : vars.span ? "span" : "div", types = vars.type || vars.split || "chars,words,lines", lines = allLines && ~types.indexOf("lines") ? [] : null, words = ~types.indexOf("words"), chars = ~types.indexOf("chars"), absolute = _isAbsolute(vars), linesClass = vars.linesClass, iterateLine = ~(linesClass || "").indexOf("++"), spaceNodesToRemove = [], isFlex = cs.display === "flex", prevInlineDisplay = element.style.display, i2, j, l, node, nodes, isChild, curLine, addWordSpaces, style, lineNode, lineWidth, offset;
+  iterateLine && (linesClass = linesClass.split("++").join(""));
+  isFlex && (element.style.display = "block");
+  j = element.getElementsByTagName("*");
+  l = j.length;
+  nodes = [];
+  for (i2 = 0; i2 < l; i2++) {
+    nodes[i2] = j[i2];
+  }
+  if (lines || absolute) {
+    for (i2 = 0; i2 < l; i2++) {
+      node = nodes[i2];
+      isChild = node.parentNode === element;
+      if (isChild || absolute || chars && !words) {
+        offset = node.offsetTop;
+        if (lines && isChild && Math.abs(offset - lineOffsetY) > lineThreshold && (node.nodeName !== "BR" || i2 === 0)) {
+          curLine = [];
+          lines.push(curLine);
+          lineOffsetY = offset;
+        }
+        if (absolute) {
+          node._x = node.offsetLeft;
+          node._y = offset;
+          node._w = node.offsetWidth;
+          node._h = node.offsetHeight;
+        }
+        if (lines) {
+          if (node._isSplit && isChild || !chars && isChild || words && isChild || !words && node.parentNode.parentNode === element && !node.parentNode._isSplit) {
+            curLine.push(node);
+            node._x -= paddingLeft;
+            if (_isBeforeWordDelimiter(node, element, wordDelimiter)) {
+              node._wordEnd = true;
+            }
+          }
+          if (node.nodeName === "BR" && (node.nextSibling && node.nextSibling.nodeName === "BR" || i2 === 0)) {
+            lines.push([]);
+          }
+        }
+      }
+    }
+  }
+  for (i2 = 0; i2 < l; i2++) {
+    node = nodes[i2];
+    isChild = node.parentNode === element;
+    if (node.nodeName === "BR") {
+      if (lines || absolute) {
+        node.parentNode && node.parentNode.removeChild(node);
+        nodes.splice(i2--, 1);
+        l--;
+      } else if (!words) {
+        element.appendChild(node);
+      }
+      continue;
+    }
+    if (absolute) {
+      style = node.style;
+      if (!words && !isChild) {
+        node._x += node.parentNode._x;
+        node._y += node.parentNode._y;
+      }
+      style.left = node._x + "px";
+      style.top = node._y + "px";
+      style.position = "absolute";
+      style.display = "block";
+      style.width = node._w + 1 + "px";
+      style.height = node._h + "px";
+    }
+    if (!words && chars) {
+      if (node._isSplit) {
+        node._next = j = node.nextSibling;
+        node.parentNode.appendChild(node);
+        while (j && j.nodeType === 3 && j.textContent === " ") {
+          node._next = j.nextSibling;
+          node.parentNode.appendChild(j);
+          j = j.nextSibling;
+        }
+      } else if (node.parentNode._isSplit) {
+        node._parent = node.parentNode;
+        if (!node.previousSibling && node.firstChild) {
+          node.firstChild._isFirst = true;
+        }
+        if (node.nextSibling && node.nextSibling.textContent === " " && !node.nextSibling.nextSibling) {
+          spaceNodesToRemove.push(node.nextSibling);
+        }
+        node._next = node.nextSibling && node.nextSibling._isFirst ? null : node.nextSibling;
+        node.parentNode.removeChild(node);
+        nodes.splice(i2--, 1);
+        l--;
+      } else if (!isChild) {
+        offset = !node.nextSibling && _isBeforeWordDelimiter(node.parentNode, element, wordDelimiter);
+        node.parentNode._parent && node.parentNode._parent.appendChild(node);
+        offset && node.parentNode.appendChild(_doc3.createTextNode(" "));
+        if (tag === "span") {
+          node.style.display = "inline";
+        }
+        charArray.push(node);
+      }
+    } else if (node.parentNode._isSplit && !node._isSplit && node.innerHTML !== "") {
+      wordArray.push(node);
+    } else if (chars && !node._isSplit) {
+      if (tag === "span") {
+        node.style.display = "inline";
+      }
+      charArray.push(node);
+    }
+  }
+  i2 = spaceNodesToRemove.length;
+  while (--i2 > -1) {
+    spaceNodesToRemove[i2].parentNode.removeChild(spaceNodesToRemove[i2]);
+  }
+  if (lines) {
+    if (absolute) {
+      lineNode = _doc3.createElement(tag);
+      element.appendChild(lineNode);
+      lineWidth = lineNode.offsetWidth + "px";
+      offset = lineNode.offsetParent === element ? 0 : element.offsetLeft;
+      element.removeChild(lineNode);
+    }
+    style = element.style.cssText;
+    element.style.cssText = "display:none;";
+    while (element.firstChild) {
+      element.removeChild(element.firstChild);
+    }
+    addWordSpaces = wordDelimiter === " " && (!absolute || !words && !chars);
+    for (i2 = 0; i2 < lines.length; i2++) {
+      curLine = lines[i2];
+      lineNode = _doc3.createElement(tag);
+      lineNode.style.cssText = "display:block;text-align:" + textAlign + ";position:" + (absolute ? "absolute;" : "relative;");
+      if (linesClass) {
+        lineNode.className = linesClass + (iterateLine ? i2 + 1 : "");
+      }
+      lineArray.push(lineNode);
+      l = curLine.length;
+      for (j = 0; j < l; j++) {
+        if (curLine[j].nodeName !== "BR") {
+          node = curLine[j];
+          lineNode.appendChild(node);
+          addWordSpaces && node._wordEnd && lineNode.appendChild(_doc3.createTextNode(" "));
+          if (absolute) {
+            if (j === 0) {
+              lineNode.style.top = node._y + "px";
+              lineNode.style.left = paddingLeft + offset + "px";
+            }
+            node.style.top = "0px";
+            if (offset) {
+              node.style.left = node._x - offset + "px";
+            }
+          }
+        }
+      }
+      if (l === 0) {
+        lineNode.innerHTML = "&nbsp;";
+      } else if (!words && !chars) {
+        _deWordify(lineNode);
+        _swapText(lineNode, String.fromCharCode(160), " ");
+      }
+      if (absolute) {
+        lineNode.style.width = lineWidth;
+        lineNode.style.height = node._h + "px";
+      }
+      element.appendChild(lineNode);
+    }
+    element.style.cssText = style;
+  }
+  if (absolute) {
+    if (origHeight > element.clientHeight) {
+      element.style.height = origHeight - padTopAndBottom + "px";
+      if (element.clientHeight < origHeight) {
+        element.style.height = origHeight + borderTopAndBottom + "px";
+      }
+    }
+    if (origWidth > element.clientWidth) {
+      element.style.width = origWidth - padLeftAndRight + "px";
+      if (element.clientWidth < origWidth) {
+        element.style.width = origWidth + borderLeftAndRight + "px";
+      }
+    }
+  }
+  isFlex && (prevInlineDisplay ? element.style.display = prevInlineDisplay : element.style.removeProperty("display"));
+  _pushReversed(allChars, charArray);
+  words && _pushReversed(allWords, wordArray);
+  _pushReversed(allLines, lineArray);
+};
+var _splitRawText = function _splitRawText2(element, vars, wordStart, charStart) {
+  var tag = vars.tag ? vars.tag : vars.span ? "span" : "div", types = vars.type || vars.split || "chars,words,lines", chars = ~types.indexOf("chars"), absolute = _isAbsolute(vars), wordDelimiter = vars.wordDelimiter || " ", isWordDelimiter = function isWordDelimiter2(_char) {
+    return _char === wordDelimiter || _char === _nonBreakingSpace && wordDelimiter === " ";
+  }, space = wordDelimiter !== " " ? "" : absolute ? "&#173; " : " ", wordEnd = "</" + tag + ">", wordIsOpen = 1, specialChars = vars.specialChars ? typeof vars.specialChars === "function" ? vars.specialChars : _findSpecialChars : null, text, splitText, i2, j, l, character, hasTagStart, testResult, container = _doc3.createElement("div"), parent = element.parentNode;
+  parent.insertBefore(container, element);
+  container.textContent = element.nodeValue;
+  parent.removeChild(element);
+  element = container;
+  text = getText(element);
+  hasTagStart = text.indexOf("<") !== -1;
+  if (vars.reduceWhiteSpace !== false) {
+    text = text.replace(_multipleSpacesExp, " ").replace(_stripExp, "");
+  }
+  if (hasTagStart) {
+    text = text.split("<").join("{{LT}}");
+  }
+  l = text.length;
+  splitText = (text.charAt(0) === " " ? space : "") + wordStart();
+  for (i2 = 0; i2 < l; i2++) {
+    character = text.charAt(i2);
+    if (specialChars && (testResult = specialChars(text.substr(i2), vars.specialChars))) {
+      character = text.substr(i2, testResult || 1);
+      splitText += chars && character !== " " ? charStart() + character + "</" + tag + ">" : character;
+      i2 += testResult - 1;
+    } else if (isWordDelimiter(character) && !isWordDelimiter(text.charAt(i2 - 1)) && i2) {
+      splitText += wordIsOpen ? wordEnd : "";
+      wordIsOpen = 0;
+      while (isWordDelimiter(text.charAt(i2 + 1))) {
+        splitText += space;
+        i2++;
+      }
+      if (i2 === l - 1) {
+        splitText += space;
+      } else if (text.charAt(i2 + 1) !== ")") {
+        splitText += space + wordStart();
+        wordIsOpen = 1;
+      }
+    } else if (character === "{" && text.substr(i2, 6) === "{{LT}}") {
+      splitText += chars ? charStart() + "{{LT}}</" + tag + ">" : "{{LT}}";
+      i2 += 5;
+    } else if (character.charCodeAt(0) >= 55296 && character.charCodeAt(0) <= 56319 || text.charCodeAt(i2 + 1) >= 65024 && text.charCodeAt(i2 + 1) <= 65039) {
+      j = ((text.substr(i2, 12).split(emojiExp) || [])[1] || "").length || 2;
+      splitText += chars && character !== " " ? charStart() + text.substr(i2, j) + "</" + tag + ">" : text.substr(i2, j);
+      i2 += j - 1;
+    } else {
+      splitText += chars && character !== " " ? charStart() + character + "</" + tag + ">" : character;
+    }
+  }
+  element.outerHTML = splitText + (wordIsOpen ? wordEnd : "");
+  hasTagStart && _swapText(parent, "{{LT}}", "<");
+};
+var _split = function _split2(element, vars, wordStart, charStart) {
+  var children = _toArray2(element.childNodes), l = children.length, absolute = _isAbsolute(vars), i2, child;
+  if (element.nodeType !== 3 || l > 1) {
+    vars.absolute = false;
+    for (i2 = 0; i2 < l; i2++) {
+      child = children[i2];
+      child._next = child._isFirst = child._parent = child._wordEnd = null;
+      if (child.nodeType !== 3 || /\S+/.test(child.nodeValue)) {
+        if (absolute && child.nodeType !== 3 && _getComputedStyle3(child).display === "inline") {
+          child.style.display = "inline-block";
+          child.style.position = "relative";
+        }
+        child._isSplit = true;
+        _split2(child, vars, wordStart, charStart);
+      }
+    }
+    vars.absolute = absolute;
+    element._isSplit = true;
+    return;
+  }
+  _splitRawText(element, vars, wordStart, charStart);
+};
+var SplitText = /* @__PURE__ */ function() {
+  function SplitText2(element, vars) {
+    _coreInitted3 || _initCore3();
+    this.elements = _toArray2(element);
+    this.chars = [];
+    this.words = [];
+    this.lines = [];
+    this._originals = [];
+    this.vars = vars || {};
+    _context3(this);
+    _bonusValidated && this.split(vars);
+  }
+  var _proto = SplitText2.prototype;
+  _proto.split = function split(vars) {
+    this.isSplit && this.revert();
+    this.vars = vars = vars || this.vars;
+    this._originals.length = this.chars.length = this.words.length = this.lines.length = 0;
+    var i2 = this.elements.length, tag = vars.tag ? vars.tag : vars.span ? "span" : "div", wordStart = _cssClassFunc(vars.wordsClass, tag), charStart = _cssClassFunc(vars.charsClass, tag), origHeight, origWidth, e;
+    while (--i2 > -1) {
+      e = this.elements[i2];
+      this._originals[i2] = {
+        html: e.innerHTML,
+        style: e.getAttribute("style")
+      };
+      origHeight = e.clientHeight;
+      origWidth = e.clientWidth;
+      _split(e, vars, wordStart, charStart);
+      _setPositionsAfterSplit(e, vars, this.chars, this.words, this.lines, origWidth, origHeight);
+    }
+    this.chars.reverse();
+    this.words.reverse();
+    this.lines.reverse();
+    this.isSplit = true;
+    return this;
+  };
+  _proto.revert = function revert() {
+    var originals = this._originals;
+    if (!originals) {
+      throw "revert() call wasn't scoped properly.";
+    }
+    this.elements.forEach(function(e, i2) {
+      e.innerHTML = originals[i2].html;
+      e.setAttribute("style", originals[i2].style);
+    });
+    this.chars = [];
+    this.words = [];
+    this.lines = [];
+    this.isSplit = false;
+    return this;
+  };
+  SplitText2.create = function create(element, vars) {
+    return new SplitText2(element, vars);
+  };
+  return SplitText2;
+}();
+SplitText.version = "3.12.5";
+SplitText.register = _initCore3;
+
+// gsap-hero.js
+import_gsap2.gsap.registerPlugin(SplitText);
+var circles;
+createCircles();
+window.addEventListener("load", () => {
+  let root = document.documentElement;
+  let hero = document.querySelector(".gsap-hero_light-bg");
+  let header2 = document.querySelector(".header_container");
+  let heading = document.querySelector(".gsap-hero_heading");
+  let split, tagline, typed;
+  if (heading) {
+    heading.style.opacity = "1";
+    split = new SplitText(".gsap-hero_heading");
+    tagline = split.chars.slice(0, 15);
+    typed = split.chars.slice(15, -1);
+  }
+  let tl = import_gsap2.gsap.timeline();
+  tl.to(circles, { duration: 0, opacity: 1, stagger: 0.05, ease: "none" });
+  tl.to(hero, { duration: 0.5, opacity: 0, ease: "power1.inOut" }, "-=0.25");
+  tl.to(tagline, { duration: 0.5, color: "var(--light-teal)", ease: "power1.inOut" }, "<");
+  tl.to(circles, { duration: 0.5, borderColor: "var(--light-teal)", ease: "power1.inOut" }, "<");
+  tl.to(root, { duration: 0.5, ["--nav-color"]: "var(--light-teal)", ease: "power1.inOut" }, "<");
+  tl.to(tagline, { duration: 1, opacity: 1, ease: "power1.out" });
+  tl.to(typed, { duration: 0, color: "var(--light-teal)" }, "-=0.5");
+  tl.from(typed, { duration: 0.5, stagger: 0.03, rotateZ: "1deg", translateY: "0.1em", ease: "power1.out", onComplete: preloadVideo }, "<");
+  tl.to(typed, { duration: 0.5, stagger: 0.03, opacity: 1, ease: "power1.out", onComplete: preloadVideo }, "<");
+  tl.to(header2, { duration: 0.5, opacity: 1, ease: "power1.out" });
+});
+function preloadVideo() {
+  console.log("Loading Videos..");
+  videos = [...document.querySelectorAll(".slider-video")];
+  videos.forEach((el) => {
+    el.setAttribute("preload", "auto");
+  });
+}
+function createCircles() {
+  const container = document.querySelector(".gsap-hero_circles-wrapper");
+  if (container) {
+    const targetDiameter = container.offsetHeight;
+    let windowWidth = window.innerWidth;
+    count = 2 * Math.round(windowWidth / targetDiameter / 2);
+    let newDiameter = windowWidth / count;
+    try {
+      container.style.setProperty("--d", newDiameter + "px");
+      container.style.setProperty("--offset", newDiameter / -4 + "px");
+    } catch (error) {
+      console.error(error);
+    }
+    for (let i2 = 0; i2 < count * 2; i2++) {
+      let el = document.createElement("div");
+      el.classList.add("gsap-hero_circle");
+      try {
+        container.append(el);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    circles = [...document.querySelectorAll(".gsap-hero_circle")];
+  }
+}
 
 // animations.js
-import_gsap2.gsap.registerPlugin(ScrollTrigger2);
-var elements = import_gsap2.gsap.utils.toArray("[gsap]");
-import_gsap2.gsap.set("[gsap]", { opacity: 0 });
+var import_gsap3 = __toESM(require_gsap());
+import_gsap3.gsap.registerPlugin(ScrollTrigger2);
+var elements = import_gsap3.gsap.utils.toArray("[gsap]");
+import_gsap3.gsap.set("[gsap]", { opacity: 0 });
 ScrollTrigger2.batch("[gsap]", {
   // interval: 0.1, // time window (in seconds) for batching to occur. 
   // batchMax: 3,   // maximum batch size (targets)
   start: "top 66%",
-  onEnter: (batch) => import_gsap2.gsap.to(batch, { duration: 0.3, opacity: 1, stagger: 0.2, ease: "power1.out" })
+  onEnter: (batch) => import_gsap3.gsap.to(batch, { duration: 0.3, opacity: 1, stagger: 0.2, ease: "power1.out" })
   // also onLeave, onEnterBack, and onLeaveBack
   // also most normal ScrollTrigger values like start, end, etc.
 });
 
 // gsap-header.js
-var import_gsap3 = __toESM(require_gsap());
-import_gsap3.gsap.registerPlugin(ScrollTrigger2);
-var sections = import_gsap3.gsap.utils.toArray("section");
+var import_gsap4 = __toESM(require_gsap());
+import_gsap4.gsap.registerPlugin(ScrollTrigger2);
+var sections = import_gsap4.gsap.utils.toArray("section");
 var header = document.querySelector("[data-header]");
 console.log(sections[0].dataset.section);
 header.setAttribute("data-theme", sections[0].dataset.section);
 var height = header.offsetHeight;
-sections.forEach((section2) => {
+sections.forEach((section3) => {
   ScrollTrigger2.create({
-    trigger: section2,
+    trigger: section3,
     start: () => "top +=" + height / 2 + "px",
     onUpdate: () => {
-      let theme = section2.dataset.section;
+      let theme = section3.dataset.section;
       header.setAttribute("data-theme", theme);
     }
   });
@@ -9603,10 +9614,10 @@ var mutationObserver = new MutationObserver(callback);
 mutationObserver.observe(targetNode, config);
 
 // our-process.js
-var import_gsap4 = __toESM(require_gsap());
-import_gsap4.gsap.registerPlugin(ScrollTrigger2);
-var section = document.querySelector(".our-process-section");
-var items = import_gsap4.gsap.utils.toArray(".our-process-process-item");
+var import_gsap5 = __toESM(require_gsap());
+import_gsap5.gsap.registerPlugin(ScrollTrigger2);
+var section2 = document.querySelector(".our-process-section");
+var items = import_gsap5.gsap.utils.toArray(".our-process-process-item");
 var i = 1;
 items.forEach((item) => {
   item.dataset.index = i++;
@@ -9614,18 +9625,803 @@ items.forEach((item) => {
     trigger: item,
     start: "top bottom",
     onEnter: () => {
-      section.style.cursor = "var(--process-cursor-" + item.dataset.index + "), auto";
+      section2.style.cursor = "var(--process-cursor-" + item.dataset.index + "), auto";
     },
     onEnterBack: () => {
-      section.style.cursor = "var(--process-cursor-" + item.dataset.index + "), auto";
+      section2.style.cursor = "var(--process-cursor-" + item.dataset.index + "), auto";
     }
   });
+});
+if (section2) {
+  console.log(items[0].offsetHeight);
+  ScrollTrigger2.create({
+    trigger: "#process-heading",
+    pin: true,
+    start: "top top",
+    end: () => "+=" + (items[0].offsetHeight + items[1].offsetHeight + items[2].offsetHeight)
+  });
+}
+
+// smoother.js
+var import_gsap6 = __toESM(require_gsap());
+
+// node_modules/gsap/ScrollSmoother.js
+function _defineProperties2(target, props) {
+  for (var i2 = 0; i2 < props.length; i2++) {
+    var descriptor = props[i2];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor)
+      descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+function _createClass2(Constructor, protoProps, staticProps) {
+  if (protoProps)
+    _defineProperties2(Constructor.prototype, protoProps);
+  if (staticProps)
+    _defineProperties2(Constructor, staticProps);
+  return Constructor;
+}
+var gsap9;
+var _coreInitted4;
+var _win4;
+var _doc4;
+var _docEl3;
+var _body3;
+var _root3;
+var _toArray3;
+var _clamp3;
+var ScrollTrigger3;
+var _mainInstance;
+var _expo;
+var _getVelocityProp3;
+var _inputObserver3;
+var _context4;
+var _onResizeDelayedCall;
+var _windowExists3 = function _windowExists4() {
+  return typeof window !== "undefined";
+};
+var _getGSAP5 = function _getGSAP6() {
+  return gsap9 || _windowExists3() && (gsap9 = window.gsap) && gsap9.registerPlugin && gsap9;
+};
+var _round3 = function _round4(value) {
+  return Math.round(value * 1e5) / 1e5 || 0;
+};
+var _maxScroll3 = function _maxScroll4(scroller) {
+  return ScrollTrigger3.maxScroll(scroller || _win4);
+};
+var _autoDistance = function _autoDistance2(el, progress) {
+  var parent = el.parentNode || _docEl3, b1 = el.getBoundingClientRect(), b2 = parent.getBoundingClientRect(), gapTop = b2.top - b1.top, gapBottom = b2.bottom - b1.bottom, change = (Math.abs(gapTop) > Math.abs(gapBottom) ? gapTop : gapBottom) / (1 - progress), offset = -change * progress, ratio, extraChange;
+  if (change > 0) {
+    ratio = b2.height / (_win4.innerHeight + b2.height);
+    extraChange = ratio === 0.5 ? b2.height * 2 : Math.min(b2.height, Math.abs(-change * ratio / (2 * ratio - 1))) * 2 * (progress || 1);
+    offset += progress ? -extraChange * progress : -extraChange / 2;
+    change += extraChange;
+  }
+  return {
+    change,
+    offset
+  };
+};
+var _wrap = function _wrap2(el) {
+  var wrapper = _doc4.querySelector(".ScrollSmoother-wrapper");
+  if (!wrapper) {
+    wrapper = _doc4.createElement("div");
+    wrapper.classList.add("ScrollSmoother-wrapper");
+    el.parentNode.insertBefore(wrapper, el);
+    wrapper.appendChild(el);
+  }
+  return wrapper;
+};
+var ScrollSmoother = /* @__PURE__ */ function() {
+  function ScrollSmoother2(vars) {
+    var _this = this;
+    _coreInitted4 || ScrollSmoother2.register(gsap9) || console.warn("Please gsap.registerPlugin(ScrollSmoother)");
+    vars = this.vars = vars || {};
+    _mainInstance && _mainInstance.kill();
+    _mainInstance = this;
+    _context4(this);
+    var _vars = vars, smoothTouch = _vars.smoothTouch, _onUpdate = _vars.onUpdate, onStop = _vars.onStop, smooth = _vars.smooth, onFocusIn = _vars.onFocusIn, normalizeScroll = _vars.normalizeScroll, wholePixels = _vars.wholePixels, content, wrapper, height2, mainST, effects, sections2, intervalID, wrapperCSS, contentCSS, paused, pausedNormalizer, recordedRefreshScroll, recordedRefreshScrub, allowUpdates, self2 = this, effectsPrefix = vars.effectsPrefix || "", scrollFunc = ScrollTrigger3.getScrollFunc(_win4), smoothDuration = ScrollTrigger3.isTouch === 1 ? smoothTouch === true ? 0.8 : parseFloat(smoothTouch) || 0 : smooth === 0 || smooth === false ? 0 : parseFloat(smooth) || 0.8, speed = smoothDuration && +vars.speed || 1, currentY = 0, delta = 0, startupPhase = 1, tracker = _getVelocityProp3(0), updateVelocity = function updateVelocity2() {
+      return tracker.update(-currentY);
+    }, scroll = {
+      y: 0
+    }, removeScroll = function removeScroll2() {
+      return content.style.overflow = "visible";
+    }, isProxyScrolling, killScrub = function killScrub2(trigger) {
+      trigger.update();
+      var scrub = trigger.getTween();
+      if (scrub) {
+        scrub.pause();
+        scrub._time = scrub._dur;
+        scrub._tTime = scrub._tDur;
+      }
+      isProxyScrolling = false;
+      trigger.animation.progress(trigger.progress, true);
+    }, render = function render2(y, force) {
+      if (y !== currentY && !paused || force) {
+        wholePixels && (y = Math.round(y));
+        if (smoothDuration) {
+          content.style.transform = "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, " + y + ", 0, 1)";
+          content._gsap.y = y + "px";
+        }
+        delta = y - currentY;
+        currentY = y;
+        ScrollTrigger3.isUpdating || ScrollSmoother2.isRefreshing || ScrollTrigger3.update();
+      }
+    }, scrollTop = function scrollTop2(value) {
+      if (arguments.length) {
+        value < 0 && (value = 0);
+        scroll.y = -value;
+        isProxyScrolling = true;
+        paused ? currentY = -value : render(-value);
+        ScrollTrigger3.isRefreshing ? mainST.update() : scrollFunc(value / speed);
+        return this;
+      }
+      return -currentY;
+    }, resizeObserver = typeof ResizeObserver !== "undefined" && vars.autoResize !== false && new ResizeObserver(function() {
+      if (!ScrollTrigger3.isRefreshing) {
+        var max = _maxScroll3(wrapper) * speed;
+        max < -currentY && scrollTop(max);
+        _onResizeDelayedCall.restart(true);
+      }
+    }), lastFocusElement, _onFocusIn = function _onFocusIn2(e) {
+      wrapper.scrollTop = 0;
+      if (e.target.contains && e.target.contains(wrapper) || onFocusIn && onFocusIn(_this, e) === false) {
+        return;
+      }
+      ScrollTrigger3.isInViewport(e.target) || e.target === lastFocusElement || _this.scrollTo(e.target, false, "center center");
+      lastFocusElement = e.target;
+    }, _transformPosition = function _transformPosition2(position, st) {
+      if (position < st.start) {
+        return position;
+      }
+      var ratio = isNaN(st.ratio) ? 1 : st.ratio, change = st.end - st.start, distance = position - st.start, offset = st.offset || 0, pins = st.pins || [], pinOffset = pins.offset || 0, progressOffset = st._startClamp && st.start <= 0 || st.pins && st.pins.offset ? 0 : st._endClamp && st.end === _maxScroll3() ? 1 : 0.5;
+      pins.forEach(function(p) {
+        change -= p.distance;
+        if (p.nativeStart <= position) {
+          distance -= p.distance;
+        }
+      });
+      if (pinOffset) {
+        distance *= (change - pinOffset / ratio) / change;
+      }
+      return position + (distance - offset * progressOffset) / ratio - distance;
+    }, adjustEffectRelatedTriggers = function adjustEffectRelatedTriggers2(st, triggers, partial) {
+      partial || (st.pins.length = st.pins.offset = 0);
+      var pins = st.pins, markers = st.markers, dif, isClamped, start, end, nativeStart, nativeEnd, i2, trig;
+      for (i2 = 0; i2 < triggers.length; i2++) {
+        trig = triggers[i2];
+        if (st.trigger && trig.trigger && st !== trig && (trig.trigger === st.trigger || trig.pinnedContainer === st.trigger || st.trigger.contains(trig.trigger))) {
+          nativeStart = trig._startNative || trig._startClamp || trig.start;
+          nativeEnd = trig._endNative || trig._endClamp || trig.end;
+          start = _transformPosition(nativeStart, st);
+          end = trig.pin && nativeEnd > 0 ? start + (nativeEnd - nativeStart) : _transformPosition(nativeEnd, st);
+          trig.setPositions(start, end, true, (trig._startClamp ? Math.max(0, start) : start) - nativeStart);
+          trig.markerStart && markers.push(gsap9.quickSetter([trig.markerStart, trig.markerEnd], "y", "px"));
+          if (trig.pin && trig.end > 0 && !partial) {
+            dif = trig.end - trig.start;
+            isClamped = st._startClamp && trig.start < 0;
+            if (isClamped) {
+              if (st.start > 0) {
+                st.setPositions(0, st.end + (st._startNative - st.start), true);
+                adjustEffectRelatedTriggers2(st, triggers);
+                return;
+              }
+              dif += trig.start;
+              pins.offset = -trig.start;
+            }
+            pins.push({
+              start: trig.start,
+              nativeStart,
+              end: trig.end,
+              distance: dif,
+              trig
+            });
+            st.setPositions(st.start, st.end + (isClamped ? -trig.start : dif), true);
+          }
+        }
+      }
+    }, adjustParallaxPosition = function adjustParallaxPosition2(triggers, createdAfterEffectWasApplied) {
+      effects.forEach(function(st) {
+        return adjustEffectRelatedTriggers(st, triggers, createdAfterEffectWasApplied);
+      });
+    }, onRefresh = function onRefresh2() {
+      removeScroll();
+      requestAnimationFrame(removeScroll);
+      if (effects) {
+        ScrollTrigger3.getAll().forEach(function(st) {
+          st._startNative = st.start;
+          st._endNative = st.end;
+        });
+        effects.forEach(function(st) {
+          var start = st._startClamp || st.start, end = st.autoSpeed ? Math.min(_maxScroll3(), st.end) : start + Math.abs((st.end - start) / st.ratio), offset = end - st.end;
+          start -= offset / 2;
+          end -= offset / 2;
+          if (start > end) {
+            var s = start;
+            start = end;
+            end = s;
+          }
+          if (st._startClamp && start < 0) {
+            end = st.ratio < 0 ? _maxScroll3() : st.end / st.ratio;
+            offset = end - st.end;
+            start = 0;
+          } else if (st.ratio < 0 || st._endClamp && end >= _maxScroll3()) {
+            end = _maxScroll3();
+            start = st.ratio < 0 ? 0 : st.ratio > 1 ? 0 : end - (end - st.start) / st.ratio;
+            offset = (end - start) * st.ratio - (st.end - st.start);
+          }
+          st.offset = offset || 1e-4;
+          st.pins.length = st.pins.offset = 0;
+          st.setPositions(start, end, true);
+        });
+        adjustParallaxPosition(ScrollTrigger3.sort());
+      }
+      tracker.reset();
+    }, addOnRefresh = function addOnRefresh2() {
+      return ScrollTrigger3.addEventListener("refresh", onRefresh);
+    }, restoreEffects = function restoreEffects2() {
+      return effects && effects.forEach(function(st) {
+        return st.vars.onRefresh(st);
+      });
+    }, revertEffects = function revertEffects2() {
+      effects && effects.forEach(function(st) {
+        return st.vars.onRefreshInit(st);
+      });
+      return restoreEffects;
+    }, effectValueGetter = function effectValueGetter2(name, value, index, el) {
+      return function() {
+        var v = typeof value === "function" ? value(index, el) : value;
+        v || v === 0 || (v = el.getAttribute("data-" + effectsPrefix + name) || (name === "speed" ? 1 : 0));
+        el.setAttribute("data-" + effectsPrefix + name, v);
+        var clamp = (v + "").substr(0, 6) === "clamp(";
+        return {
+          clamp,
+          value: clamp ? v.substr(6, v.length - 7) : v
+        };
+      };
+    }, createEffect = function createEffect2(el, speed2, lag, index, effectsPadding) {
+      effectsPadding = (typeof effectsPadding === "function" ? effectsPadding(index, el) : effectsPadding) || 0;
+      var getSpeed = effectValueGetter("speed", speed2, index, el), getLag = effectValueGetter("lag", lag, index, el), startY = gsap9.getProperty(el, "y"), cache = el._gsap, ratio, st, autoSpeed, scrub, progressOffset, yOffset, pins = [], initDynamicValues = function initDynamicValues2() {
+        speed2 = getSpeed();
+        lag = parseFloat(getLag().value);
+        ratio = parseFloat(speed2.value) || 1;
+        autoSpeed = speed2.value === "auto";
+        progressOffset = autoSpeed || st && st._startClamp && st.start <= 0 || pins.offset ? 0 : st && st._endClamp && st.end === _maxScroll3() ? 1 : 0.5;
+        scrub && scrub.kill();
+        scrub = lag && gsap9.to(el, {
+          ease: _expo,
+          overwrite: false,
+          y: "+=0",
+          duration: lag
+        });
+        if (st) {
+          st.ratio = ratio;
+          st.autoSpeed = autoSpeed;
+        }
+      }, revert = function revert2() {
+        cache.y = startY + "px";
+        cache.renderTransform(1);
+        initDynamicValues();
+      }, markers = [], change = 0, updateChange = function updateChange2(self3) {
+        if (autoSpeed) {
+          revert();
+          var auto = _autoDistance(el, _clamp3(0, 1, -self3.start / (self3.end - self3.start)));
+          change = auto.change;
+          yOffset = auto.offset;
+        } else {
+          yOffset = pins.offset || 0;
+          change = (self3.end - self3.start - yOffset) * (1 - ratio);
+        }
+        pins.forEach(function(p) {
+          return change -= p.distance * (1 - ratio);
+        });
+        self3.offset = change || 1e-3;
+        self3.vars.onUpdate(self3);
+        scrub && scrub.progress(1);
+      };
+      initDynamicValues();
+      if (ratio !== 1 || autoSpeed || scrub) {
+        st = ScrollTrigger3.create({
+          trigger: autoSpeed ? el.parentNode : el,
+          start: function start() {
+            return speed2.clamp ? "clamp(top bottom+=" + effectsPadding + ")" : "top bottom+=" + effectsPadding;
+          },
+          end: function end() {
+            return speed2.value < 0 ? "max" : speed2.clamp ? "clamp(bottom top-=" + effectsPadding + ")" : "bottom top-=" + effectsPadding;
+          },
+          scroller: wrapper,
+          scrub: true,
+          refreshPriority: -999,
+          // must update AFTER any other ScrollTrigger pins
+          onRefreshInit: revert,
+          onRefresh: updateChange,
+          onKill: function onKill(self3) {
+            var i2 = effects.indexOf(self3);
+            i2 >= 0 && effects.splice(i2, 1);
+            revert();
+          },
+          onUpdate: function onUpdate(self3) {
+            var y = startY + change * (self3.progress - progressOffset), i2 = pins.length, extraY = 0, pin, scrollY, end;
+            if (self3.offset) {
+              if (i2) {
+                scrollY = -currentY;
+                end = self3.end;
+                while (i2--) {
+                  pin = pins[i2];
+                  if (pin.trig.isActive || scrollY >= pin.start && scrollY <= pin.end) {
+                    if (scrub) {
+                      pin.trig.progress += pin.trig.direction < 0 ? 1e-3 : -1e-3;
+                      pin.trig.update(0, 0, 1);
+                      scrub.resetTo("y", parseFloat(cache.y), -delta, true);
+                      startupPhase && scrub.progress(1);
+                    }
+                    return;
+                  }
+                  scrollY > pin.end && (extraY += pin.distance);
+                  end -= pin.distance;
+                }
+                y = startY + extraY + change * ((gsap9.utils.clamp(self3.start, self3.end, scrollY) - self3.start - extraY) / (end - self3.start) - progressOffset);
+              }
+              markers.length && !autoSpeed && markers.forEach(function(setter) {
+                return setter(y - extraY);
+              });
+              y = _round3(y + yOffset);
+              if (scrub) {
+                scrub.resetTo("y", y, -delta, true);
+                startupPhase && scrub.progress(1);
+              } else {
+                cache.y = y + "px";
+                cache.renderTransform(1);
+              }
+            }
+          }
+        });
+        updateChange(st);
+        gsap9.core.getCache(st.trigger).stRevert = revertEffects;
+        st.startY = startY;
+        st.pins = pins;
+        st.markers = markers;
+        st.ratio = ratio;
+        st.autoSpeed = autoSpeed;
+        el.style.willChange = "transform";
+      }
+      return st;
+    };
+    addOnRefresh();
+    ScrollTrigger3.addEventListener("killAll", addOnRefresh);
+    gsap9.delayedCall(0.5, function() {
+      return startupPhase = 0;
+    });
+    this.scrollTop = scrollTop;
+    this.scrollTo = function(target, smooth2, position) {
+      var p = gsap9.utils.clamp(0, _maxScroll3(), isNaN(target) ? _this.offset(target, position, !!smooth2 && !paused) : +target);
+      !smooth2 ? scrollTop(p) : paused ? gsap9.to(_this, {
+        duration: smoothDuration,
+        scrollTop: p,
+        overwrite: "auto",
+        ease: _expo
+      }) : scrollFunc(p);
+    };
+    this.offset = function(target, position, ignoreSpeed) {
+      target = _toArray3(target)[0];
+      var cssText = target.style.cssText, st = ScrollTrigger3.create({
+        trigger: target,
+        start: position || "top top"
+      }), y;
+      if (effects) {
+        startupPhase ? ScrollTrigger3.refresh() : adjustParallaxPosition([st], true);
+      }
+      y = st.start / (ignoreSpeed ? speed : 1);
+      st.kill(false);
+      target.style.cssText = cssText;
+      gsap9.core.getCache(target).uncache = 1;
+      return y;
+    };
+    function refreshHeight() {
+      height2 = content.clientHeight;
+      content.style.overflow = "visible";
+      _body3.style.height = _win4.innerHeight + (height2 - _win4.innerHeight) / speed + "px";
+      return height2 - _win4.innerHeight;
+    }
+    this.content = function(element) {
+      if (arguments.length) {
+        var newContent = _toArray3(element || "#smooth-content")[0] || console.warn("ScrollSmoother needs a valid content element.") || _body3.children[0];
+        if (newContent !== content) {
+          content = newContent;
+          contentCSS = content.getAttribute("style") || "";
+          resizeObserver && resizeObserver.observe(content);
+          gsap9.set(content, {
+            overflow: "visible",
+            width: "100%",
+            boxSizing: "border-box",
+            y: "+=0"
+          });
+          smoothDuration || gsap9.set(content, {
+            clearProps: "transform"
+          });
+        }
+        return this;
+      }
+      return content;
+    };
+    this.wrapper = function(element) {
+      if (arguments.length) {
+        wrapper = _toArray3(element || "#smooth-wrapper")[0] || _wrap(content);
+        wrapperCSS = wrapper.getAttribute("style") || "";
+        refreshHeight();
+        gsap9.set(wrapper, smoothDuration ? {
+          overflow: "hidden",
+          position: "fixed",
+          height: "100%",
+          width: "100%",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0
+        } : {
+          overflow: "visible",
+          position: "relative",
+          width: "100%",
+          height: "auto",
+          top: "auto",
+          bottom: "auto",
+          left: "auto",
+          right: "auto"
+        });
+        return this;
+      }
+      return wrapper;
+    };
+    this.effects = function(targets, config2) {
+      var _effects;
+      effects || (effects = []);
+      if (!targets) {
+        return effects.slice(0);
+      }
+      targets = _toArray3(targets);
+      targets.forEach(function(target) {
+        var i3 = effects.length;
+        while (i3--) {
+          effects[i3].trigger === target && effects[i3].kill();
+        }
+      });
+      config2 = config2 || {};
+      var _config = config2, speed2 = _config.speed, lag = _config.lag, effectsPadding = _config.effectsPadding, effectsToAdd = [], i2, st;
+      for (i2 = 0; i2 < targets.length; i2++) {
+        st = createEffect(targets[i2], speed2, lag, i2, effectsPadding);
+        st && effectsToAdd.push(st);
+      }
+      (_effects = effects).push.apply(_effects, effectsToAdd);
+      config2.refresh !== false && ScrollTrigger3.refresh();
+      return effectsToAdd;
+    };
+    this.sections = function(targets, config2) {
+      var _sections;
+      sections2 || (sections2 = []);
+      if (!targets) {
+        return sections2.slice(0);
+      }
+      var newSections = _toArray3(targets).map(function(el) {
+        return ScrollTrigger3.create({
+          trigger: el,
+          start: "top 120%",
+          end: "bottom -20%",
+          onToggle: function onToggle(self3) {
+            el.style.opacity = self3.isActive ? "1" : "0";
+            el.style.pointerEvents = self3.isActive ? "all" : "none";
+          }
+        });
+      });
+      config2 && config2.add ? (_sections = sections2).push.apply(_sections, newSections) : sections2 = newSections.slice(0);
+      return newSections;
+    };
+    this.content(vars.content);
+    this.wrapper(vars.wrapper);
+    this.render = function(y) {
+      return render(y || y === 0 ? y : currentY);
+    };
+    this.getVelocity = function() {
+      return tracker.getVelocity(-currentY);
+    };
+    ScrollTrigger3.scrollerProxy(wrapper, {
+      scrollTop,
+      scrollHeight: function scrollHeight() {
+        return refreshHeight() && _body3.scrollHeight;
+      },
+      fixedMarkers: vars.fixedMarkers !== false && !!smoothDuration,
+      content,
+      getBoundingClientRect: function getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: _win4.innerWidth,
+          height: _win4.innerHeight
+        };
+      }
+    });
+    ScrollTrigger3.defaults({
+      scroller: wrapper
+    });
+    var existingScrollTriggers = ScrollTrigger3.getAll().filter(function(st) {
+      return st.scroller === _win4 || st.scroller === wrapper;
+    });
+    existingScrollTriggers.forEach(function(st) {
+      return st.revert(true, true);
+    });
+    mainST = ScrollTrigger3.create({
+      animation: gsap9.fromTo(scroll, {
+        y: function y() {
+          allowUpdates = 0;
+          return 0;
+        }
+      }, {
+        y: function y() {
+          allowUpdates = 1;
+          return -refreshHeight();
+        },
+        immediateRender: false,
+        ease: "none",
+        data: "ScrollSmoother",
+        duration: 100,
+        // for added precision
+        onUpdate: function onUpdate() {
+          if (allowUpdates) {
+            var force = isProxyScrolling;
+            if (force) {
+              killScrub(mainST);
+              scroll.y = currentY;
+            }
+            render(scroll.y, force);
+            updateVelocity();
+            _onUpdate && !paused && _onUpdate(self2);
+          }
+        }
+      }),
+      onRefreshInit: function onRefreshInit(self3) {
+        if (ScrollSmoother2.isRefreshing) {
+          return;
+        }
+        ScrollSmoother2.isRefreshing = true;
+        if (effects) {
+          var _pins = ScrollTrigger3.getAll().filter(function(st) {
+            return !!st.pin;
+          });
+          effects.forEach(function(st) {
+            if (!st.vars.pinnedContainer) {
+              _pins.forEach(function(pinST) {
+                if (pinST.pin.contains(st.trigger)) {
+                  var v = st.vars;
+                  v.pinnedContainer = pinST.pin;
+                  st.vars = null;
+                  st.init(v, st.animation);
+                }
+              });
+            }
+          });
+        }
+        var scrub = self3.getTween();
+        recordedRefreshScrub = scrub && scrub._end > scrub._dp._time;
+        recordedRefreshScroll = currentY;
+        scroll.y = 0;
+        if (smoothDuration) {
+          ScrollTrigger3.isTouch === 1 && (wrapper.style.position = "absolute");
+          wrapper.scrollTop = 0;
+          ScrollTrigger3.isTouch === 1 && (wrapper.style.position = "fixed");
+        }
+      },
+      onRefresh: function onRefresh2(self3) {
+        self3.animation.invalidate();
+        self3.setPositions(self3.start, refreshHeight() / speed);
+        recordedRefreshScrub || killScrub(self3);
+        scroll.y = -scrollFunc() * speed;
+        render(scroll.y);
+        if (!startupPhase) {
+          recordedRefreshScrub && (isProxyScrolling = false);
+          self3.animation.progress(gsap9.utils.clamp(0, 1, recordedRefreshScroll / speed / -self3.end));
+        }
+        if (recordedRefreshScrub) {
+          self3.progress -= 1e-3;
+          self3.update();
+        }
+        ScrollSmoother2.isRefreshing = false;
+      },
+      id: "ScrollSmoother",
+      scroller: _win4,
+      invalidateOnRefresh: true,
+      start: 0,
+      refreshPriority: -9999,
+      // because all other pins, etc. should be calculated first before this figures out the height of the body. BUT this should also update FIRST so that the scroll position on the proxy is up-to-date when all the ScrollTriggers calculate their progress! -9999 is a special number that ScrollTrigger looks for to handle in this way.
+      end: function end() {
+        return refreshHeight() / speed;
+      },
+      onScrubComplete: function onScrubComplete() {
+        tracker.reset();
+        onStop && onStop(_this);
+      },
+      scrub: smoothDuration || true
+    });
+    this.smooth = function(value) {
+      if (arguments.length) {
+        smoothDuration = value || 0;
+        speed = smoothDuration && +vars.speed || 1;
+        mainST.scrubDuration(value);
+      }
+      return mainST.getTween() ? mainST.getTween().duration() : 0;
+    };
+    mainST.getTween() && (mainST.getTween().vars.ease = vars.ease || _expo);
+    this.scrollTrigger = mainST;
+    vars.effects && this.effects(vars.effects === true ? "[data-" + effectsPrefix + "speed], [data-" + effectsPrefix + "lag]" : vars.effects, {
+      effectsPadding: vars.effectsPadding,
+      refresh: false
+    });
+    vars.sections && this.sections(vars.sections === true ? "[data-section]" : vars.sections);
+    existingScrollTriggers.forEach(function(st) {
+      st.vars.scroller = wrapper;
+      st.revert(false, true);
+      st.init(st.vars, st.animation);
+    });
+    this.paused = function(value, allowNestedScroll) {
+      if (arguments.length) {
+        if (!!paused !== value) {
+          if (value) {
+            mainST.getTween() && mainST.getTween().pause();
+            scrollFunc(-currentY / speed);
+            tracker.reset();
+            pausedNormalizer = ScrollTrigger3.normalizeScroll();
+            pausedNormalizer && pausedNormalizer.disable();
+            paused = ScrollTrigger3.observe({
+              preventDefault: true,
+              type: "wheel,touch,scroll",
+              debounce: false,
+              allowClicks: true,
+              onChangeY: function onChangeY() {
+                return scrollTop(-currentY);
+              }
+              // refuse to scroll
+            });
+            paused.nested = _inputObserver3(_docEl3, "wheel,touch,scroll", true, allowNestedScroll !== false);
+          } else {
+            paused.nested.kill();
+            paused.kill();
+            paused = 0;
+            pausedNormalizer && pausedNormalizer.enable();
+            mainST.progress = (-currentY / speed - mainST.start) / (mainST.end - mainST.start);
+            killScrub(mainST);
+          }
+        }
+        return this;
+      }
+      return !!paused;
+    };
+    this.kill = this.revert = function() {
+      _this.paused(false);
+      killScrub(mainST);
+      mainST.kill();
+      var triggers = (effects || []).concat(sections2 || []), i2 = triggers.length;
+      while (i2--) {
+        triggers[i2].kill();
+      }
+      ScrollTrigger3.scrollerProxy(wrapper);
+      ScrollTrigger3.removeEventListener("killAll", addOnRefresh);
+      ScrollTrigger3.removeEventListener("refresh", onRefresh);
+      wrapper.style.cssText = wrapperCSS;
+      content.style.cssText = contentCSS;
+      var defaults = ScrollTrigger3.defaults({});
+      defaults && defaults.scroller === wrapper && ScrollTrigger3.defaults({
+        scroller: _win4
+      });
+      _this.normalizer && ScrollTrigger3.normalizeScroll(false);
+      clearInterval(intervalID);
+      _mainInstance = null;
+      resizeObserver && resizeObserver.disconnect();
+      _body3.style.removeProperty("height");
+      _win4.removeEventListener("focusin", _onFocusIn);
+    };
+    this.refresh = function(soft, force) {
+      return mainST.refresh(soft, force);
+    };
+    if (normalizeScroll) {
+      this.normalizer = ScrollTrigger3.normalizeScroll(normalizeScroll === true ? {
+        debounce: true,
+        content: !smoothDuration && content
+      } : normalizeScroll);
+    }
+    ScrollTrigger3.config(vars);
+    "overscrollBehavior" in _win4.getComputedStyle(_body3) && gsap9.set([_body3, _docEl3], {
+      overscrollBehavior: "none"
+    });
+    "scrollBehavior" in _win4.getComputedStyle(_body3) && gsap9.set([_body3, _docEl3], {
+      scrollBehavior: "auto"
+    });
+    _win4.addEventListener("focusin", _onFocusIn);
+    intervalID = setInterval(updateVelocity, 250);
+    _doc4.readyState === "loading" || requestAnimationFrame(function() {
+      return ScrollTrigger3.refresh();
+    });
+  }
+  ScrollSmoother2.register = function register(core) {
+    if (!_coreInitted4) {
+      gsap9 = core || _getGSAP5();
+      if (_windowExists3() && window.document) {
+        _win4 = window;
+        _doc4 = document;
+        _docEl3 = _doc4.documentElement;
+        _body3 = _doc4.body;
+      }
+      if (gsap9) {
+        _toArray3 = gsap9.utils.toArray;
+        _clamp3 = gsap9.utils.clamp;
+        _expo = gsap9.parseEase("expo");
+        _context4 = gsap9.core.context || function() {
+        };
+        ScrollTrigger3 = gsap9.core.globals().ScrollTrigger;
+        gsap9.core.globals("ScrollSmoother", ScrollSmoother2);
+        if (_body3 && ScrollTrigger3) {
+          _onResizeDelayedCall = gsap9.delayedCall(0.2, function() {
+            return ScrollTrigger3.isRefreshing || _mainInstance && _mainInstance.refresh();
+          }).pause();
+          _root3 = [_win4, _doc4, _docEl3, _body3];
+          _getVelocityProp3 = ScrollTrigger3.core._getVelocityProp;
+          _inputObserver3 = ScrollTrigger3.core._inputObserver;
+          ScrollSmoother2.refresh = ScrollTrigger3.refresh;
+          _coreInitted4 = 1;
+        }
+      }
+    }
+    return _coreInitted4;
+  };
+  _createClass2(ScrollSmoother2, [{
+    key: "progress",
+    get: function get() {
+      return this.scrollTrigger ? this.scrollTrigger.animation._time / 100 : 0;
+    }
+  }]);
+  return ScrollSmoother2;
+}();
+ScrollSmoother.version = "3.12.5";
+ScrollSmoother.create = function(vars) {
+  return _mainInstance && vars && _mainInstance.content() === _toArray3(vars.content)[0] ? _mainInstance : new ScrollSmoother(vars);
+};
+ScrollSmoother.get = function() {
+  return _mainInstance;
+};
+_getGSAP5() && gsap9.registerPlugin(ScrollSmoother);
+
+// smoother.js
+import_gsap6.gsap.registerPlugin(ScrollTrigger2, ScrollSmoother);
+ScrollSmoother.create({
+  smooth: 1,
+  effects: true
 });
 /*! Bundled license information:
 
 gsap/dist/gsap.js:
   (*!
    * GSAP 3.12.5
+   * https://gsap.com
+   *
+   * @license Copyright 2008-2024, GreenSock. All rights reserved.
+   * Subject to the terms at https://gsap.com/standard-license or for
+   * Club GSAP members, the agreement issued with that membership.
+   * @author: Jack Doyle, jack@greensock.com
+  *)
+
+gsap/Observer.js:
+  (*!
+   * Observer 3.12.5
+   * https://gsap.com
+   *
+   * @license Copyright 2008-2024, GreenSock. All rights reserved.
+   * Subject to the terms at https://gsap.com/standard-license or for
+   * Club GSAP members, the agreement issued with that membership.
+   * @author: Jack Doyle, jack@greensock.com
+  *)
+
+gsap/ScrollTrigger.js:
+  (*!
+   * ScrollTrigger 3.12.5
    * https://gsap.com
    *
    * @license Copyright 2008-2024, GreenSock. All rights reserved.
@@ -9656,20 +10452,9 @@ gsap/SplitText.js:
    * @author: Jack Doyle, jack@greensock.com
   *)
 
-gsap/Observer.js:
+gsap/ScrollSmoother.js:
   (*!
-   * Observer 3.12.5
-   * https://gsap.com
-   *
-   * @license Copyright 2008-2024, GreenSock. All rights reserved.
-   * Subject to the terms at https://gsap.com/standard-license or for
-   * Club GSAP members, the agreement issued with that membership.
-   * @author: Jack Doyle, jack@greensock.com
-  *)
-
-gsap/ScrollTrigger.js:
-  (*!
-   * ScrollTrigger 3.12.5
+   * ScrollSmoother 3.12.5
    * https://gsap.com
    *
    * @license Copyright 2008-2024, GreenSock. All rights reserved.
