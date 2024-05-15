@@ -6315,15 +6315,18 @@ var init_our_process = __esm({
         }
       });
     });
-    if (section) {
-      ScrollTrigger2.create({
-        trigger: "#process-section",
-        pin: "#process-heading",
-        pinSpacing: false,
-        start: "top top",
-        end: (self2) => "+=" + self2.trigger.offsetHeight
-      });
-    }
+    mm = import_gsap3.gsap.matchMedia();
+    mm.add("(min-width:992px)", () => {
+      if (section) {
+        ScrollTrigger2.create({
+          trigger: "#process-section",
+          pin: "#process-heading",
+          pinSpacing: false,
+          start: "top top",
+          end: (self2) => "+=" + self2.trigger.offsetHeight
+        });
+      }
+    });
   }
 });
 
