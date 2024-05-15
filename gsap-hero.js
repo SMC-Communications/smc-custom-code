@@ -37,15 +37,14 @@ window.addEventListener('load', ()=>{
 
     //Type Headeing
     tl.to(typed, {duration:0, color:"var(--light-teal)"},"-=0.5")
-    tl.from(typed, {duration:0.5, stagger:0.03, rotateZ:"1deg", translateY:"0.1em", ease:"power1.out", onComplete: preloadVideo},"<")
+    tl.from(typed, {duration:0.5, stagger:0.03, rotateZ:"1deg", translateY:"0.1em", ease:"power1.out"},"<")
     tl.to(typed, {duration:0.5, stagger:0.03, opacity: 1, ease:"power1.out", onComplete: preloadVideo},"<")
 
     //Reveal Header
     tl.to(header, {duration:0.5, opacity:1, ease:"power1.out"})
 })
 
-function preloadVideo(){
-    console.log("Loading Videos..")
+export function preloadVideo(){
     videos = [...document.querySelectorAll(".slider-video")]
     videos.forEach(el => {
         el.setAttribute("preload", "auto")
