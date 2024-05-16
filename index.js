@@ -47,7 +47,7 @@ try {
     console.error(error)
 } finally {
     if (section){
-        console.debug("loading our-process.js...")
+        console.log("loading our-process.js...")
         import ('./our-process.js')
         .then(()=>{
             console.debug("our-process.js loaded")

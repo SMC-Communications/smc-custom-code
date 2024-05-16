@@ -6316,13 +6316,14 @@ var init_our_process = __esm({
       });
     });
     mm = import_gsap3.gsap.matchMedia();
-    mm.add("(min-width:992px)", () => {
+    mm.add("(min-width:0px)", () => {
       ScrollTrigger2.create({
         trigger: "#process-section",
         pin: "#process-heading",
+        pinType: "fixed",
         pinSpacing: false,
         start: "top top",
-        end: () => "+=" + (items[0].offsetHeight + items[1].offsetHeight + items[2].offsetHeight)
+        end: (self2) => "+=" + (items[0].offsetHeight + items[1].offsetHeight + items[2].offsetHeight)
       });
     });
   }
@@ -10730,7 +10731,7 @@ try {
   console.error(error);
 } finally {
   if (section2) {
-    console.debug("loading our-process.js...");
+    console.log("loading our-process.js...");
     Promise.resolve().then(() => (init_our_process(), our_process_exports)).then(() => {
       console.debug("our-process.js loaded");
     });
