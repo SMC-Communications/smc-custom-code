@@ -6290,45 +6290,6 @@ var init_ScrollTrigger = __esm({
     _getGSAP3() && gsap2.registerPlugin(ScrollTrigger2);
   }
 });
-
-// our-process.js
-var our_process_exports = {};
-var import_gsap3, section, items, i;
-var init_our_process = __esm({
-  "our-process.js"() {
-    import_gsap3 = __toESM(require_gsap());
-    init_ScrollTrigger();
-    import_gsap3.gsap.registerPlugin(ScrollTrigger2);
-    section = document.querySelector(".our-process-section");
-    items = import_gsap3.gsap.utils.toArray(".our-process-process-item");
-    i = 1;
-    items.forEach((item) => {
-      item.dataset.index = i++;
-      ScrollTrigger2.create({
-        trigger: item,
-        start: "top bottom",
-        onEnter: () => {
-          section.style.cursor = "var(--process-cursor-" + item.dataset.index + "), auto";
-        },
-        onEnterBack: () => {
-          section.style.cursor = "var(--process-cursor-" + item.dataset.index + "), auto";
-        }
-      });
-    });
-    mm = import_gsap3.gsap.matchMedia();
-    mm.add("(min-width:0px)", () => {
-      ScrollTrigger2.create({
-        trigger: "#process-section",
-        pin: "#process-heading",
-        pinType: "fixed",
-        pinSpacing: false,
-        start: "top top",
-        end: (self2) => "+=" + (items[0].offsetHeight + items[1].offsetHeight + items[2].offsetHeight)
-      });
-    });
-  }
-});
-
 // node_modules/gsap/ScrollSmoother.js
 function _defineProperties2(target, props) {
   for (var i2 = 0; i2 < props.length; i2++) {
@@ -6347,14 +6308,14 @@ function _createClass2(Constructor, protoProps, staticProps) {
     _defineProperties2(Constructor, staticProps);
   return Constructor;
 }
-var gsap6, _coreInitted3, _win3, _doc3, _docEl3, _body3, _root3, _toArray2, _clamp3, ScrollTrigger3, _mainInstance, _expo, _getVelocityProp3, _inputObserver3, _context3, _onResizeDelayedCall, _windowExists3, _getGSAP5, _round3, _maxScroll3, _autoDistance, _wrap, ScrollSmoother;
+var gsap5, _coreInitted3, _win3, _doc3, _docEl3, _body3, _root3, _toArray2, _clamp3, ScrollTrigger3, _mainInstance, _expo, _getVelocityProp3, _inputObserver3, _context3, _onResizeDelayedCall, _windowExists3, _getGSAP5, _round3, _maxScroll3, _autoDistance, _wrap, ScrollSmoother;
 var init_ScrollSmoother = __esm({
   "node_modules/gsap/ScrollSmoother.js"() {
     _windowExists3 = function _windowExists4() {
       return typeof window !== "undefined";
     };
     _getGSAP5 = function _getGSAP6() {
-      return gsap6 || _windowExists3() && (gsap6 = window.gsap) && gsap6.registerPlugin && gsap6;
+      return gsap5 || _windowExists3() && (gsap5 = window.gsap) && gsap5.registerPlugin && gsap5;
     };
     _round3 = function _round4(value) {
       return Math.round(value * 1e5) / 1e5 || 0;
@@ -6388,7 +6349,7 @@ var init_ScrollSmoother = __esm({
     ScrollSmoother = /* @__PURE__ */ function() {
       function ScrollSmoother2(vars) {
         var _this = this;
-        _coreInitted3 || ScrollSmoother2.register(gsap6) || console.warn("Please gsap.registerPlugin(ScrollSmoother)");
+        _coreInitted3 || ScrollSmoother2.register(gsap5) || console.warn("Please gsap.registerPlugin(ScrollSmoother)");
         vars = this.vars = vars || {};
         _mainInstance && _mainInstance.kill();
         _mainInstance = this;
@@ -6469,7 +6430,7 @@ var init_ScrollSmoother = __esm({
               start = _transformPosition(nativeStart, st);
               end = trig.pin && nativeEnd > 0 ? start + (nativeEnd - nativeStart) : _transformPosition(nativeEnd, st);
               trig.setPositions(start, end, true, (trig._startClamp ? Math.max(0, start) : start) - nativeStart);
-              trig.markerStart && markers.push(gsap6.quickSetter([trig.markerStart, trig.markerEnd], "y", "px"));
+              trig.markerStart && markers.push(gsap5.quickSetter([trig.markerStart, trig.markerEnd], "y", "px"));
               if (trig.pin && trig.end > 0 && !partial) {
                 dif = trig.end - trig.start;
                 isClamped = st._startClamp && trig.start < 0;
@@ -6554,14 +6515,14 @@ var init_ScrollSmoother = __esm({
           };
         }, createEffect = function createEffect2(el, speed2, lag, index, effectsPadding) {
           effectsPadding = (typeof effectsPadding === "function" ? effectsPadding(index, el) : effectsPadding) || 0;
-          var getSpeed = effectValueGetter("speed", speed2, index, el), getLag = effectValueGetter("lag", lag, index, el), startY = gsap6.getProperty(el, "y"), cache = el._gsap, ratio, st, autoSpeed, scrub, progressOffset, yOffset, pins = [], initDynamicValues = function initDynamicValues2() {
+          var getSpeed = effectValueGetter("speed", speed2, index, el), getLag = effectValueGetter("lag", lag, index, el), startY = gsap5.getProperty(el, "y"), cache = el._gsap, ratio, st, autoSpeed, scrub, progressOffset, yOffset, pins = [], initDynamicValues = function initDynamicValues2() {
             speed2 = getSpeed();
             lag = parseFloat(getLag().value);
             ratio = parseFloat(speed2.value) || 1;
             autoSpeed = speed2.value === "auto";
             progressOffset = autoSpeed || st && st._startClamp && st.start <= 0 || pins.offset ? 0 : st && st._endClamp && st.end === _maxScroll3() ? 1 : 0.5;
             scrub && scrub.kill();
-            scrub = lag && gsap6.to(el, {
+            scrub = lag && gsap5.to(el, {
               ease: _expo,
               overwrite: false,
               y: "+=0",
@@ -6633,7 +6594,7 @@ var init_ScrollSmoother = __esm({
                       scrollY > pin.end && (extraY += pin.distance);
                       end -= pin.distance;
                     }
-                    y = startY + extraY + change * ((gsap6.utils.clamp(self3.start, self3.end, scrollY) - self3.start - extraY) / (end - self3.start) - progressOffset);
+                    y = startY + extraY + change * ((gsap5.utils.clamp(self3.start, self3.end, scrollY) - self3.start - extraY) / (end - self3.start) - progressOffset);
                   }
                   markers.length && !autoSpeed && markers.forEach(function(setter) {
                     return setter(y - extraY);
@@ -6650,7 +6611,7 @@ var init_ScrollSmoother = __esm({
               }
             });
             updateChange(st);
-            gsap6.core.getCache(st.trigger).stRevert = revertEffects;
+            gsap5.core.getCache(st.trigger).stRevert = revertEffects;
             st.startY = startY;
             st.pins = pins;
             st.markers = markers;
@@ -6662,13 +6623,13 @@ var init_ScrollSmoother = __esm({
         };
         addOnRefresh();
         ScrollTrigger3.addEventListener("killAll", addOnRefresh);
-        gsap6.delayedCall(0.5, function() {
+        gsap5.delayedCall(0.5, function() {
           return startupPhase = 0;
         });
         this.scrollTop = scrollTop;
         this.scrollTo = function(target, smooth2, position) {
-          var p = gsap6.utils.clamp(0, _maxScroll3(), isNaN(target) ? _this.offset(target, position, !!smooth2 && !paused) : +target);
-          !smooth2 ? scrollTop(p) : paused ? gsap6.to(_this, {
+          var p = gsap5.utils.clamp(0, _maxScroll3(), isNaN(target) ? _this.offset(target, position, !!smooth2 && !paused) : +target);
+          !smooth2 ? scrollTop(p) : paused ? gsap5.to(_this, {
             duration: smoothDuration,
             scrollTop: p,
             overwrite: "auto",
@@ -6687,7 +6648,7 @@ var init_ScrollSmoother = __esm({
           y = st.start / (ignoreSpeed ? speed : 1);
           st.kill(false);
           target.style.cssText = cssText;
-          gsap6.core.getCache(target).uncache = 1;
+          gsap5.core.getCache(target).uncache = 1;
           return y;
         };
         function refreshHeight() {
@@ -6703,13 +6664,13 @@ var init_ScrollSmoother = __esm({
               content = newContent;
               contentCSS = content.getAttribute("style") || "";
               resizeObserver && resizeObserver.observe(content);
-              gsap6.set(content, {
+              gsap5.set(content, {
                 overflow: "visible",
                 width: "100%",
                 boxSizing: "border-box",
                 y: "+=0"
               });
-              smoothDuration || gsap6.set(content, {
+              smoothDuration || gsap5.set(content, {
                 clearProps: "transform"
               });
             }
@@ -6722,7 +6683,7 @@ var init_ScrollSmoother = __esm({
             wrapper = _toArray2(element || "#smooth-wrapper")[0] || _wrap(content);
             wrapperCSS = wrapper.getAttribute("style") || "";
             refreshHeight();
-            gsap6.set(wrapper, smoothDuration ? {
+            gsap5.set(wrapper, smoothDuration ? {
               overflow: "hidden",
               position: "fixed",
               height: "100%",
@@ -6822,7 +6783,7 @@ var init_ScrollSmoother = __esm({
           return st.revert(true, true);
         });
         mainST = ScrollTrigger3.create({
-          animation: gsap6.fromTo(scroll, {
+          animation: gsap5.fromTo(scroll, {
             y: function y() {
               allowUpdates = 0;
               return 0;
@@ -6890,7 +6851,7 @@ var init_ScrollSmoother = __esm({
             render(scroll.y);
             if (!startupPhase) {
               recordedRefreshScrub && (isProxyScrolling = false);
-              self3.animation.progress(gsap6.utils.clamp(0, 1, recordedRefreshScroll / speed / -self3.end));
+              self3.animation.progress(gsap5.utils.clamp(0, 1, recordedRefreshScroll / speed / -self3.end));
             }
             if (recordedRefreshScrub) {
               self3.progress -= 1e-3;
@@ -7000,10 +6961,10 @@ var init_ScrollSmoother = __esm({
           } : normalizeScroll);
         }
         ScrollTrigger3.config(vars);
-        "overscrollBehavior" in _win3.getComputedStyle(_body3) && gsap6.set([_body3, _docEl3], {
+        "overscrollBehavior" in _win3.getComputedStyle(_body3) && gsap5.set([_body3, _docEl3], {
           overscrollBehavior: "none"
         });
-        "scrollBehavior" in _win3.getComputedStyle(_body3) && gsap6.set([_body3, _docEl3], {
+        "scrollBehavior" in _win3.getComputedStyle(_body3) && gsap5.set([_body3, _docEl3], {
           scrollBehavior: "auto"
         });
         _win3.addEventListener("focusin", _onFocusIn);
@@ -7014,23 +6975,23 @@ var init_ScrollSmoother = __esm({
       }
       ScrollSmoother2.register = function register(core) {
         if (!_coreInitted3) {
-          gsap6 = core || _getGSAP5();
+          gsap5 = core || _getGSAP5();
           if (_windowExists3() && window.document) {
             _win3 = window;
             _doc3 = document;
             _docEl3 = _doc3.documentElement;
             _body3 = _doc3.body;
           }
-          if (gsap6) {
-            _toArray2 = gsap6.utils.toArray;
-            _clamp3 = gsap6.utils.clamp;
-            _expo = gsap6.parseEase("expo");
-            _context3 = gsap6.core.context || function() {
+          if (gsap5) {
+            _toArray2 = gsap5.utils.toArray;
+            _clamp3 = gsap5.utils.clamp;
+            _expo = gsap5.parseEase("expo");
+            _context3 = gsap5.core.context || function() {
             };
-            ScrollTrigger3 = gsap6.core.globals().ScrollTrigger;
-            gsap6.core.globals("ScrollSmoother", ScrollSmoother2);
+            ScrollTrigger3 = gsap5.core.globals().ScrollTrigger;
+            gsap5.core.globals("ScrollSmoother", ScrollSmoother2);
             if (_body3 && ScrollTrigger3) {
-              _onResizeDelayedCall = gsap6.delayedCall(0.2, function() {
+              _onResizeDelayedCall = gsap5.delayedCall(0.2, function() {
                 return ScrollTrigger3.isRefreshing || _mainInstance && _mainInstance.refresh();
               }).pause();
               _root3 = [_win3, _doc3, _docEl3, _body3];
@@ -7058,7 +7019,7 @@ var init_ScrollSmoother = __esm({
     ScrollSmoother.get = function() {
       return _mainInstance;
     };
-    _getGSAP5() && gsap6.registerPlugin(ScrollSmoother);
+    _getGSAP5() && gsap5.registerPlugin(ScrollSmoother);
   }
 });
 
@@ -7071,13 +7032,13 @@ function startSmoother() {
     content: ".page-wrapper"
   });
 }
-var import_gsap4, smoother;
+var import_gsap3, smoother;
 var init_smoother = __esm({
   "smoother.js"() {
-    import_gsap4 = __toESM(require_gsap());
+    import_gsap3 = __toESM(require_gsap());
     init_ScrollTrigger();
     init_ScrollSmoother();
-    import_gsap4.gsap.registerPlugin(ScrollTrigger2, ScrollSmoother);
+    import_gsap3.gsap.registerPlugin(ScrollTrigger2, ScrollSmoother);
     smoother = ScrollSmoother.create({
       smooth: 2,
       effects: true,
@@ -7115,7 +7076,7 @@ var init_strings = __esm({
 });
 
 // node_modules/gsap/SplitText.js
-var _doc4, _win4, _coreInitted4, gsap8, _context4, _toArray3, _stripExp, _multipleSpacesExp, _nonBreakingSpace, _initCore3, _bonusValidated, _getComputedStyle3, _isAbsolute, _findSpecialChars, _divStart, _cssClassFunc, _swapText, _pushReversed, _isBeforeWordDelimiter, _deWordify, _getStyleAsNumber, _setPositionsAfterSplit, _splitRawText, _split, SplitText;
+var _doc4, _win4, _coreInitted4, gsap7, _context4, _toArray3, _stripExp, _multipleSpacesExp, _nonBreakingSpace, _initCore3, _bonusValidated, _getComputedStyle3, _isAbsolute, _findSpecialChars, _divStart, _cssClassFunc, _swapText, _pushReversed, _isBeforeWordDelimiter, _deWordify, _getStyleAsNumber, _setPositionsAfterSplit, _splitRawText, _split, SplitText;
 var init_SplitText = __esm({
   "node_modules/gsap/SplitText.js"() {
     init_strings();
@@ -7125,10 +7086,10 @@ var init_SplitText = __esm({
     _initCore3 = function _initCore4(core) {
       _doc4 = document;
       _win4 = window;
-      gsap8 = gsap8 || core || _win4.gsap || console.warn("Please gsap.registerPlugin(SplitText)");
-      if (gsap8) {
-        _toArray3 = gsap8.utils.toArray;
-        _context4 = gsap8.core.context || function() {
+      gsap7 = gsap7 || core || _win4.gsap || console.warn("Please gsap.registerPlugin(SplitText)");
+      if (gsap7) {
+        _toArray3 = gsap7.utils.toArray;
+        _context4 = gsap7.core.context || function() {
         };
         _coreInitted4 = 1;
       }
@@ -7561,12 +7522,12 @@ function createCircles() {
     circles = [...document.querySelectorAll(".gsap-hero_circle")];
   }
 }
-var import_gsap5, circles;
+var import_gsap4, circles;
 var init_gsap_hero = __esm({
   "gsap-hero.js"() {
-    import_gsap5 = __toESM(require_gsap());
+    import_gsap4 = __toESM(require_gsap());
     init_SplitText();
-    import_gsap5.gsap.registerPlugin(SplitText);
+    import_gsap4.gsap.registerPlugin(SplitText);
     createCircles();
     window.addEventListener("load", () => {
       let root = document.documentElement;
@@ -7580,7 +7541,7 @@ var init_gsap_hero = __esm({
         tagline = split.chars.slice(0, 15);
         typed = split.chars.slice(15, -1);
       }
-      let tl = import_gsap5.gsap.timeline();
+      let tl = import_gsap4.gsap.timeline();
       tl.to(circles, { duration: 0, opacity: 1, stagger: 0.05, ease: "none" });
       tl.to(hero2, { duration: 0.5, opacity: 0, ease: "power1.inOut" }, "-=0.25");
       tl.to(tagline, { duration: 0.5, color: "var(--light-teal)", ease: "power1.inOut" }, "<");
@@ -10507,16 +10468,16 @@ function updateSlides() {
 function sliderInit() {
   updateSlides();
 }
-var import_gsap6, activeSlides, slider;
+var import_gsap5, activeSlides, slider;
 var init_slider = __esm({
   "slider.js"() {
     init_tiny_slider();
     init_tiny_slider2();
-    import_gsap6 = __toESM(require_gsap());
+    import_gsap5 = __toESM(require_gsap());
     init_ScrollTrigger();
     init_gsap_hero();
     init_smoother();
-    import_gsap6.gsap.registerPlugin(ScrollTrigger2);
+    import_gsap5.gsap.registerPlugin(ScrollTrigger2);
     activeSlides = [];
     if (document.querySelector("#tiny-slider")) {
       try {
@@ -10553,7 +10514,7 @@ var init_slider = __esm({
         preloadVideo();
       }
     });
-    mm = import_gsap6.gsap.matchMedia();
+    mm = import_gsap5.gsap.matchMedia();
     mm.add(
       "(pointer:fine)",
       () => {
@@ -10632,6 +10593,44 @@ var init_slider = __esm({
   }
 });
 
+// our-process.js
+var our_process_exports = {};
+var import_gsap6, section, items, i;
+var init_our_process = __esm({
+  "our-process.js"() {
+    import_gsap6 = __toESM(require_gsap());
+    init_ScrollTrigger();
+    import_gsap6.gsap.registerPlugin(ScrollTrigger2);
+    section = document.querySelector(".our-process-section");
+    items = import_gsap6.gsap.utils.toArray(".our-process-process-item");
+    i = 1;
+    items.forEach((item) => {
+      item.dataset.index = i++;
+      ScrollTrigger2.create({
+        trigger: item,
+        start: "top bottom",
+        onEnter: () => {
+          section.style.cursor = "var(--process-cursor-" + item.dataset.index + "), auto";
+        },
+        onEnterBack: () => {
+          section.style.cursor = "var(--process-cursor-" + item.dataset.index + "), auto";
+        }
+      });
+    });
+    mm = import_gsap6.gsap.matchMedia();
+    mm.add("(min-width:0px)", () => {
+      ScrollTrigger2.create({
+        trigger: "#process-section",
+        pin: "#process-heading",
+        pinType: "fixed",
+        pinSpacing: false,
+        start: "top top",
+        end: (self2) => "+=" + (items[0].offsetHeight + items[1].offsetHeight + items[2].offsetHeight)
+      });
+    });
+  }
+});
+
 // animations.js
 var import_gsap = __toESM(require_gsap());
 init_ScrollTrigger();
@@ -10691,7 +10690,6 @@ var mutationObserver = new MutationObserver(callback);
 mutationObserver.observe(targetNode, config);
 
 // index.js
-init_our_process();
 init_smoother();
 var import_gsap7 = __toESM(require_gsap());
 var hero;
