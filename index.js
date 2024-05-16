@@ -46,7 +46,7 @@ try {
 } catch (error) {
     console.error(error)
 } finally {
-    if (slider){
+    if (section){
         console.debug("loading our-process.js...")
         import ('./our-process.js')
         .then(()=>{
