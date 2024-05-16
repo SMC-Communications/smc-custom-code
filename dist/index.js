@@ -6317,15 +6317,13 @@ var init_our_process = __esm({
     });
     mm = import_gsap3.gsap.matchMedia();
     mm.add("(min-width:992px)", () => {
-      if (section) {
-        ScrollTrigger2.create({
-          trigger: "#process-section",
-          pin: "#process-heading",
-          pinSpacing: false,
-          start: "top top",
-          end: () => "+=" + (items[0].offsetHeight + items[1].offsetHeight + items[2].offsetHeight)
-        });
-      }
+      ScrollTrigger2.create({
+        trigger: "#process-section",
+        pin: "#process-heading",
+        pinSpacing: false,
+        start: "top top",
+        end: () => "+=" + (items[0].offsetHeight + items[1].offsetHeight + items[2].offsetHeight)
+      });
     });
   }
 });
@@ -10731,7 +10729,7 @@ try {
 } catch (error) {
   console.error(error);
 } finally {
-  if (slider2) {
+  if (section2) {
     console.debug("loading our-process.js...");
     Promise.resolve().then(() => (init_our_process(), our_process_exports)).then(() => {
       console.debug("our-process.js loaded");
