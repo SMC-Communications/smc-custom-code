@@ -36,4 +36,3 @@ mm.add('(min-width:992px)', ()=>{
         }) 
     } 
 })
-console.log("Dev!")
