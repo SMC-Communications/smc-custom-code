@@ -35,5 +35,8 @@ mm.add('(min-width:0px)', ()=>{
         normalizeScroll: true,
         onEnter: ()=> console.log("start"), 
         end: self => "+=" + (items[0].offsetHeight + items[1].offsetHeight + items[2].offsetHeight)
+    })
+    window.addEventListener('load', ()=>{
+        ScrollTrigger.refresh()
     }) 
 })
