@@ -6290,7 +6290,6 @@ var init_ScrollTrigger = __esm({
     _getGSAP3() && gsap2.registerPlugin(ScrollTrigger2);
   }
 });
-
 // node_modules/gsap/ScrollSmoother.js
 function _defineProperties2(target, props) {
   for (var i2 = 0; i2 < props.length; i2++) {
