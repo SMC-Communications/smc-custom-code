@@ -25,7 +25,7 @@ let items = gsap.utils.toArray('.our-process-process-item')
 
 /* PIN PROCESS TITLE */
 mm = gsap.matchMedia()
-mm.add('(min-width:0px)', ()=>{
+mm.add('(min-width:992px)', ()=>{
     ScrollTrigger.create({
         trigger: '#process-section',
         pin: '#process-heading',

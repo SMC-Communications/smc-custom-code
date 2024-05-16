@@ -10619,7 +10619,7 @@ var init_our_process = __esm({
       });
     });
     mm = import_gsap6.gsap.matchMedia();
-    mm.add("(min-width:0px)", () => {
+    mm.add("(min-width:992px)", () => {
       ScrollTrigger2.create({
         trigger: "#process-section",
         pin: "#process-heading",
