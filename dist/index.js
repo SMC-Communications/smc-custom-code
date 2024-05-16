@@ -10626,6 +10626,8 @@ var init_our_process = __esm({
         pinType: "fixed",
         pinSpacing: false,
         start: "top top",
+        normalizeScroll: true,
+        onEnter: () => console.log("start"),
         end: (self2) => "+=" + (items[0].offsetHeight + items[1].offsetHeight + items[2].offsetHeight)
       });
     });
