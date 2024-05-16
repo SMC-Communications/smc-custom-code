@@ -1,10 +1,8 @@
 /* === GLOBAL === */
 import './styles/styles.css'
-//import './gsap-hero.js'
 import './animations.js'
 import './gsap-header.js'
 import './our-process.js'
-//import './slider.js'
 import './smoother.js'
 import { gsap } from 'gsap'
 

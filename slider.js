@@ -2,7 +2,6 @@ import './node_modules/tiny-slider/dist/tiny-slider.css'
 import { tns } from './node_modules/tiny-slider/src/tiny-slider.js'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-//import './gsap-hero.js'
 import { preloadVideo } from './gsap-hero.js'
 import { smoother } from './smoother.js'
 
@@ -78,32 +77,9 @@ if (document.querySelector("#tiny-slider")) {
         console.error(error)
     }
 }
-/* INTERSECTION OBSERVER */
-/*const scrollRoot = document.querySelector("[data-scroller]")
-const videoSection = document.querySelector("[data-video-section]")
-if (videoSection) {
-    const options = {
-        root: scrollRoot,
-        threshold: 0
-    }
-    const onVideoIntersect = (entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                //playMainSlide();
-            } else {
-                //pauseMainSlide();
-            }
-        })
-    }
-    try {
-        const videoObserver = new IntersectionObserver(onVideoIntersect, options)
-        videoObserver.observe(videoSection)
-    } catch (error) {
-        console.error(error)
-    }
-}*/
 
 /* SCROLL TRIGGER */
+
 // Fallback to load videos
 ScrollTrigger.create({
     trigger: '#magnify-stories',
