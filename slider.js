@@ -91,7 +91,8 @@ ScrollTrigger.create({
     }
 })
 
-mm = gsap.matchMedia()
+// PIN VIDEO SECTION
+/*mm = gsap.matchMedia()
 mm.add('(pointer:fine)',
     () => {
         let prevProgress = 0
@@ -138,8 +139,9 @@ mm.add('(pointer:fine)',
             }
         })
     }
-)
-mm.add('(pointer:coarse)',
+)*/
+
+/*mm.add('(pointer:coarse)',
     () => {
         let prevProgress = 0
         let length = slider.getInfo().slideCount
@@ -169,4 +171,4 @@ mm.add('(pointer:coarse)',
             }
         })
     }
-)
+)*/

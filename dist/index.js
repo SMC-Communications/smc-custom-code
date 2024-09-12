@@ -10445,9 +10445,6 @@ function prevSlide() {
 function playMainSlide() {
   document.querySelector(".active-slide1 video").play();
 }
-function pauseMainSlide() {
-  document.querySelector(".active-slide1 video").pause();
-}
 function updateSlides() {
   if (activeSlides.length) {
     activeSlides.forEach((slide) => {
@@ -10515,82 +10512,6 @@ var init_slider = __esm({
         preloadVideo();
       }
     });
-    mm = import_gsap5.gsap.matchMedia();
-    mm.add(
-      "(pointer:fine)",
-      () => {
-        let prevProgress = 0;
-        let length = slider.getInfo().slideCount;
-        let start, smoothStart, prevDirection;
-        ScrollTrigger2.create({
-          trigger: "#magnify-stories",
-          start: "top top",
-          pin: true,
-          end: (self2) => "+=" + self2.trigger.offsetHeight * length * 0.5,
-          onEnter: (self2) => {
-            start = smoother.scrollTop();
-            smoothStart = smoother.smooth();
-            console.debug("Start:" + start);
-          },
-          onToggle: (self2) => {
-            if (self2.isActive) {
-              playMainSlide();
-            } else {
-              pauseMainSlide();
-            }
-          },
-          onUpdate: (self2) => {
-            let delta = Math.abs(self2.progress - prevProgress);
-            if (delta > 1 / (length / 0.5)) {
-              console.debug("Scroll:" + self2.scroll());
-              if (self2.direction === 1 && prevDirection === 1) {
-                nextSlide();
-              }
-              prevProgress = self2.progress;
-              prevDirection = self2.direction;
-            }
-          },
-          onEnterBack: (self2) => {
-            console.debug("Scrolling to:" + start);
-            smoother.scrollTop(start);
-            setTimeout(() => {
-              self2.kill();
-            }, 1e3);
-          }
-        });
-      }
-    );
-    mm.add(
-      "(pointer:coarse)",
-      () => {
-        let prevProgress = 0;
-        let length = slider.getInfo().slideCount;
-        let start;
-        ScrollTrigger2.create({
-          trigger: "#magnify-stories",
-          start: "top top",
-          pin: true,
-          normalizeScroll: true,
-          end: (self2) => "+=" + self2.trigger.offsetHeight,
-          onEnter: (self2) => {
-            start = smoother.scrollTop();
-            console.debug("Start:" + start);
-          },
-          onToggle: (self2) => {
-            if (self2.isActive) {
-              playMainSlide();
-            } else {
-              pauseMainSlide();
-            }
-          },
-          onEnterBack: (self2) => {
-            console.debug("Scrolling to:" + start);
-            smoother.scrollTop(start);
-            self2.kill();
-          }
-        });
-      }
-    );
   }
 });
 
