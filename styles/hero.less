@@ -41,6 +41,9 @@
 .home_new-hero:not(.no-transition){
     transition:background-color 1s ease-in;
 }
+.home_new-hero .circle{
+    //transition: color 1s ease-in-out;
+}
 .home_new-hero.invert{
     &:not(.no-transition){
         transition:all 1s linear;
@@ -48,7 +51,7 @@
     background-color: var(--dark-teal);
 
     .circle{
-        border-color:var(--light-teal);
+        //border-color:var(--light-teal);
     }
     #new-hero_heading-h1{
         color:var(--light-teal);

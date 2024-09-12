@@ -3,6 +3,7 @@ import './styles/styles.css'
 import './animations.js'
 import './gsap-header.js'
 import './smoother.js'
+
 import { gsap } from 'gsap'
 
 /* === HERO === */

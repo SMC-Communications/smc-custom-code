@@ -28,9 +28,9 @@ window.addEventListener('load', ()=>{
 
     //Invert colors
     tl.to(hero, {duration:0.5, opacity:0, ease:"power1.inOut"},"-=0.25")
-    tl.to(tagline, {duration:0.5, color:"var(--light-teal)", ease:"power1.inOut"}, "<")
-    tl.to(circles, {duration:0.5, borderColor:"var(--light-teal)", ease:"power1.inOut"}, "<")
-    tl.to(root, {duration:0.5, ["--nav-color"]:"var(--light-teal)",  ease:"power1.inOut"}, "<")
+    tl.to(tagline, {duration:0.5, color:"#b9f4d8", ease:"power1.inOut"}, "<")
+    tl.to(circles, {duration:1, css:{borderColor:"#b9f4d8"}, ease:"power1.inOut"}, "<")
+    tl.to(root, {duration:0.5, ["--nav-color"]:"#b9f4d8",  ease:"power1.inOut"}, "<")
 
     //Reveal Tagline
     tl.to(tagline, {duration:1, opacity:1, ease:"power1.out"})    

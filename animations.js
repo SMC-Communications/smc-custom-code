@@ -14,8 +14,7 @@ if (document.readyState !== 'loading') {
 }
 
 function registerAnimatedElements() {
-    let elements = gsap.utils.toArray("[gsap]")
-
+   
     gsap.set("[gsap]",{opacity:0})
 
     ScrollTrigger.batch("[gsap]", {

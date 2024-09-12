@@ -42,9 +42,6 @@
 .home_new-hero.invert:not(.no-transition) {
   transition: all 1s linear;
 }
-.home_new-hero.invert .circle {
-  border-color: var(--light-teal);
-}
 .home_new-hero.invert #new-hero_heading-h1 {
   color: var(--light-teal);
 }

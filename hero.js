@@ -1,5 +1,6 @@
 import {ready} from './ready.js'
 import Typed from 'typed.js';
+import { gsap } from 'gsap';
 
 const headline = document.querySelector("#new-hero_heading-h1")
 const hiddenText = document.querySelector(".hidden-text")
@@ -64,12 +65,20 @@ function createCircles(){
 function invertColors(){
     if (section){
         try {
+            invertCircles()
             section.classList.add("invert")
         } catch (error) {
             console.error(error)
         }
     }
 }
+function invertCircles(){
+    gsap.to(".circle",{
+        duration: 10000,
+        css:{ borderColor:'red'}
+    })
+}
+
 function createTypedElement(){
     let typed = new Typed('#type-span', {
         strings: ['by \ninfluencing consumers at \nevery stage of their journey'],

@@ -7545,9 +7545,9 @@ var init_gsap_hero = __esm({
       let tl = import_gsap4.gsap.timeline();
       tl.to(circles, { duration: 0, opacity: 1, stagger: 0.05, ease: "none" });
       tl.to(hero2, { duration: 0.5, opacity: 0, ease: "power1.inOut" }, "-=0.25");
-      tl.to(tagline, { duration: 0.5, color: "var(--light-teal)", ease: "power1.inOut" }, "<");
-      tl.to(circles, { duration: 0.5, borderColor: "var(--light-teal)", ease: "power1.inOut" }, "<");
-      tl.to(root, { duration: 0.5, ["--nav-color"]: "var(--light-teal)", ease: "power1.inOut" }, "<");
+      tl.to(tagline, { duration: 0.5, color: "#b9f4d8", ease: "power1.inOut" }, "<");
+      tl.to(circles, { duration: 1, css: { borderColor: "#b9f4d8" }, ease: "power1.inOut" }, "<");
+      tl.to(root, { duration: 0.5, ["--nav-color"]: "#b9f4d8", ease: "power1.inOut" }, "<");
       tl.to(tagline, { duration: 1, opacity: 1, ease: "power1.out" });
       tl.to(typed, { duration: 0, color: "var(--light-teal)" }, "-=0.5");
       tl.from(typed, { duration: 0.5, stagger: 0.03, rotateZ: "1deg", translateY: "0.1em", ease: "power1.out" }, "<");
@@ -10572,7 +10572,6 @@ if (document.readyState !== "loading") {
   });
 }
 function registerAnimatedElements() {
-  let elements = import_gsap.gsap.utils.toArray("[gsap]");
   import_gsap.gsap.set("[gsap]", { opacity: 0 });
   ScrollTrigger2.batch("[gsap]", {
     // interval: 0.1, // time window (in seconds) for batching to occur. 
