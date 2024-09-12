@@ -6012,16 +6012,16 @@ var init_ScrollTrigger = __esm({
     };
     ScrollTrigger2.batch = function(targets, vars) {
       var result = [], varsCopy = {}, interval = vars.interval || 0.016, batchMax = vars.batchMax || 1e9, proxyCallback = function proxyCallback2(type, callback2) {
-        var elements2 = [], triggers = [], delay = gsap2.delayedCall(interval, function() {
-          callback2(elements2, triggers);
-          elements2 = [];
+        var elements = [], triggers = [], delay = gsap2.delayedCall(interval, function() {
+          callback2(elements, triggers);
+          elements = [];
           triggers = [];
         }).pause();
         return function(self2) {
-          elements2.length || delay.restart(true);
-          elements2.push(self2.trigger);
+          elements.length || delay.restart(true);
+          elements.push(self2.trigger);
           triggers.push(self2);
-          batchMax <= elements2.length && delay.progress(1);
+          batchMax <= elements.length && delay.progress(1);
         };
       }, p;
       for (p in vars) {
@@ -10641,17 +10641,32 @@ var init_our_process = __esm({
 var import_gsap = __toESM(require_gsap());
 init_ScrollTrigger();
 import_gsap.gsap.registerPlugin(ScrollTrigger2);
-var elements = import_gsap.gsap.utils.toArray("[gsap]");
-import_gsap.gsap.set("[gsap]", { opacity: 0 });
-ScrollTrigger2.batch("[gsap]", {
-  // interval: 0.1, // time window (in seconds) for batching to occur. 
-  // batchMax: 3,   // maximum batch size (targets)
-  start: "top 66%",
-  onEnter: (batch) => {
-    import_gsap.gsap.to(batch, { duration: 0.3, opacity: 1, stagger: 0.2, ease: "power1.out" });
-  }
-  // also onLeave, onEnterBack, and onLeaveBack
-  // also most normal ScrollTrigger values like start, end, etc.
+if (document.readyState !== "loading") {
+  console.log("document is already ready, just execute code here");
+  registerAnimatedElements();
+} else {
+  document.addEventListener("DOMContentLoaded", (event) => {
+    console.log("document was not ready, place code here");
+    registerAnimatedElements();
+  });
+}
+function registerAnimatedElements() {
+  let elements = import_gsap.gsap.utils.toArray("[gsap]");
+  import_gsap.gsap.set("[gsap]", { opacity: 0 });
+  ScrollTrigger2.batch("[gsap]", {
+    // interval: 0.1, // time window (in seconds) for batching to occur. 
+    // batchMax: 3,   // maximum batch size (targets)
+    start: "top 66%",
+    onEnter: (batch) => {
+      import_gsap.gsap.to(batch, { duration: 0.3, opacity: 1, stagger: 0.2, ease: "power1.out" });
+    }
+    // also onLeave, onEnterBack, and onLeaveBack
+    // also most normal ScrollTrigger values like start, end, etc.
+  });
+}
+window.addEventListener("load", (event) => {
+  console.log("PAGE LOADED!");
+  ScrollTrigger2.refresh();
 });
 
 // gsap-header.js
