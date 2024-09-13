@@ -4,11 +4,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger)
 
 if (document.readyState !== 'loading') {
-    console.log('document is already ready, just execute code here');
     registerAnimatedElements();
 } else {
     document.addEventListener('DOMContentLoaded', (event)=> {
-        console.log('document was not ready, place code here');
         registerAnimatedElements();
     });
 }
@@ -30,6 +28,5 @@ function registerAnimatedElements() {
 }
 
 window.addEventListener('load', (event)=>{
-    console.log("PAGE LOADED!")
     ScrollTrigger.refresh()
 })

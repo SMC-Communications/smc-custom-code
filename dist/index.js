@@ -10508,8 +10508,16 @@ var init_slider = __esm({
       start: "top 150%",
       once: true,
       onEnter: () => {
-        console.log("loading");
         preloadVideo();
+      }
+    });
+    ScrollTrigger2.create({
+      trigger: "#magnify-stories",
+      start: "top bottom",
+      once: true,
+      onEnter: () => {
+        console.log("enter");
+        playMainSlide();
       }
     });
   }
@@ -10563,11 +10571,9 @@ var import_gsap = __toESM(require_gsap());
 init_ScrollTrigger();
 import_gsap.gsap.registerPlugin(ScrollTrigger2);
 if (document.readyState !== "loading") {
-  console.log("document is already ready, just execute code here");
   registerAnimatedElements();
 } else {
   document.addEventListener("DOMContentLoaded", (event) => {
-    console.log("document was not ready, place code here");
     registerAnimatedElements();
   });
 }
@@ -10585,7 +10591,6 @@ function registerAnimatedElements() {
   });
 }
 window.addEventListener("load", (event) => {
-  console.log("PAGE LOADED!");
   ScrollTrigger2.refresh();
 });
 

@@ -86,11 +86,18 @@ ScrollTrigger.create({
     start: "top 150%",
     once:true,    
     onEnter: ()=> {
-        console.log("loading")
         preloadVideo()
     }
 })
-
+ScrollTrigger.create({
+    trigger: '#magnify-stories',
+    start: "top bottom",
+    once:true,    
+    onEnter: ()=> {
+        console.log("enter")
+        playMainSlide()
+    }
+})
 // PIN VIDEO SECTION
 /*mm = gsap.matchMedia()
 mm.add('(pointer:fine)',
