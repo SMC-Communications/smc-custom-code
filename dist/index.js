@@ -7551,8 +7551,8 @@ var init_gsap_hero = __esm({
       tl.to(tagline, { duration: 1, opacity: 1, ease: "power1.out" });
       tl.to(typed, { duration: 0, color: "var(--light-teal)" }, "-=0.5");
       tl.from(typed, { duration: 0.5, stagger: 0.03, rotateZ: "1deg", translateY: "0.1em", ease: "power1.out" }, "<");
-      tl.to(typed, { duration: 0.5, stagger: 0.03, opacity: 1, ease: "power1.out", onComplete: preloadVideo }, "<");
-      tl.to(header3, { duration: 0.5, opacity: 1, ease: "power1.out" });
+      tl.to(typed, { duration: 0.5, stagger: 0.03, opacity: 1, ease: "power1.out" }, "<");
+      tl.to(header3, { duration: 0.5, opacity: 1, ease: "power1.out", onComplete: preloadVideo });
     });
   }
 });
