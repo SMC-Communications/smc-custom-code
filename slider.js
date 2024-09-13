@@ -94,7 +94,6 @@ ScrollTrigger.create({
     start: "top bottom",
     once:true,    
     onEnter: ()=> {
-        console.log("enter")
         playMainSlide()
     }
 })

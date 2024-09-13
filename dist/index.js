@@ -10516,7 +10516,6 @@ var init_slider = __esm({
       start: "top bottom",
       once: true,
       onEnter: () => {
-        console.log("enter");
         playMainSlide();
       }
     });
@@ -10600,7 +10599,6 @@ init_ScrollTrigger();
 import_gsap2.gsap.registerPlugin(ScrollTrigger2);
 var sections = import_gsap2.gsap.utils.toArray("section");
 var header = document.querySelector("[data-header]");
-console.log(sections[0].dataset.section);
 header.setAttribute("data-theme", sections[0].dataset.section);
 var height = header.offsetHeight;
 sections.forEach((section3) => {
@@ -10619,13 +10617,10 @@ var navOpen = false;
 var callback = (mutationList, mutationObserver2) => {
   for (const mutation of mutationList) {
     if (mutation.type === "attributes") {
-      console.log(`The ${mutation.attributeName} attribute was modified.`);
       if (mutation.attributeName === "data-nav-menu-open" && !navOpen) {
-        console.log("open");
         navOpen = true;
         header.classList.add("nav-open");
       } else if (mutation.attributeName === "data-nav-menu-open" && navOpen) {
-        console.log("closed");
         navOpen = false;
         header.classList.remove("nav-open");
       }
@@ -10647,10 +10642,7 @@ try {
   console.error(error);
 } finally {
   if (hero) {
-    console.debug("loading gsap-hero.js...");
-    Promise.resolve().then(() => (init_gsap_hero(), gsap_hero_exports)).then(() => {
-      console.debug("gsap-hero.js loaded");
-    });
+    Promise.resolve().then(() => init_gsap_hero());
   } else {
     import_gsap7.gsap.to(header2, { duration: 0, opacity: 1, ease: "none" });
   }
@@ -10662,10 +10654,7 @@ try {
   console.error(error);
 } finally {
   if (slider2) {
-    console.debug("loading slider.js...");
-    Promise.resolve().then(() => (init_slider(), slider_exports)).then(() => {
-      console.debug("slider.js loaded");
-    });
+    Promise.resolve().then(() => init_slider());
   }
 }
 var section2;
@@ -10675,10 +10664,7 @@ try {
   console.error(error);
 } finally {
   if (section2) {
-    console.log("loading our-process.js...");
-    Promise.resolve().then(() => (init_our_process(), our_process_exports)).then(() => {
-      console.debug("our-process.js loaded");
-    });
+    Promise.resolve().then(() => init_our_process());
   }
 }
 /*! Bundled license information:

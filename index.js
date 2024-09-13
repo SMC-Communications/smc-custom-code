@@ -15,11 +15,7 @@ try {
     console.error(error)
 } finally {
     if (hero){
-        console.debug("loading gsap-hero.js...")
         import ('./gsap-hero.js')
-        .then(()=>{
-            console.debug("gsap-hero.js loaded")
-        })
     } else {
         gsap.to(header, {duration:0, opacity:1, ease:"none"})
     }
@@ -32,11 +28,7 @@ try {
     console.error(error)
 } finally {
     if (slider){
-        console.debug("loading slider.js...")
         import ('./slider.js')
-        .then(()=>{
-            console.debug("slider.js loaded")
-        })
     }
 }
 /* === OUR PROCESS === */
@@ -47,10 +39,6 @@ try {
     console.error(error)
 } finally {
     if (section){
-        console.log("loading our-process.js...")
         import ('./our-process.js')
-        .then(()=>{
-            console.debug("our-process.js loaded")
-        })
     }
 }
